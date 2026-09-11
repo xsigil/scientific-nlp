@@ -1,0 +1,71 @@
+\documentclass{ltjsbook}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{titlesec}
+\usepackage{epigraph}
+\usepackage{tabularx}
+\usepackage{tikz-cd}
+\usepackage{mathtools}
+\usepackage{enumitem}
+\newcommand{\sectionbreak}{\clearpage}
+\setlength{\epigraphwidth}{0.75\textwidth}
+\renewcommand{\textflush}{flushright}
+\renewcommand{\sourceflush}{flushright}
+\usepackage{fontspec}
+\setmainfont{Noto Serif}
+
+
+%DEFINITIONS
+
+
+\title{
+\Huge \textbf{Scientific NLP}\\
+\vspace{0.3em}
+\Large --- The Seed of Magic ---\\
+\vspace{0.8em}
+\large \textit{The Answer from a Social Hacker to Dr.~Richard Bandler}
+}
+\author{\Large Masahiro Sugaya}
+\date{}
+%%% DEFINITION
+
+% Neural Bayes Update and Convergence
+% 神経疑似ベイズ推論機の疑似ベイズ推論と疑似ベイズ更新プロセス
+\newcommand{\nbuc}[2]{:\xrightarrow[#2]{#1}}
+\newcommand{\nbscanning}[1]{\nbuc{#1}{\emptyset} \mid}
+\newcommand{\State}{\mathcal{S}}
+% Unlimitted Unknown
+\newcommand{\UU}{\aleph}
+
+\begin{document}
+\maketitle
+\include{src/chapters/prologue}
+\include{src/chapters/remnanments_of_magick_and_the_cold_computer}
+\include{src/chapters/freewill_negation}
+\include{src/chapters/neural_states}
+\include{src/chapters/neural_pseudo_bayesian_inference_engine}
+\include{src/chapters/macro_neural_pseudo_bayesian_inference_engine.tex}
+\include{src/chapters/nlp_states}
+\include{src/chapters/micro_ego_strategy}
+\include{src/chapters/psychocybernetics_system}
+\include{src/chapters/attention_filter_ras}
+\include{src/chapters/emotion_interruption_lambda}
+\include{src/chapters/nlp_strategy}
+\include{src/chapters/discreate_state_transition}
+\include{src/chapters/intellectual_zero_personality}
+\include{src/chapters/demythologization_of_hypnosis}
+\include{src/chapters/reevaluating_nlp_techniques}
+\include{src/chapters/toc_clinical_metaphor}
+\include{src/chapters/basian_profiling_with_othello_filter}
+\include{src/chapters/double_feedback_learning}
+\include{src/chapters/bruteforce_attack}
+\include{src/chapters/post_freewill_narrative}
+\include{src/chapters/epilogue}
+\include{src/chapters/appendices}
+\include{src/chapters/psychopathology_hypothesis}
+
+%%MEMO
+%\include{src/chapters/nlp_hypnosis}
+\end{document}

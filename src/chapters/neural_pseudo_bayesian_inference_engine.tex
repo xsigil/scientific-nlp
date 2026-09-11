@@ -1,0 +1,81 @@
+\chapter{神経疑似ベイズ推論機の定式化}
+
+以上の知見を踏まえ、人間の認知システムを情報論的・物理学的に再定義する。
+生体に降り注ぐすべての感覚入力は、根源的には無秩序なノイズの塊である。静かに瞼を閉じたとき、暗闇の中で明滅する微細な光のざわめき（眼内閃光）を観察すれば、神経系が常にノイズに曝されていることが実感できる。
+
+\subsection{アトミックな認知収束モデル}
+環境から神経系へ入力されるノイズを $e_{\mathrm{noise}}$ とする。
+脳の有限な物理ハードウェアは、無限の仮説空間を探索するリソースを持たないため、閾値に達しない微小な事前確率を切り捨て、有限個の事前予期の候補群 $\{\hat{\omega}_1, \dots, \hat{\omega}_n\}$ を励起させる。
+
+この状態から、身体ループを伴うモジュール間の再帰的フィードバック（反復結合）を通じて解が1点へ収束し、認知が確定する過程を神経疑似ベイズ推論機の疑似ベイズ推論と疑似ベイズ更新プロセス(NBUC: Neural Bayes Update and Convergence)次のように定義する。
+\begin{equation}
+e_{\mathrm{noise}} \nbuc{\hat{\omega}}{\hat{\omega'}} \omega
+\label{eq:neural_bayes}
+\end{equation}
+
+
+ここで用いる各記号の定義は以下の通りである。
+\begin{itemize}
+  \item $\hat{\omega} \in \{\hat{\omega}_1, \dots, \hat{\omega}_n\}$：\textbf{事前予期}（刺激入力前の仮説バイアス）
+  \item $\hat{\omega}'$：\textbf{事後予期}（身体ループ等のフィードバックを経て更新された確信度）
+  \item $\omega$：\textbf{確信}（認知および行動として確定した局所解）
+\end{itemize}
+
+もしパターンマッチングが成立せず、閾値を超える解が確定しないまま推論ループが空転し続けている状態（未解決の探索状態）は、次のように記述される。
+\begin{equation}
+    %e_{\mathrm{noise}} \nbuc{\hat{\omega}}{\emptyset} \mid
+    e_{\mathrm{noise}} \nbscanning{\hat{\omega}}
+\end{equation}
+
+ここで記号 $\mid$ は、確信 $\omega$ への結晶化が起きず、推論ループが探索を継続したまま宙づりになっている状態を表す。これは、暗闇の中の微小な物音に対して「何の音だ？」と警戒し、意識と感覚器が緊張のまま固定されている状態に相当する。
+
+一方で、入力そのものが定常的なホワイトノイズ（換気扇の羽音や雨音など）である場合、神経系は無限に探索を続けるわけではない。推論機は「これは意味を持たない背景ノイズである」というメタな仮説 $\hat{\omega}_{\mathrm{null}}$ を選択し、探索を打ち切って定常状態へと収束させる。
+\begin{equation}
+    e_{\mathrm{noise}} \nbuc{\hat{\omega}_{\mathrm{null}}}{\hat{\omega'}_{\mathrm{null}}} \omega_{\mathrm{null}}
+\end{equation}
+このとき確定した確信 $\omega_{\mathrm{null}}$ は、「解が見つからなかった」のではなく、「意味のない背景ノイズ（グラウンド）」として積極的に同定された状態を意味する。この確信の確定をもって探索ループは静止し、その入力シグナルは意識の前景から即座にフェードアウトしていく。
+
+\subsection{NLPにおける表象システム（VAKOG）の再定義}
+このモデルを適用すれば、従来のNLPが経験的に分類してきた五感の表象システム（$VAKOG$）を、ノイズ収束の物理プロセスとして厳密に再定義できる。
+
+五感の各受容器に入力される環境ノイズを、視覚：$v_{\mathrm{noise}}$、聴覚：$a_{\mathrm{noise}}$、体感覚：$k_{\mathrm{noise}}$、嗅覚：$o_{\mathrm{noise}}$、味覚：$g_{\mathrm{noise}}$ とする。これらの外的ノイズが事前予期と照合され、外的表象（External Representation）として収束する過程は次のように定式化される。
+\begin{align}
+    v_{\mathrm{noise}} &\nbuc{\hat{\omega}}{\hat{\omega'}} \omega \equiv V_e \\
+    a_{\mathrm{noise}} &\nbuc{\hat{\omega}}{\hat{\omega'}} \omega \equiv A_e \\
+    k_{\mathrm{noise}} &\nbuc{\hat{\omega}}{\hat{\omega'}} \omega \equiv K_e \\
+    o_{\mathrm{noise}} &\nbuc{\hat{\omega}}{\hat{\omega'}} \omega \equiv O_e \\
+    g_{\mathrm{noise}} &\nbuc{\hat{\omega}}{\hat{\omega'}} \omega \equiv G_e
+\end{align}
+
+同様に、記憶の想起や思考といった内的ノイズ刺激と環境からの外的ノイズ刺激を全て含む刺激 $e_{\mathrm{noise}}$ から、内的表象（Internal Representation）が結像するプロセスも同一の形式で記述される。
+\begin{align}
+    e_{\mathrm{noise}} &\nbuc{\hat{\omega}}{\hat{\omega'}} \omega \equiv V_i \\
+    e_{\mathrm{noise}} &\nbuc{\hat{\omega}}{\hat{\omega'}} \omega \equiv A_i \\
+    e_{\mathrm{noise}} &\nbuc{\hat{\omega}}{\hat{\omega'}} \omega \equiv K_i \\
+    e_{\mathrm{noise}} &\nbuc{\hat{\omega}}{\hat{\omega'}} \omega \equiv O_i \\
+    e_{\mathrm{noise}} &\nbuc{\hat{\omega}}{\hat{\omega'}} \omega \equiv G_i
+\end{align}
+
+\subsection{多峰性の振動：だまし絵に見る認知の葛藤}
+入力ノイズに対し、競合する複数の事前予期が拮抗している場合、推論機は単一の解に落ち着くことができず、確定解の間を周期的に振動する。
+
+エッシャーの版画『滝』や『上昇と下降』を見るとき、局所的な構造は正常な3次元空間として認識されるが、大域的には不可能な幾何学構造へと帰着する。このとき、視覚神経系は2つの解の間を激しく行き来する。
+\begin{equation}
+v \nbuc{\hat{\omega'_1}}{\hat{\omega}_1} \omega_1 
+\longrightarrow v \nbuc{\hat{\omega}_2}{\hat{\omega'}_2} \omega_2 
+\longrightarrow v \nbuc{\hat{\omega}_1}{\hat{\omega'}_1} \omega_1 
+\longrightarrow v \nbuc{\hat{\omega}_2}{\hat{\omega'}_2} \omega_2 
+\longrightarrow \cdots
+\end{equation}
+
+この分岐・振動状態は、次のように多峰性の写像として表現される。
+\begin{equation}
+    v_{\mathrm{noise}} \nbuc{\hat{\omega}}{\hat{\omega'}}
+    \begin{cases}
+        \omega_1 \\
+        \omega_2
+    \end{cases}
+\end{equation}
+心理的な「葛藤」や「迷い」の正体とは、この多峰性ポテンシャルの谷の間で、神経系疑似ベイズ推論機が解を固定できずに振動している物理状態にほかならない。
+
+

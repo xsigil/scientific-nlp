@@ -1,0 +1,61 @@
+\chapter{ナラティブの確信 $\Omega$ にパターンマッチングする神経系疑似ベイズ推論機}
+\epigraph{``Prediction is the essence of intelligence. To perceive the world is to constantly fill in the missing information based on an internal model.''\\
+\small（予測こそが知能の本質である。世界を知覚するとは、自らの内部モデルに基づいて、欠落した情報を絶え間なく補完し続けることにほかならない。）}{--- Yann LeCun}
+\subsection{従来のNLPストラテジー論の限界と身体表象の欠落}
+従来のNLP（神経言語プログラミング）におけるストラテジー表記法では、外的表象 $(VAKOG)_e$、内的表象 $(VAKOG)_i$、そして聴覚デジタル（内部対話）$A_d$、聴覚トナル $A_t$、視覚デジタル $V_d$ といった記号の連鎖によってのみ内的プロセスを分析・記述してきた。
+しかし、臨床現場や実生活において人間の深層で生じているダイナミクスを記述する上で、この旧来の表記体系では決定的な要素が抜け落ちていることに、多くのプラクティショナーが気づいているはずである。
+
+その最大の欠落は、以下の2点に集約される。
+\begin{enumerate}[label=(\arabic*)]
+  \item 五感の断片的な表象を束ね上げ、「結局のところ、この状況は何を意味しているのか」を瞬間的に直観・了解する\textbf{高次の物語的確信（ナラティブの確信）}が定式化されていないこと。
+  \item 表象の変遷に伴って扁桃体や大脳辺縁系が賦活し、微小表情（マイクロ・エクスプレッション）や筋緊張、姿勢の変容として現れる\textbf{自律神経・身体反応のインターラプション}が表記体系から捨象されていること。
+\end{enumerate}
+
+人間は、個々の感覚受容を超えた「言葉にならない直感」として、環境の意味論的解釈を一瞬で了解・確信することがある。
+本稿では、これまでミクロな感覚収束として扱ってきた小文字の確信 $\omega$ に対し、それらを統合するマクロな仮説空間として大文字のナラティブ事前予期群 $\hat{\Omega} = \{\hat{\Omega}_1, \dots, \hat{\Omega}_n\}$、およびそれらが収束した終着点としてのナラティブ確信 $\Omega$を定義する。
+
+\subsection{大文字の確信 $\Omega$：高次マクロ仮説への収束プロセス}
+五感の外的表象や内的表象、あるいは一連のストラテジーの連鎖（エビデンス群 $\boldsymbol{e}_{\mathrm{seq}}$）が神経系疑似ベイズ推論機に入力されたとき、高次モジュール群はそれらを包括的に説明しうるナラティブの仮説空間 $\hat{\Omega}$ を励起させる。
+そして、反復的結合フィードバックを通じて単一のストーリー解へと一気に折り畳む。
+
+\begin{equation}
+    \boldsymbol{e}_{\mathrm{seq}} :\xrightarrow[\hat{\Omega'}]{\hat{\Omega}} \Omega
+    \label{eq:macro_omega}
+\end{equation}
+
+もちろん、内的表象も入力なので、
+
+\begin{equation}
+    e_{\mathrm{seq}} \in \{V_e,A_e,K,O_e,G_e,V_i,A_i,O_i,G_i,Ad,Vd\}
+\end{equation}
+
+これで、伝統的なNLPでの内的表象の記述を$\tilde{V}$、$\tilde{A}$、$\tilde{K}$、$\tilde{O}$、$\tilde{G}$とすると、
+
+\begin{align}
+    \tilde{V} &\equiv V \nbuc{\hat{\Omega}}{\hat{\Omega'}} \Omega \\
+    \tilde{Vd} &\equiv Vd \nbuc{\hat{\Omega}}{\hat{\Omega'}} \Omega \\
+    \tilde{A} &\equiv A \nbuc{\hat{\Omega}}{\hat{\Omega'}} \Omega \\
+    \tilde{K} &\equiv K \nbuc{\hat{\Omega}}{\hat{\Omega'}} \Omega \\
+    \tilde{O} &\equiv O \nbuc{\hat{\Omega}}{\hat{\Omega'}} \Omega \\
+    \tilde{G} &\equiv G \nbuc{\hat{\Omega}}{\hat{\Omega'}} \Omega \\
+    \tilde{Ad} &\equiv Ad \nbuc{\hat{\Omega}}{\hat{\Omega'}} \Omega \\
+\end{align}
+
+
+
+ここで確定したナラティブの確信 $\Omega$ は、脳の大規模ネットワークの稼働状態に応じて、次の3つのクラスに峻別される。
+
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{自我ナラティブの確信 $\Omega_{\mathrm{ego}}$（DMN駆動）}：\\
+  安静時やアイドリング時にDMNが生成する、エゴの利害（profit / threat）に基づく確信。「自分は攻撃されている」「これを失えば破滅する」「私は特別でなければならない」といった、自己防衛・自己愛的なストーリーの確定解である。
+  \item \textbf{叡智ナラティブの確信 $\Omega_{\mathrm{wisdom}}$（CEN駆動）}：\\
+  CENが外部環境の客観的データやタスク構造、文脈全体の力学を公平に推論した結果として確定する確信。エゴの防衛から離脱し、客観的・大局的な構造洞察（インサイト）やプラグマティックな解決策をもたらす高次解である。
+  \item \textbf{中立ナラティブの確信 $\Omega_{\mathrm{neutral}}$（DMN/CEN共通）}：\\
+  DMNとCENの双方が基盤として共有する、現実見当識（Reality Orientation）を支える確信。「今、自分はここに座っている」「物理法則に従って机が存在している」といった、生命活動の土台となる環境整合的な背景解である。
+\end{enumerate}
+
+%\section{確信$\Omega_{\mathrm{ego}}$の言語野による翻訳}
+%MDNが優位の時、内的表象から確信$\Omega_{ego}$が生じた時、
+%\begin{equation}
+%    \langle V, A, K, O, G, Ad \rangle \nbuc{\hat{\Omega}_{\mathrm{ego}}}{\hat{\Omega'}_{\mathrm{ego}}} \Omega_{\mathrm{ego}} \nbuc{}{} Ad_{\mathrm{ego}}
+%\end{equation}

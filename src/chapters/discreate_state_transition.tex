@@ -1,0 +1,154 @@
+\chapter{人間認知の離散時間状態遷移写像とNLPストラテジー}
+
+\section{生体オートマトンとしての人間：状態遷移関数 $\boldsymbol{f}$}
+
+生体コンピュータとしての人間の認知および行動は、超越的な「霊魂」や「自由意志」によって駆動しているのではない。
+客観的な物理・情報科学の視点に立つならば、人間とは**「直前の一瞬の内的状態」と「今この瞬間に環境から受容した感覚刺激」を入力変数とし、次の一瞬の内的状態を確定的に出力し続ける、非線形な離散時間力学系（Discrete-Time Dynamical System）**にほかならない。
+
+時刻 $t_k$ において生体の神経系内部に保持されている**内的状態ベクトル**を $\boldsymbol{x}_k$ とする。
+これは、前章までに定義した内的表象束、内的ノイズ（情動トリガー）、事前予期、確信、および巨視的ネットワークステートによって構成される。
+\begin{equation}
+    \boldsymbol{x}_k = \left( V_{i,k}, A_{i,k}, K_{i,k}, O_{i,k}, G_{i,k}, e_{i,k}, \hat{\Omega}_k, \Omega_k, \State_k \right)^T
+\end{equation}
+
+また、時刻 $t_k$ において外界の受容器を通じて入力される感覚ノイズ束を**外部入力ベクトル** $\boldsymbol{u}_k$ とする。
+\begin{equation}
+    \boldsymbol{u}_k = \left( V_{e,k}, A_{e,k}, K_{e,k}, O_{e,k}, G_{e,k} \right)^T
+\end{equation}
+
+このとき、時刻 $t_k$ から次時刻 $t_{k+1}$ への生体の状態遷移は、ある普遍的な非線形状態遷移関数 $\boldsymbol{f}$ による写像として一意に決定される。
+\begin{align}
+    \boldsymbol{x}_1 &= \boldsymbol{f}\left( \boldsymbol{x}_0, \, \boldsymbol{u}_0 \right) \\
+    \boldsymbol{x}_2 &= \boldsymbol{f}\left( \boldsymbol{x}_1, \, \boldsymbol{u}_1 \right) \\
+    &\;\;\vdots \nonumber \\
+    \boldsymbol{x}_{k+1} &= \boldsymbol{f}\left( \boldsymbol{x}_k, \, \boldsymbol{u}_k \right)
+\end{align}
+
+人間が主観的に「私」と呼んでいる現象の正体とは、この決定論的写像 $\boldsymbol{f}$ が無限に反復適用され続ける時系列軌道（Trajectory）そのものであり、その演算結果を後追いで言語野（$A_{d,\mathrm{ego}}$）が「私が選び、行動した」と自己正当化しているにすぎない。
+
+\section{NLPストラテジーの工学的再定義}
+
+この力学系モデルを導入したとき、従来のNLPが「ストラテジー（Strategy）」と呼んできた概念は、その曖昧な心理学的解釈を脱し、極めて明快な数理的定義を獲得する。
+
+\subsection{矢印記法（$\longrightarrow$）の正体：写像 $\boldsymbol{f}$ のプロジェクション}
+バンドラーとグラインダーらは、優れた業績を残す人物の行動様式や恐怖症患者の反応パターンを観察し、感覚モダリティの連鎖として記述する手法を開発した。彼らはそれを次のような「矢印」を用いた簡略記法で表現した。
+\begin{equation}
+    V^e \longrightarrow K^i \longrightarrow A^d \longrightarrow K^e
+\end{equation}
+
+従来のNLPはこの矢印（$\longrightarrow$）の物理的・神経学的な実体を説明できず、単なる「連想の順番」や「習慣の連鎖」として経験論的に扱ってきた。
+しかし、本モデルにおける離散時間写像 $\boldsymbol{f}$ を照らし合わせれば、この矢印の工学的実体は自ずと明らかになる。
+
+\textbf{NLPストラテジーの「矢印」とは、多次元内部状態ベクトル $\boldsymbol{x}$ と外部入力 $\boldsymbol{u}$ の間を行き交う状態遷移写像 $\boldsymbol{f}$ の特定の観測成分を、時間軸に沿って射影（Projection）したマクロな軌道表記にほかならない。}
+
+時刻 $t_0$ から $t_3$ への遷移を本モデルの厳密な形式で展開すれば、以下のプロセスが実行されている。
+\begin{align}
+    \boldsymbol{x}_1 &= \boldsymbol{f}\big( \boldsymbol{x}_0, \, \boldsymbol{u}_0(V_e) \big) \quad \Longrightarrow \quad \text{出力として } K_{i,1} \text{ が励起} \\
+    \boldsymbol{x}_2 &= \boldsymbol{f}\big( \boldsymbol{x}_1, \, \boldsymbol{u}_1 \big) \quad\quad\quad\; \Longrightarrow \quad \text{先行する } K_{i,1} \text{ に基づき } A_{d,2} \text{ が作話} \\
+    \boldsymbol{x}_3 &= \boldsymbol{f}\big( \boldsymbol{x}_2, \, \boldsymbol{u}_2 \big) \quad\quad\quad\; \Longrightarrow \quad \text{内的確信が筋出力 } K_{e,3} \text{（行動）へ変換}
+\end{align}
+
+NLPストラテジー記法における $A \longrightarrow B$ という記述は、独立したパーツが機械的にバトンを渡しているのではなく、**「$A$ を引数として実行された全脳的写像 $\boldsymbol{f}$ の解が、次時刻の状態空間において局所的アトラクタ $B$ へ収束した」**という力学系遷移の略記法だったのである。
+
+\subsection{病理的ストラテジーの力学的正体：固定点アトラクタとリミットサイクル}
+この写像理論により、「なぜ人間は望まない悪習慣やトラウマ反応を自動的に繰り返してしまうのか」という臨床的問いも完全に解明される。
+
+\begin{enumerate}
+    \item \textbf{トラウマ・恐怖症（急峻なポテンシャルの谷）}：\\
+    外部から特定の入力 $\boldsymbol{u}_t(V_e)$（例：特定の表情、狭い空間）が入った瞬間、事前予期 $\hat{\Omega}$ の極端なバイアスにより、関数 $\boldsymbol{f}$ は過去の記憶を参照する間もなく $K_{\mathrm{freeze}}$ へと相転移する。いかに CEN が論理的に「危険はない」と介入を試みても、写像 $\boldsymbol{f}$ の出力値そのものが不可避的に固定点アトラクタへと落下してしまう。
+    
+    \item \textbf{反芻思考・強迫（閉じたリミットサイクル）}：\\
+    外的刺激 $\boldsymbol{u}_t$ が存在しない平穏な環境下であっても、
+    \begin{equation}
+        \boldsymbol{x}_{k+1} = \boldsymbol{f}(\boldsymbol{x}_k, \boldsymbol{0})
+    \end{equation}
+    という自立閉ループ系において、
+    \begin{equation}
+        A_{d,\mathrm{inferior}} \longrightarrow K_{\mathrm{freeze}} \longrightarrow e_{\mathrm{in}} \longrightarrow A_{d,\mathrm{inferior}} \longrightarrow \cdots
+    \end{equation}
+    という周期的軌道（Limit Cycle）が形成され、同じ内部状態を周期的にループし続ける。
+\end{enumerate}
+
+\section{ストラテジー介入の物理的機序：写像の撹乱とリセット}
+
+NLPプラクティショナーがクライアントに対して行う各種の「介入（Intervention）」とは、神秘的な癒やしなどではない。
+それは、**「この自律的・決定論的な写像ループ $\boldsymbol{x}_{k+1} = \boldsymbol{f}(\boldsymbol{x}_k, \boldsymbol{u}_k)$ の軌道に対して、意図的な外部摂動（Perturbation）を注入し、アトラクタの引力圏からシステムを強制的に脱出させる軌道制御」**である。
+
+\begin{itemize}
+    \item \textbf{アンカーの崩壊（Collapse Anchors）}：\\
+    相反する2つの情動状態（$K_{\mathrm{resource}}$ と $K_{\mathrm{stuck}}$）を同時に発火させ、写像 $\boldsymbol{f}$ の入力ベクトル空間に物理的な矛盾を発生させる。これによりポテンシャル曲面を平坦化し、アトラクタの谷を破壊する。
+    \item \textbf{サブモダリティの変更}：\\
+    内的表象 $V_i$ の位置、色、大きさを意図的に変換する。これは入力パラメータ $\boldsymbol{x}_t$ の数値そのものを強制的に書き換えることで、次時刻の出力が同じ $K_i$ へ収束するのを幾何学的に回避する操作である。
+    \item \textbf{パターン・インタラプト（文脈の切断）}：\\
+    ルーチン化された写像系列の実行中に、突如として文脈外の巨大な外的刺激 $\boldsymbol{u}_{\mathrm{interrupt}}$ を投入する。これにより状態遷移関数の引数が不連続に跳躍し、固定化していたリミットサイクルが物理的に引き裂かれる。
+\end{itemize}
+
+したがって、卓越したコミュニケーターや催眠術師の正体とは、「相手の精神を魔法のように支配する超能力者」ではない。
+彼らは、被験者という生体コンピュータが従っている状態遷移写像 $\boldsymbol{f}$ のパラメータと入出力を冷静に観察（キャリブレーション）し、**どのタイミングでどのようなベクトル摂動を投入すれば目的のステート軌道へと誘導できるかを知り尽くした、サイバネティクス・エンジニア**なのである。:w
+
+\section{TOTEモデルの数理的再定義：残差フィードバックとExit判定}
+
+NLPの基礎理論として頻繁に引用される Miller, Galanter, and Pribram (1960) の **TOTEモデル（Test-Operate-Test-Exit）** は、行動主義心理学の単純な「刺激—反応（S-R）連鎖」を打破し、サイバネティクス的な目標指向フィードバック系を人間の行動原理に導入した先駆的モデルである。
+
+しかし、従来のNLPにおいてTOTEは単なる概念的なフローチャートとして扱われ、その内部で実行されている厳密な評価関数の構造や、離散時間状態遷移との数学的整合性は等閑視されてきた。
+本節では、前節で定義した状態遷移写像 $\boldsymbol{x}_{k+1} = \boldsymbol{f}(\boldsymbol{x}_k, \boldsymbol{u}_k)$ の枠組みに基づき、TOTEを**「目標アトラクタに対する残差評価とループ脱出アルゴリズム」**として厳密に定式化する。
+
+\subsection{目標セットポイント $\Omega_{\mathrm{goal}}$ と残差評価関数（Testフェーズ）}
+
+生体が何らかのストラテジーを駆動させるとき、そこには必ずサイコ・サイバネティクス的な目標値（セットポイント）が存在する。これを内的状態空間における目標確信ベクトル **$\Omega_{\mathrm{goal}}$** とする。
+
+時刻 $t_k$ において、生体の神経系は現在の確信・出力状態 $\Omega_k$ と目標値 $\Omega_{\mathrm{goal}}$ を比較照合する。この \textbf{Test} フェーズの実体は、内部表現空間における計量（ノルム）を用いた**残差 $\Delta_k$ の算出処理**にほかならない。
+\begin{equation}
+    \Delta_k = \left\| \Omega_k - \Omega_{\mathrm{goal}} \right\|_M
+\end{equation}
+ここで $\|\cdot\|_M$ は、ソマティック・マーカーの不快強度や認知的不協和の度合いによって重み付けられた神経空間上のマハラノビス型ノルム（重み行列 $M$ による距離）を表す。
+
+生体の制御系には、生理的・情報論的に許容される閾値 $\varepsilon > 0$（許容誤差境界）が設定されている。この残差 $\Delta_k$ と閾値 $\varepsilon$ の比較演算が、後述の分岐条件を決定する。
+
+\subsection{状態遷移作用素の実行（Operateフェーズ）}
+
+残差が閾値を超過している場合（$\Delta_k > \varepsilon$）、システムは不一致（Incongruence）を検知し、状態を目標値へと引き戻すための操作――すなわち \textbf{Operate} フェーズへ移行する。
+
+従来のモデルではこれを「外界に対する物理的行動」のみとして捉えていたが、計算論的モデルにおいては、Operateとは**内部状態の更新写像 $\boldsymbol{f}$ そのものの反復適用**である。
+\begin{equation}
+    \boldsymbol{x}_{k+1} = \boldsymbol{f}\left( \boldsymbol{x}_k, \, \boldsymbol{u}_k \right)
+\end{equation}
+この一連の遷移の中で、言語野による再推論（$A_d$ の更新）、内的イメージの再構成（$V_i$ の変容）、あるいは筋骨格系を介した外界への物理的出力 $\boldsymbol{u}_{\mathrm{out}} = K_{e,k}$ が実行され、その結果として次時刻の確信 $\Omega_{k+1}$ が再計算される。
+
+\subsection{ループ脱出条件（Exitフェーズ）と病理的TOTEトラップ}
+
+Operateによって更新された次時刻の状態 $\boldsymbol{x}_{k+1}$ に対し、システムは再び評価関数を適用する（2回目の \textbf{Test}）。
+
+\begin{equation}
+    \mathrm{TOTE}(\boldsymbol{x}_k, \boldsymbol{u}_k) = 
+    \begin{cases}
+        \mathbf{Exit} & \text{if } \left\| \Omega_{k+1} - \Omega_{\mathrm{goal}} \right\|_M \le \varepsilon \\
+        \mathbf{Loop} \; (\text{Operateへ再帰}) & \text{if } \left\| \Omega_{k+1} - \Omega_{\mathrm{goal}} \right\|_M > \varepsilon
+    \end{cases}
+\end{equation}
+
+残差が許容範囲に収束した瞬間、システムは計算を打ち切り（\textbf{Exit}）、サリエンス・ネットワーク（SN）はタスク完了フラグを立ててDMNのアイドリング状態、あるいは次の行動シークエンスへと制御権を移行させる。
+
+\subsubsection{病理的TOTEトラップ：無限ループとリソース枯渇}
+このアルゴリズムが明快に示すのは、精神病理や神経症的苦悩における「トラップ」の工学的メカニズムである。人間が特定の強迫観念や悩みから抜け出せなくなる原因は、次の2つのバグに分類される。
+
+\begin{enumerate}
+    \item \textbf{不可能なセットポイントの設定（$\Omega_{\mathrm{goal}} \notin \mathrm{Im}(\boldsymbol{f})$）}：\\
+    「完璧な安心」「他者からの100\%の承認」「過去の事実の消去」など、生体の写像関数 $\boldsymbol{f}$ の値域（到達可能空間）に存在しない非物理的目標を $\Omega_{\mathrm{goal}}$ にセットした場合である。いかにOperateを反復しても $\Delta_k \le \varepsilon$ が数学的に達成されないため、TOTEは永久にExit不能の無限ループに陥る。
+    
+    \item \textbf{閉域アトラクタによるOperateの無効化}：\\
+    写像 $\boldsymbol{f}$ が前節で論じたエゴのリミットサイクル（$A_{d,\mathrm{inferior}} \leftrightarrow K_{\mathrm{freeze}}$）に捕捉されている場合、Operateを実行しても状態は軌道上を周回するだけであり、残差 $\Delta_k$ を減少させる有効な位相変化を生み出せない。
+\end{enumerate}
+
+この無限ループが継続した結果、生体コンピュータはグルコースと神経伝達物質を過剰消費して過熱し、最終的に「うつ（抑うつ）」というシステム強制シャットダウン（CPUクロック低下モード）へと追いやられる。
+
+\subsection{ストラテジー介入におけるTOTEの強制書き換え}
+
+NLPプラクティショナーが行うストラテジー治療の数理的実体とは、この無限ループに対して以下の2系統の介入を行い、**強制的にExit条件を充足させるパッチ当て（Hotfix）**である。
+
+\begin{itemize}
+    \item \textbf{目標値 $\Omega_{\mathrm{goal}}$ のリスケーリング（リフレーミング）}：\\
+    到達不能なセットポイント $\Omega_{\mathrm{goal}}$ を、現在到達可能な目標値 $\Omega'_{\mathrm{goal}}$ へと引き下げる。これにより、写像 $\boldsymbol{f}$ を変更することなく直後のTestで即座に $\Delta_k \le \varepsilon$ を成立させ、Exitをトリガーする。
+    \item \textbf{Operate回路の短絡（Fast Phobia Cure等の高速再学習）}：\\
+    恐怖や嫌悪の急峻なポテンシャルの谷に対し、新たな表象結合（例：解離した二重客観視 $V_i^{\mathrm{meta}}$）を強制的に注入することで、写像 $\boldsymbol{f}$ の構造そのものを局所的に書き換える。これにより、1ステップのOperateで残差が急減し、ループが脱出可能となる。
+\end{itemize}
