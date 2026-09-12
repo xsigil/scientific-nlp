@@ -125,7 +125,7 @@ NLP（神経言語プログラミング）やコールドリーディングの�
 {[\text{Loop 1 閉}]} & 
 {[\text{Loop 2 閉}]} \arrow[l] & 
 {[\text{Loop 3 閉}]} \arrow[l] & 
-\arrow[l]
+\arrow[l] Ad \nbuc{}{} \Omega
 \end{tikzcd}
 \]
 \caption{ネストされたループの構造}
@@ -159,12 +159,11 @@ TOTEモデルにおいてExit条件が満たされないオープンループが
 
 ネステッドループが時間軸上の多重スタックによるメモリ飽和であるならば、\textbf{ダブルインダクション（Double Induction：二重誘導）}は、空間的・並列的な入力によるワーキングメモリの物理的強制クラッシュ（バッファオーバーフロー）である。
 
-\paragraph{1. 言語野の直列処理ボトルネック}
+\subsection{言語野の直列処理ボトルネック}
 人間の感覚野は並列分散処理が可能であるが、言語野および左脳インタープリター、すなわち直列論理演算を担うCENのワーキングメモリは、原理的に「一度にひとつの言語ストリーム」しか逐次処理できないという生物学的ハードウェアの限界（直列ボトルネック）を持つ。
 
-\paragraph{2. 独立した $\aleph_1, \aleph_2$ の同時入力による強制 $S(\mathrm{ALTER})$ 遷移}
+\subsection{独立した $\aleph_1, \aleph_2$ の同時入力による強制 $S(\mathrm{ALTER})$ 遷移}
 ダブルインダクションにおいては、2名の術者（あるいはステレオ音響の左右チャンネル）が、被験者の左耳と右耳に向けて、全く異なるテンポ、トーン、プロットを持ったメタファーや言語指示（$A_{e,\mathrm{left}}$ と $A_{e,\mathrm{right}}$）を同時に投入する。
-
 \begin{equation}
     \begin{cases}
         \text{左耳} : A_{e,\mathrm{left}} :\longrightarrow \aleph_1 \quad (\text{因果系列1の探索要求}) \\

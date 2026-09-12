@@ -89,8 +89,8 @@ Threshold $\ge +20\text{ dB}$ ($100:1$ posterior odds) enforces deterministic be
 ### Compilation
 ```bash
 # Clone repository
-git clone [https://github.com/](https://github.com/)<your-username>/<your-repo-name>.git
-cd <your-repo-name>
+git clone https://github.com/xsigil/scientific-nlp.git
+cd scientific-nlp
 
 # Compile PDF
 make
