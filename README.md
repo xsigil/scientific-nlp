@@ -49,7 +49,7 @@ $$\operatorname{TOTE}(\boldsymbol{x}_k, \boldsymbol{u}_k) =
 To decouple micro-behavioral emotional cues ($\lambda, \Lambda$) from the cognitive trap of confirmation bias ("Othello's Error"), evidence weight is evaluated via Bayesian log-likelihood ratio in additive decibans:
 $$\text{Score}(D) = 10 \log_{10} \left( \frac{P(D \mid H)}{P(D \mid \bar{H})} \right) \quad [\text{dB}]$$
 - **Othello Filter™**: Emotional output channels indicate physiological autonomic arousal, not factual truth values ($P(\text{Arousal} \mid \text{Lie}) \approx P(\text{Arousal} \mid \text{Fear of Accusation}) \implies \Delta \text{dB} \approx 0$).
-- **Othello Interrogation Protocol™ (OIP)**: An active probing sequence that injects context-specific perturbations ($\boldsymbol{u}$) to decouple signal from baseline emotional noise before updating posterior odds.
+- **Othello Interrogation Protocol™ (OIP™)**: An active probing sequence that injects context-specific perturbations ($\boldsymbol{u}$) to decouple signal from baseline emotional noise before updating posterior odds.
 - Threshold $\ge +20\text{ dB}$ ($100:1$ posterior odds) enforces deterministic belief locking ($\Omega$), while $\le -20\text{ dB}$ executes a memory hard reset to $\emptyset$ and activates double-loop structural refactoring.
 - **Self Biofeedback Training™ (SBFT™)**: An instrument-free interoceptive calibration method to anchor the observer into the Intellectual Zero state ($\mathcal{Z}$), eliminating self-induced baseline drift during interrogation.
 ---
