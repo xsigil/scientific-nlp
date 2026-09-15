@@ -3,7 +3,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Preprint](https://img.shields.io/badge/Status-Preprint%20Draft%20(v0.1.0--alpha)-brightgreen.svg)]()
-[![Build](https://img.shields.io/badge/LaTeX-XeLaTeX%2Flualatex-informational.svg)]()
+[![Build](https://img.shields.io/badge/LaTeX-LuaLaTeX-informational.svg)]()
 
 > *"The street finds its own uses for things."*  
 > — William Gibson, *Burning Chrome*
@@ -19,7 +19,9 @@ This monograph provides a rigorous **demythologization** of behavioral engineeri
 2. **Predictive Processing & Quasi-Bayesian Inference Engines:** Belief convergence ($NBUC$) and Salience-driven network switches (DMN $\leftrightarrow$ CEN via SN).
 3. **Cybernetics & TOTE Calculus:** Loop-exit algorithms driven by Mahalanobis residual tracking:
    $$\Delta_k = \|\Omega_k - \Omega_{\mathrm{goal}}\|_M \le \varepsilon$$
-4. **Information Warfare & Profiling:** The **Othello Filter**, an asymmetric log-likelihood deciban ($dB$) scoring engine guarding against confirmation bias.
+4. **Information Warfare & Active Profiling:** 
+   - **Othello Filter™**: An asymmetric log-likelihood deciban ($\text{dB}$) noise-reduction engine guarding against confirmation bias ("Othello's Error").
+   - **Othello Interrogation Protocol™ (OIP)**: An active cognitive probing framework designed for objective state estimation in forensic and counter-social engineering contexts.
 
 This is neither self-help nor speculative psychology. It is a reverse-engineered architectural blueprint of human cognitive automata, bridging Bandler's phenomenological hacking with modern computational neuroscience (Friston's active inference, LeCun's JEPA).
 
@@ -43,10 +45,12 @@ $$\operatorname{TOTE}(\boldsymbol{x}_k, \boldsymbol{u}_k) =
 \text{Recurse } (\boldsymbol{x}_{k+1} \gets \boldsymbol{f}(\boldsymbol{x}_k, \boldsymbol{u}_k)) & \text{if } \|\Omega_{k+1} - \Omega_{\mathrm{goal}}\|_M > \varepsilon 
 \end{cases}$$
 
-### 3. Asymmetric Information Engine: The Othello Filter
-To decouple micro-behavioral cues ($\lambda, \Lambda$) from the cognitive trap of confirmation bias ("Othello's Error"), evidence weight is evaluated in additive half-decibans:
+### 3. Asymmetric Information Engine: The Othello Filter™ & OIP™
+To decouple micro-behavioral emotional cues ($\lambda, \Lambda$) from the cognitive trap of confirmation bias ("Othello's Error"), evidence weight is evaluated via Bayesian log-likelihood ratio in additive decibans:
 $$\text{Score}(D) = 10 \log_{10} \left( \frac{P(D \mid H)}{P(D \mid \bar{H})} \right) \quad [\text{dB}]$$
-Threshold $\ge +20\text{ dB}$ ($100:1$ posterior odds) enforces deterministic belief locking ($\Omega$), while $\le -20\text{ dB}$ executes a memory hard reset to $\emptyset$ and activates double-loop structural refactoring.
+- **Othello Filter™**: Emotional output channels indicate physiological autonomic arousal, not factual truth values ($P(\text{Arousal} \mid \text{Lie}) \approx P(\text{Arousal} \mid \text{Fear of Accusation}) \implies \Delta \text{dB} \approx 0$).
+- **Othello Interrogation Protocol™ (OIP)**: An active probing sequence that injects context-specific perturbations ($\boldsymbol{u}$) to decouple signal from baseline emotional noise before updating posterior odds.
+- Threshold $\ge +20\text{ dB}$ ($100:1$ posterior odds) enforces deterministic belief locking ($\Omega$), while $\le -20\text{ dB}$ executes a memory hard reset to $\emptyset$ and activates double-loop structural refactoring.
 
 ---
 
@@ -70,7 +74,7 @@ Threshold $\ge +20\text{ dB}$ ($100:1$ posterior odds) enforces deterministic be
 | **Chap 13** | `demythologization_of_hypnosis.tex` | Dual mechanics of hypnosis: Charismatic set-point servoing vs. Unlimited Unknown ($\aleph$) crashes |
 | **Chap 14** | `reevaluating_nlp_techniques.tex` | Cold reading exploits, Barnum statements, Milton/Meta model duality, and Nested Loops |
 | **Chap 15** | `toc_clinical_metaphor.tex` | Theory of Constraints (TOC) applied to clinical therapy: Evaporating Clouds & Isomorphic metaphor injection |
-| **Chap 16** | `basian_profiling_with_othello_filter.tex` | Bayesian profiling in forensic contexts: Sherlock Holmes deconstruction & Lie to Me reality check |
+| **Chap 16** | `basian_profiling_with_othello_filter.tex` | Forensic state estimation: **Othello Filter™** & **Othello Interrogation Protocol™ (OIP)** |
 | **Chap 17** | `nlp_hypnosis.tex` | Disassembly of Milton H. Erickson's clinical scripts & the Tomato Plant induction |
 | **Chap 18** | `double_feedback_learning.tex` | Single-loop vs Double-loop learning, $-20\text{ dB}$ purge commands, and meta-premise refactoring |
 | **Chap 19** | `bruteforce_attack.tex` | Unlocking biological encryption: Erickson's serial DFS vs Bandler's massively parallel brute-force search |
@@ -83,17 +87,23 @@ Threshold $\ge +20\text{ dB}$ ($100:1$ posterior odds) enforces deterministic be
 ## Building from Source
 
 ### Prerequisites
-- TeX Live (2023 or later recommended) with `xelatex` or `lualatex` (UTF-8 / Japanese font support).
-- GNU Make.
+- **TeX Live (2023 or later)** with `lualatex` (recommended) or `xelatex` (UTF-8 & Japanese CJK font support).
+- **GNU Make**.
 
-### Compilation
+### Idempotent Build System
+The build pipeline is designed to be fully reproducible and isolated across target languages:
+
 ```bash
 # Clone repository
-git clone https://github.com/xsigil/scientific-nlp.git
+git clone [https://github.com/xsigil/scientific-nlp.git](https://github.com/xsigil/scientific-nlp.git)
 cd scientific-nlp
 
-# Compile PDF
-make
+# Build both Japanese and English editions
+make all
 
-# Output will be generated at:
-# ./build/the_seed_of_magic.pdf
+# Or build individually:
+make jp   # Output -> build/jp/the_seed_of_magic_jp.pdf
+make en   # Output -> build/en/the_seed_of_magic_en.pdf
+
+# Clean compilation artifacts
+make clean
