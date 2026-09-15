@@ -16,8 +16,13 @@
 \renewcommand{\textflush}{flushright}
 \renewcommand{\sourceflush}{flushright}
 \usepackage{fontspec}
-\setmainfont{Noto Serif}
-
+%\setmainfont{Noto Serif}
+\setmainfont{NotoSerif-Regular.ttf}[
+  Path = ./src/fonts/,
+  BoldFont = NotoSerif-Bold.ttf,
+  ItalicFont = NotoSerif-Italic.ttf,
+  BoldItalicFont = NotoSerif-BoldItalic.ttf
+]
 \usepackage{listings}
 
 % LICENSE表示用のスタイル設定
