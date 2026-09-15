@@ -1,68 +1,61 @@
 \chapter{DMNのマイクロ・ストラテジー: エゴのナラティブ}
-\section{確信 $\Omega_{\mathrm{ego}}$ の言語野による翻訳}
+\section{確信 $\Omega^{\mathrm{ego}}$ の言語野による翻訳}
 
-DMNが優位の時（$\State(\mathrm{DMN})$）、内的・外的表象の束から確信 $\Omega_{\mathrm{ego}}$ が生じた際、言語野（Broca野・Wernicke野をはじめとする言語ネットワーク）がこの $\Omega_{\mathrm{ego}}$ を内部対話 $Ad$ および身体感覚 $K$ へと翻訳・デコードするプロセスは、次のように表現できる。
+DMNが優位の時（$\State(\mathrm{DMN})$）、内的・外的表象の束から確信 $\Omega^{\mathrm{ego}}$ が生じた際、言語野（Broca野・Wernicke野をはじめとする言語ネットワーク）がこの $\Omega^{\mathrm{ego}}$ を内部対話 $Ad$ および身体感覚 $K$ へと翻訳・デコードするプロセスは、次のように表現できる。
 
 \begin{equation}
-    \State(\mathrm{DMN}) :: \langle V, A, K, O, G, Ad \rangle \nbuc{\hat{\Omega}_{\mathrm{ego}}}{} \Omega_{\mathrm{ego}} \nbuc{}{\hat{\Omega'}_{\mathrm{ego}}} \langle Ad_{\mathrm{ego}}, K \rangle
+    \State(\mathrm{DMN}) :: \langle V, A, K, O, G, Ad \rangle \nbuc{\hat{\Omega}^{\mathrm{ego}}}{} \Omega^{\mathrm{ego}} \nbuc{}{\hat{\Omega'}^{\mathrm{ego}}} \langle Ad^{\mathrm{ego}}, K \rangle
     \label{eq:dmn_translation}
 \end{equation}
 
-DMNはエゴの利害（profit / threat）に過敏に反応し、自己の存在価値やヒエラルキー上の位置づけを巡るナラティブの確信 $\Omega_{\mathrm{ego}}$ を神経疑似ベイズ推論によって収束させる。そして、そのナラティブは本質的に3種類の基本パターン
-\begin{enumerate}[label=(\arabic*)]
-    \item 上位確信（profit）
-    \item 下位確信（threat）
-    \item 排除確信（threat）
-\end{enumerate}
-に集約されることを第\ref{section:DMNの働き}節で述べた。
+DMNはエゴの利害（profit / threat）に過敏に反応し、自己の存在価値やヒエラルキー上の位置づけを巡るナラティブの確信 $\Omega^{\mathrm{ego}}$ を神経疑似ベイズ推論によって収束させる。
+式(\ref{eq:dmn_translation})が示しているのは、無意識下のマルチモーダルな表象束 $\langle V, A, K, O, G, Ad \rangle$ が一度アトラクタである $\Omega^{\mathrm{ego}}$ へと相転移（収束）したのち、それが即座に言語的セルフトーク $Ad^{\mathrm{ego}}$ とソマティックな情動反応 $K$ へと射影される2段階の変換カスケードである。
 
-式(\ref{eq:dmn_translation})が示しているのは、無意識下のマルチモーダルな表象束 $\langle V, A, K, O, G, Ad \rangle$ が一度アトラクタである $\Omega_{\mathrm{ego}}$ へと相転移（収束）したのち、それが即座に言語的セルフトーク $Ad_{\mathrm{ego}}$ とソマティックな情動反応 $K$ へと射影される2段階の変換カスケードである。
+%\subsection{3大基本パターンの言語的・身体的射影}
+%
+%推論機が3つのうちどの極小解に落ちるかによって、言語野が合成する文構造（シンタックス）と、自律神経系が惹起するソマティック・マーカー $K$ のプロファイルは完全に分岐する。
+%
+%\begin{enumerate}
+%    \item \textbf{上位確信（$\Omega_{\mathrm{profit}}$）の翻訳：自己肥大と安心のナラティブ}
+%    \begin{equation}
+%        \Omega_{\mathrm{profit}} \nbuc{}{\hat{\Omega'}_{\mathrm{profit}}} \left\langle Ad_{\mathrm{superior}}, K_{\mathrm{pleasure}} \right\rangle
+%    \end{equation}
+%    Egoの優位性が確定した状態。言語野は自らの正当性や優越性を裏付ける証拠記憶を優先的にサンプリングし、自己効力感や万能感を強化する内部対話を生成する。身体は副交感神経系の優位（またはドーパミン作動性の快楽）を示す。
+%    \begin{itemize}
+%        \item $Ad_{\mathrm{superior}}$：「私は正しい」「相手より優れている」「すべて思い通りだ」
+%        \item $K_{\mathrm{pleasure}}$：胸郭の解放、脱力・弛緩、全能感に伴う高揚
+%    \end{itemize}
+%
+%    \item \textbf{下位確信（$\Omega_{\mathrm{threat\_sub}}$）の翻訳：劣等・無力感・自己正当化のナラティブ}
+%    \begin{equation}
+%        \Omega_{\mathrm{threat\_sub}} \nbuc{}{\hat{\Omega'}_{\mathrm{threat\_sub}}} \left\langle Ad_{\mathrm{inferior}}, K_{\mathrm{freeze}} \right\rangle
+%    \end{equation}
+%    自身がヒエラルキーの最下層へ転落する予測が生じた状態。言語野は自己否定的なループに捕捉されると同時に、自己保存のための防衛的・攻撃的作話を駆動させる。扁桃体からの投射により心拍数が上昇し、横隔膜や消化器周辺の過度な筋緊張（いわゆる「内臓のすくみ」）を惹起する。
+%    \begin{itemize}
+%        \item $Ad_{\mathrm{inferior}}$：「自分は駄目だ」「奪われる・見捨てられる」「自分は被害者なのだから、あの攻撃は正当防衛だ」
+%        \item $K_{\mathrm{freeze}}$：胸部・喉元の圧迫感、呼吸の浅小化、四肢のすくみ
+%    \end{itemize}
+%
+%    \item \textbf{排除確信（$\Omega_{\mathrm{threat\_exp}}$）の翻訳：嫌悪と断罪のナラティブ}
+%    \begin{equation}
+%        \Omega_{\mathrm{threat\_exp}} \nbuc{}{\hat{\Omega'}_{\mathrm{threat\_exp}}} \left\langle Ad_{\mathrm{purge}}, K_{\mathrm{disgust}} \right\rangle
+%    \end{equation}
+%    対象を下位の「不浄・毒素」とみなし、心理的・物理的距離を無限大に置こうとする防衛反応。前島皮質（Anterior Insula）の激しい興奮を伴い、言語野は道徳的断罪や侮蔑の語彙を自動選択する。身体感覚としては接触忌避の反射筋緊張が固定化される。
+%    \begin{itemize}
+%        \item $Ad_{\mathrm{purge}}$：「あいつは汚らわしい」「排除・処刑すべきだ」「視界に入ることすら許せない」
+%        \item $K_{\mathrm{disgust}}$：悪心（嘔気）、舌根・咽頭の緊張、反射的拒絶反応
+%    \end{itemize}
+%\end{enumerate}
 
-\subsection{3大基本パターンの言語的・身体的射影}
+\subsection{ナラティブの再帰入力ループ：$Ad^{\mathrm{ego}}$ が駆動する自己成就予言}
 
-推論機が3つのうちどの極小解に落ちるかによって、言語野が合成する文構造（シンタックス）と、自律神経系が惹起するソマティック・マーカー $K$ のプロファイルは完全に分岐する。
+このプロセスの真の恐ろしさは、言語野によって出力された $Ad^{\mathrm{ego}}$ と身体感覚 $K$ が、単なる一回性の終点（ターミナル）では終わらない点にある。
 
-\begin{enumerate}
-    \item \textbf{上位確信（$\Omega_{\mathrm{profit}}$）の翻訳：自己肥大と安心のナラティブ}
-    \begin{equation}
-        \Omega_{\mathrm{profit}} \nbuc{}{\hat{\Omega'}_{\mathrm{profit}}} \left\langle Ad_{\mathrm{superior}}, K_{\mathrm{pleasure}} \right\rangle
-    \end{equation}
-    Egoの優位性が確定した状態。言語野は自らの正当性や優越性を裏付ける証拠記憶を優先的にサンプリングし、自己効力感や万能感を強化する内部対話を生成する。身体は副交感神経系の優位（またはドーパミン作動性の快楽）を示す。
-    \begin{itemize}
-        \item $Ad_{\mathrm{superior}}$：「私は正しい」「相手より優れている」「すべて思い通りだ」
-        \item $K_{\mathrm{pleasure}}$：胸郭の解放、脱力・弛緩、全能感に伴う高揚
-    \end{itemize}
-
-    \item \textbf{下位確信（$\Omega_{\mathrm{threat\_sub}}$）の翻訳：劣等・無力感・自己正当化のナラティブ}
-    \begin{equation}
-        \Omega_{\mathrm{threat\_sub}} \nbuc{}{\hat{\Omega'}_{\mathrm{threat\_sub}}} \left\langle Ad_{\mathrm{inferior}}, K_{\mathrm{freeze}} \right\rangle
-    \end{equation}
-    自身がヒエラルキーの最下層へ転落する予測が生じた状態。言語野は自己否定的なループに捕捉されると同時に、自己保存のための防衛的・攻撃的作話を駆動させる。扁桃体からの投射により心拍数が上昇し、横隔膜や消化器周辺の過度な筋緊張（いわゆる「内臓のすくみ」）を惹起する。
-    \begin{itemize}
-        \item $Ad_{\mathrm{inferior}}$：「自分は駄目だ」「奪われる・見捨てられる」「自分は被害者なのだから、あの攻撃は正当防衛だ」
-        \item $K_{\mathrm{freeze}}$：胸部・喉元の圧迫感、呼吸の浅小化、四肢のすくみ
-    \end{itemize}
-
-    \item \textbf{排除確信（$\Omega_{\mathrm{threat\_exp}}$）の翻訳：嫌悪と断罪のナラティブ}
-    \begin{equation}
-        \Omega_{\mathrm{threat\_exp}} \nbuc{}{\hat{\Omega'}_{\mathrm{threat\_exp}}} \left\langle Ad_{\mathrm{purge}}, K_{\mathrm{disgust}} \right\rangle
-    \end{equation}
-    対象を下位の「不浄・毒素」とみなし、心理的・物理的距離を無限大に置こうとする防衛反応。前島皮質（Anterior Insula）の激しい興奮を伴い、言語野は道徳的断罪や侮蔑の語彙を自動選択する。身体感覚としては接触忌避の反射筋緊張が固定化される。
-    \begin{itemize}
-        \item $Ad_{\mathrm{purge}}$：「あいつは汚らわしい」「排除・処刑すべきだ」「視界に入ることすら許せない」
-        \item $K_{\mathrm{disgust}}$：悪心（嘔気）、舌根・咽頭の緊張、反射的拒絶反応
-    \end{itemize}
-\end{enumerate}
-
-\subsection{ナラティブの再帰入力ループ：$Ad_{\mathrm{ego}}$ が駆動する自己成就予言}
-
-このプロセスの真の恐ろしさは、言語野によって出力された $Ad_{\mathrm{ego}}$ と身体感覚 $K$ が、単なる一回性の終点（ターミナル）では終わらない点にある。
-
-出力された内部対話 $Ad_{\mathrm{ego}}$ および身体感覚 $K$ は、次の瞬間には新たな内的ノイズ $e_{\mathrm{in}}$ として即座に推論機へと再帰フィードバックされる。
+出力された内部対話 $Ad^{\mathrm{ego}}$ および身体感覚 $K$ は、次の瞬間には新たな内的ノイズ $e_{\mathrm{in}}$ として即座に推論機へと再帰フィードバックされる。
 \begin{equation}
-    e_{\mathrm{in}} \leftarrow \langle Ad_{\mathrm{ego}}, K \rangle
+    e_{\mathrm{in}} \leftarrow \langle Ad^{\mathrm{ego}}, K \rangle
 \end{equation}
-「自分は無価値だ」という内部対話 $Ad$ が鳴り響くこと自体が次の聴覚的刺激となり、胸の圧迫感 $K$ が新たな体性感覚刺激となる。この閉じた自己参照ループにおいて、確信 $\Omega_{\mathrm{ego}}$ は外部の現実とは完全に切り離されたまま、自らを強化し続ける自己励起状態（リミットサイクル）に陥る。
+「自分は無価値だ」という内部対話 $Ad$ が鳴り響くこと自体が次の聴覚的刺激となり、胸の圧迫感 $K$ が新たな体性感覚刺激となる。この閉じた自己参照ループにおいて、確信 $\Omega^{\mathrm{ego}}$ は外部の現実とは完全に切り離されたまま、自らを強化し続ける自己励起状態（リミットサイクル）に陥る。
 
 人間が「悩みから抜け出せない」と主観的に感じている実体とは、この $\State(\mathrm{DMN})$ 下における自己参照的 NBUC ループにほかならない。
 
