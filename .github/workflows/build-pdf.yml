@@ -1,0 +1,28 @@
+name: Build PDF
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: # GitHub上のボタンから手動実行も可能
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # TeX Live公式の完全版コンテナを使用（LuaLaTeX, luatexja, make, 各種ツール完備）
+    container:
+      image: ghcr.io/xu-cheng/texlive-full:latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build with Make
+        run: |
+          make
+
+      - name: Upload PDF Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: the_seed_of_magic-pdf
+          path: build/the_seed_of_magic.pdf
+          retention-days: 30
