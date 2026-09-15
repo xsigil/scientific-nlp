@@ -1,4 +1,4 @@
-# Scientific NLP: The Seed of Magic
+# Scientific NLP™: The Seed of Magic
 ### The Answer from a Social Hacker to Dr. Richard Bandler
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
