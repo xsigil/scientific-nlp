@@ -1,5 +1,5 @@
 \chapter{催眠のための事前プロファイリング}
-\epigraph{"Milton Erickson did not read minds; he read people. He saw subtle changes in pupil dilation, breathing rates, skin color, and muscle tension that ordinary observers completely overlooked."\（ミルトン・エリクソンは心を読んでいたのではない。人を読んでいたのだ。彼は瞳孔の拡大、呼吸のテンポ、肌の血色、そして筋肉の緊張の微細な変化を捉えていた。それは、通常の観察者が完全に見落としてしまうものだった。）}{Jay Haley}
+\epigraph{``Milton Erickson did not read minds; he read people. He saw subtle changes in pupil dilation, breathing rates, skin color, and muscle tension that ordinary observers completely overlooked.''\\（ミルトン・エリクソンは心を読んでいたのではない。人を読んでいたのだ。彼は瞳孔の拡大、呼吸のテンポ、肌の血色、そして筋肉の緊張の微細な変化を捉えていた。それは、通常の観察者が完全に見落としてしまうものだった。）}{Jay Haley}
 
 \section{エリクソンの神話とボディーランゲージの物理的限界}
 
@@ -31,7 +31,7 @@ P(\hat{\Omega}_{\mathrm{myth}}) \longrightarrow 1.0
 その背後で駆動している情報処理のメカニズムを解き明かすために、まずは私たちが他者を観察する際に不可避に陥る、重大な認知的トラップから見ていく必要がある。
 
 \section{ポール・エクマンの「オセロの誤謬」：情動表象 $\Lambda$ の原因誤帰属}
-\epigraph{"The Othello error occurs when a lie catcher fails to consider that a truthful person who is under stress may appear to be lying."\（オセロの誤謬とは、強いストレス下にある潔白な人間が、あたかも嘘をついているように見えてしまう可能性を嘘の見破り手が考慮し損ねたときに生じる。）}{Paul Ekman, Telling Lies}
+\epigraph{``The Othello error occurs when a lie catcher fails to consider that a truthful person who is under stress may appear to be lying.''\\（オセロの誤謬とは、強いストレス下にある潔白な人間が、あたかも嘘をついているように見えてしまう可能性を嘘の見破り手が考慮し損ねたときに生じる。）}{Paul Ekman, Telling Lies}
 
 他者の微小表情や身体言語（$\lambda, \Lambda$）を観察する際、疑似ベイズ推論機が犯す最も致命的なエラーのひとつに、心理学者ポール・エクマン（Paul Ekman）が名付けた\textbf{「オセロの誤謬（Othello Error）」}がある。
 
@@ -79,8 +79,8 @@ NLPのキャリブレーション（観察）を学ぶ者が陥る最大の罠�
 単一の身体反応（$\Lambda$）から短絡的に意図を断定するのではなく、周囲の文脈、基線状態（ベースライン）からの逸脱度、言語応答との整合性といった複数の直交するエビデンスを時系列でサンプリングし、\textbf{ベイズ統計を利用して数学的に事実を推定するのである}。
 
 \section{プロファイリングのためのベイズ統計学：オッズ形式と確信度更新の数理}
-\epigraph{"Villain, be sure thou prove my love a whore;
-Be sure of it; give me the ocular proof:"(悪党め、妻が不貞を働いたと確実に証明しろ。確実にだ。この目で見える動かぬ証拠を見せろ！)}{William Shakespeare, Othello}
+\epigraph{``Villain, be sure thou prove my love a whore;
+Be sure of it; give me the ocular proof:''\\(悪党め、妻が不貞を働いたと確実に証明しろ。確実にだ。この目で見える動かぬ証拠を見せろ！)}{William Shakespeare, Othello}
 前章で導出した一般化ベイズ方程式は、観測データ $D$ を踏まえて仮説 $H_k$ の事後確率を厳密に計算する万能の枠組みである。
 しかし、現場におけるプロファイリングや対象者の動態推定（キャリブレーション）において、分母の全確率（周辺尤度 $\sum_{j=1}^K P(D \mid H_j) P(H_j)$）を暗算で逐次正規化することは、計算資源の限られた生体ハードウェアにとって非現実的な負荷となる。
 
@@ -125,7 +125,15 @@ O_{\mathrm{prior}}(H_1 : H_2) = \frac{P(H_1)}{P(H_2)}
 これは、観測されたデータ $D$ が「仮説 $\neg H$ に対して、仮説 $H$ を何倍強力に支持しているか」を表す純粋な証拠能力（エビデンスの重み）の指標である。
 
 \section{アラン・チューリングの暗号解読：バンブリスムスと「証拠の重み」}
-
+\epigraph{%
+  \itshape ``Our cryptographic system is mathematically unbreakable.
+  Even if the enemy were to capture a complete machine,
+  the astronomical number of possible key combinations guarantees
+  that no mechanical or human intelligence could ever reconstruct the plain text.''
+}{%
+  \textbf{Karl Dönitz}, Grand Admiral of the Kriegsmarine\\
+  \textit{Directive on Naval Cipher Security (B-Dienst Assessment)}
+}
 このオッズ形式のベイズ更新が、歴史上最も劇的な勝利を収めた工学的実例こそ、第二次世界大戦下のブレッチリー・パークにおいてアラン・チューリング（Alan Turing）が成し遂げた、ドイツ軍の暗号機「エニグマ」の解読である。
 
 ドイツ海軍が運用していたエニグマは、天文学的な暗号鍵の組み合わせを持ち、当時の計算機能力では総当たり攻撃が原理的に不可能であった。
@@ -364,7 +372,7 @@ O_{\mathrm{prior}}(H_1 : H_2) = \frac{P(H_1)}{P(H_2)}
 すなわち、$P(D \mid H)$ が極めて高く、かつ各対立仮説における $P(D \mid \neg H_i)$ が極小となるシグナルを能動的に投げかける必要がある。これによって他の対立仮説による干渉（シグナルの相殺）を排除し、狙い定めた仮説 $H$ のオッズのみを劇的に引き上げる問いかけや情報提示が成立するのである。
 
 \section{従来の心理学の利用価値：主観的クラスタリングの解体とエビデンスとしての再利用}
-\epigraph{Principles of Computer Science: "Keep it simple. Stupid!"\\(計算機科学の教訓: シンプルに保て、バカ!)}{Kelly Johnson}
+\epigraph{Principles of Computer Science: ``Keep it simple. Stupid!''\\(計算機科学の教訓: シンプルに保て、バカ!)}{Kelly Johnson}
 
 ユング心理学、エニアグラム、MBTI、交流分析（TA）、NLPメタプログラミングといった類型論（タイポロジー）において、人間を特定のカテゴリーへ固定的に分類（クラスタリング）すること自体には、客観的科学としての価値は皆無である。
 例えば、ユングの元型論に基づき「クライアントは『道化師（トリックスター）』の元型である」とラベリングしたところで、生体の物理的・神経学的な客観現実を何ひとつ表していないからである。
@@ -394,7 +402,7 @@ O_{\mathrm{prior}}(H_1 : H_2) = \frac{P(H_1)}{P(H_2)}
 従来の心理学や第三世代NLPの正体とは、このDMNの要求に応じ、自己充足的未定義集合（Ego-satisfiable Unlimited Unknown Set: $\aleph^{\mathrm{ego}}_{\mathrm{sat}}$）を供給してTOTEモデルの「偽装Exit」を成立させる装置にすぎなかった。
 
 \begin{equation}
-\aleph^{\mathrm{ego}}{\mathrm{sat}} \equiv \left{ \aleph^{\mathrm{ego}}{\mathrm{sat}, \mathrm{profit}}, ; \aleph^{\mathrm{ego}}_{\mathrm{sat}, \mathrm{threat}} \right}
+\aleph^{\mathrm{ego}}{\mathrm{sat}} \equiv \left\{ \aleph^{\mathrm{ego}}{\mathrm{sat}, \mathrm{profit}}, ; \aleph^{\mathrm{ego}}_{\mathrm{sat}, \mathrm{threat}} \right\}
 \end{equation}
 
 現実の物理的フィードバック（エラー信号）を処理せず、この反証不能な集合に当てはめることで、システムは問題が解決したと錯覚し、無条件に探索ループを停止させてしまう。
@@ -641,7 +649,7 @@ $$\Omega_{\mathrm{real}} \;\longleftrightarrow\; \aleph^{\mathrm{ego}}_{\mathrm{
 
 \begin{equation}
 \begin{cases}
-P(\text{凍結・硬直} \mid H_{\mathrm{target}}) = 0.5 & (\text{痛点を突かれた当事者にとっては自然な防衛反応}) \
+P(\text{凍結・硬直} \mid H_{\mathrm{target}}) = 0.5 & (\text{痛点を突かれた当事者にとっては自然な防衛反応}) \\
 P(\text{凍結・硬直} \mid H_0) = 0.001 & (\text{無害なジョークに一人だけ敵対的硬直を示すのは極めて稀})
 \end{cases}
 \implies \mathbf{+27\text{ dB}}
@@ -655,11 +663,10 @@ P(\text{凍結・硬直} \mid H_0) = 0.001 & (\text{無害なジョークに一�
 
 \begin{figure}[htbp]
 \centering
-
 $$\begin{tikzcd}[column sep=2.0em, row sep=2.5em]
 \text{[入力データ } D_k \text{ の検知]} \arrow[r] & \text{各仮説の対 } H_0 \text{ スコアを更新 } (S_i \leftarrow S_i + \text{dB}) \arrow[d] \\
-& \text{スコア順ソート：1位 } (S_{\mathrm{1st}}) \text{ と 2位 } (S_{\mathrm{2nd}}) \text{ を特定} \arrow[d] \\
-\text{[直交分離プローブの投入]} \arrow[u, "\text{サンプリング継続}"'] & \text{スプレッド判定：} S_{\mathrm{1st}} - S_{\mathrm{2nd}} \ge +20\,\mathrm{dB} \text{ ?} \arrow[l, "\text{No (競合継続)}"'] \arrow[r, "\text{Yes (単独突出)}"] & \mathbf{\Omega} \text{ の完全確定}
+{} & \text{スコア順ソート：1位 } (S_{\mathrm{1st}}) \text{ と 2位 } (S_{\mathrm{2nd}}) \text{ を特定} \arrow[d] \\
+\text{[直交分離プローブの投入]} \arrow[uu, "\text{サンプリング継続}"'] & \text{スプレッド判定：} S_{\mathrm{1st}} - S_{\mathrm{2nd}} \ge +20\,\mathrm{dB} \text{ ?} \arrow[l, "\text{No (競合継続)}"'] \arrow[r, "\text{Yes (単独突出)}"] & \mathbf{\Omega} \text{ の完全確定}
 \end{tikzcd}$$
 
 \caption{スプレッド判定による確信確定アルゴリズム}
