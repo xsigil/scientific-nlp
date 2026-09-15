@@ -13,6 +13,24 @@
 \usepackage{multirow}
 \usepackage{graphviz}
 \usepackage{url}
+\usepackage{tcolorbox}
+\usepackage{array}
+\tcbuselibrary{skins}
+
+\newtcolorbox{legalframe}{
+    enhanced,
+    sharp corners,
+    colback=white,
+    colframe=black,
+    boxrule=1.5pt,
+    left=18pt,
+    right=18pt,
+    top=24pt,
+    bottom=24pt,
+    borderline={0.4pt}{3pt}{black},
+}
+
+
 \newcommand{\sectionbreak}{\clearpage}
 \setlength{\epigraphwidth}{0.75\textwidth}
 \renewcommand{\textflush}{flushright}
@@ -57,6 +75,7 @@
 
 \begin{document}
 \maketitle
+\include{src/chapters/colophon}
 \include{src/chapters/prologue}
 \include{src/chapters/remnanments_of_magick_and_the_cold_computer}
 \include{src/chapters/freewill_negation}
@@ -195,6 +214,8 @@ NLP Eternal. \textit{NLP Eternal: Official Streaming Video Archive of Richard Ba
 \noindent
 \textbf{4. 責任の制限}\\
 著者、貢献者、および知財権保有者は、本書に記載されたプロトコル、アルゴリズム、または方法論の実装、適用、あるいは誤用によって生じた直接的、間接的、付随的、懲罰的、または結果的な損害について、いかなる法的責任も負いません。本体系の運用、倫理的整合性、および法的遵守に関する一切の責任は、すべて使用者に帰属します。
+
+
 
 \chapter*{著者プロフィール}
 \begin{center}
