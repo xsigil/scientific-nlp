@@ -21,7 +21,7 @@ This monograph provides a rigorous **demythologization** of behavioral engineeri
    $$\Delta_k = \|\Omega_k - \Omega_{\mathrm{goal}}\|_M \le \varepsilon$$
 4. **Information Warfare & Active Profiling:** 
    - **Othello Filter™**: An asymmetric log-likelihood deciban ($\text{dB}$) noise-reduction engine guarding against confirmation bias ("Othello's Error").
-   - **Othello Interrogation Protocol™ (OIP)**: An active cognitive probing framework designed for objective state estimation in forensic and counter-social engineering contexts.
+   - **Othello Interrogation Protocol™ (OIP™)**: An active cognitive probing framework designed for objective state estimation in forensic and counter-social engineering contexts.
 
 This is neither self-help nor speculative psychology. It is a reverse-engineered architectural blueprint of human cognitive automata, bridging Bandler's phenomenological hacking with modern computational neuroscience (Friston's active inference, LeCun's JEPA).
 
