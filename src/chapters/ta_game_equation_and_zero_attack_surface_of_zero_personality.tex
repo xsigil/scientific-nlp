@@ -1,0 +1,69 @@
+\chapter{交流分析TAのゲームの方程式とZero Personality\texttrademark : $\mathrm{Attack Surface} = 0$の鉄壁の防御}
+\usetikzlibrary{arrows.meta, positioning, calc}
+交流分析（Transactional Analysis: TA）において、エゴグラムや脚本分析といった臨床的・定性的な枠組みの多くは主観的な解釈に依存し、情報工学的な解析には適さない。工学および自然言語処理において真に形式化・計算可能であり、有効に機能するモジュールは、エリック・バーンが提示した「ゲームの方程式（Formula G）」のみである。
+
+ゲームの方程式は、「Egoのprofit（歪んだストローク／実利の掠め取り）を最小コストで奪おうとする攻撃者」と、「自己の計算資源・時間・実利を守る防衛側」との非対称戦（Asymmetric Warfare）である。
+%\begin{equation}
+%    Con + Gim = R \xrightarrow{}{} S \xrightarrow{}{} X \xrightarrow{}{} \mathrm{Payoff}
+%\end{equation}
+
+\vspace{1.5em}
+\begin{tikzpicture}[
+    role/.style={
+        rectangle, 
+        rounded corners=4pt, 
+        draw=black, 
+        line width=1pt,
+        align=center, 
+        inner sep=8pt,
+        fill=white,
+        font=\small
+    },
+    trans/.style={
+        -{Stealth[scale=1.2]},
+        line width=1.2pt,
+        draw=black!70
+    }
+]
+
+    % 1. 頂点（3つの役割）の描画
+    \node[role] (P) at (-3.5, 2.5) {\textbf{迫害者 (Persecutor)}\\お前が悪い\\(支配・攻撃)};
+    \node[role] (R) at ( 3.5, 2.5) {\textbf{救済者 (Rescuer)}\\私が助けてあげる\\(依存の固定化)};
+    \node[role] (V) at ( 0,   -2)   {\textbf{犠牲者 (Victim)}\\私には無理、助けて\\(無力化)};
+
+    % 2. スイッチ（役割交代）の矢印を描画
+    \draw[trans] ([yshift=2mm]P.east) -- node[above, font=\footnotesize] {Switch} ([yshift=2mm]R.west);
+    \draw[trans] ([yshift=-2mm]R.west) -- node[below, font=\footnotesize] {Switch} ([yshift=-2mm]P.east);
+
+    \draw[trans] ([xshift=2mm]R.south) -- node[right, font=\footnotesize] {Switch} ([xshift=4mm]V.north east);
+    \draw[trans] ([xshift=-2mm]V.north east) -- node[left, font=\footnotesize] {Switch} ([xshift=-4mm]R.south);
+
+    \draw[trans] ([xshift=2mm]V.north west) -- node[right, font=\footnotesize] {Switch} ([xshift=4mm]P.south);
+    \draw[trans] ([xshift=-4mm]P.south) -- node[left, font=\footnotesize] {Switch} ([xshift=-2mm]V.north west);
+
+    % 3. 中央のゲーム空間ラベル
+    \node[align=center, font=\footnotesize, fill=black!5, rounded corners, inner sep=6pt] at (0, 0.8) {
+        \textbf{心理ゲーム空間}\\
+        利得: 歪んだストローク\\
+        $C + G \to R \to S \to X \to P$
+    };
+
+    % 4. 外部観測者（Zero State）の描画
+    \node[draw=black, dashed, line width=1pt, fill=black!2, rounded corners=4pt, align=center, inner sep=6pt, font=\small] 
+        (Adult) at (0, -3.8) {
+            \textbf{Zero State Personality (Adult)}\\
+            Attack Surface = 0 / Default-Deny\\
+            (ゲーム不参加 / 外部観測)
+        };
+
+    % 5. 境界線（破線）
+    \draw[dotted, line width=1pt, draw=black!50] (Adult.north) -- (V.south);
+
+\end{tikzpicture}
+\vspace{1.5em}
+
+\section{消去バーストの観測とプロトコル遮断}
+
+利得を期待して $C$ を投下し続ける攻撃者は、反応（$R$）が返ってこない初期段階において、より強い刺激を入力しようと出力を急上昇させる。これは行動分析学における\textbf{消去バースト（Extinction Burst）}であり、ネームドロッピングの過剰化や威圧的な言動として観測される。
+
+しかし、防衛側が Zero State を維持し、レイテンシ無限大（完全な沈黙）または決定論的な平熱応答（仕様確認のみ）を貫くことで、攻撃側は一方的に認知資源を消費し、最終的に接続をタイムアウトさせて撤退を余儀なくされる。
