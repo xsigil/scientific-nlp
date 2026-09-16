@@ -1,11 +1,29 @@
 \chapter{交流分析TAのゲームの方程式とZero Personality\texttrademark : $\mathrm{Attack Surface} = 0$の鉄壁の防御}
 \usetikzlibrary{arrows.meta, positioning, calc}
-交流分析（Transactional Analysis: TA）において、エゴグラムや脚本分析といった臨床的・定性的な枠組みの多くは主観的な解釈に依存し、情報工学的な解析には適さない。工学および自然言語処理において真に形式化・計算可能であり、有効に機能するモジュールは、エリック・バーンが提示した「ゲームの方程式（Formula G）」のみである。
-
-ゲームの方程式は、「Egoのprofit（歪んだストローク／実利の掠め取り）を最小コストで奪おうとする攻撃者」と、「自己の計算資源・時間・実利を守る防衛側」との非対称戦（Asymmetric Warfare）である。
 %\begin{equation}
 %    Con + Gim = R \xrightarrow{}{} S \xrightarrow{}{} X \xrightarrow{}{} \mathrm{Payoff}
 %\end{equation}
+
+交流分析（Transactional Analysis: TA）において、エゴグラムや脚本分析といった臨床的・定性的な枠組みの多くは主観的な解釈に依存し、情報工学的な解析には適さない。工学および自然言語処理において真に形式化・計算可能であり、有効に機能するモジュールは、エリック・バーンが提示した「ゲームの方程式（Formula G）」のみである。
+
+ゲームの方程式の本質は、「エゴの利得（歪んだストローク／実利の掠め取り）を最小コストで奪おうとする攻撃者」と、「自己の計算資源・時間・実利を守る防衛側」との\textbf{非対称戦（Asymmetric Warfare）}に他ならない。
+
+カープマンのドラマ三角形（Karpman Drama Triangle）において遷移する3つの役割は、生物学的な生存戦略および予測符号化モデルにおけるエゴの状態空間として次のように厳密に定式化できる。
+
+\begin{itemize}
+    \item \textbf{犠牲者（Victim）}: $\Omega^{\mathrm{ego}}_{\mathrm{predict:threat}}$（逃走／擬死反応）\\
+    自己の無力化を装い、責任の完全放棄と免責によって生存領域を確保する防御的逃走戦略。
+    
+    \item \textbf{迫害者（Persecutor）}: $\Omega^{\mathrm{ego}}_{\mathrm{predict:profit}}$（直接的闘争反応）\\
+    力、怒り、ルールの強制によって相手を直接制圧・屈服させ、服従と主導権を即時徴収する陽性の闘争戦略。
+    
+    \item \textbf{救済者（Rescuer）}: $\Omega^{\mathrm{ego}}_{\mathrm{predict:profit}}$（間接的闘争反応）\\
+    「善意・支援」を装い、相手の自立機能を奪って去勢・依存化（家畜化）させることで優越ポジションを固定化し、安全地帯から実利を掠め取る陰性の闘争戦略。
+\end{itemize}
+
+一見すると利他的に見える「救済」も、その数理的本質は迫害者と同じく $\Omega^{\mathrm{ego}}_{\mathrm{predict:profit}}$ を最大化するための権力闘争（Fight）に他ならない。ドラマ三角形の内部で展開されるあらゆる相互作用は、これら脅威の回避と利得の収奪を巡るエゴ同士のゼロサムゲームであり、最終的には相手の認知資源を食い物にして自己の利得（Payoff）を回収するアルゴリズムへと帰着する。
+
+したがって、この閉じた力学を無効化する唯一の解は、三角形内のいずれの役割とも共鳴しない基底状態、すなわち感情ポートを完全に閉鎖した $\mathrm{Attack\ Surface} = 0$（Default-Deny）の実装のみである。
 
 \vspace{1.5em}
 \begin{tikzpicture}[
@@ -61,8 +79,6 @@
 
 \end{tikzpicture}
 \vspace{1.5em}
-
-\section{消去バーストの観測とプロトコル遮断}
 
 利得を期待して $C$ を投下し続ける攻撃者は、反応（$R$）が返ってこない初期段階において、より強い刺激を入力しようと出力を急上昇させる。これは行動分析学における\textbf{消去バースト（Extinction Burst）}であり、ネームドロッピングの過剰化や威圧的な言動として観測される。
 
