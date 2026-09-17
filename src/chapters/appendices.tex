@@ -272,15 +272,16 @@ ASDにおいて観察される「こだわり」「同一性への執着」と�
 この仮説に立つならば、臨床現場や日常生活における両者へのアプローチは、道徳的説諭や精神論から完全に解放され、純粋な工学的パラメータ調整へと移行する。
 ADHDに対しては入力ノイズの物理的遮断（作業環境の低刺激化）とマイクロタスクの強制Exit設計が必要であり、ASDに対しては予測可能性の事前保証（視覚的スケジュールによる $\Delta \Omega$ の最小化）と、既存の $\Omega_{\mathrm{static}}$ を破壊しない論理的同型ルールの導入こそが、唯一の工学的正解となるのである。
 
-\section{The Cybernetic Authoring Pipeline --- 認知摩擦ゼロの自己組織化環境}
+\chapter{The Cybernetic Authoring Pipeline --- 認知摩擦ゼロの自己組織化環境}
 \label{cha:authoring_pipeline}
+\epigraph{"I use Arch BTW."\\
+\small（ところで、私はArchを使っているのだが。）}{--- Anonymous Unix Hacker / The Arch Linux Creed}
+%FIXME: とりあえずAIに執筆環境を書かせたので、全部書き直し。
 
-\begin{abstract}
-本章では、本書の全体系を決定論的に記述・コンパイル・デプロイするために構築された、完全キーボード駆動型・超低遅延オーサリング環境の全仕様を開示する。
+本書の全体系を決定論的に記述・コンパイル・デプロイするために構築された、完全キーボード駆動型・超低遅延オーサリング環境の全仕様を開示する。
 WYSIWYGエディタに特有の認知ノイズを排し、認知帯域（CEN）のすべてを概念の自己組織化に専有させるための工学的設計である。
-\end{abstract}
 
-\subsection{設計思想：認知摩擦（Cognitive Friction）の物理的排除}
+\subsection{設計思想：認知摩擦の物理的排除}
 巨大な概念アーキテクチャを構築するプロセスは、単なる文章作成ではなく「ソフトウェアのシステム設計およびリファクタリング」そのものである。
 GUIベースのワープロ環境は、以下の物理的制約により書き手の前頭前野（CEN）の帯域を恒常的に飽和させる：
 \begin{enumerate}
@@ -291,45 +292,15 @@ GUIベースのワープロ環境は、以下の物理的制約により書き�
 
 これらを排除し、「思考速度と同期するゼロレイテンシ・パイプライン」を実現するため、UNIX哲学に基づく単機能ツールの結合によるサイバネティック・ループを構築した。
 
-\subsection{ツールチェーンとシステム・トポロジー}
-本環境を構成するハードウェア・ソフトウェアの接続関係を図\ref{fig:pipeline_topology}に示す。すべてのノードは標準入出力（stdin/stdout）および決定論的IPCによって直結されている。
-
-\begin{figure}[htbp]
-\centering
-\begin{verbatim}
-+-------------------------------------------------------------------------+
-|                              Wayland / Hyprland                         |
-|  +---------------------------+  +------------------------------------+  |
-|  |           tmux            |  |             GUI Client             |  |
-|  |  +---------------------+  |  |  +---------------+  +-----------+  |  |
-|  |  | Vim (Text Buffer)   |  |  |  | AI Interface |  |  Evince   |  |  |
-|  |  +----------+----------+  |  |  | (Browser/API) |  | (PDF-Sync)|  |  |
-|  |             |             |  |  +-------+-------+  +-----+-----+  |  |
-|  |  +----------v----------+  |  +----------|----------------^-----+  |  |
-|  |  | latexmk (Daemon)    |  |             | (wl-copy/paste)|        |  |
-|  |  +----------+----------+  |             +----------------+        |  |
-|  +-------------|-------------+                                       |  |
-+----------------|-----------------------------------------------------+  |
-                 v (:w / trigger)                                         |
-     +-----------+-----------+                                            |
-     |   LuaLaTeX Engine     |--------------------------------------------+
-     +-----------+-----------+ (compiled PDF)
-                 | (git push)
-                 v
-     +-----------------------+
-     | GitHub Actions (CI/CD)| ---> Automated PDF Release
-     +-----------------------+
-\end{verbatim}
-\caption{オーサリング・パイプラインのシステム・トポロジー}
-\label{fig:pipeline_topology}
-\end{figure}
+\subsection{ツールチェーンとシステム構成}
+本環境を構成するハードウェア・ソフトウェアの全ノードは、標準入出力（stdin/stdout）および決定論的IPCによって直結されている。
 
 \subsubsection{1. ウィンドウおよびセッション制御層（Hyprland / tmux）}
 \begin{itemize}
     \item \textbf{Hyprland (Wayland Compositor)}:
     ウィンドウ配置をタイリングによって自動決定論化。一切のマウス操作を介さず、Modキーとホームポジションの移動（$hjkl$）のみで、エディタ、ビューア、推論端末間を数ミリ秒でコンテキストスイッチする。
     \item \textbf{tmux (Terminal Multiplexer)}:
-    端末内のワークスペースを仮想化。編集バッファ（Vim）とビルド監視プロセス（`latexmk`）を左右に分割常駐させ、セッションの永続性を担保する。
+    端末内のワークスペースを仮想化。編集バッファ（Vim）とビルド監視プロセス（\texttt{latexmk}）を左右に分割常駐させ、セッションの永続性を担保する。
 \end{itemize}
 
 \subsubsection{2. 編集・リファクタリング層（Vim）}
@@ -341,20 +312,20 @@ Vimの矩形ビジュアル選択（\texttt{Ctrl-v}）による行頭コメン�
 人間単独のワーキングメモリの限界を超えるため、LLM（AI）を外部推論コプロセッサとしてパイプラインに直結する。
 Waylandネイティブのクリップボードプロトコル（\texttt{wl-copy} / \texttt{wl-paste}）を採用し、UNIXパイプ経由でバッファとモデルを直結させる。
 
-\begin{lstlisting}[language=bash, caption={推論コプロセッサとの入出力パイプライン}]
+\begin{verbatim}
 # Vimバッファの指定範囲を外部推論器へ転送
 :'<,'>w !wl-copy
 
 # 外部推論器がリファクタリングしたLaTeXコードを即座に現在行へ展開
 :r !wl-paste
-\end{lstlisting}
+\end{verbatim}
 
 これにより、ブラウザやAPI経由の思考データがフォーマットの破損なく、1ストロークで型安全にローカルソースへマージされる。
 
 \subsubsection{4. インクリメンタル・ビルド＆ライブリロード（Makefile, latexmk, Evince）}
 ソースコードの保存（\texttt{:w}）をイベントトリガーとして、組版エンジンが自動で増分コンパイルを実行する。
 
-\begin{lstlisting}[language=make, caption={自動監視Makefile仕様}]
+\begin{verbatim}
 .PHONY: watch build clean
 
 watch:
@@ -362,7 +333,7 @@ watch:
 
 clean:
 	latexmk -C
-\end{lstlisting}
+\end{verbatim}
 
 \texttt{latexmk} はソースツリー内の依存関係を常時監視し、変更を検知するとLuaLaTeXを複数パス起動して相互参照（\texttt{\textbackslash ref}）と目次（\texttt{\textbackslash tableofcontents}）を自動解決する。
 出力先のPDFビューアである \textbf{Evince} は、基底のPopplerライブラリによるファイル変更シグナルを受け取り、画面のチラつきやフォーカスの奪取なしに、ミリタリー規格の組版結果をミリ秒単位でサイレントリロードする。
@@ -370,7 +341,7 @@ clean:
 \subsubsection{5. 全自動パブリッシュ（Git / GitHub Actions）}
 ローカルでの自己組織化ループが収束したコードは、Gitコミットを経てリモートリポジトリへ射出される。
 
-\begin{lstlisting}[language=yaml, caption={.github/workflows/build-pdf.yml 概念定義}]
+\begin{verbatim}
 name: Build and Release Specification PDF
 on:
   push:
@@ -390,7 +361,98 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: book_main.pdf
-\end{lstlisting}
+\end{verbatim}
+
+環境差異を完全に排除したコンテナ上で決定論的ビルドが走り、タグ付けされた最新の仕様書バイナリ（PDF）が世界中のクライアントへ自動デプロイされる。
+
+\subsection{結論：サイバネティクスとしての執筆}
+本システムにおいて、執筆者は「文章を書く人」ではない。
+外部コプロセッサ（AI）と高速入出力パイプ（\texttt{wl-clipboard}）で結合され、キーボード駆動型環境（Hyprland/tmux/Vim）から高密度の数理コードを打ち込み、コンパイラ（LuaLaTeX）とCI/CDを通じて現実世界の認識論を書き換える「生体オペレータ」である。
+認知摩擦をゼロにまで削ぎ落とした環境においてのみ、真に自己組織化された巨大な知識体系は結晶化する。
+本書の全体系を決定論的に記述・コンパイル・デプロイするために構築された、完全キーボード駆動型・超低遅延オーサリング環境の全仕様を開示する。
+WYSIWYGエディタに特有の認知ノイズを排し、認知帯域（CEN）のすべてを概念の自己組織化に専有させるための工学的設計である。
+
+\subsection{設計思想：認知摩擦の物理的排除}
+巨大な概念アーキテクチャを構築するプロセスは、単なる文章作成ではなく「ソフトウェアのシステム設計およびリファクタリング」そのものである。
+GUIベースのワープロ環境は、以下の物理的制約により書き手の前頭前野（CEN）の帯域を恒常的に飽和させる：
+\begin{enumerate}
+    \item \textbf{ポインティング・デバイスによるコンテキストスイッチ}：キーボードのホームポジションから指を離し、マウスを操作するたびに思考の巡航速度が遮断される。
+    \item \textbf{装飾と論理の混濁}：フォントサイズや行末のズレといった視覚的ノイズが、純粋な論理構造（セマンティクス）の構築を阻害する。
+    \item \textbf{破壊的リファクタリングの困難性}：章構造の入れ替えや仮説の退避において、変更履歴機能やコピペミスによる破綻が不可避となる。
+\end{enumerate}
+
+これらを排除し、「思考速度と同期するゼロレイテンシ・パイプライン」を実現するため、UNIX哲学に基づく単機能ツールの結合によるサイバネティック・ループを構築した。
+
+\subsection{ツールチェーンとシステム構成}
+本環境を構成するハードウェア・ソフトウェアの全ノードは、標準入出力（stdin/stdout）および決定論的IPCによって直結されている。
+
+\subsubsection{1. ウィンドウおよびセッション制御層（Hyprland / tmux）}
+\begin{itemize}
+    \item \textbf{Hyprland (Wayland Compositor)}:
+    ウィンドウ配置をタイリングによって自動決定論化。一切のマウス操作を介さず、Modキーとホームポジションの移動（$hjkl$）のみで、エディタ、ビューア、推論端末間を数ミリ秒でコンテキストスイッチする。
+    \item \textbf{tmux (Terminal Multiplexer)}:
+    端末内のワークスペースを仮想化。編集バッファ（Vim）とビルド監視プロセス（\texttt{latexmk}）を左右に分割常駐させ、セッションの永続性を担保する。
+\end{itemize}
+
+\subsubsection{2. 編集・リファクタリング層（Vim）}
+プレーンテキストとしてのLaTeXソースを極小のストロークで操作する。
+特に、体系を段階的に自己組織化させるプロセスにおいては、「仮説の即時退避と復元」が必須となる。
+Vimの矩形ビジュアル選択（\texttt{Ctrl-v}）による行頭コメントアウト（\texttt{I\% }）およびヤンク／ペーストの組み合わせにより、巨大なコードブロックの並行比較と破壊的リファクタリングを認知負荷ゼロで実行する。
+
+\subsubsection{3. 外部推論コプロセッサ連携（wl-clipboard）}
+人間単独のワーキングメモリの限界を超えるため、LLM（AI）を外部推論コプロセッサとしてパイプラインに直結する。
+Waylandネイティブのクリップボードプロトコル（\texttt{wl-copy} / \texttt{wl-paste}）を採用し、UNIXパイプ経由でバッファとモデルを直結させる。
+
+\begin{verbatim}
+# Vimバッファの指定範囲を外部推論器へ転送
+:'<,'>w !wl-copy
+
+# 外部推論器がリファクタリングしたLaTeXコードを即座に現在行へ展開
+:r !wl-paste
+\end{verbatim}
+
+これにより、ブラウザやAPI経由の思考データがフォーマットの破損なく、1ストロークで型安全にローカルソースへマージされる。
+
+\subsubsection{4. インクリメンタル・ビルド＆ライブリロード（Makefile, latexmk, Evince）}
+ソースコードの保存（\texttt{:w}）をイベントトリガーとして、組版エンジンが自動で増分コンパイルを実行する。
+
+\begin{verbatim}
+.PHONY: watch build clean
+
+watch:
+	latexmk -pvc -lualatex -interaction=nonstopmode -synctex=1 book_main.tex
+
+clean:
+	latexmk -C
+\end{verbatim}
+
+\texttt{latexmk} はソースツリー内の依存関係を常時監視し、変更を検知するとLuaLaTeXを複数パス起動して相互参照（\texttt{\textbackslash ref}）と目次（\texttt{\textbackslash tableofcontents}）を自動解決する。
+出力先のPDFビューアである \textbf{Evince} は、基底のPopplerライブラリによるファイル変更シグナルを受け取り、画面のチラつきやフォーカスの奪取なしに、ミリタリー規格の組版結果をミリ秒単位でサイレントリロードする。
+
+\subsubsection{5. 全自動パブリッシュ（Git / GitHub Actions）}
+ローカルでの自己組織化ループが収束したコードは、Gitコミットを経てリモートリポジトリへ射出される。
+
+\begin{verbatim}
+name: Build and Release Specification PDF
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile LuaLaTeX Specification
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: book_main.tex
+          latexmk_use_lualatex: true
+      - name: Deploy Binary Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: book_main.pdf
+\end{verbatim}
 
 環境差異を完全に排除したコンテナ上で決定論的ビルドが走り、タグ付けされた最新の仕様書バイナリ（PDF）が世界中のクライアントへ自動デプロイされる。
 
