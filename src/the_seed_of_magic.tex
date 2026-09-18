@@ -43,7 +43,6 @@
 \renewcommand{\textflush}{flushright}
 \renewcommand{\sourceflush}{flushright}
 \usepackage{fontspec}
-%\setmainfont{Noto Serif}
 \setmainfont{NotoSerif-Regular.ttf}[
   Path = ./src/fonts/,
   BoldFont = NotoSerif-Bold.ttf,
@@ -83,13 +82,54 @@
 \begin{document}
 \maketitle
 \tableofcontents
-
+$:\rightsquigarrow$
+アトラクション盆地（Basin of Attraction）の集合$\tilde{\Psy}$、アトラクション盆地に収束した解$\Psy$
+% --- アトラクション盆地空間（Basin of Attraction Space）の基底分割 ---
 \begin{align}
-    \tilde{\Omega}^{\mathrm{ego}}{\mathrm{cause}} &\equiv \tilde{\Omega}^{\mathrm{ego}}{\mathrm{cause:profit}} \cup \tilde{\Omega}^{\mathrm{ego}}{\mathrm{cause:threat}} \cup \tilde{\Omega}^{\mathrm{ego}}{\mathrm{cause:neutral}} \
-    \tilde{\Omega}^{\mathrm{ego}}{\mathrm{causality}} &\equiv \tilde{\Omega}^{\mathrm{ego}}{\mathrm{causality:profit}} \cup \tilde{\Omega}^{\mathrm{ego}}{\mathrm{causality:threat}} \cup \tilde{\Omega}^{\mathrm{ego}}{\mathrm{causality:neutral}} \
-    \tilde{\Omega}^{\mathrm{ego}}{\mathrm{effect}} &\equiv \tilde{\Omega}^{\mathrm{ego}}{\mathrm{effect:profit}} \cup \tilde{\Omega}^{\mathrm{ego}}{\mathrm{effect:threat}} \cup \tilde{\Omega}^{\mathrm{ego}}{\mathrm{effect:neutral}}
+    \tilde{\Psi} &\equiv \tilde{\Psi}^{\mathrm{ego}} \cup \tilde{\Psi}^{\mathrm{wisdom}} \cup \tilde{\Psi}^{\mathrm{neutral}} \\
+    \tilde{\Psi}^{\mathrm{ego}} &\equiv \{\Psi^{\mathrm{ego}}_1, \Psi^{\mathrm{ego}}_2, \dots, \Psi^{\mathrm{ego}}_n\} \\
+    \tilde{\Psi}^{\mathrm{wisdom}} &\equiv \{\Psi^{\mathrm{wisdom}}_1, \Psi^{\mathrm{wisdom}}_2, \dots, \Psi^{\mathrm{wisdom}}_n\} \\
+    \tilde{\Psi}^{\mathrm{neutral}} &\equiv \{\Psi^{\mathrm{neutral}}_1, \Psi^{\mathrm{neutral}}_2, \dots, \Psi^{\mathrm{neutral}}_n\}
 \end{align}
-end{align}
+
+% --- 因果ステージ軸（Stage-wise Decomposition） ---
+\begin{align}
+    \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:neutral}} \\
+    \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:neutral}} \\
+    \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:neutral}}
+\end{align}
+
+% --- 情動ドライブ軸（Drive-wise Decomposition） ---
+\begin{align}
+    \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{profit}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:profit}} \\
+    \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{threat}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:threat}} \\
+    \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{neutral}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:neutral}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:neutral}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:neutral}}
+\end{align}
+
+% --- 全空間の統合 ---
+\begin{equation}
+    \tilde{\Psi}^{\mathrm{ego}} \equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{neutral}} = \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect}}
+\end{equation}
+
+
+%\begin{align}
+%    \tilde{\Psy}                     &\equiv \tilde{\Psy}^{\mathrm{ego}} \cup \tilde{Psy}^{\mathrm{wisdom}} \cup \tilde{Psy}^{\mathrm{neutral}} \\
+%    \tilde{\Psy}^{\mathrm{ego}}      &\equiv \{\Psy^{\mathrm{ego}}_1, \Psy^{\mathrm{ego}}_2, \cdots , \Psy^{\mathrm{ego}}_n\} \\
+%    \tilde{\Psy}^{\mathrm{wisdom}}   &\equiv \{\Psy^{\mathrm{wisdom}}_1, \Psy^{\mathrm{wisdom}}_2, \cdots , \Psy^{\mathrm{wisdom}}_n\} \\
+%    \tilde{\Psy}^{\mathrm{neutral}}  &\equiv \{\Psy^{\mathrm{neutral}}_1, \Psy^{\mathrm{neutral}}_2, \cdots , \Psy^{\mathrm{neutral}}_n\} \\
+%
+%
+%    \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual cause}} &\equiv \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual cause:profit}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual cause:threat}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual cause:neutral}} \
+%    \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual causality}} &\equiv \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual causality:profit}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual causality:threat}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual causality:neutral}} \
+%    \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual effect}} &\equiv \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual effect:profit}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual effect:threat}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual effect:neutral}} \
+%    \tilde{\Psy}^{\mathrm{ego}} &\equiv \tilde{\Psy}^{\mathrm{ego}}{\mathrm{profit}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{threat}} \cup \tilde{\Psy}^{\mathrm{ego}}_{\mathrm{neutral}}
+%\end{align}
+%
+%\begin{align}
+%    \tilde{\Psy}^{\mathrm{ego}}{\mathrm{profit}} &\equiv \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual cause:profit}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual causality:profit}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual effect:profit}} \
+%    \tilde{\Psy}^{\mathrm{ego}}{\mathrm{threat}} &\equiv \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual cause:threat}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual causality:threat}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual effect:threat}} \
+%    \tilde{\Psy}^{\mathrm{ego}}{\mathrm{neutral}} &\equiv \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual cause:neutral}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual causality:neutral}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual effect:neutral}}
+%\end{align}
 
 \include{src/chapters/colophon}
 \include{src/chapters/acknowledgements}
@@ -707,4 +747,22 @@ Scientific NLP の観点において、この第3世代ナラティブは**多�
     「あなたを疑っているわけではないです、お手数おかけして大変申し訳ないと思っています。証拠が全然得られないので当時をしる重要な情報提供者としてしばらくお付き合い願いたい。ホテルの手配はしているのでぜひくつろいでいただきたい。」
 と呼ばないといけない。
 \end{comment}
+
+\begin{comment}
+[TODO: 本文マージ用メモ - NQBIEと数学的ベイズの構造的乖離]
+1. 非対称な事前確率の過剰配分:
+   神経準ベイズ推論機（NQBIE）の特徴として、過去にProfit/Threatの履歴が存在する場合、
+   数学的ベイズ推論機よりも極端に大きな事前確率が局所的に割り振られ、
+   アトラクション盆地の不可逆的な沈降（トラウマ／執着の固定）を引き起こす。
+
+2. クロムウェル則違反（探索空間の閉鎖・思い込み）:
+   生体ハードウェアの計算資源節約のため、対立仮説への事前確率が厳密な 0 として
+   処理される場合がある（探索ソケットの物理的遮断・スコトーマ）。
+
+3. メタ探求仮説の欠落（モンティ・ホール問題の生体破綻）:
+   モンティ・ホール問題が多くの人間に解けない根本理由は、計算能力の欠如ではなく、
+   「直感的な対称性（1/2）の背後に別の因果メカニズムが存在し、追加の探求が必要である」
+   というメタ検証仮説そのものに、神経系の事前確率が割り振られていない（初期配分ゼロ）ことによる。
+\end{comment}
+
 \end{document}
