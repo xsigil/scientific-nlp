@@ -73,7 +73,7 @@
 %%% DEFINITION
 
 % Neural Bayes Update and Convergence
-% 神経疑似ベイズ推論機の疑似ベイズ推論と疑似ベイズ更新プロセス
+% 神経準ベイズ推論機の準ベイズ推論と準ベイズ更新プロセス
 \newcommand{\nbuc}[2]{:\xrightarrow[#2]{#1}}
 \newcommand{\nbscanning}[1]{\nbuc{#1}{\emptyset} \mid}
 \newcommand{\State}{\mathcal{S}}
@@ -83,36 +83,95 @@
 \begin{document}
 \maketitle
 \tableofcontents
+
+\begin{align}
+    \tilde{\Omega}^{\mathrm{ego}}{\mathrm{cause}} &\equiv \tilde{\Omega}^{\mathrm{ego}}{\mathrm{cause:profit}} \cup \tilde{\Omega}^{\mathrm{ego}}{\mathrm{cause:threat}} \cup \tilde{\Omega}^{\mathrm{ego}}{\mathrm{cause:neutral}} \
+    \tilde{\Omega}^{\mathrm{ego}}{\mathrm{causality}} &\equiv \tilde{\Omega}^{\mathrm{ego}}{\mathrm{causality:profit}} \cup \tilde{\Omega}^{\mathrm{ego}}{\mathrm{causality:threat}} \cup \tilde{\Omega}^{\mathrm{ego}}{\mathrm{causality:neutral}} \
+    \tilde{\Omega}^{\mathrm{ego}}{\mathrm{effect}} &\equiv \tilde{\Omega}^{\mathrm{ego}}{\mathrm{effect:profit}} \cup \tilde{\Omega}^{\mathrm{ego}}{\mathrm{effect:threat}} \cup \tilde{\Omega}^{\mathrm{ego}}{\mathrm{effect:neutral}}
+\end{align}
+end{align}
+
 \include{src/chapters/colophon}
 \include{src/chapters/acknowledgements}
 \include{src/chapters/prologue}
-\include{src/chapters/remnanments_of_magick_and_the_cold_computer}
-\include{src/chapters/freewill_negation}
-\include{src/chapters/neural_states}
-\include{src/chapters/neural_pseudo_bayesian_inference_engine}
-\include{src/chapters/macro_neural_pseudo_bayesian_inference_engine.tex}
-\include{src/chapters/nlp_states}
-\include{src/chapters/micro_ego_strategy}
-\include{src/chapters/psychocybernetics_system}
-\include{src/chapters/attention_filter_ras}
-\include{src/chapters/emotion_interruption_lambda}
-\include{src/chapters/discreate_state_transition}
-\include{src/chapters/intellectual_zero_personality}
-\include{src/chapters/demythologization_of_hypnosis}
-\include{src/chapters/preprofiling_for_hypnosis}
-\include{src/chapters/flipperzero_othello_filter}
-\include{src/chapters/truth_and_lie_of_lie_to_me}
-\include{src/chapters/bruteforce_attack}
-\include{src/chapters/reevaluating_nlp_techniques}
-\include{src/chapters/root_cause_solution_metaphor_injection_technique}
-\include{src/chapters/bayesian_profiling_with_othello_filter}
-\include{src/chapters/ta_game_equation_and_zero_attack_surface_of_zero_personality}
-\include{src/chapters/double_feedback_learning}
-\include{src/chapters/post_freewill_narrative}
-\include{src/chapters/epilogue}
-\include{src/chapters/appendices}
-\include{src/chapters/psychopathology_hypothesis}
-\chapter{オセロの誤謬とオセロの誤謬による夫婦間の強化ループによる破綻とシステム思考の家族療法への拡張}
+\chapter{魔術の残骸と、冷徹なる計算機}
+\section{ベイズ統計学の基礎数理}
+\subsection{事象の確率と条件付き確率}
+\subsection{ベイズの定理の導出}
+\subsection{全確率の定理を用いた一般化}
+\subsection{ベイズ更新（逐次更新）のメカニズム}
+\section{モンティ・ホール問題：人間の直感の破綻}
+\subsection{全米を巻き込んだ大論争}
+\subsection{ベイズの定理による厳密解}
+\subsection{人間の神経系と数学的ベイズの違い}
+\chapter{自由意志の幻想とリアリティー}
+\section{生体ハードウェアの実験事実：意識の遅延とモジュール構造}
+\subsection{分離脳研究と「インタープリター」モジュール}
+\subsection{リベットの実験：意識の150〜200msの遅延}
+\subsection{ダマシオのソマティック・マーカー仮説と身体ループ}
+\section{開ループの自動機械と捏造されるリアリティー}
+\chapter{大規模脳ネットワークの発見と3大ネットワーク}
+\section{DMNの働き}
+\section{SNのスイッチング機能とDMN・CENのシーソー効果}
+\section{メノンらのトリプルネットワーク・モデル（2011年）}
+\section{全てを統合して観察するオブザーバー（Observer）}
+\chapter{神経準ベイズ推論機\texttrademark の定式化}
+\section{アトミックな認知収束モデル}
+\section{NLPにおける表象システム（VAKOG）の再定義}
+\section{多峰性の振動：だまし絵に見る認知の葛藤}
+%\chapter{ナラティブの確信 $\Omega$ にパターンマッチングする神経系準ベイズ推論機}
+\chapter{ナラティブにパターンマッチングする神経準ベイズ推論機\texttrademark}
+%\section{従来のNLPストラテジー論の限界と身体表象の欠落}
+\section{従来のNLPストラテジー論の限界と直感的確信$\Omega$の欠落}
+\section{大文字の確信 $\Omega$：高次マクロ仮説への収束プロセス}
+\chapter{NLPステートの再定義}
+\section{$\State(\mathrm{DMN})$の特性とEgoの基本機能}
+%\section{変性意識状態（アルタードステート）の再定義：保留される確信 $\Omega$ と全神経系の探索ループ}
+\section{確信 $\Omega^{\mathrm{ego}}$ の言語野による翻訳}
+\section{ナラティブの再帰入力ループ：$Ad^{\mathrm{ego}}$ が駆動する自己成就予言}
+\section{変性意識状態（アルタードステート）の定式化とその特性}
+%\chapter{サイコ・サイバネティクス}
+\chapter{サイバネティック神経準ベイズ推論システム\texttrademark }
+\section{サイバネティクスとは}
+\section{サイバネティクスからサイコ・サイバネティクスへ}
+%\section{サイバネティック神経準ベイズ推論システム\texttrademark：目標追従系としての確信$\Omega^{\mathrm{ego}}_{\mathrm{predict:profit}}$と目標回避系としての確信$\Omega^{\mathrm{ego}}_{\mathrm{predict:threat}}$}
+\section{サイバネティック神経準ベイズ推論システム\texttrademark の特性}
+\section{入力確信$\Omega^{ego}_{input}$、ナラティブ確信$\Omega^{ego}_{narrative}、原因確信$\Omega^{ego}_{cause}$
+\section{Egoの目標値としての確信 $\Omega^{\mathrm{ego}}_{mathrm{profit}}$と回避目標としての確信$\Omega^{\mathrm{ego}}_{mathrm{profit}}$}
+\section{破滅的ナラティブへの収束と自己破壊的ホメオスタシス}
+%\chapter{DMNのマイクロ・ストラテジー: エゴのナラティブ}
+
+%DONE
+%\include{src/chapters/remnanments_of_magick_and_the_cold_computer}
+%\include{src/chapters/freewill_negation}
+%\include{src/chapters/neural_states}
+%\include{src/chapters/neural_pseudo_bayesian_inference_engine}
+%\include{src/chapters/macro_neural_pseudo_bayesian_inference_engine.tex}
+%\include{src/chapters/nlp_states}
+%\include{src/chapters/nlp_states}
+%\include{src/chapters/micro_ego_strategy}
+
+%YET
+%\include{src/chapters/psychocybernetics_system}
+%\include{src/chapters/attention_filter_ras}
+%\include{src/chapters/emotion_interruption_lambda}
+%\include{src/chapters/discreate_state_transition}
+%\include{src/chapters/intellectual_zero_personality}
+%\include{src/chapters/demythologization_of_hypnosis}
+%\include{src/chapters/preprofiling_for_hypnosis}
+%\include{src/chapters/flipperzero_othello_filter}
+%\include{src/chapters/truth_and_lie_of_lie_to_me}
+%\include{src/chapters/bruteforce_attack}
+%\include{src/chapters/reevaluating_nlp_techniques}
+%\include{src/chapters/root_cause_solution_metaphor_injection_technique}
+%\include{src/chapters/bayesian_profiling_with_othello_filter}
+%\include{src/chapters/ta_game_equation_and_zero_attack_surface_of_zero_personality}
+%\include{src/chapters/double_feedback_learning}
+%\include{src/chapters/post_freewill_narrative}
+%\include{src/chapters/epilogue}
+%\include{src/chapters/appendices}
+%\include{src/chapters/psychopathology_hypothesis}
+%\chapter{オセロの誤謬とオセロの誤謬による夫婦間の強化ループによる破綻とシステム思考の家族療法への拡張}
 \backmatter
 \chapter{MIT License}
 % 外部ファイルを取り込み
@@ -324,7 +383,7 @@ Scientific NLP\texttrademark 創始者。東京大学大学院理学系研究科
 \label{sec:case_study_othello_bandler}
 
 \subsection{概要と問題設定}
-本節では、著者が米国フロリダのNLP高額セミナーにおいて体験した「TIMEXの時計破損と壇上メタファーの完全符合」という実体験を題材とし、主観的に強烈な変性意識状態（$\mathcal{S}(\text{ALTER})$）をもたらす現象が、情報論的にいかにして発生したかを疑似ベイズ推論モデルおよびオセロ・フィルターに基づき冷徹に事後検証（ポストモーテム）する。
+本節では、著者が米国フロリダのNLP高額セミナーにおいて体験した「TIMEXの時計破損と壇上メタファーの完全符合」という実体験を題材とし、主観的に強烈な変性意識状態（$\mathcal{S}(\text{ALTER})$）をもたらす現象が、情報論的にいかにして発生したかを準ベイズ推論モデルおよびオセロ・フィルターに基づき冷徹に事後検証（ポストモーテム）する。
 
 \subsection{事象ログと仮説の定式化}
 \begin{description}
@@ -419,13 +478,13 @@ Scientific NLP\texttrademark 創始者。東京大学大学院理学系研究科
 %   - 第14章（オセロの誤謬・デーン・アーチャーのIPT解析・サイドチャネル攻撃モデル）
 %   - または第4章（進化的計算モデル・DMNとサバイバル・オートマトン）
 % 【論点】
-%   1. 理論ベイズと神経疑似ベイズの乖離は「バグ」ではなく「非対称損失関数に対する最適化」
+%   1. 理論ベイズと神経準ベイズの乖離は「バグ」ではなく「非対称損失関数に対する最適化」
 %   2. 物理サバイバル（タイプIIエラー＝死）における事前確率無視の工学的合理性
 %   3. 言語・対人認知空間（物理危機ゼロ環境）への誤適用によるオセロ誤謬の発火とトランス誘導
 %   4. コンテキスト依存型デュアルモード（生存即応 vs 冷徹デバッグ）の切り替えプロトコル
 % ==============================================================================
 
-\subsection*{【補遺メモ】非対称損失関数と神経疑似ベイズの進化的妥当性}
+\subsection*{【補遺メモ】非対称損失関数と神経準ベイズの進化的妥当性}
 \label{note:asymmetric_loss_evolutionary_bayes}
 
 \begin{tcolorbox}[colback=gray!5,colframe=black!75,title=設計ノート：なぜ推論機は事前確率を切り捨てるのか]
@@ -447,7 +506,7 @@ Scientific NLP\texttrademark 創始者。東京大学大学院理学系研究科
 
 \textbf{2. サバイバル・モードから認知的トランスへの転移メカニズム}
 \begin{itemize}
-    \item \textbf{物理層（生命維持）:} 爆弾の落下、肉食獣の接近など、即死ペナルティが存在する空間では、理論ベイズの検算（ベースレートの精査）を待つ時間は致命的である。このため神経疑似ベイズ推論機は事前確率の項をバイパス（ハードワイヤード・シャント）し、直感（本能）を優先させる。
+    \item \textbf{物理層（生命維持）:} 爆弾の落下、肉食獣の接近など、即死ペナルティが存在する空間では、理論ベイズの検算（ベースレートの精査）を待つ時間は致命的である。このため神経準ベイズ推論機は事前確率の項をバイパス（ハードワイヤード・シャント）し、直感（本能）を優先させる。
     \item \textbf{情報層（セミナー・日常対話）:} 物理的死のリスクが存在しないステージ上や日常対話空間においても、情動インターラプション $\Lambda$（高額投資の重圧、自己否定の恐怖など）が高負荷でかかると、推論機は誤って「サバイバル・モード」を起動する。
     \item \textbf{オセロ誤謬の必然性:} その結果、術者の発した文化的ストック（$0\,\text{dB}$ のホワイトノイズ）を「自分を標的とした不可避のシグナル」と誤同定し、事前確率の希薄さ（$-20\,\text{dB}$）を無視して主観的確信度 $99.9\%$ を叩き出す。
 \end{itemize}
