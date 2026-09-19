@@ -132,8 +132,11 @@ $:\rightsquigarrow$
 \end{equation}
 
 \begin{equation}
+    %FIXME: AlteredState は NeuralQuasiBayesianExploration であると同時に、術者との治療的ダブルバインドが結ばれている必要がある。
+    % また、ナラティブ確信が確定していないNeuralQuasiBayesianExplorationである。下記の数式はまだ、言いたいことが全然表現できていないので要改善。
+    % \psi_{predict:profit}と\psi_{predict:threat}はサイコサイバネティクスのゴールとしてだ。
     \AlteredState \equiv \CoupledState{\EnvNoise, \VirtualConviction, \State} \NeuralQuasiBayesianExploration{
-    \NQSpace}
+    \NQSpace} \land (\psi_{predict:profit} \lor \psi_{predict:threat})
 \end{equation}
 
 %\chapter{DMNのマイクロ・ストラテジー: エゴのナラティブ}
