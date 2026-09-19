@@ -129,7 +129,7 @@ $:\rightsquigarrow$
 \begin{equation}
     \AlteredState \equiv 
     \CoupledState{\EnvNoise, \VirtualConviction, \State} \NeuralQuasiBayesianExploration{\NQSpace}^{\mathrm{narrative:threat}}
-    \quad \bowtie \quad
+    \quad \land \quad
     \vcenter{\hbox{
         \begin{ConflictLoop}
             \PredictProfitVirtualConviction \\ 
@@ -139,7 +139,7 @@ $:\rightsquigarrow$
 \end{equation}
 
 \begin{align}
-    \mathrm{Hypnosis} &\equiv \left( \frac{\mathcal{P}}{\mathcal{T}} \gg \theta_{\mathrm{defense}} \right) \;\lor\; \mathrm{State}(\mathrm{ALTER}) \\
+    \mathrm{Hypnosis} &\equiv \left( \frac{\mathcal{P}}{\mathcal{T}} \gg \theta_{\mathrm{defense}} \right) \;\lor\; \AlteredState \\
     \mathcal{P} &\equiv \mathrm{Profit} \\
     \mathcal{T} &\equiv \mathrm{Threat}
 \end{align}
