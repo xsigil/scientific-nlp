@@ -117,6 +117,51 @@ $:\rightsquigarrow$
     \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction
 \end{equation}
 
+% --- 基底エビデンスの結合定義（入力層） ---
+\begin{align}
+    \scientificV  &\equiv \CoupledState{\VNoise,  \VirtualConviction, \State} \\
+    \scientificVd &\equiv \CoupledState{\VdNoise, \VirtualConviction, \State} \\
+    \scientificA  &\equiv \CoupledState{\ANoise,  \VirtualConviction, \State} \\
+    \scientificAd &\equiv \mathcal{L}_{\mathrm{digital}}\left( \CoupledState{\EnvNoise, \VirtualConviction, \State} \right) \\
+    \scientificK  &\equiv \CoupledState{\KNoise,  \VirtualConviction, \State} \\
+    \scientificO  &\equiv \CoupledState{\ONoise,  \VirtualConviction, \State} \\
+    \scientificG  &\equiv \CoupledState{\GNoise,  \VirtualConviction, \State}
+\end{align}
+
+% --- 古典NLPモダリティの神経準ベイズ包摂（現象層） ---
+\begin{align}
+    \classicV  &\equiv \scientificV  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+    \classicVd &\equiv \scientificVd \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+    \classicA  &\equiv \scientificA  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+    \classicAd &\equiv \scientificAd \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+    \classicK  &\equiv \scientificK  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+    \classicO  &\equiv \scientificO  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+    \classicG  &\equiv \scientificG  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction
+\end{align}
+
+%\begin{align}
+%    \scientificV &\equiv \CoupledState{\VNoise, \VirtualConviction, \State} \\
+%    \scientificVd &\equiv \CoupledState{\VdNoise, \VirtualConviction, \State} \\
+%    \scientificA &\equiv \CoupledState{\ANoise, \VirtualConviction, \State} \\
+%    \scientificAd &\equiv \mathcal{L}_{\mathrm{digital}}\left( \CoupledState{\EnvNoise, \VirtualConviction, \State} \right) \\
+%    \scientificK &\equiv \CoupledState{\KNoise, \VirtualConviction, \State} \\
+%    \scientificO &\equiv \CoupledState{\ONoise, \VirtualConviction, \State} \\
+%    \scientificG &\equiv \CoupledState{\GNoise, \VirtualConviction, \State} \\
+%    \classicV &\equiv \scientificV \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+%    \classicVd &\equiv \scientificVd \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+%    \classicA &\equiv \scientificA \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+%    \classicAd &\equiv \scientificAd \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction  \\
+%    \classicK &\equiv \scientificK \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+%    \classicO &\equiv \scientificO \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+%    \classicG &\equiv \scientificG \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction 
+%\end{align}
+
+%\begin{align}
+%    \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} 
+%\end{align}
+
+
+
 %\begin{align}
 %    \NeuralQuasiEvidence_1 \NeuralQuasiBayesianUpdateConviction{\NQSpace_1}{\NQSpace_2} \VirtualConviction_1 
 %    &\DiscreteStep{}{} \NeuralQuasiEvidence_2 \NeuralQuasiBayesianUpdateConviction{\NQSpace_2}{\NQSpace_3} \VirtualConviction_2 
@@ -179,22 +224,21 @@ $:\rightsquigarrow$
 \end{equation}
 
 
-\begin{equation}
-    \AlteredState \equiv 
-    \left( \NeuralQuasiEvidence \NeuralQuasiBayesianExploration{\NQSpace}^{\mathrm{narrative:threat}}
-    \quad \land \quad
-    \vcenter{\hbox{
-        \begin{ConflictLoop}
-            \PredictProfitVirtualConviction \\ 
-            \PredictThreatVirtualConviction
-        \end{ConflictLoop}
-    }}
-    \right)
-\end{equation}
+%\begin{equation}
+%    \AlteredState \equiv 
+%    \left( \NeuralQuasiEvidence \NeuralQuasiBayesianExploration{\NQSpace}^{\mathrm{narrative:threat}}
+%    \quad \land \quad
+%    \vcenter{\hbox{
+%        \begin{ConflictLoop}
+%            \PredictProfitVirtualConviction \\ 
+%            \PredictThreatVirtualConviction
+%        \end{ConflictLoop}
+%    }}
+%    \right)
+%\end{equation}
 
 \begin{equation}
-    \AlteredState \equiv 
-    \left( \text{\aUUST} \land \text{\aADBC} \right)
+    \AlteredState \equiv \text{\aUUST} \land \text{\aADBC}
 \end{equation}
 
 
