@@ -1,0 +1,87 @@
+% --- Mathematical Bayesian Update and Collapse ---
+\newcommand{\MathBayesianUpdateCollapse}[2]{:\xrightarrow[#2]{#1}}
+% --- Mathematical Hypothesis Space ---
+\newcommand{\MathHypoSpace}{\mathcal{H}}
+\newcommand{\MathHypothesis}{\mathrm{H}}
+\newcommand{\Evidence}{\mathrm{E}}
+
+\newcommand{\ConditionalProbability}[2]{P( #1 \mid #2 )}
+
+% --- Neural Quasi-Bayesian Update and Conviction---
+\usepackage{mathtools}
+
+% --- Neural Quasi-Bayesian Update and Conviction---
+% \xrightarrow と同様に [下]{上} で引数を上下に自動配置する
+\newcommand{\NeuralQuasiBayesianUpdateConviction}[2]{%
+  :\xrightsquigarrow[#2]{#1}%
+}
+\newcommand{\NQSpace}{\Psi}
+\newcommand{\EnvNoise}{e_{\mathrm{noise}}}
+\newcommand{\VNoise}{v_{\mathrm{noise}}}
+\newcommand{\ANoise}{a_{\mathrm{noise}}}
+\newcommand{\KNoise}{k_{\mathrm{noise}}}
+\newcommand{\ONoise}{o_{\mathrm{noise}}}
+\newcommand{\GNoise}{g_{\mathrm{noise}}}
+
+\usepackage{tikz}
+\usepackage{environ}
+\usetikzlibrary{decorations.markings,arrows.meta}
+
+% 葛藤・非決定ループ（縦レムニスケート束）: pt重複修正版
+\NewEnviron{ConflictLoop}[1][\mathrm{conflict}]{%
+  \begin{tikzpicture}[baseline=(m.center)]
+    % 内部の連立状態・対立仮説を組版
+    \node[inner sep=4pt, align=left] (m) {
+      $\begin{aligned}
+        \BODY
+      \end{aligned}$
+    };
+    
+    % バウンディングボックスの座標取得 (\topY, \botY には最初から pt が付いている)
+    \path (m.north west); \pgfgetlastxy{\dummy}{\topY}
+    \path (m.south west); \pgfgetlastxy{\dummy}{\botY}
+    
+    % pgfmath で数値計算 (結果の \midY, \loopH は単位なしの数値になる)
+    \pgfmathsetmacro{\midY}{(\topY + \botY) / 2}
+    \pgfmathsetmacro{\loopH}{(\topY - \botY) / 4}
+    \pgfmathsetmacro{\w}{8.5} % ループの横幅（pt単位）
+    
+    % 縦向き無限大（8の字）
+    % \topY と \botY はそのまま使用、\midY や \loopH にのみ pt を付与
+    \draw[
+      line width=0.85pt,
+      postaction={decorate},
+      decoration={
+        markings,
+        mark=at position 0.22 with {\arrow[scale=0.8]{Stealth}},
+        mark=at position 0.72 with {\arrow[scale=0.8]{Stealth}}
+      }
+    ]
+      (-10pt, \midY pt)
+      .. controls (-10pt - \w pt, \midY pt + \loopH pt * 0.6) and (-10pt - \w pt, \topY) .. (-10pt, \topY)
+      .. controls (-10pt + \w pt, \topY) and (-10pt + \w pt, \midY pt + \loopH pt * 0.6) .. (-10pt, \midY pt)
+      .. controls (-10pt - \w pt, \midY pt - \loopH pt * 0.6) and (-10pt - \w pt, \botY) .. (-10pt, \botY)
+      .. controls (-10pt + \w pt, \botY) and (-10pt + \w pt, \midY pt - \loopH pt * 0.6) .. cycle;
+
+    % 特異点・葛藤ラベル
+    \node[left=6pt, at={(-10pt - \w pt, \midY pt)}, font=\scriptsize] {$#1$};
+  \end{tikzpicture}%
+}
+
+
+% --- Classical NLP (Primitive points) ---
+\newcommand{\classicV}{\ensuremath{V}}
+\newcommand{\classicA}{\ensuremath{A}}
+\newcommand{\classicK}{\ensuremath{K}}
+\newcommand{\classicO}{\ensuremath{O}}
+\newcommand{\classicG}{\ensuremath{G}}
+
+% --- Scientific NLP (Continuous manifolds / State spaces) ---
+% \classicalV \equiv \scientificV 
+% ------------------------------------------------------------
+\newcommand{\scientificV}{\ensuremath{\mathcal{V}}}
+\newcommand{\scientificA}{\ensuremath{\mathcal{A}}}
+\newcommand{\scientificK}{\ensuremath{\mathcal{K}}}
+\newcommand{\scientificO}{\ensuremath{\mathcal{O}}}
+\newcommand{\scientificG}{\ensuremath{\mathcal{G}}}
+

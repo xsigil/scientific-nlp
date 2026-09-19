@@ -26,6 +26,8 @@
 \begin{document}
 \maketitle
 \tableofcontents
+
+\begin{comment}
 $:\rightsquigarrow$
 アトラクション盆地（Basin of Attraction）の集合$\tilde{\Psi}$、アトラクション盆地に収束した解$\Psi$
 % --- アトラクション盆地空間（Basin of Attraction Space）の基底分割 ---
@@ -48,7 +50,6 @@ $:\rightsquigarrow$
     \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:neutral}} \\
     \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:neutral}}
 \end{align}
-
 % --- 情動ドライブ軸（Drive-wise Decomposition） ---
 \begin{align}
     \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{profit}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:profit}} \\
@@ -60,6 +61,7 @@ $:\rightsquigarrow$
 \begin{equation}
     \tilde{\Psi}^{\mathrm{ego}} \equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{neutral}} = \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect}}
 \end{equation}
+\end{comment}
 
 \include{src/chapters/colophon}
 \include{src/chapters/acknowledgements}
@@ -109,6 +111,15 @@ $:\rightsquigarrow$
 \section{原因$\Psi^{ego}_{cause}$、ナラティブ確信$\Psi^{ego}_{causality}$、原因確信$\Psi^{ego}_{effect}$}
 \section{Egoの目標値としての確信 $\Omega^{\mathrm{ego}}_{mathrm{profit}}$と回避目標としての確信$\Omega^{\mathrm{ego}}_{mathrm{profit}}$}
 \section{破滅的ナラティブへの収束と自己破壊的ホメオスタシス}
+
+\begin{equation}
+    \EnvNoise \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}
+    \begin{ConflictLoop}
+        \psi_1 \\
+        \psi_2 \\
+        \psi_3
+    \end{ConflictLoop}
+\end{equation}|
 %\chapter{DMNのマイクロ・ストラテジー: エゴのナラティブ}
 
 %DONE
