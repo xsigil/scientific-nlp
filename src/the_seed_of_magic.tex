@@ -83,7 +83,7 @@
 \maketitle
 \tableofcontents
 $:\rightsquigarrow$
-アトラクション盆地（Basin of Attraction）の集合$\tilde{\Psy}$、アトラクション盆地に収束した解$\Psy$
+アトラクション盆地（Basin of Attraction）の集合$\tilde{\Psi}$、アトラクション盆地に収束した解$\Psi$
 % --- アトラクション盆地空間（Basin of Attraction Space）の基底分割 ---
 \begin{align}
     \tilde{\Psi} &\equiv \tilde{\Psi}^{\mathrm{ego}} \cup \tilde{\Psi}^{\mathrm{wisdom}} \cup \tilde{\Psi}^{\mathrm{neutral}} \\
@@ -116,26 +116,6 @@ $:\rightsquigarrow$
 \begin{equation}
     \tilde{\Psi}^{\mathrm{ego}} \equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{neutral}} = \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect}}
 \end{equation}
-
-
-%\begin{align}
-%    \tilde{\Psy}                     &\equiv \tilde{\Psy}^{\mathrm{ego}} \cup \tilde{Psy}^{\mathrm{wisdom}} \cup \tilde{Psy}^{\mathrm{neutral}} \\
-%    \tilde{\Psy}^{\mathrm{ego}}      &\equiv \{\Psy^{\mathrm{ego}}_1, \Psy^{\mathrm{ego}}_2, \cdots , \Psy^{\mathrm{ego}}_n\} \\
-%    \tilde{\Psy}^{\mathrm{wisdom}}   &\equiv \{\Psy^{\mathrm{wisdom}}_1, \Psy^{\mathrm{wisdom}}_2, \cdots , \Psy^{\mathrm{wisdom}}_n\} \\
-%    \tilde{\Psy}^{\mathrm{neutral}}  &\equiv \{\Psy^{\mathrm{neutral}}_1, \Psy^{\mathrm{neutral}}_2, \cdots , \Psy^{\mathrm{neutral}}_n\} \\
-%
-%
-%    \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual cause}} &\equiv \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual cause:profit}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual cause:threat}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual cause:neutral}} \
-%    \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual causality}} &\equiv \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual causality:profit}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual causality:threat}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual causality:neutral}} \
-%    \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual effect}} &\equiv \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual effect:profit}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual effect:threat}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual effect:neutral}} \
-%    \tilde{\Psy}^{\mathrm{ego}} &\equiv \tilde{\Psy}^{\mathrm{ego}}{\mathrm{profit}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{threat}} \cup \tilde{\Psy}^{\mathrm{ego}}_{\mathrm{neutral}}
-%\end{align}
-%
-%\begin{align}
-%    \tilde{\Psy}^{\mathrm{ego}}{\mathrm{profit}} &\equiv \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual cause:profit}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual causality:profit}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual effect:profit}} \
-%    \tilde{\Psy}^{\mathrm{ego}}{\mathrm{threat}} &\equiv \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual cause:threat}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual causality:threat}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual effect:threat}} \
-%    \tilde{\Psy}^{\mathrm{ego}}{\mathrm{neutral}} &\equiv \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual cause:neutral}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual causality:neutral}} \cup \tilde{\Psy}^{\mathrm{ego}}{\mathrm{virtual effect:neutral}}
-%\end{align}
 
 \include{src/chapters/colophon}
 \include{src/chapters/acknowledgements}
@@ -182,7 +162,7 @@ $:\rightsquigarrow$
 \section{サイバネティクスからサイコ・サイバネティクスへ}
 %\section{サイバネティック神経準ベイズ推論システム\texttrademark：目標追従系としての確信$\Omega^{\mathrm{ego}}_{\mathrm{predict:profit}}$と目標回避系としての確信$\Omega^{\mathrm{ego}}_{\mathrm{predict:threat}}$}
 \section{サイバネティック神経準ベイズ推論システム\texttrademark の特性}
-\section{入力確信$\Omega^{ego}_{input}$、ナラティブ確信$\Omega^{ego}_{narrative}、原因確信$\Omega^{ego}_{cause}$
+\section{原因$\Psi^{ego}_{cause}$、ナラティブ確信$\Psi^{ego}_{causality}$、原因確信$\Psi^{ego}_{effect}$}
 \section{Egoの目標値としての確信 $\Omega^{\mathrm{ego}}_{mathrm{profit}}$と回避目標としての確信$\Omega^{\mathrm{ego}}_{mathrm{profit}}$}
 \section{破滅的ナラティブへの収束と自己破壊的ホメオスタシス}
 %\chapter{DMNのマイクロ・ストラテジー: エゴのナラティブ}
@@ -224,6 +204,10 @@ $:\rightsquigarrow$
 \lstinputlisting[style=license]{./LICENSE}
 
 \begin{thebibliography}{99}
+    \bibitem{Bishop2006}
+    Christopher~M. Bishop, 
+    \newblock \emph{Pattern Recognition and Machine Learning}, 
+    \newblock Information Science and Statistics, Springer, New York, 2006.
 
 \bibitem{bandler1975structure}
 Bandler, R., \& Grinder, J. (1975). \textit{The Structure of Magic I: A Book About Language and Therapy}. Science and Behavior Books.
@@ -235,7 +219,7 @@ Bandler, R., \& Grinder, J. (1975). \textit{Patterns of the Hypnotic Techniques 
 Wiener, N. (1948). \textit{Cybernetics: Or Control and Communication in the Animal and the Machine}. MIT Press.
 
 \bibitem{maltz1960psycho}
-Maltz, M. (1960). \textit{Psycho-Cybernetics: A New Way to Get More Living Out of Life}. Prentice-Hall.
+Maltz, M. (1960). \textit{Psicho-Cybernetics: A New Way to Get More Living Out of Life}. Prentice-Hall.
 
 \bibitem{linden2015touch}
 Linden, D. J. (2015). \textit{Touch: The Science of Hand, Heart, and Mind}. Viking. （岩坂彰 訳 『触れることの科学』 河出書房新社, 2016）
@@ -253,7 +237,7 @@ Gazzaniga, M. S. (2011). \textit{Who's in Charge? Free Will and the Science of t
 Damasio, A. (2003). \textit{Looking for Spinoza: Joy, Sorrow, and the Feeling Brain}. Harcourt. （田中三彦 訳 『スピノザを求めて』 ダイヤモンド社, 2005）
 
 \bibitem{berne1964games}
-Berne, E. (1964). \textit{Games People Play: The Basic Psychology of Human Relationships}. Grove Press.
+Berne, E. (1964). \textit{Games People Play: The Basic Psichology of Human Relationships}. Grove Press.
 
 \bibitem{mcgrayne2011theory}
 McGrayne, S. B. (2011). \textit{The Theory That Would Not Die: How Bayes' Rule Cracked the Enigma Code, Hunted Down Russian Submarines, and Emerged Triumphant from Two Centuries of Controversy}. Yale University Press. （富永星 訳 『異端の統計学 ベイズ』 草思社, 2013）
@@ -297,7 +281,7 @@ Shakespeare, W. (1622). \textit{The Tragedy of Othello, the Moor of Venice}. Tho
 Rathje, W., \& Murphy, C. (1992). \textit{Rubbish!: The Archaeology of Garbage}. HarperCollins. （ガーボロジー（ゴミ考古学）の原典。自己申告と物理的痕跡ログの乖離を実証したプロファイリング研究）
 
 \bibitem{haley1973uncommon}
-Haley, J. (1973). \textit{Uncommon Therapy: The Psychiatric Techniques of Milton H. Erickson, M.D.}. W. W. Norton \& Company. （高石昇 訳 『アンコモン・セラピー ―― ミルトン・エリクソンの戦略的手法』 二瓶社, 1999）
+Haley, J. (1973). \textit{Uncommon Therapy: The Psichiatric Techniques of Milton H. Erickson, M.D.}. W. W. Norton \& Company. （高石昇 訳 『アンコモン・セラピー ―― ミルトン・エリクソンの戦略的手法』 二瓶社, 1999）
 
 \bibitem{rosen1982myvoice}
 Rosen, S. (Ed.). (1982). \textit{My Voice Will Go with You: The Teaching Tales of Milton H. Erickson}. W. W. Norton \& Company. （成瀬悟策 監訳 『私の声はあなたとともに ―― ミルトン・エリクソンの教えの物語』 二瓶社, 1998）
@@ -771,7 +755,7 @@ Scientific NLP の観点において、この第3世代ナラティブは**多�
 \end{comment}
 
 \begin{comment}
-    ロバート・ディルツのサイコロジカル・ジオグラフィ−( Psychological Geography ) は引用
+    ロバート・ディルツのサイコロジカル・ジオグラフィ−( Psichological Geography ) は引用
 \end{comment}
 
 \begin{comment}
@@ -792,12 +776,17 @@ Scientific NLP の観点において、この第3世代ナラティブは**多�
     もし、厳密に確率を計算したいのならば、フェルミ推定か頻度統計を事前確率を計算するために使え。
     \begin{formal}[認識工学における実戦公理：頻度論の脱構築]
 \label{axiom:epigraph_bayesian_pragmatism}
-\textbf{現実世界を生き延びたければ、頻度統計（Frequentism）は一旦捨てろ。}\\
+\textbf{現実世界を生き延びたければ、頻度統計（Frequentism）は一旦捨てろ。}\\\
 人生および臨床の最前線は、不可逆かつ反復不能な「一期一会（Non-ergodic Events）」の連続で満ち溢れている。
 サンプルサイズ $N \to \infty$ の無限試行を前提とする頻度論の構文糖を待つ暇はない。
 
 現場において事前確率は、直観とフェルミ推定（Fermi Estimation）によって即座に配備し、否定証拠のベイズ更新によって高速収束させよ。
 \textbf{ただし――第三者への完全な論理的反論封殺のために厳密な確率を計算したいのであれば、大域的頻度統計と局所的フェルミ推定を事前確率（Prior）の導出のために掛け合わせよ。}
 \end{formal}
+\end{comment}
+
+\begin{comment}
+    Othello Filterの人事採用試験への応用について書く。
+    仮説として、この人物は求める人材の要件を満たしている。を立てる。
 \end{comment}
 \end{document}
