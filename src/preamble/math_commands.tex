@@ -27,13 +27,19 @@
 \newcommand{\NeuralQuasiBayesianUpdateConviction}[2]{%
   :\xrightsquigarrow[#2]{#1}%
 }
-\newcommand{\NQSpace}{\Psi}
+\newcommand{\NQSpace}{\hat{\Psi}}
+\newcommand{\VirtualConvictionGroup}{\Psi}
 \newcommand{\EnvNoise}{e_{\mathrm{noise}}}
 \newcommand{\VNoise}{v_{\mathrm{noise}}}
 \newcommand{\ANoise}{a_{\mathrm{noise}}}
 \newcommand{\KNoise}{k_{\mathrm{noise}}}
 \newcommand{\ONoise}{o_{\mathrm{noise}}}
 \newcommand{\GNoise}{g_{\mathrm{noise}}}
+
+\newcommand{\NeuralQuasiBayesianExploration}[1]{%
+  :\xrightsquigarrow[]{#1}\mathrel{\Vert}%
+}
+
 
 % 葛藤・非決定ループ（縦レムニスケート束）: "(" 状湾曲・左右反転修正版
 \NewEnviron{ConflictLoop}[1][]{%
@@ -87,21 +93,96 @@
   \end{tikzpicture}%
 }
 
-% --- Conviction ---
+% --- Coupled State / Cognitive Interaction Tuple ---
+% 任意個の引数をコンマ区切りで許容する可変タプル
+% 使い方:
+%   \CoupledState{\EnvNoise, \VirtualConviction_0}
+%   \CoupledState{\EnvNoise, \VNoise, \ANoise, \VirtualConviction_0}
+\newcommand{\CoupledState}[1]{\left\langle #1 \right\rangle}
+
+% --- State (見出し・目次・添字 \State_0・引数 \State{DMN} 完全保護版) ---
+\makeatletter
+\DeclareRobustCommand{\State}{%
+  \mathcal{S}%
+  \@ifnextchar\bgroup{\@StateWithArg}{}%
+}
+\def\@StateWithArg#1{%
+  \if\relax\detokenize{#1}\relax\else
+    \mathopen{(}#1\mathclose{)}%
+  \fi
+}
+\makeatother
+
+\newcommand{\AlteredState}{\State{\mathrm{ALTER}}}
+\newcommand{\DMNState}{\State{\mathrm{DMN}}}
+\newcommand{\CENState}{\State{\mathrm{CEN}}}
+
+% --- 離散時間ステップ遷移（太いブロック矢印: 2引数・TeXボックス安全計測版） ---
+\newdimen\discStepTopDim
+\newdimen\discStepBotDim
+\newdimen\discStepMaxDim
+
+% 既存の定義があれば破棄して再定義
+\providecommand{\DiscreteStep}{}
+\renewcommand{\DiscreteStep}[2]{%
+  \mathrel{%
+    % TeX ネイティブのボックス展開で幅を安全に測定
+    \settowidth{\discStepTopDim}{$\scriptstyle #1$}%
+    \settowidth{\discStepBotDim}{$\scriptstyle #2$}%
+    \ifdim\discStepTopDim>\discStepBotDim
+      \discStepMaxDim=\discStepTopDim
+    \else
+      \discStepMaxDim=\discStepBotDim
+    \fi
+    \ifdim\discStepMaxDim<14pt
+      \discStepMaxDim=14pt
+    \fi
+    \advance\discStepMaxDim by 10pt
+    \begin{tikzpicture}[baseline=-0.6ex]
+      % 太い横向きブロック矢印
+      \node[
+        single arrow,
+        draw=none,
+        fill=black,
+        single arrow head extend=2.5pt,
+        minimum height=\discStepMaxDim,
+        minimum width=5.5pt,
+        inner sep=0pt
+      ] (arrow) {};
+
+      % 上側ラベル (#1)
+      \if\relax\detokenize{#1}\relax\else
+        \node[yshift=7pt, font=\scriptsize, inner sep=0pt] at (arrow.north) {$#1$};
+      \fi
+
+      % 下側ラベル (#2)
+      \if\relax\detokenize{#2}\relax\else
+        \node[yshift=-7pt, font=\scriptsize, inner sep=0pt] at (arrow.south) {$#2$};
+      \fi
+    \end{tikzpicture}%
+  }%
+}
+
+
+% --- Virtual Conviction ---
 \newcommand{\VirtualConviction}{\psi}
 
 % --- Classical NLP (Primitive points) ---
 \newcommand{\classicV}{\ensuremath{V}}
 \newcommand{\classicA}{\ensuremath{A}}
+\newcommand{\classicAd}{\ensuremath{Ad}}
 \newcommand{\classicK}{\ensuremath{K}}
 \newcommand{\classicO}{\ensuremath{O}}
 \newcommand{\classicG}{\ensuremath{G}}
+
 
 % --- Scientific NLP (Continuous manifolds / State spaces) ---
 % \classicalV \equiv \scientificV 
 % ------------------------------------------------------------
 \newcommand{\scientificV}{\ensuremath{\mathcal{V}}}
+\newcommand{\scientificVd}{\ensuremath{\mathcal{Vd}}}
 \newcommand{\scientificA}{\ensuremath{\mathcal{A}}}
+\newcommand{\scientificAd}{\ensuremath{\mathcal{Ad}}}
 \newcommand{\scientificK}{\ensuremath{\mathcal{K}}}
 \newcommand{\scientificO}{\ensuremath{\mathcal{O}}}
 \newcommand{\scientificG}{\ensuremath{\mathcal{G}}}

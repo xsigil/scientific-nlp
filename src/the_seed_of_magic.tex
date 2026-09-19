@@ -17,11 +17,11 @@
 
 % Neural Bayes Update and Convergence
 % 神経準ベイズ推論機の準ベイズ推論と準ベイズ更新プロセス
-\newcommand{\nbuc}[2]{:\xrightarrow[#2]{#1}}
-\newcommand{\nbscanning}[1]{\nbuc{#1}{\emptyset} \mid}
-\newcommand{\State}{\mathcal{S}}
-% Unlimitted Unknown
-\newcommand{\UU}{\aleph}
+%\newcommand{\nbuc}[2]{:\xrightarrow[#2]{#1}}
+%\newcommand{\nbscanning}[1]{\nbuc{#1}{\emptyset} \mid}
+%\newcommand{\State}{\mathcal{S}}
+%% Unlimitted Unknown
+%\newcommand{\UU}{\aleph}
 
 \begin{document}
 \maketitle
@@ -112,14 +112,30 @@ $:\rightsquigarrow$
 \section{Egoの目標値としての確信 $\Omega^{\mathrm{ego}}_{mathrm{profit}}$と回避目標としての確信$\Omega^{\mathrm{ego}}_{mathrm{profit}}$}
 \section{破滅的ナラティブへの収束と自己破壊的ホメオスタシス}
 
+
 \begin{equation}
-    \EnvNoise \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}
+    \CoupledState{\EnvNoise, \VirtualConviction_0, {\State}_0}  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}
     \begin{ConflictLoop}
         \VirtualConviction_1 \\
         \VirtualConviction_2 \\
         \VirtualConviction_3
     \end{ConflictLoop}
+    \DiscreteStep{t}{t+1}
+    \CoupledState{\EnvNoise, \VirtualConviction_{\text{1 or 2 or 3}}, \State_1} \NeuralQuasiBayesianUpdateConviction{\NQSpace'}{\NQSpace''} \VirtualConviction_4
+    \DiscreteStep{t+1}{t+2}
+    \CoupledState{\EnvNoise, \VirtualConviction_4, \State_2} \NeuralQuasiBayesianUpdateConviction{\NQSpace''}{\NQSpace'''} \VirtualConviction_5
 \end{equation}
+
+
+\begin{equation}
+    \VirtualConvictionGroup \equiv \{ \VirtualConviction_1, \VirtualConviction_2, \cdots, \VirtualConviction_n \}
+\end{equation}
+
+\begin{equation}
+    \AlteredState \equiv \CoupledState{\EnvNoise, \VirtualConviction, \State} \NeuralQuasiBayesianExploration{
+    \NQSpace}
+\end{equation}
+
 %\chapter{DMNのマイクロ・ストラテジー: エゴのナラティブ}
 
 %DONE
