@@ -453,3 +453,36 @@ Scientific NLP の観点において、この第3世代ナラティブは**多�
     仮説として、この人物は求める人材の要件を満たしている。を立てる。
 \end{comment}
 
+
+\begin{comment}
+    \subsection{ケーススタディ：自己参照的パターン認識のベイズ的脱構築}
+
+    \begin{legalframe}
+        \textbf{\textsf{【プロトコル実行ログ：環境音響シグナルの誤検知と反転】}}
+        \vspace{0.8em}
+
+        \textbf{観測エビデンス $D$:} \\
+        深夜のコンビニエンスストアに入店した直後、店内放送から特定セキュリティ会社の音声CMが再生された。
+
+        \vspace{0.5em}
+        \textbf{初期状態（白の過剰確信）：} \\
+        \[
+            \Psi^{\mathrm{ego}} = P(H_{\mathrm{ego}} \mid D) \approx 1
+        \]
+        仮説 $H_{\mathrm{ego}}$: スマートフォンの近接ビーコンまたは生体追跡型広告モジュールが自身をパターンマッチングし、リアルタイムRTBにより店舗音響空間へピンポイント介入を実行した。
+
+        \vspace{0.5em}
+        \textbf{Othello Filter\texttrademark による反転走査（黒駒の打設）：}
+        \begin{enumerate}[leftmargin=1.5em, itemsep=0.2em]
+            \item \textbf{事前オッズの評価:} 
+                全域巡回型ブロードキャストである事前確率 $P(H_{\mathrm{null}})$ に対し、極低遅延な特定個人向け動的音響配信インフラが存在する事前確率 $P(H_{\mathrm{ego}})$ は物理的・経済的制約から $\frac{P(H_{\mathrm{ego}})}{P(H_{\mathrm{null}})} \ll 10^{-6}$ である。
+            \item \textbf{対数オッズの加算:} 
+                エビデンス $D$ がもたらすチューリングのデシバン値 $\mathrm{db}(D)$ は、基底確率の圧倒的な落差を埋めるには至らない。
+        \end{enumerate}
+
+        \vspace{0.5em}
+        \textbf{確定解（黒への完全反転）とシステム遷移：} \\
+        「セキュリティ会社のCMが流れる定時スケジュール枠の音響到達圏内に、自身の物理座標が侵入しただけである。」\\
+        自己参照的認知バイアスの切断完了 $\implies \StateZero$ へ即時復帰。
+    \end{legalframe}
+\end{comment}
