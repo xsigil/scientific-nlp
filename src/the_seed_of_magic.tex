@@ -38,12 +38,6 @@ $:\rightsquigarrow$
     \tilde{\Psi}^{\mathrm{neutral}} &\equiv \{\Psi^{\mathrm{neutral}}_1, \Psi^{\mathrm{neutral}}_2, \dots, \Psi^{\mathrm{neutral}}_n\}
 \end{align}
 
-\begin{align}
-    \mathrm{Hypnosis} &\equiv \left( \frac{\mathcal{P}}{\mathcal{T}} \gg \theta_{\mathrm{defense}} \right) \;\land\; \mathrm{State}(\mathrm{ALTER})
-    \mathcal{P} &\equiv \mathrm{Profit}
-    \mathcal{T} &\equiv \mathrm{Threat})
-\end{align}
-
 % --- 因果ステージ軸（Stage-wise Decomposition） ---
 \begin{align}
     \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:neutral}} \\
@@ -131,13 +125,25 @@ $:\rightsquigarrow$
     \VirtualConvictionGroup \equiv \{ \VirtualConviction_1, \VirtualConviction_2, \cdots, \VirtualConviction_n \}
 \end{equation}
 
+
 \begin{equation}
-    %FIXME: AlteredState は NeuralQuasiBayesianExploration であると同時に、術者との治療的ダブルバインドが結ばれている必要がある。
-    % また、ナラティブ確信が確定していないNeuralQuasiBayesianExplorationである。下記の数式はまだ、言いたいことが全然表現できていないので要改善。
-    % \psi_{predict:profit}と\psi_{predict:threat}はサイコサイバネティクスのゴールとしてだ。
-    \AlteredState \equiv \CoupledState{\EnvNoise, \VirtualConviction, \State} \NeuralQuasiBayesianExploration{
-    \NQSpace} \land (\psi_{predict:profit} \lor \psi_{predict:threat})
+    \AlteredState \equiv 
+    \CoupledState{\EnvNoise, \VirtualConviction, \State} \NeuralQuasiBayesianExploration{\NQSpace}^{\mathrm{narrative:threat}}
+    \quad \bowtie \quad
+    \vcenter{\hbox{
+        \begin{ConflictLoop}
+            \PredictProfitVirtualConviction \\ 
+            \PredictThreatVirtualConviction
+        \end{ConflictLoop}
+    }}
 \end{equation}
+
+\begin{align}
+    \mathrm{Hypnosis} &\equiv \left( \frac{\mathcal{P}}{\mathcal{T}} \gg \theta_{\mathrm{defense}} \right) \;\lor\; \mathrm{State}(\mathrm{ALTER}) \\
+    \mathcal{P} &\equiv \mathrm{Profit} \\
+    \mathcal{T} &\equiv \mathrm{Threat}
+\end{align}
+
 
 %\chapter{DMNのマイクロ・ストラテジー: エゴのナラティブ}
 
