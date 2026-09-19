@@ -5,8 +5,10 @@
 \chapter{実装：Flipper Zero による生体暗号解読のオフロード}
 \begin{center}
     \includegraphics[width=0.7\linewidth,height=8cm,keepaspectratio]{./src/images/Flipper_Zero.jpg}
+    \caption{Flipper Zero（Sub-GHzスキャンモード動作時）\newline
+    {\tiny Photo by Jedi95 / Wikimedia Commons / CC BY-SA 4.0}}
+    \label{fig:flipper_zero}
 \end{center}
-
 現場でのプロファイリングや対面観察において、プロファイラーの内部状態を
 $\mathcal{S}(\mathrm{ZERO})$ に維持し、CEN（中央実行系）の計算リソースを相手の微小動作（$\lambda, \Lambda$）のキャリブレーションに $100\%$ 集中させるためには、デシバンの逐次暗算プロセスそのものを外部ハードウェアへとオフロードすることが極めて有効である。
 
