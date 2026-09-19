@@ -39,8 +39,7 @@ $:\rightsquigarrow$
 \end{align}
 
 % --- 因果ステージ軸（Stage-wise Decomposition） ---
-\begin{align}
-    \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:neutral}} \\
+\begin{align} \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:neutral}} \\
     \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:neutral}} \\
     \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:neutral}}
 \end{align}
@@ -106,19 +105,73 @@ $:\rightsquigarrow$
 \section{Egoの目標値としての確信 $\Omega^{\mathrm{ego}}_{mathrm{profit}}$と回避目標としての確信$\Omega^{\mathrm{ego}}_{mathrm{profit}}$}
 \section{破滅的ナラティブへの収束と自己破壊的ホメオスタシス}
 
+\begin{equation}
+    \Evidence \MathBayesianUpdateCollapse{\MathHypoSpace}{\MathHypoSpace'} \MathHypothesis
+\end{equation}
 
 \begin{equation}
-    \CoupledState{\EnvNoise, \VirtualConviction_0, {\State}_0}  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}
+    \NeuralQuasiEvidence \equiv \CoupledState{\EnvNoise, \VirtualConviction, \State}
+\end{equation}
+
+\begin{equation}
+    \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction
+\end{equation}
+
+%\begin{align}
+%    \NeuralQuasiEvidence_1 \NeuralQuasiBayesianUpdateConviction{\NQSpace_1}{\NQSpace_2} \VirtualConviction_1 
+%    &\DiscreteStep{}{} \NeuralQuasiEvidence_2 \NeuralQuasiBayesianUpdateConviction{\NQSpace_2}{\NQSpace_3} \VirtualConviction_2 
+%    \DiscreteStep{}{} \dots 
+%    \DiscreteStep{}{} \NeuralQuasiEvidence_n \NeuralQuasiBayesianUpdateConviction{\NQSpace_n}{\NQSpace_{n+1}} \VirtualConviction_n 
+%    \DiscreteStep{}{} \dots \\
+%    &\equiv \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}
+%    \vcenter{\hbox{
+%        \begin{ConflictLoop}
+%            \VirtualConviction_1 \\
+%            \VirtualConviction_2
+%        \end{ConflictLoop}
+%    }}
+%\end{align}
+
+\begin{align}
+    % 1行目: 開かれた時間発展（逐次更新の連鎖）
+    \NeuralQuasiEvidence_1 \NeuralQuasiBayesianUpdateConviction{\NQSpace_1}{\NQSpace_2} \VirtualConviction_1 
+    &\DiscreteStep{}{} \NeuralQuasiEvidence_2 \NeuralQuasiBayesianUpdateConviction{\NQSpace_2}{\NQSpace_3} \VirtualConviction_2 
+    \DiscreteStep{}{} \dots \\
+    % 2行目: 閉じたリミットサイクル（二重拘束へのトラップ）
+    &\equiv \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}
+    \vcenter{\hbox{
+        \begin{ConflictLoop}
+            \VirtualConviction_1 \\
+            \VirtualConviction_2
+        \end{ConflictLoop}
+    }}
+\end{align}
+
+\begin{equation}
+    \NeuralQuasiEvidence_0 \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}
     \begin{ConflictLoop}
         \VirtualConviction_1 \\
         \VirtualConviction_2 \\
         \VirtualConviction_3
     \end{ConflictLoop}
     \DiscreteStep{t}{t+1}
-    \CoupledState{\EnvNoise, \VirtualConviction_{\text{1 or 2 or 3}}, \State_1} \NeuralQuasiBayesianUpdateConviction{\NQSpace'}{\NQSpace''} \VirtualConviction_4
+    \NeuralQuasiEvidence_1 \NeuralQuasiBayesianUpdateConviction{\NQSpace'}{\NQSpace''} \VirtualConviction_4
     \DiscreteStep{t+1}{t+2}
-    \CoupledState{\EnvNoise, \VirtualConviction_4, \State_2} \NeuralQuasiBayesianUpdateConviction{\NQSpace''}{\NQSpace'''} \VirtualConviction_5
+    \NeuralQuasiEvidence_2 \NeuralQuasiBayesianUpdateConviction{\NQSpace''}{\NQSpace'''} \VirtualConviction_5
 \end{equation}
+
+%\begin{equation}
+%    \CoupledState{\EnvNoise, \VirtualConviction_0, {\State}_0}  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}
+%    \begin{ConflictLoop}
+%        \VirtualConviction_1 \\
+%        \VirtualConviction_2 \\
+%        \VirtualConviction_3
+%    \end{ConflictLoop}
+%    \DiscreteStep{t}{t+1}
+%    \CoupledState{\EnvNoise, \VirtualConviction_{\text{1 or 2 or 3}}, \State_1} \NeuralQuasiBayesianUpdateConviction{\NQSpace'}{\NQSpace''} \VirtualConviction_4
+%    \DiscreteStep{t+1}{t+2}
+%    \CoupledState{\EnvNoise, \VirtualConviction_4, \State_2} \NeuralQuasiBayesianUpdateConviction{\NQSpace''}{\NQSpace'''} \VirtualConviction_5
+%\end{equation}
 
 
 \begin{equation}
@@ -128,7 +181,7 @@ $:\rightsquigarrow$
 
 \begin{equation}
     \AlteredState \equiv 
-    \CoupledState{\EnvNoise, \VirtualConviction, \State} \NeuralQuasiBayesianExploration{\NQSpace}^{\mathrm{narrative:threat}}
+    \left( \NeuralQuasiEvidence \NeuralQuasiBayesianExploration{\NQSpace}^{\mathrm{narrative:threat}}
     \quad \land \quad
     \vcenter{\hbox{
         \begin{ConflictLoop}
@@ -136,12 +189,13 @@ $:\rightsquigarrow$
             \PredictThreatVirtualConviction
         \end{ConflictLoop}
     }}
+    \right)
 \end{equation}
 
 \begin{align}
     \mathrm{Hypnosis} &\equiv \left( \frac{\mathcal{P}}{\mathcal{T}} \gg \theta_{\mathrm{defense}} \right) \;\lor\; \AlteredState \\
-    \mathcal{P} &\equiv \mathrm{Profit} \\
-    \mathcal{T} &\equiv \mathrm{Threat}
+    \mathcal{P} &\equiv \text{Ego Profit} \\
+    \mathcal{T} &\equiv \text{Ego Threat}
 \end{align}
 
 
