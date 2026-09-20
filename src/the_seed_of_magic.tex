@@ -184,6 +184,11 @@
     = \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}, \mathrm{predict}\}} \VirtualConvictionGroup^{\mathrm{ego}}_s
 \end{equation}
 
+\begin{align}
+    \WholeSelf_t &\equiv \CoupledState{\VirtualConviction_t, \NQSpace_t, \State, \lambda_t, \Lambda_t, {\scientificAd}_t} \\
+    \WholeSelf_{t+1} &= \mathcal{F}(\WholeSelf_{t}, \EnvNoise_{t})
+\end{align}
+
 \begin{equation}
     \text{Error}_{\mathrm{track}} = \| \text{Current State} - \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}, \mathrm{predict}\}} \psi^{\mathrm{ego}}_{\mathrm{s}}(\mathrm{profit}) \| \xrightarrow{\text{Feedback Control}} \Delta (\lambda, \Lambda, A_d) \longrightarrow 0
 \end{equation}
@@ -191,11 +196,6 @@
 \begin{align}
     \text{Error}_{\mathrm{avoid}} &= \max\left( 0,\, D_{\mathrm{safe}} - \| \text{Current State} - \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}, \mathrm{predict}\}} \psi^{\mathrm{ego}}_{\mathrm{s}}(\mathrm{threat}) \| \right) \\
                                   &\xrightarrow{\text{Feedback Control}} \Delta (\lambda, \Lambda, A_d) \longrightarrow 0
-\end{align}
-
-\begin{align}
-    \WholeSelf_t &\equiv \CoupledState{\NeuralQuasiEvidence_t, \lambda_t, \Lambda_t, \NQSpace_t, {\scientificAd}_t} \\
-    \WholeSelf_{t+1} &= \mathcal{F}(\WholeSelf_{t})
 \end{align}
 
 生体コンピュータとしての人間の認知および行動は、超越的な「霊魂」や「自由意志」によって駆動しているのではない。
