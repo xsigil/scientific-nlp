@@ -240,6 +240,24 @@
     \end{cases}
 \end{equation}
 
+\begin{table}[htbp]
+    \centering
+    \caption{数学的ベイズ推論機と神経準ベイズ推論機の演算子対照}
+    \label{tab:bayes_vs_neuro_quasi_bayes}
+    \renewcommand{\arraystretch}{1.8} % 行間を広げて二段組の演算子マクロの潰れを防止
+    \begin{tabular}{lcc}
+        \toprule
+        & \textbf{Mathematical Bayes Inference Engine} 
+        & \textbf{Neural Quasi-Bayesian Inference Engine} \\
+        \midrule
+        推論演算子 
+        & $\MathBayesianUpdateCollapse{\MathHypoSpace}{\MathHypoSpace'}$ 
+        & $\NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
 
 生体コンピュータとしての人間の認知および行動は、超越的な「霊魂」や「自由意志」によって駆動しているのではない。
 客観的な物理・情報科学の視点に立つならば、人間とは「直前の一瞬の内的状態」と「今この瞬間に環境から受容した感覚刺激」を入力変数とし、次の一瞬の内的状態を確定的に出力し続ける、非線形な
