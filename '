@@ -81,23 +81,23 @@
 % --- 基底エビデンスの結合定義（入力層） ---
 \begin{align}
     \scientificV  &\equiv \CoupledState{\VNoise,  \VirtualConviction, \State} \\
+    \scientificVd &\equiv \mathcal{L}_{\mathrm{digital}}\left(\CoupledState{\VdNoise, \VirtualConviction', \State} \right \\
     \scientificA  &\equiv \CoupledState{\ANoise,  \VirtualConviction, \State} \\
+    \scientificAd &\equiv \mathcal{L}_{\mathrm{digital}}\left( \CoupledState{\EnvNoise', \VirtualConviction', \State'} \right) \\
     \scientificK  &\equiv \CoupledState{\KNoise,  \VirtualConviction, \State} \\
     \scientificO  &\equiv \CoupledState{\ONoise,  \VirtualConviction, \State} \\
-    \scientificG  &\equiv \CoupledState{\GNoise,  \VirtualConviction, \State} \\
-    \scientificVd &\equiv \mathcal{L}_{\mathrm{digital}}\left(\CoupledState{\VdNoise', \VirtualConviction', \State'} \right) \\
-    \scientificAd &\equiv \mathcal{L}_{\mathrm{digital}}\left( \CoupledState{\EnvNoise', \VirtualConviction', \State'} \right) 
+    \scientificG  &\equiv \CoupledState{\GNoise,  \VirtualConviction, \State}
 \end{align}
 
 % --- 古典NLPモダリティの神経準ベイズ包摂（現象層） ---
 \begin{align}
-    \classicV  &\equiv \scientificV  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction' \\
-    \classicVd &\equiv \scientificVd \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction' \\
-    \classicA  &\equiv \scientificA  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction' \\
-    \classicAd &\equiv \scientificAd \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction' \\
-    \classicK  &\equiv \scientificK  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction' \\
-    \classicO  &\equiv \scientificO  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction' \\
-    \classicG  &\equiv \scientificG  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction'
+    \classicV  &\equiv \scientificV  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+    \classicVd &\equiv \scientificVd \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+    \classicA  &\equiv \scientificA  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+    \classicAd &\equiv \scientificAd \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+    \classicK  &\equiv \scientificK  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+    \classicO  &\equiv \scientificO  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+    \classicG  &\equiv \scientificG  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction
 \end{align}
 
 \begin{align}
@@ -385,95 +385,6 @@
   \caption{尤度比空間におけるデシバン曲面 $W = 10 \log_{10} \frac{P(D \mid H)}{P(D \mid \neg H)}$}
   \label{fig:deciban_surface}
 \end{figure}
-
-\subsection{珍しさの4段階スケールと尤度比マトリクス}
-
-観測事象 $D$ の出現頻度を、以下の4段階の確率値として定義する。
-\begin{itemize}
-\item \textbf{普通（Common）}：$P = 0.5$（2回に1回程度見られる、日常的な反応）
-\item \textbf{やや稀（Uncommon）}：$P = 0.1$（10回に1回程度見られる、限定的な反応）
-\item \textbf{稀（Rare）}：$P = 0.01$（100回に1回程度しか生じない、特異な反応）
-\item \textbf{極めて稀（Very Rare）}：$P = 0.001$（1000回に1回レベルの、極めて例外的な反応）
-\end{itemize}
-
-仮説 $H$ のもとでの確率 $P(D \mid H)$（行）と、基準仮説 $\neg H$ のもとでの確率 $P(D \mid \neg H)$（列）の組み合わせに対するベイズファクター $\mathrm{BF}$、およびチューリングの証拠の重み（$\text{deciban} = 10 \log_{10} \mathrm{BF}$）を算出したマトリクスを下表に示す。
-\begin{sidewaystable}[htbp]
-  \centering
-  \small
-
-  % --- 下段：事前確率と事前オッズの5段階標準スケール ---
-  \caption{オセロフィルター 事前確率と事前オッズの5段階標準スケール}
-  \label{tab:prior_odds_scale}
-  \begin{tabular}{clccc}
-    \toprule
-    レベル & 状況の定義 & 事前確率 $P(H)$ & 事前オッズ $O(H : \neg H)$ & 事前スコア \\
-    \midrule
-    1 & \textbf{極めて疑わしい（ほぼ確実）} & $0.9$  & $9 : 1 \ (\approx 10)$  & $+10\text{ dB}$ \\
-    2 & \textbf{やや疑わしい（優勢）}       & $0.75$ & $3 : 1$                 & $+5\text{ dB}$  \\
-    3 & \textbf{五分五分（中立・無情報）}   & $0.5$  & $1 : 1$                 & $0\text{ dB}$   \\
-    4 & \textbf{やや否定的（劣勢）}         & $0.25$ & $1 : 3 \ (\approx 0.33)$ & $-5\text{ dB}$  \\
-    5 & \textbf{極めて否定的（滅多にない）} & $0.1$  & $1 : 9 \ (\approx 0.1)$  & $-10\text{ dB}$ \\
-    \bottomrule
-  \end{tabular}
-
-  \vspace{1.8em} % 2つの表の縦の間隔（適宜調整可能）
-
-  % --- 上段：オセロフィルター・マトリックス ---
-  \caption{オセロフィルター・マトリックス}
-  \label{tab:othello_filter_matrix}
-  \begin{tabular}{lcccc}
-    \toprule
-    \multirow{2}{*}{$P(D \mid H)$ の珍しさ} & \multicolumn{4}{c}{$P(D \mid \neg H)$ の珍しさ} \\
-    \cmidrule(lr){2-5}
-    & 普通 ($0.5$) & やや稀 ($0.1$) & 稀 ($0.01$) & 極めて稀 ($0.001$) \\
-    \midrule
-    \textbf{普通} ($0.5$)        & 1 ($0\text{ dB}$)       & 5 ($+7\text{ dB}$)      & 50 ($+17\text{ dB}$)  & 500 ($+27\text{ dB}$) \\
-    \textbf{やや稀} ($0.1$)      & 0.2 ($-7\text{ dB}$)    & 1 ($0\text{ dB}$)       & 10 ($+10\text{ dB}$)  & 100 ($+20\text{ dB}$) \\
-    \textbf{稀} ($0.01$)        & 0.02 ($-17\text{ dB}$)  & 0.1 ($-10\text{ dB}$)   & 1 ($0\text{ dB}$)     & 10 ($+10\text{ dB}$)  \\
-    \textbf{極めて稀} ($0.001$)  & 0.002 ($-27\text{ dB}$) & 0.01 ($-20\text{ dB}$)  & 0.1 ($-10\text{ dB}$) & 1 ($0\text{ dB}$)     \\
-    \bottomrule
-  \end{tabular}
-
-
-\end{sidewaystable}
-
-%\begin{sidewaystable}
-%  \centering
-%  \caption{オセロフィルター・マトリックス}
-%  \label{tab:othello_filter_matrix}
-%  \begin{tabular}{lcccc}
-%    \hline
-%    \multirow{2}{*}{$P(D \mid H)$ の珍しさ} & \multicolumn{4}{c}{$P(D \mid \neg H)$ の珍しさ} \\
-%    \cline{2-5}
-%    & 普通 ($0.5$) & やや稀 ($0.1$) & 稀 ($0.01$) & 極めて稀 ($0.001$) \\
-%    \hline
-%    \textbf{普通} ($0.5$)        & 1 (0 dB)       & 5 (+7 dB)     & 50 (+17 dB)  & 500 (+27 dB) \\
-%    \textbf{やや稀} ($0.1$)      & 0.2 ($-7$ dB)  & 1 (0 dB)      & 10 (+10 dB)  & 100 (+20 dB) \\
-%    \textbf{稀} ($0.01$)        & 0.02 ($-17$ dB) & 0.1 ($-10$ dB) & 1 (0 dB)     & 10 (+10 dB)  \\
-%    \textbf{極めて稀} ($0.001$)  & 0.002 ($-27$ dB) & 0.01 ($-20$ dB) & 0.1 ($-10$ dB) & 1 (0 dB)     \\
-%    \hline
-%  \end{tabular}
-%\end{sidewaystable}
-%
-%\begin{sidewaystable}
-%\centering
-%\caption{事前確率と事前オッズの5段階標準スケール}
-%\label{tab:prior_odds_scale}
-%\begin{tabular}{clccc}
-%\hline
-%レベル & 状況の定義 & 事前確率 $P(H)$ & 事前オッズ $O(H : \neg H)$ & 事前スコア \\
-%\hline
-%1 & \textbf{極めて疑わしい（ほぼ確実）} & $0.9$ & $9 : 1 \ (\approx 10)$ & $+10\text{ dB}$ \\
-%2 & \textbf{やや疑わしい（優勢）} & $0.75$ & $3 : 1$ & $+5\text{ dB}$ \\
-%3 & \textbf{五分五分（中立・無情報）} & $0.5$ & $1 : 1$ & $0\text{ dB}$ \\
-%4 & \textbf{やや否定的（劣勢）} & $0.25$ & $1 : 3 \ (\approx 0.33)$ & $-5\text{ dB}$ \\
-%5 & \textbf{極めて否定的（滅多にない）} & $0.1$ & $1 : 9 \ (\approx 0.1)$ & $-10\text{ dB}$ \\
-%\hline
-%\end{tabular}
-%\end{sidewaystable}
-
-
-
 
 
 生体コンピュータとしての人間の認知および行動は、超越的な「霊魂」や「自由意志」によって駆動しているのではない。
