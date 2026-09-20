@@ -60,7 +60,8 @@
     \pgfmathsetmacro{\w}{6.8}    % ループの横幅（ふくらみ）
     \pgfmathsetmacro{\gap}{14.0}  % 数式左端からの基準マージン
     \pgfmathsetmacro{\bend}{5.0}  % "(" のように中央を左へ張り出させる量 (pt)
-    \pgfmathsetmacro{\d}{0.65}   % カリグラフィーのペン幅オフセット
+    %\pgfmathsetmacro{\d}{0.65}   % カリグラフィーのペン幅オフセット
+    \pgfmathsetmacro{\d}{1.00}   % カリグラフィーのペン幅オフセット
     
     % 上端・下端のX座標（数式側・右寄りに配置）
     \coordinate (baseEnds) at ({\leftX - \gap pt}, 0);
@@ -86,9 +87,9 @@
       .. controls ({\cxEnds - \w pt + 1.1pt}, \botY + 0.4pt) and ({\cxMid - \w pt + 1.1pt}, \midY pt - \loopH pt * 0.6) .. cycle;
 
     % 特異点・葛藤ラベル（左に突き出たくびれのさらに左に配置）
-    \ifx&#1&\else
-      \node[left=5pt, at={({\cxMid - \w pt * 1.2}, \midY pt)}, font=\scriptsize] {$#1$};
-    \fi
+    %\ifx&#1&\else
+    %  \node[left=5pt, at={({\cxMid - \w pt * 1.2}, \midY pt)}, font=\scriptsize] {$#1$};
+    %\fi
   \end{tikzpicture}%
 }
 
@@ -187,3 +188,21 @@
 
 % --- Unlimitted Unknown ---
 \newcommand{\UU}{\aleph}
+
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+% 自己完結・完全決定論的なウロボロス記号
+\newcommand{\Ouroboros}{%
+  \mathord{%
+    \vcenter{\hbox{%
+      \begin{tikzpicture}[baseline=-0.1ex, scale=0.85]
+        % 円環（尾に向かって細くなる円弧）
+        \draw[line width=0.8pt, -{Stealth[length=2.8pt, width=2.4pt]}] 
+          (20:0.65ex) arc (20:345:0.65ex);
+      \end{tikzpicture}%
+    }}%
+  }%
+}
+\newcommand{\WholeSelf}{\Ouroboros}

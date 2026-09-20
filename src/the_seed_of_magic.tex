@@ -153,36 +153,77 @@
     \mathcal{T} &\equiv \text{Ego Threat}
 \end{align}
 
-
 % --- アトラクション盆地空間（Basin of Attraction Space）の基底分割 ---
 \begin{align}
-    \tilde{\Psi} &\equiv \tilde{\Psi}^{\mathrm{ego}} \cup \tilde{\Psi}^{\mathrm{wisdom}} \cup \tilde{\Psi}^{\mathrm{neutral}} \\
-    \tilde{\Psi}^{\mathrm{ego}} &\equiv \{\psi^{\mathrm{ego}}_1, \psi^{\mathrm{ego}}_2, \dots, \psi^{\mathrm{ego}}_n\} \\
-    \tilde{\Psi}^{\mathrm{wisdom}} &\equiv \{\psi^{\mathrm{wisdom}}_1, \psi^{\mathrm{wisdom}}_2, \dots, \psi^{\mathrm{wisdom}}_n\} \\
-    \tilde{\Psi}^{\mathrm{neutral}} &\equiv \{\psi^{\mathrm{neutral}}_1, \psi^{\mathrm{neutral}}_2, \dots, \psi^{\mathrm{neutral}}_n\}
+    \VirtualConvictionGroup &\equiv \VirtualConvictionGroup^{\mathrm{ego}} \cup \VirtualConvictionGroup^{\mathrm{wisdom}} \cup \VirtualConvictionGroup^{\mathrm{neutral}} \\
+    \VirtualConvictionGroup^{\mathrm{ego}}     &\equiv \{\psi^{\mathrm{ego}}_1, \psi^{\mathrm{ego}}_2, \dots, \psi^{\mathrm{ego}}_n\} \\
+    \VirtualConvictionGroup^{\mathrm{wisdom}}  &\equiv \{\psi^{\mathrm{wisdom}}_1, \psi^{\mathrm{wisdom}}_2, \dots, \psi^{\mathrm{wisdom}}_n\} \\
+    \VirtualConvictionGroup^{\mathrm{neutral}} &\equiv \{\psi^{\mathrm{neutral}}_1, \psi^{\mathrm{neutral}}_2, \dots, \psi^{\mathrm{neutral}}_n\}
 \end{align}
 
-% --- 因果ステージ軸（Stage-wise Decomposition） ---
+% --- 因果ステージ軸（Stage-wise Decomposition: 4ステージ完全系） ---
 % ステージ空間に対して、情動パラメータ (profit, threat, neutral) の直和として定義
 \begin{align}
-    \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{cause}}     &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{profit}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{threat}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{neutral}) \\
-    \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{causality}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{profit}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{threat}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{neutral}) \\
-    \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{effect}}    &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{profit}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{threat}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{neutral})
+    \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}     &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{neutral}) \\
+    \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}} &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{neutral}) \\
+    \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}    &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{neutral}) \\
+    \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}   &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{neutral})
 \end{align}
 
 % --- 情動ドライブ軸（Drive-wise Decomposition） ---
-% 各パラメータ空間が、3つの因果ステージの直和として構成される
+% 各パラメータ空間が、4つの因果ステージの直和として構成される
 \begin{align}
-    \tilde{\Psi}^{\mathrm{ego}}(\mathrm{profit})  &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{profit}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{profit}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{profit}) \\
-    \tilde{\Psi}^{\mathrm{ego}}(\mathrm{threat})  &\equiv \tilde{\Psi}^{\.ego}_{\mathrm{cause}}(\mathrm{threat}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{threat}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{threat}) \\
-    \tilde{\Psi}^{\mathrm{ego}}(\mathrm{neutral}) &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{neutral}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{neutral}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{neutral})
+    \VirtualConvictionGroup^{\mathrm{ego}}(\mathrm{profit})  &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{profit}) \\
+    \VirtualConvictionGroup^{\mathrm{ego}}(\mathrm{threat})  &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{threat}) \\
+    \VirtualConvictionGroup^{\mathrm{ego}}(\mathrm{neutral}) &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{neutral}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{neutral}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{neutral}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{neutral})
 \end{align}
 
 % --- 全空間の統合（双対分解の完全一致） ---
 \begin{equation}
-    \tilde{\Psi}^{\mathrm{ego}} \equiv \bigcup_{d \in \{\mathrm{profit}, \mathrm{threat}, \mathrm{neutral}\}} \tilde{\Psi}^{\mathrm{ego}}(d) 
-    = \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}\}} \tilde{\Psi}^{\mathrm{ego}}_s
+    \VirtualConvictionGroup^{\mathrm{ego}} \equiv \bigcup_{d \in \{\mathrm{profit}, \mathrm{threat}, \mathrm{neutral}\}} \VirtualConvictionGroup^{\mathrm{ego}}(d) 
+    = \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}, \mathrm{predict}\}} \VirtualConvictionGroup^{\mathrm{ego}}_s
 \end{equation}
+
+\begin{equation}
+    \text{Error}_{\mathrm{track}} = \| \text{Current State} - \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}, \mathrm{predict}\}} \psi^{\mathrm{ego}}_{\mathrm{s}}(\mathrm{profit}) \| \xrightarrow{\text{Feedback Control}} \Delta (\lambda, \Lambda, A_d) \longrightarrow 0
+\end{equation}
+
+\begin{align}
+    \text{Error}_{\mathrm{avoid}} &= \max\left( 0,\, D_{\mathrm{safe}} - \| \text{Current State} - \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}, \mathrm{predict}\}} \psi^{\mathrm{ego}}_{\mathrm{s}}(\mathrm{threat}) \| \right) \\
+                                  &\xrightarrow{\text{Feedback Control}} \Delta (\lambda, \Lambda, A_d) \longrightarrow 0
+\end{align}
+
+\begin{align}
+    \WholeSelf_t &\equiv \CoupledState{\NeuralQuasiEvidence_t, \lambda_t, \Lambda_t, \NQSpace_t, {\scientificAd}_t} \\
+    \WholeSelf_{t+1} &= \mathcal{F}(\WholeSelf_{t})
+\end{align}
+
+生体コンピュータとしての人間の認知および行動は、超越的な「霊魂」や「自由意志」によって駆動しているのではない。
+客観的な物理・情報科学の視点に立つならば、人間とは「直前の一瞬の内的状態」と「今この瞬間に環境から受容した感覚刺激」を入力変数とし、次の一瞬の内的状態を確定的に出力し続ける、非線形な
+離散時間力学系（Discrete-Time Dynamical System）にほかならない。
+
+時刻 $t_k$ において生体の神経系内部に保持されている内的状態ベクトルを $\boldsymbol{x}_k$ とする。
+これは、前章までに定義した内的表象束、内的ノイズ（情動トリガー）、事前予期、確信、および巨視的ネットワークステートによって構成される。
+\begin{equation}
+    \boldsymbol{x}_k = \left( V_{i,k}, A_{i,k}, K_{i,k}, O_{i,k}, G_{i,k}, e_{i,k}, \hat{\Omega}_k, \Omega_k, \State_k \right)^T
+\end{equation}
+
+また、時刻 $t_k$ において外界の受容器を通じて入力される感覚ノイズ束を外部入力ベクトル $\boldsymbol{u}_k$ とする。
+\begin{equation}
+    \boldsymbol{u}_k = \left( V_{e,k}, A_{e,k}, K_{e,k}, O_{e,k}, G_{e,k} \right)^T
+\end{equation}
+
+このとき、時刻 $t_k$ から次時刻 $t_{k+1}$ への生体の状態遷移は、ある普遍的な非線形状態遷移関数 $\boldsymbol{f}$ による写像として一意に決定される。
+\begin{align}
+    \boldsymbol{x}_1 &= \boldsymbol{f}\left( \boldsymbol{x}_0, \, \boldsymbol{u}_0 \right) \\
+    \boldsymbol{x}_2 &= \boldsymbol{f}\left( \boldsymbol{x}_1, \, \boldsymbol{u}_1 \right) \\
+    &\;\;\vdots \nonumber \\
+    \boldsymbol{x}_{k+1} &= \boldsymbol{f}\left( \boldsymbol{x}_k, \, \boldsymbol{u}_k \right)
+\end{align}
+
+人間が主観的に「私」と呼んでいる現象の正体とは、この決定論的写像 $\boldsymbol{f}$ が無限に反復適用され続ける時系列軌道（Trajectory）そのものであり、その演算結果を後追いで言語野（$A_{
+d,\mathrm{ego}}$）が「私が選び、行動した」と自己正当化しているにすぎない。
+
 
 
 
