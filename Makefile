@@ -2,48 +2,61 @@
 MAIN        := the_seed_of_magic
 SRC_DIR     := src
 BUILD_DIR   := build
+
 DOT_SRC_DIR := $(SRC_DIR)/dot
 DOT_OUT_DIR := $(BUILD_DIR)/dot
+
+GP_SRC_DIR  := $(SRC_DIR)/plots
+GP_OUT_DIR  := $(BUILD_DIR)/plots
 
 TARGET      := $(SRC_DIR)/$(MAIN).tex
 OUTPUT_PDF  := $(BUILD_DIR)/$(MAIN).pdf
 
-# Graphviz ソースおよび変換先PDFの定義
+# 依存ソースおよび生成ファイル定義
 DOT_SRCS    := $(wildcard $(DOT_SRC_DIR)/*.dot)
 DOT_PDFS    := $(patsubst $(DOT_SRC_DIR)/%.dot,$(DOT_OUT_DIR)/%.pdf,$(DOT_SRCS))
 
-# コンパイルコマンド（LuaLaTeX指定・出力先build指定・停止せずエラー報告）
+GP_SRCS     := $(wildcard $(GP_SRC_DIR)/*.gp)
+GP_TEXS     := $(patsubst $(GP_SRC_DIR)/%.gp,$(GP_OUT_DIR)/%.tex,$(GP_SRCS))
+
+# コンパイルコマンド
 LATEXMK     := latexmk -lualatex -outdir=$(BUILD_DIR) -interaction=nonstopmode -synctex=1
 DOT         := dot
+GNUPLOT     := gnuplot
 
-.PHONY: all clean distclean watch dot_figs
+.PHONY: all clean distclean watch dot_figs plot_figs
 
-# デフォルトターゲット: DOT図版の生成後にメインPDFをビルド
+# デフォルトターゲット: DOT図版とGnuplot出力を生成した後にメインPDFをコンパイル
 all: $(OUTPUT_PDF)
 
-# メインPDFはターゲットTeXファイルおよび生成されたすべてのDOT PDFに依存
-$(OUTPUT_PDF): $(TARGET) $(DOT_PDFS)
+# メインPDFの依存関係
+$(OUTPUT_PDF): $(TARGET) $(DOT_PDFS) $(GP_TEXS)
 	@mkdir -p $(BUILD_DIR)
 	$(LATEXMK) $(TARGET)
 
-# 明示的に図版のみを生成したい場合のターゲット
+# 図版個別生成ターゲット
 dot_figs: $(DOT_PDFS)
+plot_figs: $(GP_TEXS)
 
-# .dot から .pdf への変換パターンルール（ベクター形式で直接出力）
+# --- Graphviz 変換ルール (.dot -> .pdf) ---
 $(DOT_OUT_DIR)/%.pdf: $(DOT_SRC_DIR)/%.dot
 	@mkdir -p $(DOT_OUT_DIR)
 	$(DOT) -Tpdf $< -o $@
 
-# 中間生成物のみ削除（PDFは保持）
+# --- Gnuplot 変換ルール (.gp -> .tex + .pdf) ---
+$(GP_OUT_DIR)/%.tex: $(GP_SRC_DIR)/%.gp
+	@mkdir -p $(GP_OUT_DIR)
+	$(GNUPLOT) $<
+
+# クリーンアップ
 clean:
 	$(LATEXMK) -c $(TARGET)
 
-# PDFを含むビルド成果物を全削除（生成した図版PDFディレクトリも削除）
 distclean:
 	$(LATEXMK) -C $(TARGET)
 	rm -rf $(BUILD_DIR)
 
-# latexmk 組み込みの監視モード（事前に関連図版をすべて生成してから監視開始）
-watch: $(DOT_PDFS)
+# latexmk 監視モード
+watch: $(DOT_PDFS) $(GP_TEXS)
 	@mkdir -p $(BUILD_DIR)
 	$(LATEXMK) -pvc $(TARGET)
