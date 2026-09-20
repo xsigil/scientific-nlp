@@ -200,16 +200,99 @@
                                   &\xrightarrow{\text{Feedback Control}} \Delta (\lambda, \Lambda, A_d) \longrightarrow 0
 \end{align}
 
-%Track Mode:
-%\begin{equation}
-%    \text{Error}_{\mathrm{track}} = \| \text{Current State} - \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}, \mathrm{predict}\}} \psi^{\mathrm{ego}}_{\mathrm{s}}(\mathrm{profit}) \| \xrightarrow{\text{Feedback Control}} \Delta (\lambda, \Lambda, A_d) \longrightarrow 0
-%\end{equation}
-%
-%Avoid Mode:
-%\begin{align}
-%    \text{Error}_{\mathrm{avoid}} &= \max\left( 0,\, D_{\mathrm{safe}} - \| \text{Current State} - \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}, \mathrm{predict}\}} \psi^{\mathrm{ego}}_{\mathrm{s}}(\mathrm{threat}) \| \right) \\
-%                                  &\xrightarrow{\text{Feedback Control}} \Delta (\lambda, \Lambda, A_d) \longrightarrow 0
-%\end{align}
+\begin{figure}[htbp]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[
+    >=Stealth,
+    node distance=1.4cm and 1.8cm,
+    font=\small\sffamily,
+    test_node/.style={
+        rectangle, 
+        draw=black!85, 
+        thick, 
+        fill=blue!10, 
+        text width=4.0cm, 
+        align=center, 
+        rounded corners=3pt, 
+        inner sep=4pt
+    },
+    operate_node/.style={
+        rectangle, 
+        draw=black!85, 
+        thick, 
+        fill=orange!15, 
+        text width=4.4cm, 
+        align=center, 
+        rounded corners=3pt, 
+        inner sep=4pt
+    },
+    exit_node/.style={
+        rectangle, 
+        draw=black!85, 
+        thick, 
+        fill=green!20, 
+        rounded corners=8pt, 
+        text width=3.4cm, 
+        align=center, 
+        inner sep=4pt
+    },
+    line/.style={
+        draw=black!85, 
+        thick, 
+        ->
+    },
+    label_text/.style={
+        font=\footnotesize\bfseries, 
+        color=black!80
+    }
+]
+
+    % --- ノード配置 ---
+    % 入力（ここも \WholeSelf に_tが付かない形に統一）
+    \node (input) [font=\bfseries, align=center] {Input\\[1pt]\scriptsize $\WholeSelf$};
+
+    % 1. TEST
+    \node (test) [test_node, right=0.8cm of input] {
+        \textbf{\large TEST}\\[1pt]
+        \scriptsize （現在の状態と目標の照合）\\[3pt]
+        $\epsilon_t \equiv \mathcal{E}(\WholeSelf)$
+    };
+
+    % 2. OPERATE（Double subscript を解消）
+    \node (operate) [operate_node, below=1.4cm of test] {
+        \textbf{\large OPERATE}\\[1pt]
+        \scriptsize （行動・介入・変化）\\[3pt]
+        \footnotesize $\Delta(\lambda, \Lambda, A_d) \longrightarrow 0$\\[1pt]
+        \scriptsize $\WholeSelf_{t+1} = \mathcal{F}(\WholeSelf, \EnvNoise, \Delta_t)$
+    };
+
+    % 3. EXIT
+    \node (exit) [exit_node, right=1.6cm of test] {
+        \textbf{\large EXIT}\\[1pt]
+        \scriptsize （完了・目標達成）\\[3pt]
+        \footnotesize $\WholeSelf^* \in \VirtualConvictionGroup^{\mathrm{ego}}(\mathrm{profit})$\\[1pt]
+        \scriptsize $(\epsilon_t \le \epsilon_{\mathrm{tol}})$
+    };
+
+    % --- 接続エッジ ---
+    \path [line] (input) -- (test);
+
+    \path [line] (test) -- node [above, label_text] {一致 (Match)} 
+                           node [below, font=\scriptsize, color=gray!80!black] {$\epsilon_t \le \epsilon_{\mathrm{tol}}$} (exit);
+
+    \draw [line] (test.south) -- node [right, label_text] {不一致 (Mismatch)} 
+                                  node [left, font=\scriptsize, color=gray!80!black] {$\epsilon_t > \epsilon_{\mathrm{tol}}$} (operate.north);
+
+    \draw [line] (operate.west) -- ++(-0.8, 0) |- (test.west);
+
+    \node [below=0.15cm of operate, font=\scriptsize, color=black!60] {※ 状態を遷移させて再度Test（評価）へフィードバック};
+
+\end{tikzpicture}%
+}
+\caption{サイバネティクス制御論に基づく T.O.T.E. モデルの再定式化}
+\label{fig:tote_cybernetic_model}
+\end{figure}
 
 % --- T.O.T.E. 制御アルゴリズムの力学系包摂 ---
 \begin{align}
@@ -224,7 +307,8 @@
     % [Operate] 操作フェーズ: アクチュエータ介入と状態遷移
     \mathbf{Operate}_t &: \quad
     \begin{cases}
-        \Delta_t(\lambda_t, \Lambda_t, {\scientificAd}_t) = -\mathbf{K} \, \nabla_{\WholeSelf} \mathcal{E}(\WholeSelf_t) \\[4pt]
+%        \Delta_t(\lambda_t, \Lambda_t, {\scientificAd}_t) = -\mathbf{K} \, \nabla_{\WholeSelf} \mathcal{E}(\WholeSelf_t) \\[4pt]
+        \Delta(\lambda, \Lambda, A_d) \longrightarrow 0 \\[4pt]
         \WholeSelf_{t+1} = \mathcal{F}\left( \WholeSelf_t,\, {\EnvNoise}_t,\, \Delta_t \right)
     \end{cases} \\[6pt]
     % [Exit] 終了フェーズ: 目標盆地へのトラップ完了（定常状態）
@@ -247,8 +331,8 @@
     \renewcommand{\arraystretch}{1.8} % 行間を広げて二段組の演算子マクロの潰れを防止
     \begin{tabular}{lcc}
         \toprule
-        & \textbf{Mathematical Bayes Inference Engine} 
-        & \textbf{Neural Quasi-Bayesian Inference Engine} \\
+        & \textbf{\aMBIE} 
+        & \textbf{\aNQBIE} \\
         \midrule
         推論演算子 
         & $\MathBayesianUpdateCollapse{\MathHypoSpace}{\MathHypoSpace'}$ 
@@ -265,23 +349,10 @@
 
 時刻 $t_k$ において生体の神経系内部に保持されている内的状態ベクトルを $\boldsymbol{x}_k$ とする。
 これは、前章までに定義した内的表象束、内的ノイズ（情動トリガー）、事前予期、確信、および巨視的ネットワークステートによって構成される。
-\begin{equation}
-    \boldsymbol{x}_k = \left( V_{i,k}, A_{i,k}, K_{i,k}, O_{i,k}, G_{i,k}, e_{i,k}, \hat{\Omega}_k, \Omega_k, \State_k \right)^T
-\end{equation}
 
 また、時刻 $t_k$ において外界の受容器を通じて入力される感覚ノイズ束を外部入力ベクトル $\boldsymbol{u}_k$ とする。
-\begin{equation}
-    \boldsymbol{u}_k = \left( V_{e,k}, A_{e,k}, K_{e,k}, O_{e,k}, G_{e,k} \right)^T
-\end{equation}
 
 このとき、時刻 $t_k$ から次時刻 $t_{k+1}$ への生体の状態遷移は、ある普遍的な非線形状態遷移関数 $\boldsymbol{f}$ による写像として一意に決定される。
-\begin{align}
-    \boldsymbol{x}_1 &= \boldsymbol{f}\left( \boldsymbol{x}_0, \, \boldsymbol{u}_0 \right) \\
-    \boldsymbol{x}_2 &= \boldsymbol{f}\left( \boldsymbol{x}_1, \, \boldsymbol{u}_1 \right) \\
-    &\;\;\vdots \nonumber \\
-    \boldsymbol{x}_{k+1} &= \boldsymbol{f}\left( \boldsymbol{x}_k, \, \boldsymbol{u}_k \right)
-\end{align}
-
 人間が主観的に「私」と呼んでいる現象の正体とは、この決定論的写像 $\boldsymbol{f}$ が無限に反復適用され続ける時系列軌道（Trajectory）そのものであり、その演算結果を後追いで言語野（$A_{
 d,\mathrm{ego}}$）が「私が選び、行動した」と自己正当化しているにすぎない。
 
