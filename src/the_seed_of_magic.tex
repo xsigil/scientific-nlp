@@ -13,48 +13,9 @@
 }
 \author{\Large Masahiro Sugaya}
 \date{}
-%%% DEFINITION
-
-% Neural Bayes Update and Convergence
-% 神経準ベイズ推論機の準ベイズ推論と準ベイズ更新プロセス
-%\newcommand{\nbuc}[2]{:\xrightarrow[#2]{#1}}
-%\newcommand{\nbscanning}[1]{\nbuc{#1}{\emptyset} \mid}
-%\newcommand{\State}{\mathcal{S}}
-%% Unlimitted Unknown
-%\newcommand{\UU}{\aleph}
-
 \begin{document}
 \maketitle
 \tableofcontents
-
-\begin{comment}
-$:\rightsquigarrow$
-アトラクション盆地（Basin of Attraction）の集合$\tilde{\Psi}$、アトラクション盆地に収束した解$\Psi$
-% --- アトラクション盆地空間（Basin of Attraction Space）の基底分割 ---
-\begin{align}
-    \tilde{\Psi} &\equiv \tilde{\Psi}^{\mathrm{ego}} \cup \tilde{\Psi}^{\mathrm{wisdom}} \cup \tilde{\Psi}^{\mathrm{neutral}} \\
-    \tilde{\Psi}^{\mathrm{ego}} &\equiv \{\Psi^{\mathrm{ego}}_1, \Psi^{\mathrm{ego}}_2, \dots, \Psi^{\mathrm{ego}}_n\} \\
-    \tilde{\Psi}^{\mathrm{wisdom}} &\equiv \{\Psi^{\mathrm{wisdom}}_1, \Psi^{\mathrm{wisdom}}_2, \dots, \Psi^{\mathrm{wisdom}}_n\} \\
-    \tilde{\Psi}^{\mathrm{neutral}} &\equiv \{\Psi^{\mathrm{neutral}}_1, \Psi^{\mathrm{neutral}}_2, \dots, \Psi^{\mathrm{neutral}}_n\}
-\end{align}
-
-% --- 因果ステージ軸（Stage-wise Decomposition） ---
-\begin{align} \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:neutral}} \\
-    \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:neutral}} \\
-    \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:neutral}}
-\end{align}
-% --- 情動ドライブ軸（Drive-wise Decomposition） ---
-\begin{align}
-    \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{profit}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:profit}} \\
-    \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{threat}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:threat}} \\
-    \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{neutral}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause:neutral}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality:neutral}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect:neutral}}
-\end{align}
-
-% --- 全空間の統合 ---
-\begin{equation}
-    \tilde{\Psi}^{\mathrm{ego}} \equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{profit}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{threat}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{neutral}} = \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_cause}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_causality}} \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{virtual\_effect}}
-\end{equation}
-\end{comment}
 
 \include{src/chapters/colophon}
 \include{src/chapters/acknowledgements}
@@ -139,44 +100,6 @@ $:\rightsquigarrow$
     \classicG  &\equiv \scientificG  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction
 \end{align}
 
-%\begin{align}
-%    \scientificV &\equiv \CoupledState{\VNoise, \VirtualConviction, \State} \\
-%    \scientificVd &\equiv \CoupledState{\VdNoise, \VirtualConviction, \State} \\
-%    \scientificA &\equiv \CoupledState{\ANoise, \VirtualConviction, \State} \\
-%    \scientificAd &\equiv \mathcal{L}_{\mathrm{digital}}\left( \CoupledState{\EnvNoise, \VirtualConviction, \State} \right) \\
-%    \scientificK &\equiv \CoupledState{\KNoise, \VirtualConviction, \State} \\
-%    \scientificO &\equiv \CoupledState{\ONoise, \VirtualConviction, \State} \\
-%    \scientificG &\equiv \CoupledState{\GNoise, \VirtualConviction, \State} \\
-%    \classicV &\equiv \scientificV \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
-%    \classicVd &\equiv \scientificVd \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
-%    \classicA &\equiv \scientificA \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
-%    \classicAd &\equiv \scientificAd \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction  \\
-%    \classicK &\equiv \scientificK \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
-%    \classicO &\equiv \scientificO \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
-%    \classicG &\equiv \scientificG \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction 
-%\end{align}
-
-%\begin{align}
-%    \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} 
-%\end{align}
-
-
-
-%\begin{align}
-%    \NeuralQuasiEvidence_1 \NeuralQuasiBayesianUpdateConviction{\NQSpace_1}{\NQSpace_2} \VirtualConviction_1 
-%    &\DiscreteStep{}{} \NeuralQuasiEvidence_2 \NeuralQuasiBayesianUpdateConviction{\NQSpace_2}{\NQSpace_3} \VirtualConviction_2 
-%    \DiscreteStep{}{} \dots 
-%    \DiscreteStep{}{} \NeuralQuasiEvidence_n \NeuralQuasiBayesianUpdateConviction{\NQSpace_n}{\NQSpace_{n+1}} \VirtualConviction_n 
-%    \DiscreteStep{}{} \dots \\
-%    &\equiv \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}
-%    \vcenter{\hbox{
-%        \begin{ConflictLoop}
-%            \VirtualConviction_1 \\
-%            \VirtualConviction_2
-%        \end{ConflictLoop}
-%    }}
-%\end{align}
-
 \begin{align}
     % 1行目: 開かれた時間発展（逐次更新の連鎖）
     \NeuralQuasiEvidence_1 \NeuralQuasiBayesianUpdateConviction{\NQSpace_1}{\NQSpace_2} \VirtualConviction_1 
@@ -205,42 +128,13 @@ $:\rightsquigarrow$
     \NeuralQuasiEvidence_2 \NeuralQuasiBayesianUpdateConviction{\NQSpace''}{\NQSpace'''} \VirtualConviction_5
 \end{equation}
 
-%\begin{equation}
-%    \CoupledState{\EnvNoise, \VirtualConviction_0, {\State}_0}  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}
-%    \begin{ConflictLoop}
-%        \VirtualConviction_1 \\
-%        \VirtualConviction_2 \\
-%        \VirtualConviction_3
-%    \end{ConflictLoop}
-%    \DiscreteStep{t}{t+1}
-%    \CoupledState{\EnvNoise, \VirtualConviction_{\text{1 or 2 or 3}}, \State_1} \NeuralQuasiBayesianUpdateConviction{\NQSpace'}{\NQSpace''} \VirtualConviction_4
-%    \DiscreteStep{t+1}{t+2}
-%    \CoupledState{\EnvNoise, \VirtualConviction_4, \State_2} \NeuralQuasiBayesianUpdateConviction{\NQSpace''}{\NQSpace'''} \VirtualConviction_5
-%\end{equation}
-
-
 \begin{equation}
     \VirtualConvictionGroup \equiv \{ \VirtualConviction_1, \VirtualConviction_2, \cdots, \VirtualConviction_n \}
 \end{equation}
 
-
-%\begin{equation}
-%    \AlteredState \equiv 
-%    \left( \NeuralQuasiEvidence \NeuralQuasiBayesianExploration{\NQSpace}^{\mathrm{narrative:threat}}
-%    \quad \land \quad
-%    \vcenter{\hbox{
-%        \begin{ConflictLoop}
-%            \PredictProfitVirtualConviction \\ 
-%            \PredictThreatVirtualConviction
-%        \end{ConflictLoop}
-%    }}
-%    \right)
-%\end{equation}
-
 \begin{equation}
     \AlteredState \equiv \text{\aUUST} \land \text{\aADBC}
 \end{equation}
-
 
 \begin{align}
     \text{\aUUST} &\equiv \NeuralQuasiEvidence \NeuralQuasiBayesianExploration{\NQSpace}^{\mathrm{narrative:threat}} \\
@@ -258,6 +152,38 @@ $:\rightsquigarrow$
     \mathcal{P} &\equiv \text{Ego Profit} \\
     \mathcal{T} &\equiv \text{Ego Threat}
 \end{align}
+
+
+% --- アトラクション盆地空間（Basin of Attraction Space）の基底分割 ---
+\begin{align}
+    \tilde{\Psi} &\equiv \tilde{\Psi}^{\mathrm{ego}} \cup \tilde{\Psi}^{\mathrm{wisdom}} \cup \tilde{\Psi}^{\mathrm{neutral}} \\
+    \tilde{\Psi}^{\mathrm{ego}} &\equiv \{\psi^{\mathrm{ego}}_1, \psi^{\mathrm{ego}}_2, \dots, \psi^{\mathrm{ego}}_n\} \\
+    \tilde{\Psi}^{\mathrm{wisdom}} &\equiv \{\psi^{\mathrm{wisdom}}_1, \psi^{\mathrm{wisdom}}_2, \dots, \psi^{\mathrm{wisdom}}_n\} \\
+    \tilde{\Psi}^{\mathrm{neutral}} &\equiv \{\psi^{\mathrm{neutral}}_1, \psi^{\mathrm{neutral}}_2, \dots, \psi^{\mathrm{neutral}}_n\}
+\end{align}
+
+% --- 因果ステージ軸（Stage-wise Decomposition） ---
+% ステージ空間に対して、情動パラメータ (profit, threat, neutral) の直和として定義
+\begin{align}
+    \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{cause}}     &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{profit}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{threat}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{neutral}) \\
+    \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{causality}} &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{profit}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{threat}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{neutral}) \\
+    \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{effect}}    &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{profit}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{threat}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{neutral})
+\end{align}
+
+% --- 情動ドライブ軸（Drive-wise Decomposition） ---
+% 各パラメータ空間が、3つの因果ステージの直和として構成される
+\begin{align}
+    \tilde{\Psi}^{\mathrm{ego}}(\mathrm{profit})  &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{profit}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{profit}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{profit}) \\
+    \tilde{\Psi}^{\mathrm{ego}}(\mathrm{threat})  &\equiv \tilde{\Psi}^{\.ego}_{\mathrm{cause}}(\mathrm{threat}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{threat}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{threat}) \\
+    \tilde{\Psi}^{\mathrm{ego}}(\mathrm{neutral}) &\equiv \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{neutral}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{neutral}) \cup \tilde{\Psi}^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{neutral})
+\end{align}
+
+% --- 全空間の統合（双対分解の完全一致） ---
+\begin{equation}
+    \tilde{\Psi}^{\mathrm{ego}} \equiv \bigcup_{d \in \{\mathrm{profit}, \mathrm{threat}, \mathrm{neutral}\}} \tilde{\Psi}^{\mathrm{ego}}(d) 
+    = \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}\}} \tilde{\Psi}^{\mathrm{ego}}_s
+\end{equation}
+
 
 
 %\chapter{DMNのマイクロ・ストラテジー: エゴのナラティブ}
