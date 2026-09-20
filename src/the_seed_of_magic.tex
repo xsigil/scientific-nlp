@@ -1,68 +1,11 @@
 \documentclass{ltjsbook}
-\usepackage{luatexja}
-\usepackage{amsmath,amssymb}
-\usepackage{enumitem}
-\usepackage{multirow}
-\usepackage{booktabs}
-\usepackage{titlesec}
-\usepackage{epigraph}
-\usepackage{tabularx}
-\usepackage{tikz}
-\usepackage{tikz-cd}
-\usepackage{mathtools}
-\usepackage{enumitem}
-\usepackage{rotating}
-\usepackage{multirow}
-\usepackage{graphviz}
-\usepackage{url}
-\usepackage{tcolorbox}
-\usepackage{array}
-\tcbuselibrary{skins}
-\usetikzlibrary{shapes.geometric}
-
-
-\usepackage{graphicx}
-\graphicspath{{build/dot/}}
-
-\newtcolorbox{legalframe}{
-    enhanced,
-    sharp corners,
-    colback=white,
-    colframe=black,
-    boxrule=1.5pt,
-    left=18pt,
-    right=18pt,
-    top=24pt,
-    bottom=24pt,
-    borderline={0.4pt}{3pt}{black},
-}
-
-
-\newcommand{\sectionbreak}{\clearpage}
-\setlength{\epigraphwidth}{0.75\textwidth}
-\renewcommand{\textflush}{flushright}
-\renewcommand{\sourceflush}{flushright}
-\usepackage{fontspec}
-%\setmainfont{Noto Serif}
-\setmainfont{NotoSerif-Regular.ttf}[
-  Path = ./src/fonts/,
-  BoldFont = NotoSerif-Bold.ttf,
-  ItalicFont = NotoSerif-Italic.ttf,
-  BoldItalicFont = NotoSerif-BoldItalic.ttf
-]
-\usepackage{listings}
-
-% LICENSE表示用のスタイル設定
-\lstdefinestyle{license}{
-  basicstyle=\small\ttfamily, % 等幅フォント（小さめ）
-  breaklines=true,            % 長い行の自動折り返し
-  columns=fullflexible,
-  keepspaces=true
-}
-
+\input{src/preamble/packages.tex}
+\input{src/preamble/terms.tex}
+\input{src/preamble/math_commands.tex}
+\input{src/preamble/environments.tex}
 
 \title{
-\Huge \textbf{Scientific NLP\texttrademark}\\
+\Huge \textbf{\exSNLP}\\
 \vspace{0.3em}
 \Large --- The Seed of Magic ---\\
 \vspace{0.8em}
@@ -70,582 +13,390 @@
 }
 \author{\Large Masahiro Sugaya}
 \date{}
-%%% DEFINITION
-
-% Neural Bayes Update and Convergence
-% 神経疑似ベイズ推論機の疑似ベイズ推論と疑似ベイズ更新プロセス
-\newcommand{\nbuc}[2]{:\xrightarrow[#2]{#1}}
-\newcommand{\nbscanning}[1]{\nbuc{#1}{\emptyset} \mid}
-\newcommand{\State}{\mathcal{S}}
-% Unlimitted Unknown
-\newcommand{\UU}{\aleph}
-
 \begin{document}
 \maketitle
 \tableofcontents
+
 \include{src/chapters/colophon}
 \include{src/chapters/acknowledgements}
 \include{src/chapters/prologue}
-\include{src/chapters/remnanments_of_magick_and_the_cold_computer}
-\include{src/chapters/freewill_negation}
-\include{src/chapters/neural_states}
-\include{src/chapters/neural_pseudo_bayesian_inference_engine}
-\include{src/chapters/macro_neural_pseudo_bayesian_inference_engine.tex}
-\include{src/chapters/nlp_states}
-\include{src/chapters/micro_ego_strategy}
-\include{src/chapters/psychocybernetics_system}
-\include{src/chapters/attention_filter_ras}
-\include{src/chapters/emotion_interruption_lambda}
-\include{src/chapters/discreate_state_transition}
-\include{src/chapters/intellectual_zero_personality}
-\include{src/chapters/demythologization_of_hypnosis}
-\include{src/chapters/preprofiling_for_hypnosis}
-\include{src/chapters/flipperzero_othello_filter}
-\include{src/chapters/truth_and_lie_of_lie_to_me}
-\include{src/chapters/bruteforce_attack}
-\include{src/chapters/reevaluating_nlp_techniques}
-\include{src/chapters/root_cause_solution_metaphor_injection_technique}
-\include{src/chapters/bayesian_profiling_with_othello_filter}
-\include{src/chapters/ta_game_equation_and_zero_attack_surface_of_zero_personality}
-\include{src/chapters/double_feedback_learning}
-\include{src/chapters/post_freewill_narrative}
-\include{src/chapters/epilogue}
-\include{src/chapters/appendices}
-\include{src/chapters/psychopathology_hypothesis}
-\chapter{オセロの誤謬とオセロの誤謬による夫婦間の強化ループによる破綻とシステム思考の家族療法への拡張}
+\chapter{魔術の残骸と、冷徹なる計算機}
+\section{ベイズ統計学の基礎数理}
+\subsection{事象の確率と条件付き確率}
+\subsection{ベイズの定理の導出}
+\subsection{全確率の定理を用いた一般化}
+\subsection{ベイズ更新（逐次更新）のメカニズム}
+\section{モンティ・ホール問題：人間の直感の破綻}
+\subsection{全米を巻き込んだ大論争}
+\subsection{ベイズの定理による厳密解}
+\subsection{人間の神経系と数学的ベイズの違い}
+\chapter{自由意志の幻想とリアリティー}
+\section{生体ハードウェアの実験事実：意識の遅延とモジュール構造}
+\subsection{分離脳研究と「インタープリター」モジュール}
+\subsection{リベットの実験：意識の150〜200msの遅延}
+\subsection{ダマシオのソマティック・マーカー仮説と身体ループ}
+\section{開ループの自動機械と捏造されるリアリティー}
+\chapter{大規模脳ネットワークの発見と3大ネットワーク}
+\section{DMNの働き}
+\section{SNのスイッチング機能とDMN・CENのシーソー効果}
+\section{メノンらのトリプルネットワーク・モデル（2011年）}
+\section{全てを統合して観察するオブザーバー（Observer）}
+\chapter{神経準ベイズ推論機\texttrademark の定式化}
+\section{アトミックな認知収束モデル}
+\section{NLPにおける表象システム（VAKOG）の再定義}
+\section{多峰性の振動：だまし絵に見る認知の葛藤}
+%\chapter{ナラティブの確信 $\Omega$ にパターンマッチングする神経系準ベイズ推論機}
+\chapter{ナラティブにパターンマッチングする神経準ベイズ推論機\texttrademark}
+%\section{従来のNLPストラテジー論の限界と身体表象の欠落}
+\section{従来のNLPストラテジー論の限界と直感的確信$\Omega$の欠落}
+\section{大文字の確信 $\Omega$：高次マクロ仮説への収束プロセス}
+\chapter{NLPステートの再定義}
+\section{$\State(\mathrm{DMN})$の特性とEgoの基本機能}
+%\section{変性意識状態（アルタードステート）の再定義：保留される確信 $\Omega$ と全神経系の探索ループ}
+\section{確信 $\Omega^{\mathrm{ego}}$ の言語野による翻訳}
+\section{ナラティブの再帰入力ループ：$Ad^{\mathrm{ego}}$ が駆動する自己成就予言}
+\section{変性意識状態（アルタードステート）の定式化とその特性}
+%\chapter{サイコ・サイバネティクス}
+\chapter{サイバネティック神経準ベイズ推論システム\texttrademark }
+\section{サイバネティクスとは}
+\section{サイバネティクスからサイコ・サイバネティクスへ}
+%\section{サイバネティック神経準ベイズ推論システム\texttrademark：目標追従系としての確信$\Omega^{\mathrm{ego}}_{\mathrm{predict:profit}}$と目標回避系としての確信$\Omega^{\mathrm{ego}}_{\mathrm{predict:threat}}$}
+\section{サイバネティック神経準ベイズ推論システム\texttrademark の特性}
+\section{原因$\Psi^{ego}_{cause}$、ナラティブ確信$\Psi^{ego}_{causality}$、原因確信$\Psi^{ego}_{effect}$}
+\section{Egoの目標値としての確信 $\Omega^{\mathrm{ego}}_{mathrm{profit}}$と回避目標としての確信$\Omega^{\mathrm{ego}}_{mathrm{profit}}$}
+\section{破滅的ナラティブへの収束と自己破壊的ホメオスタシス}
+
+\begin{equation}
+    \Evidence \MathBayesianUpdateCollapse{\MathHypoSpace}{\MathHypoSpace'} \MathHypothesis
+\end{equation}
+
+\begin{equation}
+    \NeuralQuasiEvidence \equiv \CoupledState{\EnvNoise, \VirtualConviction, \State}
+\end{equation}
+
+\begin{equation}
+    \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction
+\end{equation}
+
+% --- 基底エビデンスの結合定義（入力層） ---
+\begin{align}
+    \scientificV  &\equiv \CoupledState{\VNoise,  \VirtualConviction, \State} \\
+    \scientificVd &\equiv \CoupledState{\VdNoise, \VirtualConviction, \State} \\
+    \scientificA  &\equiv \CoupledState{\ANoise,  \VirtualConviction, \State} \\
+    \scientificAd &\equiv \mathcal{L}_{\mathrm{digital}}\left( \CoupledState{\EnvNoise, \VirtualConviction, \State} \right) \\
+    \scientificK  &\equiv \CoupledState{\KNoise,  \VirtualConviction, \State} \\
+    \scientificO  &\equiv \CoupledState{\ONoise,  \VirtualConviction, \State} \\
+    \scientificG  &\equiv \CoupledState{\GNoise,  \VirtualConviction, \State}
+\end{align}
+
+% --- 古典NLPモダリティの神経準ベイズ包摂（現象層） ---
+\begin{align}
+    \classicV  &\equiv \scientificV  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+    \classicVd &\equiv \scientificVd \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+    \classicA  &\equiv \scientificA  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+    \classicAd &\equiv \scientificAd \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+    \classicK  &\equiv \scientificK  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+    \classicO  &\equiv \scientificO  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction \\
+    \classicG  &\equiv \scientificG  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction
+\end{align}
+
+\begin{align}
+    % 1行目: 開かれた時間発展（逐次更新の連鎖）
+    \NeuralQuasiEvidence_1 \NeuralQuasiBayesianUpdateConviction{\NQSpace_1}{\NQSpace_2} \VirtualConviction_1 
+    &\DiscreteStep{}{} \NeuralQuasiEvidence_2 \NeuralQuasiBayesianUpdateConviction{\NQSpace_2}{\NQSpace_3} \VirtualConviction_2 
+    \DiscreteStep{}{} \dots \\
+    % 2行目: 閉じたリミットサイクル（二重拘束へのトラップ）
+    &\equiv \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}
+    \vcenter{\hbox{
+        \begin{ConflictLoop}
+            \VirtualConviction_1 \\
+            \VirtualConviction_2
+        \end{ConflictLoop}
+    }}
+\end{align}
+
+\begin{equation}
+    \NeuralQuasiEvidence_0 \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}
+    \begin{ConflictLoop}
+        \VirtualConviction_1 \\
+        \VirtualConviction_2 \\
+        \VirtualConviction_3
+    \end{ConflictLoop}
+    \DiscreteStep{t}{t+1}
+    \NeuralQuasiEvidence_1 \NeuralQuasiBayesianUpdateConviction{\NQSpace'}{\NQSpace''} \VirtualConviction_4
+    \DiscreteStep{t+1}{t+2}
+    \NeuralQuasiEvidence_2 \NeuralQuasiBayesianUpdateConviction{\NQSpace''}{\NQSpace'''} \VirtualConviction_5
+\end{equation}
+
+\begin{equation}
+    \VirtualConvictionGroup \equiv \{ \VirtualConviction_1, \VirtualConviction_2, \cdots, \VirtualConviction_n \}
+\end{equation}
+
+\begin{equation}
+    \AlteredState \equiv \text{\aUUST} \land \text{\aADBC}
+\end{equation}
+
+\begin{align}
+    \text{\aUUST} &\equiv \NeuralQuasiEvidence \NeuralQuasiBayesianExploration{\NQSpace}^{\mathrm{narrative:threat}} \\
+    \text{\aADBC} &\equiv \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}
+        \vcenter{\hbox{
+            \begin{ConflictLoop}
+                \PredictProfitVirtualConviction \\ 
+                \PredictThreatVirtualConviction
+            \end{ConflictLoop}
+        }}
+\end{align}
+
+\begin{align}
+    \mathrm{Hypnosis} &\equiv \left( \frac{\mathcal{P}}{\mathcal{T}} \gg \theta_{\mathrm{defense}} \right) \;\lor\; \AlteredState \\
+    \mathcal{P} &\equiv \text{Ego Profit} \\
+    \mathcal{T} &\equiv \text{Ego Threat}
+\end{align}
+
+% --- アトラクション盆地空間（Basin of Attraction Space）の基底分割 ---
+\begin{align}
+    \VirtualConvictionGroup &\equiv \VirtualConvictionGroup^{\mathrm{ego}} \cup \VirtualConvictionGroup^{\mathrm{wisdom}} \cup \VirtualConvictionGroup^{\mathrm{neutral}} \\
+    \VirtualConvictionGroup^{\mathrm{ego}}     &\equiv \{\psi^{\mathrm{ego}}_1, \psi^{\mathrm{ego}}_2, \dots, \psi^{\mathrm{ego}}_n\} \\
+    \VirtualConvictionGroup^{\mathrm{wisdom}}  &\equiv \{\psi^{\mathrm{wisdom}}_1, \psi^{\mathrm{wisdom}}_2, \dots, \psi^{\mathrm{wisdom}}_n\} \\
+    \VirtualConvictionGroup^{\mathrm{neutral}} &\equiv \{\psi^{\mathrm{neutral}}_1, \psi^{\mathrm{neutral}}_2, \dots, \psi^{\mathrm{neutral}}_n\}
+\end{align}
+
+% --- 因果ステージ軸（Stage-wise Decomposition: 4ステージ完全系） ---
+% ステージ空間に対して、情動パラメータ (profit, threat, neutral) の直和として定義
+\begin{align}
+    \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}     &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{neutral}) \\
+    \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}} &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{neutral}) \\
+    \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}    &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{neutral}) \\
+    \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}   &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{neutral})
+\end{align}
+
+% --- 情動ドライブ軸（Drive-wise Decomposition） ---
+% 各パラメータ空間が、4つの因果ステージの直和として構成される
+\begin{align}
+    \VirtualConvictionGroup^{\mathrm{ego}}(\mathrm{profit})  &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{profit}) \\
+    \VirtualConvictionGroup^{\mathrm{ego}}(\mathrm{threat})  &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{threat}) \\
+    \VirtualConvictionGroup^{\mathrm{ego}}(\mathrm{neutral}) &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{neutral}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{neutral}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{neutral}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{neutral})
+\end{align}
+
+% --- 全空間の統合（双対分解の完全一致） ---
+\begin{equation}
+    \VirtualConvictionGroup^{\mathrm{ego}} \equiv \bigcup_{d \in \{\mathrm{profit}, \mathrm{threat}, \mathrm{neutral}\}} \VirtualConvictionGroup^{\mathrm{ego}}(d) 
+    = \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}, \mathrm{predict}\}} \VirtualConvictionGroup^{\mathrm{ego}}_s
+\end{equation}
+
+\begin{align}
+    \WholeSelf_t &\equiv \CoupledState{\VirtualConviction_t, \NQSpace_t, \State, \lambda_t, \Lambda_t, {\scientificAd}_t} \\
+    \WholeSelf_{t+1} &= \mathcal{F}(\WholeSelf_{t}, {\EnvNoise}_{t}, \Delta_t)
+\end{align}
+
+\begin{equation}
+    \tag{Track Servo}
+    \text{Error}_{\mathrm{track}} = \left\| \text{Current State} - \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}, \mathrm{predict}\}} \psi^{\mathrm{ego}}_s(\mathrm{profit}) \right\| \xrightarrow{\text{Feedback Control}} \Delta (\lambda, \Lambda, A_d) \longrightarrow 0
+\end{equation}
+
+\begin{align}
+    \tag{Avoid Barrier}
+    \text{Error}_{\mathrm{avoid}} &= \max\left( 0,\, D_{\mathrm{safe}} - \left\| \text{Current State} - \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}, \mathrm{predict}\}} \psi^{\mathrm{ego}}_s(\mathrm{threat}) \right\| \right) \\
+                                  &\xrightarrow{\text{Feedback Control}} \Delta (\lambda, \Lambda, A_d) \longrightarrow 0
+\end{align}
+
+\begin{figure}[htbp]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[
+    >=Stealth,
+    node distance=1.4cm and 1.8cm,
+    font=\small\sffamily,
+    test_node/.style={
+        rectangle, 
+        draw=black!85, 
+        thick, 
+        fill=blue!10, 
+        text width=4.0cm, 
+        align=center, 
+        rounded corners=3pt, 
+        inner sep=4pt
+    },
+    operate_node/.style={
+        rectangle, 
+        draw=black!85, 
+        thick, 
+        fill=orange!15, 
+        text width=4.4cm, 
+        align=center, 
+        rounded corners=3pt, 
+        inner sep=4pt
+    },
+    exit_node/.style={
+        rectangle, 
+        draw=black!85, 
+        thick, 
+        fill=green!20, 
+        rounded corners=8pt, 
+        text width=3.4cm, 
+        align=center, 
+        inner sep=4pt
+    },
+    line/.style={
+        draw=black!85, 
+        thick, 
+        ->
+    },
+    label_text/.style={
+        font=\footnotesize\bfseries, 
+        color=black!80
+    }
+]
+
+    % --- ノード配置 ---
+    % 入力（ここも \WholeSelf に_tが付かない形に統一）
+    \node (input) [font=\bfseries, align=center] {Input\\[1pt]\scriptsize $\WholeSelf$};
+
+    % 1. TEST
+    \node (test) [test_node, right=0.8cm of input] {
+        \textbf{\large TEST}\\[1pt]
+        \scriptsize （現在の状態と目標の照合）\\[3pt]
+        $\epsilon_t \equiv \mathcal{E}(\WholeSelf)$
+    };
+
+    % 2. OPERATE（Double subscript を解消）
+    \node (operate) [operate_node, below=1.4cm of test] {
+        \textbf{\large OPERATE}\\[1pt]
+        \scriptsize （行動・介入・変化）\\[3pt]
+        \footnotesize $\Delta(\lambda, \Lambda, A_d) \longrightarrow 0$\\[1pt]
+        \scriptsize $\WholeSelf_{t+1} = \mathcal{F}(\WholeSelf, \EnvNoise, \Delta_t)$
+    };
+
+    % 3. EXIT
+    \node (exit) [exit_node, right=1.6cm of test] {
+        \textbf{\large EXIT}\\[1pt]
+        \scriptsize （完了・目標達成）\\[3pt]
+        \footnotesize $\WholeSelf^* \in \VirtualConvictionGroup^{\mathrm{ego}}(\mathrm{profit})$\\[1pt]
+        \scriptsize $(\epsilon_t \le \epsilon_{\mathrm{tol}})$
+    };
+
+    % --- 接続エッジ ---
+    \path [line] (input) -- (test);
+
+    \path [line] (test) -- node [above, label_text] {一致 (Match)} 
+                           node [below, font=\scriptsize, color=gray!80!black] {$\epsilon_t \le \epsilon_{\mathrm{tol}}$} (exit);
+
+    \draw [line] (test.south) -- node [right, label_text] {不一致 (Mismatch)} 
+                                  node [left, font=\scriptsize, color=gray!80!black] {$\epsilon_t > \epsilon_{\mathrm{tol}}$} (operate.north);
+
+    \draw [line] (operate.west) -- ++(-0.8, 0) |- (test.west);
+
+    \node [below=0.15cm of operate, font=\scriptsize, color=black!60] {※ 状態を遷移させて再度Test（評価）へフィードバック};
+
+\end{tikzpicture}%
+}
+\caption{サイバネティクス制御論に基づく T.O.T.E. モデルの再定式化}
+\label{fig:tote_cybernetic_model}
+\end{figure}
+
+% --- T.O.T.E. 制御アルゴリズムの力学系包摂 ---
+\begin{align}
+    % [Test 1] 評価フェーズ
+    \mathbf{Test}_t &: \quad \epsilon_t \equiv \mathcal{E}(\WholeSelf_t) \\[4pt]
+    % 条件分岐（Operate or Exit）
+    \mathbf{Branch}_t &: \quad
+    \begin{cases}
+        \mathbf{Operate}_t \longrightarrow \mathbf{Test}_{t+1} & (\text{if } \epsilon_t > \epsilon_{\mathrm{tol}}) \\[6pt]
+        \mathbf{Exit}_t & (\text{if } \epsilon_t \le \epsilon_{\mathrm{tol}})
+    \end{cases} \\[6pt]
+    % [Operate] 操作フェーズ: アクチュエータ介入と状態遷移
+    \mathbf{Operate}_t &: \quad
+    \begin{cases}
+%        \Delta_t(\lambda_t, \Lambda_t, {\scientificAd}_t) = -\mathbf{K} \, \nabla_{\WholeSelf} \mathcal{E}(\WholeSelf_t) \\[4pt]
+        \Delta(\lambda, \Lambda, A_d) \longrightarrow 0 \\[4pt]
+        \WholeSelf_{t+1} = \mathcal{F}\left( \WholeSelf_t,\, {\EnvNoise}_t,\, \Delta_t \right)
+    \end{cases} \\[6pt]
+    % [Exit] 終了フェーズ: 目標盆地へのトラップ完了（定常状態）
+    \mathbf{Exit}_t &: \quad \WholeSelf^* \in \VirtualConvictionGroup^{\mathrm{ego}}(\mathrm{profit}) \quad (\text{Stable Attractor Achieved})
+\end{align}
+
+\begin{equation}
+    \mathcal{F}(\WholeSelf) \equiv \begin{cases}
+        \text{Track Servo Mode}     & \left( \text{when } \State = \State(DMN) \land \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction(\mathrm{profit}) \right) \\[6pt]
+        \text{Avoid Barrier Mode}     & \left( \text{when } \State = \State(DMN) \land \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction(\mathrm{threat}) \right) \\[6pt]
+        \text{TOTE Mode}      & \left( \text{when } \State = \State(DMN) \land \NeuralQuasiEvidence \NeuralQuasiBayesianExploration{\NQSpace} \right) \\[6pt]
+        \text{Undefined Yet}  & \left( \text{else} \right)
+    \end{cases}
+\end{equation}
+
+\begin{table}[htbp]
+    \centering
+    \caption{数学的ベイズ推論機と神経準ベイズ推論機の演算子対照}
+    \label{tab:bayes_vs_neuro_quasi_bayes}
+    \renewcommand{\arraystretch}{1.8} % 行間を広げて二段組の演算子マクロの潰れを防止
+    \begin{tabular}{lcc}
+        \toprule
+        & \textbf{\aMBIE} 
+        & \textbf{\aNQBIE} \\
+        \midrule
+        推論演算子 
+        & $\MathBayesianUpdateCollapse{\MathHypoSpace}{\MathHypoSpace'}$ 
+        & $\NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+
+生体コンピュータとしての人間の認知および行動は、超越的な「霊魂」や「自由意志」によって駆動しているのではない。
+客観的な物理・情報科学の視点に立つならば、人間とは「直前の一瞬の内的状態」と「今この瞬間に環境から受容した感覚刺激」を入力変数とし、次の一瞬の内的状態を確定的に出力し続ける、非線形な
+離散時間力学系（Discrete-Time Dynamical System）にほかならない。
+
+時刻 $t_k$ において生体の神経系内部に保持されている内的状態ベクトルを $\boldsymbol{x}_k$ とする。
+これは、前章までに定義した内的表象束、内的ノイズ（情動トリガー）、事前予期、確信、および巨視的ネットワークステートによって構成される。
+
+また、時刻 $t_k$ において外界の受容器を通じて入力される感覚ノイズ束を外部入力ベクトル $\boldsymbol{u}_k$ とする。
+
+このとき、時刻 $t_k$ から次時刻 $t_{k+1}$ への生体の状態遷移は、ある普遍的な非線形状態遷移関数 $\boldsymbol{f}$ による写像として一意に決定される。
+人間が主観的に「私」と呼んでいる現象の正体とは、この決定論的写像 $\boldsymbol{f}$ が無限に反復適用され続ける時系列軌道（Trajectory）そのものであり、その演算結果を後追いで言語野（$A_{
+d,\mathrm{ego}}$）が「私が選び、行動した」と自己正当化しているにすぎない。
+
+
+
+
+%\chapter{DMNのマイクロ・ストラテジー: エゴのナラティブ}
+
+%DONE
+%\include{src/chapters/remnanments_of_magick_and_the_cold_computer}
+%\include{src/chapters/freewill_negation}
+%\include{src/chapters/neural_states}
+%\include{src/chapters/neural_pseudo_bayesian_inference_engine}
+%\include{src/chapters/macro_neural_pseudo_bayesian_inference_engine.tex}
+%\include{src/chapters/nlp_states}
+%\include{src/chapters/nlp_states}
+%\include{src/chapters/micro_ego_strategy}
+
+%YET
+%\include{src/chapters/psychocybernetics_system}
+%\include{src/chapters/attention_filter_ras}
+%\include{src/chapters/emotion_interruption_lambda}
+%\include{src/chapters/discreate_state_transition}
+%\include{src/chapters/intellectual_zero_personality}
+%\include{src/chapters/demythologization_of_hypnosis}
+%\include{src/chapters/preprofiling_for_hypnosis}
+%\include{src/chapters/flipperzero_othello_filter}
+%\include{src/chapters/truth_and_lie_of_lie_to_me}
+%\include{src/chapters/bruteforce_attack}
+%\include{src/chapters/reevaluating_nlp_techniques}
+%\include{src/chapters/root_cause_solution_metaphor_injection_technique}
+%\include{src/chapters/bayesian_profiling_with_othello_filter}
+%\include{src/chapters/ta_game_equation_and_zero_attack_surface_of_zero_personality}
+%\include{src/chapters/double_feedback_learning}
+%\include{src/chapters/post_freewill_narrative}
+%\include{src/chapters/epilogue}
+%\include{src/chapters/appendices}
+%\include{src/chapters/psychopathology_hypothesis}
+%\chapter{オセロの誤謬とオセロの誤謬による夫婦間の強化ループによる破綻とシステム思考の家族療法への拡張}
 \backmatter
-\chapter{MIT License}
-% 外部ファイルを取り込み
-\lstinputlisting[style=license]{./LICENSE}
-
-\begin{thebibliography}{99}
-
-\bibitem{bandler1975structure}
-Bandler, R., \& Grinder, J. (1975). \textit{The Structure of Magic I: A Book About Language and Therapy}. Science and Behavior Books.
-
-\bibitem{bandler1975patterns}
-Bandler, R., \& Grinder, J. (1975). \textit{Patterns of the Hypnotic Techniques of Milton H. Erickson, M.D., Volume I}. Meta Publications.
-
-\bibitem{wiener1948cybernetics}
-Wiener, N. (1948). \textit{Cybernetics: Or Control and Communication in the Animal and the Machine}. MIT Press.
-
-\bibitem{maltz1960psycho}
-Maltz, M. (1960). \textit{Psycho-Cybernetics: A New Way to Get More Living Out of Life}. Prentice-Hall.
-
-\bibitem{linden2015touch}
-Linden, D. J. (2015). \textit{Touch: The Science of Hand, Heart, and Mind}. Viking. （岩坂彰 訳 『触れることの科学』 河出書房新社, 2016）
-
-\bibitem{gosling2008snoop}
-Gosling, S. (2008). \textit{Snoop: What Your Stuff Says About You}. Basic Books. （『スヌープ! なぜあなたの本棚は性格を物語るのか』 阪急コミュニケーションズ, 2008）
-
-\bibitem{dettmer2007logical}
-Dettmer, H. W. (2007). \textit{The Logical Thinking Process: A Systems Approach to Complex Problem Solving}. ASQ Quality Press.
-
-\bibitem{gazzaniga2011charge}
-Gazzaniga, M. S. (2011). \textit{Who's in Charge? Free Will and the Science of the Brain}. Ecco/HarperCollins. （柴田裕之 訳 『〈わたし〉はどこにあるのか』 紀伊國屋書店, 2014）
-
-\bibitem{damasio2003looking}
-Damasio, A. (2003). \textit{Looking for Spinoza: Joy, Sorrow, and the Feeling Brain}. Harcourt. （田中三彦 訳 『スピノザを求めて』 ダイヤモンド社, 2005）
-
-\bibitem{berne1964games}
-Berne, E. (1964). \textit{Games People Play: The Basic Psychology of Human Relationships}. Grove Press.
-
-\bibitem{mcgrayne2011theory}
-McGrayne, S. B. (2011). \textit{The Theory That Would Not Die: How Bayes' Rule Cracked the Enigma Code, Hunted Down Russian Submarines, and Emerged Triumphant from Two Centuries of Controversy}. Yale University Press. （富永星 訳 『異端の統計学 ベイズ』 草思社, 2013）
-
-\bibitem{navarro2018dictionary}
-Navarro, J. (2018). \textit{The Dictionary of Body Language: A Field Guide to Human Behavior}. William Morrow. （西田美緒子 訳 『FBI捜査官が教える「しぐさ」の解読事典』 サンマーク出版, 2019）
-
-\bibitem{meadows2008thinking}
-Meadows, D. H. (2008). \textit{Thinking in Systems: A Primer}. Chelsea Green Publishing. （枝廣淳子 訳 『世界はシステムで動く』 英治出版, 2015）
-
-\bibitem{senge1990fifth}
-Senge, P. M. (1990). \textit{The Fifth Discipline: The Art and Practice of the Learning Organization}. Doubleday. （枝廣淳子 他 訳 『学習する組織』 英治出版, 2011）
-
-\bibitem{sterman2000business}
-Sterman, J. D. (2000). \textit{Business Dynamics: Systems Thinking and Modeling for a Complex World}. Irwin/McGraw-Hill.
-
-\bibitem{hart1987art}
-Hart, W., \& Goenka, S. N. (1987). \textit{The Art of Living: Vipassana Meditation: As Taught by S. N. Goenka}. HarperOne. （魚川祐司 訳 『ゴエンカ氏のヴィパッサナー瞑想入門』 春秋社, 1999）
-
-\bibitem{blakeslee2007body}
-Blakeslee, S., \& Blakeslee, M. (2007). \textit{The Body Has a Mind of Its Own: How Body Maps in Your Brain Help You Do (Almost) Everything Better}. Random House. （小松淳子 訳 『脳のなかの身体地図』 インターシフト, 2009）
-
-\bibitem{taylor2008stroke}
-Taylor, J. B. (2008). \textit{My Stroke of Insight: A Brain Scientist's Personal Journey}. Viking. （竹内薫 訳 『奇跡の脳』 新潮社, 2009）
-
-\bibitem{ekman2009telling}
-Ekman, P. (2009). \textit{Telling Lies: Clues to Deceit in the Marketplace, Politics, and Marriage} (Revised ed.). W. W. Norton \& Company. （菅靖彦 訳 『嘘をつくとき ―― 政治・ビジネス・法廷・家庭における騙しの心理学』 朝日選書, 1999）
-
-
-\bibitem{miller1960plans}
-Miller, G.~A., Galanter, E., \& Pribram, K.~H. (1960). \textit{Plans and the Structure of Behavior}. Henry Holt and Company. （宇津木保 訳 『行動の構造』 岩波書店, 1967. フィードバック階層とTOTEユニットの定式化原典）
-
-\bibitem{baum2009lietome}
-Baum, S. (Creator), \& Ekman, P. (Scientific Advisor). (2009--2011). \textit{Lie to Me: The Complete Seasons 1--3} [DVD Box Set]. 20th Century Fox Television / Imagine Television. (FACS・自律神経漏洩シグナル・オセロの誤謬に関する応用工学的ケーススタディ映像資料)
-
-\bibitem{shakespeare1622othello}
-Shakespeare, W. (1622). \textit{The Tragedy of Othello, the Moor of Venice}. Thomas Walkley. （「オセロの誤謬」の概念的起源。覚醒・恐怖シグナルを有罪の証拠と誤認する認知バイアスの古典原典）
-
-
-\bibitem{rathje1992rubbish}
-Rathje, W., \& Murphy, C. (1992). \textit{Rubbish!: The Archaeology of Garbage}. HarperCollins. （ガーボロジー（ゴミ考古学）の原典。自己申告と物理的痕跡ログの乖離を実証したプロファイリング研究）
-
-\bibitem{haley1973uncommon}
-Haley, J. (1973). \textit{Uncommon Therapy: The Psychiatric Techniques of Milton H. Erickson, M.D.}. W. W. Norton \& Company. （高石昇 訳 『アンコモン・セラピー ―― ミルトン・エリクソンの戦略的手法』 二瓶社, 1999）
-
-\bibitem{rosen1982myvoice}
-Rosen, S. (Ed.). (1982). \textit{My Voice Will Go with You: The Teaching Tales of Milton H. Erickson}. W. W. Norton \& Company. （成瀬悟策 監訳 『私の声はあなたとともに ―― ミルトン・エリクソンの教えの物語』 二瓶社, 1998）
-
-\bibitem{erickson1989february}
-Erickson, M. H., \& Rossi, E. L. (1989). \textit{The February Man: Evolving Consciousness and Identity in Hypnotherapy}. Brunner/Mazel. （『2月の男 ―― 催眠療法における意識とアイデンティティの進化』 二瓶社, 1999）
-
-\bibitem{nlpeternal}
-NLP Eternal. \textit{NLP Eternal: Official Streaming Video Archive of Richard Bandler and Neuro-Linguistic Programming}. \url{https://nlpeternal.com}. （リチャード・バンドラー公式映像アーカイブ。行動モデリング、催眠誘導プロトコル、サブモダリティ介入の実演記録一次資料）
-
-\end{thebibliography}
-
-\section*{法的・方法論的免責事項（Disclaimer）}
-
-\noindent
-\textbf{1. 本体系の性質}\\
-『Scientific NLP\textsuperscript{\texttrademark}』、およびこれに付随する『Othello Filter\textsuperscript{\texttrademark}』、『Othello Interrogation Protocol\textsuperscript{\texttrademark}（OIP\textsuperscript{\texttrademark}）』、『Self Biofeedback Training\textsuperscript{\texttrademark}（SBFT\textsuperscript{\texttrademark}）』は、情報理論、非線形力学系、およびベイズ推論の工学的原理に基づいて設計された理論・計算機・行動モデリングの体系です。本書は純粋な工学的仕様書であり、人間の認知オートマトンに対する認識論的探求として提示されています。
-
-\vspace{0.8em}
-\noindent
-\textbf{2. 法科学・司法・捜査現場における適用限界}\\
-本書に記載された手法は、法的手続き、司法判断、または刑事捜査において、事実の真偽や有罪・無罪を単独で証明する確定的な証拠を構成するものではありません。『Othello Filter\textsuperscript{\texttrademark}』は、確証バイアス（「オセロの誤謬」）を抑制するために、自律神経系の生理的覚醒と事実の真偽を切り離す数理的ノイズ除去機構として機能します。デシバン（$\text{dB}$）による対数尤度比および状態遷移方程式は、内部的一貫性と情報エントロピーを評価するための確率論的指標であり、決定論的な「嘘発見」ではありません。本プロトコルを司法尋問、セキュリティクリアランス、またはインテリジェンス実務に適用する場合、各国の管轄法、憲法上の権利保障、および厳格な実証的妥当性の検証を前提としなければなりません。
-
-\vspace{0.8em}
-\noindent
-\textbf{3. 臨床・医療に関する非該当性}\\
-本書は精神医学的診断、心理療法、または医療的処置を提供するものではありません。認知の目標値（セットポイント）、TOTEループ構造、およびアトラクタ力学に関する数理的定式化は計算機モデルにすぎず、医療的処方箋ではありません。精神的・身体的な不調を治療する目的の場合は、資格を有する医師または専門医療機関にご相談ください。
-
-\vspace{0.8em}
-\noindent
-\textbf{4. 責任の制限}\\
-著者、貢献者、および知財権保有者は、本書に記載されたプロトコル、アルゴリズム、または方法論の実装、適用、あるいは誤用によって生じた直接的、間接的、付随的、懲罰的、または結果的な損害について、いかなる法的責任も負いません。本体系の運用、倫理的整合性、および法的遵守に関する一切の責任は、すべて使用者に帰属します。
-
-
-
-\chapter*{著者プロフィール}
-\begin{center}
-  \centering
-  \includegraphics[width=0.4\linewidth, keepaspectratio]{src/images/author.jpg}
-  \label{fig:author}
-\end{center}
-\textbf{Masahiro Sugaya}
-
-Scientific NLP\texttrademark 創始者。東京大学大学院理学系研究科物理学専攻修士課程修了。在学時は高エネルギー加速器研究機構（KEK）にて研究に従事。コンピューターエンジニアを経て、脳科学・ベイズ統計・情報幾何学・サイバネティクスを統合した認知科学的アプローチ「Scientific NLP\texttrademark 」を体系化。
-
-米国Society of NLP\texttrademark 公認NLPトレーナー。Dr. Richard Bandlerの催眠指導のもと、世界各国をトランス状態で放浪・探求。インド・ヨガの聖地リシケシやチベット亡命政府の拠点ダラムシャラを巡礼し、チベット仏教の高僧ゲシェ・カルサン・ダムダル師より出家を許可されるも在家を選択。仏教徒ではなくサイエンティストの道を選んだ。さらに、S.N. ゴエンカ氏のヴィパッサナー瞑想10日間コースを数度修了し、アルボムッレ・スマナサーラ長老からも指導を受けるなど、身体感覚のスキャンとサティ（気づき）を通じた「内受容感覚の制御」および「自我（Ego）の脱同一化」を身体知として体得する。
-
-また、対人行動・非言語情報の精密分析において、ポール・エクマン（Paul Ekman）グループ認定「METT（Micro Expression Training Tool）Advanced」を修了・保有。加えて、リチャード・ボルスタッド（Richard Bolstad）開発の「Transforming Communication（TC）」認定資格を有する。
-
-理論物理学の数理的厳密性、東洋伝統思想・臨床催眠の変容技術、そして微表情分析の客観的プロファイリングを架橋し、人間の認知・無意識プロセスを工学的に解明・再設計する独自の指導・研究を展開している。
-
+\include{src/chapters/license}
+\include{src/chapters/bibliography}
+\include{src/chapters/author_profile}
 %%MEMO
 %\include{src/chapters/nlp_hypnosis}
 %WIP
-
-\begin{comment}
-    %WIP: Add following insight
-    \epigraph{When I first started doing this, I charged practically nothing. And do you know what happened? People complained, they didn't do the exercises, and they stayed stuck. So I started charging an obscene amount of money. Suddenly, they paid attention. They actually went into trance. People don't value what they don't bleed for.}{Richard Bandler}
-    Root-Cause Solution Metaphor Injection Technique\texttrademark が効果を発揮するには、IQの壁がある。同型のメタファーを注入しても、エゴがパターンマッチング出来ずに、一生なんの意味かわからなければ効果を発揮しない。メタファーの意味を逐次説明しなければならないハメになったら、それはただの説教だ。同時に彼らの生活環境に根ざした意味がはっきり分かるようなメタファーを選ぶ必要がある。パーリ経典でブッダは彼らの文化に合わせたメタファーを多用している。
-    ソムナンブリュストは、トラウマが有り、かつ高知能でなければならない。
-    どこまでIQが低くても効くかどうかは、データを取っていないからわからないが、ミルトン・エリクソンの客層をみればなんとなく想像つくだろ。この本を読んで理解している人なら大丈夫だと思う。
-\end{comment}
-
-
-\begin{comment}
-    % WIP: Stage Hypnosis / Mass Induction Penetration Protocol
-    % [Attack Vector: Multi-Node Broadcast to Single-Node Takeover & Propagation]
-    
-    1. Phase 1: Broadcast Scan & Firewall Depletion
-       - Execute broad-spectrum humor and Barnum/Jacques statements.
-       - Lower cognitive immune response (firewall) across all nodes.
-       - Passive sniffing: Calibrate real-time somatic metrics (blink rate, respiratory synchronization, micro-expressions) to locate low-hanging fruit.
-
-    2. Phase 2: Directed Unicast Exploit (Targeting the Somnambulist)
-       - Identify an optimal high-spec node (High IQ + Pre-installed Dissociation Engine from Trauma).
-       - Inject bespoke isomorphic metaphors masked as casual digressions.
-       - Force internal mapping crash, triggering visible somatic anomalies (catalepsy, rapid trance onset, profound affect shift).
-
-    3. Phase 3: Peer-to-Peer Propagation via Social Proof
-       - Display the hijacked node's output to the surrounding network.
-       - The observable crash overrides remaining analytical verification routines in surrounding nodes.
-       - The entire auditorium transitions from distributed skeptics into a synchronized botnet, mistaking deterministic cybernetic exploit for charismatic/occult authority.
-\end{comment}
-
-\section{オセロの誤謬の逆写像プロトコル：アーチャーの実証データによる誤認誘発と認知構造の特定}
-
-\begin{comment}
-    % =========================================================================
-    % WIP: Reverse Exploitation of the Othello Error via Dane Archer's IPT Data
-    % =========================================================================
-    
-    1. 背景と基礎パラメータ（デーン・アーチャーの研究の導入）:
-       - デーン・アーチャー（Dane Archer）の対人知覚課題（IPT: Interpersonal Perception Task）
-         における実験データを、観察者がオセロの誤謬（情動シグナル \Lambda の原因誤帰属）を
-         発火させる基礎確率（ベースレート）として採用する。
-       - 未訓練な観察ノードにおける直感的な非言語シグナルの看破率は約54%（コイントス同等の縮退）。
-       - したがって、直感に頼る観察者に対する事前オッズ初期値は:
-         P(Othello Error) \approx 0.46 \sim 0.50 \implies O_{prior} \approx 1:1 (0 dB)
-       - 観察者が「自分の直感は正しい」と確信を抱いている場合、バイアスにより事前スコアは
-         +5 dB（優勢領域）以上へ自動的に偏向する。
-
-    2. パッシブ・サイドチャネル攻撃（無色ノイズによる自爆誘導）:
-       - 術者は作為的な嘘や演出コストを支払わず、単に解釈の余白が大きい曖昧な情動ノイズ
-         （突然の沈黙、微小な硬直、視線の揺らぎなどの 0 dB シグナル）を水面に落とす。
-       - 相手の推論機はアーチャー・パラメータ（コイントス空間）に捕捉されているため、
-         不確実性を嫌悪する DMN が自発的にオセロの誤謬を発火させる。
-       - 相手が「こちらの意図」として勝手に捏造したナラティブ（攻撃、罪悪感、軽蔑など）を
-         観測することで、相手の OS 内部で過剰強化されている事前予期 \hat{\Omega} の
-         偏り（脆弱性）をノーリスクで逆算・特定する。
-
-    3. ハニーポットとしての偽装脆弱性の露出:
-       - 相手に特定の誤った仮説 H_{fake} を確信させたい場合、あえてそのタイミングで
-         意図的な微小情動リーク \Lambda_{leak} を露出させる。
-       - 相手のオセロ誤謬エンジンが「隠蔽の証拠」として過剰マッチングを起こし、
-         こちらの真の意図やコア資産から注意（アテンション）を完全に逸脱させる。
-
-    4. 参照文献メモ:
-       - Dane Archer & Robin M. Akert (1977/1988), "The Interpersonal Perception Task (IPT)"
-       - 参考文献リストへ追加要。
-\end{comment}
-
-% 本文の骨子（順次展開）
-本節では、ポール・エクマンが提唱した「オセロの誤謬」を、単なる観察者の判定エラーとしてではなく、
-対象者の認知バイアス空間を外部から特定・誘導するための能動的エクスプロイトとして再定義する。
-デーン・アーチャー（Dane Archer）らの対人知覚課題（IPT）が実証した「非言語シグナル判定のコイントスへの縮退」
-を基底事前確率として導入することで、相手の推論機が自発的に誤認を起こす確率過程を決定論的にモデル化する。
-\begin{comment}
-\section{事例研究：オセロの誤謬と主観的トランス誘導のベイズ解剖}
-\label{sec:case_study_othello_bandler}
-
-\subsection{概要と問題設定}
-本節では、著者が米国フロリダのNLP高額セミナーにおいて体験した「TIMEXの時計破損と壇上メタファーの完全符合」という実体験を題材とし、主観的に強烈な変性意識状態（$\mathcal{S}(\text{ALTER})$）をもたらす現象が、情報論的にいかにして発生したかを疑似ベイズ推論モデルおよびオセロ・フィルターに基づき冷徹に事後検証（ポストモーテム）する。
-
-\subsection{事象ログと仮説の定式化}
-\begin{description}
-    \item[事象背景:] 成田空港での出発直前、著者が所持していたTIMEXの腕時計が突発的な物損事故により破損。著者の内部において「落胆」「高額セミナーへの緊張」という情動インターラプション $\Lambda_{loss}$ が高負荷で蓄積。
-    \item[観測データ $D$:] フロリダ現地セミナーにおいて、講師リチャード・バンドラーが壇上で発した言説：
-    \begin{quote}
-    \textit{「私はTIMEXのような安物の時計は使わない。私が身につけるのは高級な機械式腕時計だ。だが、高精度で高価な腕時計ほど、常に繊細なメンテナンスを怠ってはならない。少しの狂いが全体を狂わせるからだ」}
-    \end{quote}
-\end{description}
-
-検証すべき対立仮説を以下のように置く。
-\begin{itemize}
-    \item $H_{\text{profile}}$（意図的プロファイリング仮説）：同行スタッフが成田での物損事故を把握・吸い上げ、開講前にバンドラーへ伝達。バンドラーが著者個人をソムナンブリュストとして狙い撃ちし、変容メタファーを投下した。
-    \item $H_{\text{null}}$（偶然・定番レトリック仮説）：バンドラーは成田の事象を一切把握しておらず、大衆文化における定番の対比（安価で頑丈なTIMEX vs 繊細な高級時計）を漫談の導入として使用した。
-\end{itemize}
-
-\subsection{ベイズ更新プロトコルによる尤度比と事後オッズの検証}
-
-\subsubsection{尤度の算定}
-仮説 $H_{\text{profile}}$ が真である場合、著者を揺さぶるアンカーとしてその比喩が選ばれる尤度は極めて高い。
-\begin{equation}
-    P(D \mid H_{\text{profile}}) \approx 0.85
-\end{equation}
-一方、仮説 $H_{\text{null}}$ が真である場合、米国人スピーカーが講義中に「TIMEX」を大衆時計の代名詞として引き合いに出す基礎頻度は、決して無視できない確率として存在する。
-\begin{equation}
-    P(D \mid H_{\text{null}}) \approx 0.03
-\end{equation}
-
-したがって、エビデンス $D$ 単体が持つベイズ・ファクター（尤度比）は次のように計算される。
-\begin{equation}
-    BF = \frac{P(D \mid H_{\text{profile}})}{P(D \mid H_{\text{null}})} = \frac{0.85}{0.03} \approx 28.33 \implies +14.52\,\text{dB}
-\end{equation}
-この $+14.52\,\text{dB}$ という強い正のインパクトが、受講者の脳内パーサー（左脳インタープリター）において「この男はすべてを見抜いている」という不可避のオセロ誤謬を機械的に発火させた主因である。
-
-\subsubsection{事前確率の物理的制約（ベースレート）}
-しかし、オセロ・フィルターの規律に従い、事前確率 $P(H_{\text{profile}})$ のベースレートを客観的に評価しなければならない。
-\begin{itemize}
-    \item 日本国内（成田）の突発的物損事故をスタッフが確実に捕捉する確率
-    \item 百名規模の受講生の中から、その極私的な物損が重要情報として抽出される確率
-    \item 慌ただしい開講前ブリーフィングで講師へ正確にルーティングされる確率
-\end{itemize}
-これらを最大限甘く見積もったとしても、事前確率は高々 $1\%$ を超えない。
-\begin{equation}
-    P(H_{\text{profile}}) \approx 0.01 \implies O_{\text{prior}}(H_{\text{profile}} : H_{\text{null}}) = -20\,\text{dB}
-\end{equation}
-
-\subsubsection{事後確率の算出}
-事後スコアの対数加算を行う。
-\begin{equation}
-    \text{Score}_{\text{post}} = O_{\text{prior}} + 10 \log_{10}(BF) = -20\,\text{dB} + 14.52\,\text{dB} = -5.48\,\text{dB}
-\end{equation}
-\begin{equation}
-    P(H_{\text{profile}} \mid D) \approx 0.220 \quad (22.0\%)
-\end{equation}
-
-\subsection{主観的変容の工学的価値：メタファーによる $\Omega^{ego}$ の書き換え}
-ベイズ事後確率の冷徹な計算（客観的確率 $\approx 22\%$）が示す通り、この現象の物理的実態が「受講生側の推論機が自律発火させたオセロの誤謬」であったとしても、それがクライアント（受講生）の認知システムにもたらした変容の工学的価値は些かも減じるものではない。
-
-むしろ、ここに催眠・変容プロトコル（RCSMIT™）の本質が存在する。
-
-\begin{itemize}
-    \item \textbf{視座の引き上げ（アイデンティティの再定義）：}
-    「安物のTIMEXではなく高級腕時計である」という対比は、過剰な知覚過敏と高い被暗示性を持つ受講生に対し、「自分は欠陥品ではなく、極めて高精度で繊細な高級機械（ソムナンブリュスト／天才）である」という高いプライドを伴う新たな $\Omega^{ego}$（エゴの自己保存ナラティブ）をインストールするアトラクタとして機能した。
-    \item \textbf{必須の保守義務（メンテナンス・ループの確立）：}
-    「高級腕時計は常にメンテナンスを怠ってはならない」という命題は、高負荷な推論能力と情動の振れ幅を抱えた知性に対し、「心のメンテナンスを日常的に行わなければ、容易に狂い、壊れてしまう」という、自己保全のための決定論的な制約条件を同 $\Omega^{ego}$ の根幹に焼き付けた。
-\end{itemize}
-
-客観的には偶然の一致（$+14.5\,\text{dB}$ の符合ノイズ）にすぎなかったとしても、受講生の推論機がその瞬間に $\mathcal{S}(\text{ALTER})$ へと滑落し、提示されたメタファーを全検索ゲート開放状態で貪欲に吸い上げた結果として、「高知能なソムナンブリュストとしての誇り」と「恒常的な自己保守（心のメンテナンス）の義務」が不可逆な $\Omega^{ego}$ として定着した。
-
-術者の客観的知悉の有無を超え、受講生自身の認知システムが「自己変容のための救済解」として自発的に結晶化させたという意味において、この事象は生涯にわたる指針を刻み込んだ最高の同型メタファーとして結実したと総括できる。
-
-\subsection{結論と工学的知見}
-計算結果が示す通り、スタッフによる事前プロファイリング体制の存在を最大限肯定的に織り込んだとしても、事後確率は約 $22\%$ に留まり、約 $78\%$ の確からしさで「講師の持ちネタと受講生の情動記憶の偶発的符合」であったことが示される。
-
-\begin{figure}[htbp]
-\centering
-\begin{quote}
-\textbf{オセロ・フィルターによるデバッグ則:}
-強い主観的確信（$+14.5\,\text{dB}$ の符合ノイズ）が生じた際、推論機は事前確率（$-20\,\text{dB}$ の物理制約）を無視して短絡し、自ら $\mathcal{S}(\text{ALTER})$ へと滑落する。
-被験者が「狙い撃ちされた」と錯覚した瞬間、変容のためのメタファーは抵抗ゼロで $\Omega^{ego}$ の核へインストールされる。
-\end{quote}
-\caption{主観的トランス発火とベイズ事後確率の乖離}
-\label{fig:othello_timex_debug}
-\end{figure}
-
-本事例は、催眠誘導や変容プロトコルにおいて、術者が超常的な読心を行わずとも、「文化的ストックから抽出された粗いシグナル」と「受講生側の過熱した事前予期」が接触するだけで、受講生側の推論機が自律的にオセロの誤謬を発火させ、完全なトランス状態を生成し得ることを実証する格好のケーススタディである。
-\end{comment}
-
-% ==============================================================================
-% [DRAFT FRAGMENT] 非対称損失関数と進化的ベイズ推論（オセロ・フィルターの境界条件）
-% 【組み込み予定先】
-%   - 第14章（オセロの誤謬・デーン・アーチャーのIPT解析・サイドチャネル攻撃モデル）
-%   - または第4章（進化的計算モデル・DMNとサバイバル・オートマトン）
-% 【論点】
-%   1. 理論ベイズと神経疑似ベイズの乖離は「バグ」ではなく「非対称損失関数に対する最適化」
-%   2. 物理サバイバル（タイプIIエラー＝死）における事前確率無視の工学的合理性
-%   3. 言語・対人認知空間（物理危機ゼロ環境）への誤適用によるオセロ誤謬の発火とトランス誘導
-%   4. コンテキスト依存型デュアルモード（生存即応 vs 冷徹デバッグ）の切り替えプロトコル
-% ==============================================================================
-
-\subsection*{【補遺メモ】非対称損失関数と神経疑似ベイズの進化的妥当性}
-\label{note:asymmetric_loss_evolutionary_bayes}
-
-\begin{tcolorbox}[colback=gray!5,colframe=black!75,title=設計ノート：なぜ推論機は事前確率を切り捨てるのか]
-\small
-\textbf{1. 非対称損失（Asymmetric Loss Function）の定式化}
-
-事象 $E \in \{0, 1\}$（$1$: 致命的脅威、$0$: 安全・環境ノイズ）に対する判断 $\hat{E} \in \{0, 1\}$ を考える。
-損失関数 $L(\hat{E}, E)$ は極端に非対称である：
-\begin{align}
-    L(\hat{E}=1, E=0) &= c_{\text{false\_alarm}} \quad (\text{偽陽性：無駄な回避行動・代謝コスト $\ll \infty$}) \\
-    L(\hat{E}=0, E=1) &= c_{\text{miss}} \quad (\text{偽陰性：被弾・死亡 $\to \infty$})
-\end{align}
-期待損失最小化の決定境界 $\gamma$ は、オッズ比として次のように縮退する：
-\begin{equation}
-    \gamma = \frac{c_{\text{false\_alarm}}}{c_{\text{miss}}} \to 0
-\end{equation}
-すなわち、事前確率 $P(E=1) \approx 0.0001$（$-40\,\text{dB}$）の極低頻度事象であっても、入力シグナルにわずかなノイズ（$+3\,\text{dB}$ 程度）が重畳しただけで、行動閾値としては直ちに「脅威確定（$\hat{E}=1$）」を発火させることが生物学的に厳密な最適解となる。
-\vspace{0.5em}
-
-\textbf{2. サバイバル・モードから認知的トランスへの転移メカニズム}
-\begin{itemize}
-    \item \textbf{物理層（生命維持）:} 爆弾の落下、肉食獣の接近など、即死ペナルティが存在する空間では、理論ベイズの検算（ベースレートの精査）を待つ時間は致命的である。このため神経疑似ベイズ推論機は事前確率の項をバイパス（ハードワイヤード・シャント）し、直感（本能）を優先させる。
-    \item \textbf{情報層（セミナー・日常対話）:} 物理的死のリスクが存在しないステージ上や日常対話空間においても、情動インターラプション $\Lambda$（高額投資の重圧、自己否定の恐怖など）が高負荷でかかると、推論機は誤って「サバイバル・モード」を起動する。
-    \item \textbf{オセロ誤謬の必然性:} その結果、術者の発した文化的ストック（$0\,\text{dB}$ のホワイトノイズ）を「自分を標的とした不可避のシグナル」と誤同定し、事前確率の希薄さ（$-20\,\text{dB}$）を無視して主観的確信度 $99.9\%$ を叩き出す。
-\end{itemize}
-\vspace{0.5em}
-
-\textbf{3. 工学的切り替えプロトコル（二重規範）}
-\begin{quote}
-\textit{「物理的サバイバルにおいては、理論ベイズを捨てて本能の即応に従え。\\
-しかし平時および自己変容の工学においては、オセロ・フィルターにより事前確率を再装填して冷静に検算せよ」}
-\end{quote}
-この 2 つの演算系の境界条件を規定し、生体オートマトンの暴走を外部から調停することこそが、Scientific NLP における安全工学（フェイルセーフ仕様）の核心となる。
-\end{tcolorbox}
-% ==============================================================================
-
-% ==============================================================================
-% [DRAFT FRAGMENT] エゴ駆動エンジンとしての第3世代NLPとナラティブ・アライメント
-% 【組み込み予定先】
-%   - 第2部：認知アーキテクチャと信念工学
-%   - または「エゴの自己保存ナラティブ（\Omega^{ego}）の力学」を扱うセクション
-% ==============================================================================
-
-\subsection{推進機関としての第3世代NLP：ナラティブ・アライメントの工学的評価}
-\label{sec:third_gen_nlp_ego_drive}
-
-\subsubsection{世代間アーキテクチャの変遷}
-NLPの制御対象は、その歴史的発展とともに生体計算機の異なる階層へシフトしてきた：
-\begin{enumerate}
-    \item \textbf{第1世代（行動・刺激応答層）：} VAKモデル、アンカリング、サブモダリティ操作。主として知覚入力と反射的出力の再配線（パブロフ的条件づけの拡張）。
-    \item \textbf{第2世代（認知・信念論理層）：} ビリーフ・チェンジ、リフレーミング、メタ・プログラム。前提となる論理命題の修正。
-    \item \textbf{第3世代（動的ナラティブ・アイデンティティ層）：} ロバート・ディルツらが提唱したニューロ・ロジカル・レベル、英雄の旅（Hero's Journey）、フィールド理論。自己概念（$\Omega^{ego}$）を包括的な神話的物語へと包摂させる高次アーキテクチャ。
-\end{enumerate}
-
-\subsubsection{高次ナラティブによるポテンシャル障壁の突破}
-生体エージェントが未知の領域へ進出する、あるいは激しい認知的負荷（挫折、恐怖、社会的孤立）を伴うタスクを遂行する際、純粋な損得勘定（期待効用最大化）のみでは局所最適解（現状維持バイアス）に捕捉され、ポテンシャル障壁 $\Delta V$ を越えられない。
-
-ディルツの第3世代プロトコルは、ここに以下の工学的操作を加える：
-\begin{itemize}
-    \item \textbf{垂直方向のベクトル同期（垂直アライメント）：}
-    環境、行動、能力、信念、アイデンティティ、スピリチュアル（大いなるシステムへの貢献）の各階層を一方向のベクトルへと束ね、内部コンフリクトによるエントロピー散逸を極小化する。
-    \item \textbf{試練の再定義（情動損失の反転）：}
-    眼前で生じたエラーや損失 $\Lambda_{loss}$ を「失敗」ではなく「英雄が成長のために通過すべき不可欠の試練（Initiation）」へと再ラベル化することで、負の情動ペナルティを前進のための運動エネルギーへと変換する。
-\end{itemize}
-
-この機序により、エゴは「選ばれし者」「大いなる目的に資する主体」としての強力な推進力（$\Lambda_{drive}$）を獲得し、通常では破綻するような高負荷環境を突破することが可能となる。
-
-\subsubsection{ブースター分離問題：機能的効能と認知的トラップ}
-Scientific NLP の観点において、この第3世代ナラティブは**多段式ロケットの第1段ブースター**として厳密に位置づけられる。
-
-\begin{tcolorbox}[colback=blue!5,colframe=blue!60,title=工学的トレードオフ：ナラティブ・インジェクションの功罪]
-\begin{itemize}
-    \item \textbf{正の機能（推進フェーズ）：}
-    重力圏（自己不信・無力感・現状維持）を脱出するために、高出力な $\Omega^{ego}$ の神話化は不可欠な推進剤として機能する。ディルツのモデルはこの出力効率において卓越している。
-    \item \textbf{負の機能（軌道投入フェーズ・自爆リスク）：}
-    衛星軌道（$\mathcal{S}(\text{ZERO})$ / 悟り・客観的現実）への投入段階において、ブースター（英雄としての自己物語）を切り離せず、「私は特別でなければならない」「この世界は私を試す舞台である」というオセロ誤謬を固定化したまま突入すると、現実との摩擦熱によって精神システム全体が発振・破綻する。
-\end{itemize}
-\end{tcolorbox}
-
-\subsubsection{小括：道具としての利用と脱同一化}
-第3世代NLPが設計したナラティブは、否定されるべき妄想ではなく、**「必要に応じて点火し、任務完了とともに安全に投棄（Jettison）すべき高効率ブースター」**である。
-
-重要なのは、物語の「真実性」を盲信することではなく、その「機能性」を自覚的に使いこなした上で、いつでもオセロ・フィルターによってそれを単なる数理モデルへと解体し、平熱の静寂（$\mathcal{S}(\text{ZERO})$）へ帰還できる制御コードを保持しておくことである。
-
-% ==============================================================================
-% [DRAFT FRAGMENT] 第4世代NLPの宣言：主観的トランスから客観的メタ制御工学へ
-% ==============================================================================
-
-\subsection{第4世代NLPの定義：主観ナラティブから客観的メタ推論工学へ}
-\label{sec:fourth_generation_nlp}
-
-従来のNLP発展史において、制御対象は「知覚・行動（第1世代）」から「認知・信念（第2世代）」を経て、「アイデンティティ・神話的物語（第3世代）」へと階層を登ってきた。しかし第3世代までのプロトコルは、依然として「いかにより機能的な変性意識状態（主観トランス）を構築するか」という閉鎖系内部の最適化に留まっていた。
-
-\textbf{第4世代（Scientific NLP）}は、この主観的トランスの内部操作から脱却し、**「生体計算機が自己の主観現実（$\Omega^{ego}$）をレンダリングするメカニズムそのものを外側から監視・デバッグし、必要に応じて安全にシャットダウン（$\mathcal{S}(\text{ZERO})$ への回帰）するメタ制御工学」**として定義される。
-
-\begin{figure}[htbp]
-\centering
-\begin{tabular}{clll}
-\hline
-\textbf{世代} & \textbf{制御レイヤー} & \textbf{操作パラダイム} & \textbf{限界とリスク} \\ \hline
-第1世代 & 知覚・反射（VAK） & 条件づけ・アンカリング & 対症療法・文脈不保持 \\
-第2世代 & 認知・論理 & リフレーミング・前提修正 & 高次動機の枯渇 \\
-第3世代 & 神話・ナラティブ & 英雄の旅・自己同一化 & オセロ誤謬・陶酔自爆 \\ \hline
-\textbf{第4世代} & \textbf{推論機・物理メタ層} & \textbf{ベイズ解剖・ブースター投棄} & \textbf{完全な脱同一化（制御自由）} \\ \hline
-\end{tabular}
-\caption{NLPにおける制御パラダイムの4世代遷移}
-\label{tab:nlp_generations}
-\end{figure}
-
-第4世代は、先行する世代の技術を否定しない。第1世代の条件づけも、第3世代の英雄ナラティブも、すべて「多段式ロケットの推力」として正当に位置づけ、使いこなし、そして目的の高度に達した瞬間に冷静に投棄する。
-
-「トランスに酔う」時代を終わらせ、「トランスの回路を工学的に設計・調停する」フェーズへ。これこそが、本仕様書が提示する第4世代NLPの立脚地である。
-
-
-\begin{comment}
-==============================================================================
-【設計思想・工学的プラグマティズムに関するメタ注記】
-執筆フェーズ：認知的多様体 \hat{\Omega} の文化依存性と道具主義の徹底
-
-1. 認知的リアリティ（\hat{\Omega}）の文化的相対性と非真実性
-   - 人間は客観的「真実」によって動いているのではない。
-   - 生体計算機がレンダリングする主観現実 \hat{\Omega} は、文化圏、所属コミュニティ、
-     言語空間、生活スタイル、階層、個人の生育歴によって千差万別に異なる。
-   - 例：
-       * 日本文化圏における「血液型占い」「おみくじ」「言霊」
-       * 西欧文化圏における「星占い」「神の恩寵」「英雄の旅（ディルツ的ナラティブ）」
-       * ビジネス・自己啓発圏における「TIMEX vs 高級時計」「引き寄せの法則」
-   - これらはいずれも物理層の「真実」ではない。各文化環境においてエゴ（\Omega^{ego}）を
-     組織化し、行動を最適化するために後天的にインストールされた「ローカルな仮想OS」にすぎない。
-
-2. プラグマティズムの極致：「人は真実で動かない。使えるものは全て使い倒せ」
-   - 「真理か否か」と「機能するか否か」は完全に直交する。
-   - 入力シグナルが客観的エビデンス（事後確率）ゼロ、あるいは 0 dB のホワイトノイズであっても、
-     その個人の \hat{\Omega} の文脈において「意味のある符合」として解釈され、
-     行動ポテンシャル障壁 \Delta V を越える推力（\Lambda_{drive}）を励起するならば、
-     工学的には「極めて有用な着火剤」である。
-   - 相手（あるいは自分）がどの \hat{\Omega} の上で動作しているのかを冷徹に見極め、
-     その系で最もトルクが出る文化的・個人的シンボルを躊躇なく投入する。
-   - 使えるものは泥水でも、迷信でも、当てずっぽうのハッタリでも、全て燃料として使い倒す。
-
-3. 第3世代NLPの真の運用法（エンジニアリング視点）
-   - 第3世代（ディルツ的ナラティブ・神話的アイデンティティ）の価値は、
-     それを「普遍の真理」として崇めることではない。
-   - 対象のローカルな \hat{\Omega} に最適化された「使い捨ての高出力ブースター」として
-     割り切って採用・点火すること。
-
-4. 3つの立場の比較と第4世代アーキテクトの規範
-   - 【オカルト・信奉者】：
-       己のローカルな \hat{\Omega}（血液型、奇跡、英雄物語）を「世界の唯一の真理」と盲信し、
-       オセロの誤謬に沈んで自爆する。
-   - 【無力な原理主義者】：
-       「科学的根拠がない」「迷信だ」と客観的正しさを振りかざして断罪するだけで、
-       生体計算機を1ミリも駆動させるエネルギーを生み出せない。
-   - 【第4世代アーキテクト（Scientific NLP）】：
-       (a) 人は真実ではなく \hat{\Omega} の虚構で動く生体オートマトンであることを見抜く。
-       (b) 虚構であることを百も承知で、必要な瞬間、その場にある文化的シンボルを
-           「使い捨てのブースター」として全開で踏み込み、実利をもぎ取る。
-       (c) 目的の高度（軌道投入）に達した瞬間に、その虚構を未練なくパージ（投棄）する。
-       (d) オセロ・フィルターにより、いつでも客観的・平熱の現実（\mathcal{S}(ZERO)）へ着地する。
-
-※ 将来、第3世代プロトコルを工学的に論じる節（sec:third_gen_nlp_ego_drive 等）において、
-   「文化依存的リアリティ \hat{\Omega} のプラグマティックな兵器化」と
-   「事後パージによる脱同一化」の二重構造を説明する際の根本思想として組み込むこと。
-==============================================================================
-\end{comment}
-
-%=============================================================================
-% Othello Filter(TM) Operational Directives & Sampling Protocols
-% Module: Meta-Control Engineering / Bayesian Evidence Acquisition
-% Compiler Target: LuaLaTeX
-%=============================================================================
-
-\subsection*{Othello Filter\texttrademark\ 運用仕様：ベイズ検算プロトコルと観測上の規約}
-
-観測者がオセロ誤謬（認知的全盤面反転）を回避し、客観的ベイズ更新を維持するための厳格な運用プロトコルを以下に規定する。観測系における安易な確信度の水増しおよび早合点な仮説ロックインは、生体計算機ハードウェアに対する致命的な論理バグを引き起こす。
-
-\begin{enumerate}[label=\textbf{\arabic*.}]
-    \item \textbf{非直交エビデンスの加算禁止（Gram-Schmidt 独立性規約）}
-    
-    統計的・情報論的に直交（独立）していないエビデンス集合を、別個の事後確率加算データとして扱ってはならない。
-    
-    \begin{equation}
-        \langle D_{\text{new}} \mid D_{\text{prev}} \rangle \not\approx 0 \implies \Delta \log P(H_k \mid D) = 0.00\,\mathrm{dB}
-    \end{equation}
-    
-    既存の刺激によって誘発された相関成分は、すべて情報利得ゼロとして強制破棄（Drop Duplicate）する。
-
-    \begin{enumerate}[label=\textbf{1.\arabic*.}]
-        \item \textbf{単一刺激に起因する一連の身体反応（残響カスケード）の加算禁止}
-        
-        単一のプローブ入力 $W$（特定の単語、トーン、刺激）によって生じた「瞳孔散大」「視線偏位」「呼吸促迫」「嚥下反射」「微細な筋硬直」等は、単一の自律神経放電に伴う同心円状のリップル（過渡応答）にすぎない。
-        
-        これらは自由度 $df = 1$ の従属変数カスケードであり、各反応を個別の証拠 ($N=5$) としてカウントすることは厳禁である。また、同一の刺激ワードを時間差で再投入して同一の反射が再現された場合であっても、得られる情報利得は厳密に \textbf{$0\,\mathrm{dB}$} である。それは単なる神経伝達関数 $H(s)$ の存在確認であり、背後にある特定の仮説 $H_k$ の真偽検証には寄与しない。
-    \end{enumerate}
-
-    \item \textbf{観測面の初期化規約（ブレークステートによる基底状態復帰）}
-    
-    過渡応答の残響（Ringing）が残留している系から、新規の直交エビデンスをサンプリングすることは物理的・情報理論的に不可能である。
-    
-    新たな独立データを取得する前に、文脈と直交する無関係な刺激（キャッシュ・フラッシュ）を能動的に挿入し、被験者（および観測者自身）の認知的・身体的ステートを平熱の基底状態 $\mathcal{S}(\mathrm{ZERO})$ へ強制リセットしなければならない。残留電荷がグラウンドへ落ちた「無風状態」を確認した後に投じられた入力のみが、真に直交する新たなエビデンス $D_{\perp}$ として事後確率計算に算入される。
-
-    \item \textbf{直交識別プロービング規約（対立仮説排除プローブの投入）}
-    
-    能動的推論（Active Inference）においてプローブを投入する場合、検証対象の仮説 $H_0$ を単に肯定するような「自己奉仕的プローブ」を打ってはならない。
-    
-    プローブ $Q$ は、対立仮説集合 $\{H_1, H_2, \dots, H_m\}$ の下における尤度が極小、すなわち対立仮説の事後確率が可能な限りゼロに漸近するような**「仮説分離能の高い極限条件」**を突くものでなければならない。
-
-    \begin{equation}
-        Q^* = \arg\max_{Q} \left[ \frac{P(D_Q \mid H_0)}{\sum_{j \neq 0} P(D_Q \mid H_j)} \right] \quad \text{such that} \quad \forall j \neq 0, \; P(H_j \mid D_Q) \to 0
-    \end{equation}
-
-    「$H_0$ 以外のすべての仮説では絶対に説明がつかない特異点」を撃ち抜くプローブのみが、仮説の真のロックイン（$P(H_0 \mid D) > 0.95$）を許容する。それ以外の曖昧プローブで盤面を反転させる行為は、直ちにオセロ誤謬として検知・遮断（Filter Trap）される。
-\end{enumerate}
-%=============================================================================
-
-\begin{comment}
-    %Othello Interrogation Protocol
-    $P(D \mid \neg H)$を最小化するために
-    被疑者を呼ぶときは、
-    「あなたを疑っているわけではないです、お手数おかけして大変申し訳ないと思っています。証拠が全然得られないので当時をしる重要な情報提供者としてしばらくお付き合い願いたい。ホテルの手配はしているのでぜひくつろいでいただきたい。」
-と呼ばないといけない。
-\end{comment}
 \end{document}

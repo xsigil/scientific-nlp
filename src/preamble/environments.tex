@@ -1,0 +1,28 @@
+\newtcolorbox{legalframe}{
+    enhanced,
+    sharp corners,
+    colback=white,
+    colframe=black,
+    boxrule=1.5pt,
+    left=18pt,
+    right=18pt,
+    top=24pt,
+    bottom=24pt,
+    borderline={0.4pt}{3pt}{black},
+}
+
+\newcommand{\sectionbreak}{\clearpage}
+\setlength{\epigraphwidth}{0.75\textwidth}
+\renewcommand{\textflush}{flushright}
+\renewcommand{\sourceflush}{flushright}
+\usepackage{fontspec}
+\setmainfont[
+  Path = ./src/fonts/,
+  BoldFont = NotoSerif-Bold.ttf,
+  ItalicFont = NotoSerif-Italic.ttf,
+  BoldItalicFont = NotoSerif-BoldItalic.ttf
+]{NotoSerif-Regular.ttf}
+
+\graphicspath{{build/dot/}}
+
+
