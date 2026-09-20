@@ -187,7 +187,7 @@
 
 \begin{align}
     \WholeSelf_t &\equiv \CoupledState{\VirtualConviction_t, \NQSpace_t, \State, \lambda_t, \Lambda_t, {\scientificAd}_t} \\
-    \WholeSelf_{t+1} &= \mathcal{F}(\WholeSelf_{t}, {\EnvNoise}_{t}, \Delta_t)
+    \WholeSelf_{t+1} &= \CBO(\WholeSelf_{t}, {\EnvNoise}_{t}, \Delta_t)
 \end{align}
 
 \begin{equation}
@@ -265,7 +265,7 @@
         \textbf{\large OPERATE}\\[1pt]
         \scriptsize （行動・介入・変化）\\[3pt]
         \footnotesize $\Delta(\lambda, \Lambda, A_d) \longrightarrow 0$\\[1pt]
-        \scriptsize $\WholeSelf_{t+1} = \mathcal{F}(\WholeSelf, \EnvNoise, \Delta_t)$
+        \scriptsize $\WholeSelf_{t+1} = \CBO(\WholeSelf, \EnvNoise, \Delta_t)$
     };
 
     % 3. EXIT
@@ -310,14 +310,14 @@
     \begin{cases}
 %        \Delta_t(\lambda_t, \Lambda_t, {\scientificAd}_t) = -\mathbf{K} \, \nabla_{\WholeSelf} \mathcal{E}(\WholeSelf_t) \\[4pt]
         \Delta(\lambda, \Lambda, A_d) \longrightarrow 0 \\[4pt]
-        \WholeSelf_{t+1} = \mathcal{F}\left( \WholeSelf_t,\, {\EnvNoise}_t,\, \Delta_t \right)
+        \WholeSelf_{t+1} = \CBO\left( \WholeSelf_t,\, {\EnvNoise}_t,\, \Delta_t \right)
     \end{cases} \\[6pt]
     % [Exit] 終了フェーズ: 目標盆地へのトラップ完了（定常状態）
     \mathbf{Exit}_t &: \quad \WholeSelf^* \in \VirtualConvictionGroup^{\mathrm{ego}}(\mathrm{profit}) \quad (\text{Stable Attractor Achieved})
 \end{align}
 
 \begin{equation}
-    \mathcal{F}(\WholeSelf) \equiv \begin{cases}
+    \CBO(\WholeSelf) \equiv \begin{cases}
         \text{Track Servo Mode}     & \left( \text{when } \State = \State(DMN) \land \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction(\mathrm{profit}) \right) \\[6pt]
         \text{Avoid Barrier Mode}     & \left( \text{when } \State = \State(DMN) \land \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction(\mathrm{threat}) \right) \\[6pt]
         \text{TOTE Mode}      & \left( \text{when } \left( \State = \State(DMN) \lor \State = \AlteredState \right) \land \NeuralQuasiEvidence \NeuralQuasiBayesianExploration{\NQSpace} \right) \\[6pt]
