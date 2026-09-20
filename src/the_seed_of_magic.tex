@@ -186,7 +186,7 @@
 
 \begin{align}
     \WholeSelf_t &\equiv \CoupledState{\VirtualConviction_t, \NQSpace_t, \State, \lambda_t, \Lambda_t, {\scientificAd}_t} \\
-    \WholeSelf_{t+1} &= \mathcal{F}(\WholeSelf_{t}, \EnvNoise_{t})
+    \WholeSelf_{t+1} &= \mathcal{F}(\WholeSelf_{t}, {\EnvNoise}_{t})
 \end{align}
 
 \begin{equation}
@@ -197,6 +197,7 @@
     \text{Error}_{\mathrm{avoid}} &= \max\left( 0,\, D_{\mathrm{safe}} - \| \text{Current State} - \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}, \mathrm{predict}\}} \psi^{\mathrm{ego}}_{\mathrm{s}}(\mathrm{threat}) \| \right) \\
                                   &\xrightarrow{\text{Feedback Control}} \Delta (\lambda, \Lambda, A_d) \longrightarrow 0
 \end{align}
+
 
 生体コンピュータとしての人間の認知および行動は、超越的な「霊魂」や「自由意志」によって駆動しているのではない。
 客観的な物理・情報科学の視点に立つならば、人間とは「直前の一瞬の内的状態」と「今この瞬間に環境から受容した感覚刺激」を入力変数とし、次の一瞬の内的状態を確定的に出力し続ける、非線形な
