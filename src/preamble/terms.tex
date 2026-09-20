@@ -1,173 +1,186 @@
-% ------------------------------------------------------------------------------
+% ==============================================================================
+% Lua モジュールのロード
+% ==============================================================================
+\directlua{dofile("src/lua/terms.lua")}
+
+% ==============================================================================
+% 汎用マクロ: \Term{識別キー}{表示テキスト}
+% ==============================================================================
+\newcommand{\Term}[2]{%
+  \directlua{register_term("\luatexluaescapestring{#1}", "\luatexluaescapestring{#2}")}%
+}
+
+% ==============================================================================
 % Scientific NLP(S-NLP)
-% ------------------------------------------------------------------------------
-\newcommand{\exSNLP}{Scientific~NLP\texttrademark{}\xspace}
-\newcommand{\aSNLP}{S-NLP\texttrademark{}\xspace}
-\newcommand{\jpSNLP}{サイエンティフィック~NLP\texttrademark{}\xspace}
+% ==============================================================================
+\newcommand{\exSNLP}{\Term{snlp}{Scientific~NLP}}
+\newcommand{\aSNLP}{\Term{snlp-abbr}{S-NLP}}
+\newcommand{\jpSNLP}{\Term{jp:snlp}{サイエンティフィック~NLP}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Cybernetic Neural Quasi-Bayesian Inference System(CNQBIS)
-% ------------------------------------------------------------------------------
-\newcommand{\exCNQBIS}{Cybernetic Neural Quasi-Bayesian Inference System\texttrademark{}\xspace}
+% ==============================================================================
+\newcommand{\exCNQBIS}{\Term{cnqbis}{Cybernetic Neural Quasi-Bayesian Inference System}}
 \newcommand{\aCNQBIS}{CNQBIS\xspace}
-\newcommand{\jpCNQBIS}{サイバネティック神経準ベイズ推論システム\texttrademark{}\xspace}
+\newcommand{\jpCNQBIS}{\Term{jp:cnqbis}{サイバネティック神経準ベイズ推論システム}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Mathematical Bayesian Inference Engine(MBIE)
-% ------------------------------------------------------------------------------
+% ※ \texttrademark なし（一般数理モデル）
+% ==============================================================================
 \newcommand{\exMBIE}{Mathematical Bayesian Inference Engine\xspace}
 \newcommand{\aMBIE}{MBIE\xspace}
 \newcommand{\jpMBIE}{数学的ベイズ推論機\xspace}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Neural Quasi-Bayesian Inference Engine(NQBIE)
-% ------------------------------------------------------------------------------
-\newcommand{\exNQBIE}{Neural Quasi-Bayesian Inference Engine\texttrademark{}\xspace}
+% ==============================================================================
+\newcommand{\exNQBIE}{\Term{nqbie}{Neural Quasi-Bayesian Inference Engine}}
 \newcommand{\aNQBIE}{NQBIE\xspace}
-\newcommand{\jpNQBIE}{神経準ベイズ推論機\texttrademark{}\xspace}
+\newcommand{\jpNQBIE}{\Term{jp:nqbie}{神経準ベイズ推論機}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Neural Quasi-Bayesian Update(NQBU)
-% -----------------------------------------------------------------
-\newcommand{\exNQBU}{Neural Quasi-Bayesian Update\texttrademark{}\xspace}
-\newcommand{\aNQBU}{NQBU\xspace} 
-\newcommand{\jpNQBU}{神経準ベイズ更新\texttrademark{}\xspace} 
+% ==============================================================================
+\newcommand{\exNQBU}{\Term{nqbu}{Neural Quasi-Bayesian Update}}
+\newcommand{\aNQBU}{NQBU\xspace}
+\newcommand{\jpNQBU}{\Term{jp:nqbu}{神経準ベイズ更新}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Neural Quasi-Prior Probability Space(NQ-Prior Space)
-% ------------------------------------------------------------------------------
-\newcommand{\exNQPriorSpace}{Neural Quasi-Prior Probability Space\texttrademark{}\xspace}
-\newcommand{\aNQPriorSpace}{NQ-Prior~Space\xspace} 
-\newcommand{\jpNQPriorSpace}{神経準事前確率空間\texttrademark{}\xspace}
+% ==============================================================================
+\newcommand{\exNQPriorSpace}{\Term{nq-prior-space}{Neural Quasi-Prior Probability Space}}
+\newcommand{\aNQPriorSpace}{NQ-Prior~Space\xspace}
+\newcommand{\jpNQPriorSpace}{\Term{jp:nq-prior-space}{神経準事前確率空間}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Neural Quasi-Posterior Probability Space(NQ-Posterior Space)
-% ------------------------------------------------------------------------------
-\newcommand{\exNQPosteriorSpace}{Neural Quasi-Posterior Probability Space\texttrademark{}\xspace}
+% ==============================================================================
+\newcommand{\exNQPosteriorSpace}{\Term{nq-posterior-space}{Neural Quasi-Posterior Probability Space}}
 \newcommand{\aNQPosteriorSpace}{NQ-Posterior~Space\xspace}
-\newcommand{\jpNQPosteriorSpace}{神経準事後確率空間\texttrademark{}\xspace}
+\newcommand{\jpNQPosteriorSpace}{\Term{jp:nq-posterior-space}{神経準事後確率空間}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Tri-Fold Virtual Ego Conviction(TFVEC)
-% ------------------------------------------------------------------------------
-\newcommand{\exTFVEC}{Tri-Fold Virtual Ego Conviction\texttrademark{}\xspace}
+% ==============================================================================
+\newcommand{\exTFVEC}{\Term{tfvec}{Tri-Fold Virtual Ego Conviction}}
 \newcommand{\aTFVEC}{TFVEC\xspace}
-\newcommand{\jpTFVEC}{三位一体仮想エゴ確信\texttrademark{}\xspace}
+\newcommand{\jpTFVEC}{\Term{jp:tfvec}{三位一体仮想エゴ確信}}
 
-% ------------------------------------------------------------------------------
-% Virtual Narrarive Conviction(NC)
-% ------------------------------------------------------------------------------
-\newcommand{\exVNC}{Virtual Narrarive Conviction\texttrademark{}\xspace}
-\newcommand{\aVNC}{VNC}
-\newcommand{\jpVNC}{仮想ナラティブ確信\texttrademark{}\xspace}
+% ==============================================================================
+% Virtual Narrative Conviction(VNC)
+% ==============================================================================
+\newcommand{\exVNC}{\Term{vnc}{Virtual Narrative Conviction}}
+\newcommand{\aVNC}{VNC\xspace}
+\newcommand{\jpVNC}{\Term{jp:vnc}{仮想ナラティブ確信}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Virtual Cause Ego Conviction
-% ------------------------------------------------------------------------------
-\newcommand{\exVCauseEgoConviction}{Virtual Cause Ego Conviction\texttrademark{}\xspace}
-\newcommand{\jpVCauseEgoConviction}{仮想原因確信\texttrademark\xspace}
+% ==============================================================================
+\newcommand{\exVCauseEgoConviction}{\Term{v-cause-ego-conviction}{Virtual Cause Ego Conviction}}
+\newcommand{\jpVCauseEgoConviction}{\Term{jp:v-cause-ego-conviction}{仮想原因確信}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Virtual Causality Ego Conviction
-% ------------------------------------------------------------------------------
-\newcommand{\exVCausalityEgoConviction}{Virtual Causality Ego Conviction\texttrademark{}\xspace}
-\newcommand{\jpVCausalityEgoConviction}{仮想因果律確信\texttrademark{}\xspace}
+% ==============================================================================
+\newcommand{\exVCausalityEgoConviction}{\Term{v-causality-ego-conviction}{Virtual Causality Ego Conviction}}
+\newcommand{\jpVCausalityEgoConviction}{\Term{jp:v-causality-ego-conviction}{仮想因果律確信}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Virtual Effect Ego Conviction
-% ------------------------------------------------------------------------------
-\newcommand{\exVEffectEgoConviction}{Virtual Effect Ego Conviction\texttrademark{}\xspace}
-\newcommand{\jpVEffectEgoConviction}{仮想結果確信\texttrademark\xspace}
+% ==============================================================================
+\newcommand{\exVEffectEgoConviction}{\Term{v-effect-ego-conviction}{Virtual Effect Ego Conviction}}
+\newcommand{\jpVEffectEgoConviction}{\Term{jp:v-effect-ego-conviction}{仮想結果確信}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Othello Filter
-% ------------------------------------------------------------------------------
-\newcommand{\exOthelloFilter}{Othello Filter\texttrademark{}\xspace}
-\newcommand{\jpOthelloFilter}{オセロフィルター\texttrademark\xspace} 
+% ==============================================================================
+\newcommand{\exOthelloFilter}{\Term{othello-filter}{Othello Filter}}
+\newcommand{\jpOthelloFilter}{\Term{jp:othello-filter}{オセロフィルター}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Bayesian Transformation Protocol(BTP)
-% ------------------------------------------------------------------------------
-\newcommand{\exBTP}{Bayesian Transformation Protocol\texttrademark{}\xspace}
+% ==============================================================================
+\newcommand{\exBTP}{\Term{btp}{Bayesian Transformation Protocol}}
 \newcommand{\aBTP}{BTP\xspace}
-\newcommand{\jpBTP}{ベイズ・トランスフォーメーション・プロトコル\texttrademark{}\xspace}
+\newcommand{\jpBTP}{\Term{jp:btp}{ベイズ・トランスフォーメーション・プロトコル}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Bayesian Vision(BV)
-% ------------------------------------------------------------------------------
-\newcommand{\exBV}{Bayesian Vision\texttrademark{}\xspace}
+% ==============================================================================
+\newcommand{\exBV}{\Term{bv}{Bayesian Vision}}
 \newcommand{\aBV}{BV\xspace}
-\newcommand{\jpBV}{ベイジアン・ビジョン\texttrademark{}\xspace}
+\newcommand{\jpBV}{\Term{jp:bv}{ベイジアン・ビジョン}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Othello Interrogation Protocol(OIP)
-% ------------------------------------------------------------------------------
-\newcommand{\exOIP}{Othello Interrogation Protocol\texttrademark{}\xspace}
-\newcommand{\aOIP}{OIP\xspace} 
-\newcommand{\jpOIP}{オセロ・インテロゲーション・プロトコル\texttrademark{}\xspace}
+% ==============================================================================
+\newcommand{\exOIP}{\Term{oip}{Othello Interrogation Protocol}}
+\newcommand{\aOIP}{OIP\xspace}
+\newcommand{\jpOIP}{\Term{jp:oip}{オセロ・インテロゲーション・プロトコル}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Orthogonal Probe(OP)
-% ------------------------------------------------------------------------------
-\newcommand{\exOP}{Orthogonal Probe\texttrademark{}\xspace}
+% ==============================================================================
+\newcommand{\exOP}{\Term{op}{Orthogonal Probe}}
 \newcommand{\aOP}{OP\xspace}
-\newcommand{\jpOP}{直交プローブ\texttrademark{}\xspace}
+\newcommand{\jpOP}{\Term{jp:op}{直交プローブ}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Kenning Isomorphic Metaphor Architecture(KIMA)
-% ------------------------------------------------------------------------------
-\newcommand{\exKIMA}{Kenning Isomorphic Metaphor Architecture\texttrademark{}\xspace}
+% ==============================================================================
+\newcommand{\exKIMA}{\Term{kima}{Kenning Isomorphic Metaphor Architecture}}
 \newcommand{\aKIMA}{KIMA\xspace}
-\newcommand{\jpKIMA}{ケニング同型メタファー・アーキテクチャ\texttrademark{}\xspace}
+\newcommand{\jpKIMA}{\Term{jp:kima}{ケニング同型メタファー・アーキテクチャ}}
 
-% ------------------------------------------------------------------------------
-%  Kenning Orthogonal Probe(KOP)
-% ------------------------------------------------------------------------------
-\newcommand{\exKOP}{Kenning Orthogonal Probe\texttrademark{}\xspace}
+% ==============================================================================
+% Kenning Orthogonal Probe(KOP)
+% ==============================================================================
+\newcommand{\exKOP}{\Term{kop}{Kenning Orthogonal Probe}}
 \newcommand{\aKOP}{KOP\xspace}
-\newcommand{\jpKOP}{ケニング直交プローブ\texttrademark{}\xspace}
+\newcommand{\jpKOP}{\Term{jp:kop}{ケニング直交プローブ}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Break-State Flushing (BSF)
-% ------------------------------------------------------------------------------
-\newcommand{\exBSF}{Break-State Flushing\texttrademark{}\xspace}
+% ==============================================================================
+\newcommand{\exBSF}{\Term{bsf}{Break-State Flushing}}
 \newcommand{\aBSF}{BSF\xspace}
-\newcommand{\jpBSF}{ブレークステート・フラッシング\texttrademark{}\xspace}
+\newcommand{\jpBSF}{\Term{jp:bsf}{ブレークステート・フラッシング}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Random Break-State Flushing Orthogonal Probe Injection (RBSF-OPI)
-% ------------------------------------------------------------------------------
-\newcommand{\exRBSFOPI}{Random Break-State Flushing Orthogonal Probe Injection\texttrademark{}\xspace}
+% ==============================================================================
+\newcommand{\exRBSFOPI}{\Term{rbsf-opi}{Random Break-State Flushing Orthogonal Probe Injection}}
 \newcommand{\aRBSFOPI}{RBSF-OPI\xspace}
-\newcommand{\jpRBSFOPI}{ランダム・ブレークステート・フラッシング直交プローブ注入\texttrademark{}\xspace}
+\newcommand{\jpRBSFOPI}{\Term{jp:rbsf-opi}{ランダム・ブレークステート・フラッシング直交プローブ注入}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Self Biofeedback Training (SBFT)
-% ------------------------------------------------------------------------------
-\newcommand{\exSBFT}{Self Biofeedback Training\texttrademark{}\xspace}
+% ==============================================================================
+\newcommand{\exSBFT}{\Term{sbft}{Self Biofeedback Training}}
 \newcommand{\aSBFT}{SBFT\xspace}
-\newcommand{\jpSBFT}{自己バイオフィードバックトレーニング\texttrademark{}\xspace}
+\newcommand{\jpSBFT}{\Term{jp:sbft}{自己バイオフィードバックトレーニング}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Therapeutic Root-Problem Solving Hypnosis (TRPSH)
-% ------------------------------------------------------------------------------
-\newcommand{\exTRPSH}{Therapeutic Root-Problem Solving Hypnosis\texttrademark{}\xspace}
+% ==============================================================================
+\newcommand{\exTRPSH}{\Term{trpsh}{Therapeutic Root-Problem Solving Hypnosis}}
 \newcommand{\aTRPSH}{TRPSH\xspace}
-\newcommand{\jpTRPSH}{治療的根本問題解決催眠\texttrademark{}\xspace}
+\newcommand{\jpTRPSH}{\Term{jp:trpsh}{治療的根本問題解決催眠}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Bayesian Hypnotic Pre-Profiling Protocol (BH3P)
-% ------------------------------------------------------------------------------
-\newcommand{\exBHPPP}{Bayesian Hypnotic Pre-Profiling Protocol\texttrademark{}\xspace}
+% ==============================================================================
+\newcommand{\exBHPPP}{\Term{bh3p}{Bayesian Hypnotic Pre-Profiling Protocol}}
 \newcommand{\aBHPPP}{BH3P\xspace}
-\newcommand{\jpBHPPP}{ベイジアン催眠事前プロファイリング・プロトコル\texttrademark{}\xspace}
+\newcommand{\jpBHPPP}{\Term{jp:bh3p}{ベイジアン催眠事前プロファイリング・プロトコル}}
 
-% ------------------------------------------------------------------------------
+% ==============================================================================
 % Asymmetric Double-Bind Containment (ADBC)
-% ------------------------------------------------------------------------------
-\newcommand{\exADBC}{Asymmetric Double-Bind Containment\texttrademark{}\xspace}
+% ==============================================================================
+\newcommand{\exADBC}{\Term{adbc}{Asymmetric Double-Bind Containment}}
 \newcommand{\aADBC}{ADBC\xspace}
-\newcommand{\jpADBC}{非対称二重拘束封じ込め\texttrademark{}\xspace}
+\newcommand{\jpADBC}{\Term{jp:adbc}{非対称二重拘束封じ込め}}
 
 % ==============================================================================
 % Protocol & Technique Terms
@@ -176,44 +189,44 @@
 % ------------------------------------------------------------------------------
 % Reticular Interrupt Protocol (RIP)
 % ------------------------------------------------------------------------------
-\newcommand{\exRIP}{Reticular Interrupt Protocol\texttrademark{}\xspace}
+\newcommand{\exRIP}{\Term{rip}{Reticular Interrupt Protocol}}
 \newcommand{\aRIP}{RIP\xspace}
-\newcommand{\jpRIP}{網様体割り込みプロトコル\texttrademark{}\xspace}
+\newcommand{\jpRIP}{\Term{jp:rip}{網様体割り込みプロトコル}}
 
 % ------------------------------------------------------------------------------
 % Unlimited Unknown State Transition (UUST)
 % ------------------------------------------------------------------------------
-\newcommand{\exUUST}{Unlimited Unknown State Transition\texttrademark{}\xspace}
+\newcommand{\exUUST}{\Term{uust}{Unlimited Unknown State Transition}}
 \newcommand{\aUUST}{UUST\xspace}
-\newcommand{\jpUUST}{アンリミテッド・アンノウン状態遷移\texttrademark{}\xspace}
+\newcommand{\jpUUST}{\Term{jp:uust}{アンリミテッド・アンノウン状態遷移}}
 
 % ------------------------------------------------------------------------------
 % Unlimited Unknown State Transition Technique (UUSTT)
 % ------------------------------------------------------------------------------
-\newcommand{\exUUSTT}{Unlimited Unknown State Transition Technique\texttrademark{}\xspace}
+\newcommand{\exUUSTT}{\Term{uustt}{Unlimited Unknown State Transition Technique}}
 \newcommand{\aUUSTT}{UUSTT\xspace}
-\newcommand{\jpUUSTT}{アンリミテッド・アンノウン状態遷移技法\texttrademark{}\xspace}
+\newcommand{\jpUUSTT}{\Term{jp:uustt}{アンリミテッド・アンノウン状態遷移技法}}
 
 % ------------------------------------------------------------------------------
 % Root-Cause Solution Metaphor Injection Technique (RC-SMIT)
 % ------------------------------------------------------------------------------
-\newcommand{\exRCSMIT}{Root-Cause Solution Metaphor Injection Technique\texttrademark{}\xspace}
+\newcommand{\exRCSMIT}{\Term{rc-smit}{Root-Cause Solution Metaphor Injection Technique}}
 \newcommand{\aRCSMIT}{RC-SMIT\xspace}
-\newcommand{\jpRCSMIT}{根本解決メタファー注入技法\texttrademark{}\xspace}
+\newcommand{\jpRCSMIT}{\Term{jp:rc-smit}{根本解決メタファー注入技法}}
 
 % ------------------------------------------------------------------------------
 % Fault-Tolerant Humor Brute-Force Technique (FT-HBFT)
 % ------------------------------------------------------------------------------
-\newcommand{\exFTHBFT}{Fault-Tolerant Humor Brute-Force Technique\texttrademark{}\xspace}
+\newcommand{\exFTHBFT}{\Term{ft-hbft}{Fault-Tolerant Humor Brute-Force Technique}}
 \newcommand{\aFTHBFT}{FT-HBFT\xspace}
-\newcommand{\jpFTHBFT}{耐障害ユーモア・ブルートフォーステクニック\texttrademark{}\xspace}
+\newcommand{\jpFTHBFT}{\Term{jp:ft-hbft}{耐障害ユーモア・ブルートフォーステクニック}}
 
 % ------------------------------------------------------------------------------
 % Multi-Agent Bayesian Cybernetic Resonance (MBCR)
 % ------------------------------------------------------------------------------
-\newcommand{\exMBCR}{Multi-Agent Bayesian Cybernetic Resonance\texttrademark{}\xspace}
+\newcommand{\exMBCR}{\Term{mbcr}{Multi-Agent Bayesian Cybernetic Resonance}}
 \newcommand{\aMBCR}{MBCR\xspace}
-\newcommand{\jpMBCR}{マルチエージェント・ベイジアン・サイバネティック共振\texttrademark{}\xspace}
+\newcommand{\jpMBCR}{\Term{jp:mbcr}{マルチエージェント・ベイジアン・サイバネティック共振}}
 
 % ==============================================================================
 % State-Space Baselines (基底状態モデル)
@@ -222,30 +235,306 @@
 % ------------------------------------------------------------------------------
 % Zero State
 % ------------------------------------------------------------------------------
-\newcommand{\exZeroState}{Zero~State\texttrademark{}\xspace}
-\newcommand{\jpZeroState}{ゼロステート\texttrademark{}\xspace}
+\newcommand{\exZeroState}{\Term{zero-state}{Zero~State}}
+\newcommand{\jpZeroState}{\Term{jp:zero-state}{ゼロステート}}
 
 % ------------------------------------------------------------------------------
 % Intellectual Zero State
 % ------------------------------------------------------------------------------
-\newcommand{\exIntellectualZeroState}{Intellectual Zero~State\texttrademark{}\xspace}
-\newcommand{\jpIntellectualZeroState}{知的ゼロステート\texttrademark{}\xspace}
-\newcommand{\jpIntellectualZeroStateKana}{インテレクチュアル・ゼロステート\texttrademark{}\xspace}
+\newcommand{\exIntellectualZeroState}{\Term{intellectual-zero-state}{Intellectual Zero~State}}
+\newcommand{\jpIntellectualZeroState}{\Term{jp:intellectual-zero-state}{知的ゼロステート}}
+\newcommand{\jpIntellectualZeroStateKana}{\Term{jp:intellectual-zero-state}{インテレクチュアル・ゼロステート}}
 
 % ------------------------------------------------------------------------------
 % Zero Personality
 % ------------------------------------------------------------------------------
-\newcommand{\exZeroPersonality}{Zero~Personality\texttrademark{}\xspace}
-\newcommand{\jpZeroPersonality}{ゼロパーソナリティ\texttrademark{}\xspace}
+\newcommand{\exZeroPersonality}{\Term{zero-personality}{Zero~Personality}}
+\newcommand{\jpZeroPersonality}{\Term{jp:zero-personality}{ゼロパーソナリティ}}
 
 % ------------------------------------------------------------------------------
 % Intellectual Zero Personality
 % ------------------------------------------------------------------------------
-\newcommand{\exIntellectualZeroPersonality}{Intellectual Zero~Personality\texttrademark{}\xspace}
-\newcommand{\jpIntellectualZeroPersonality}{知的ゼロパーソナリティ\texttrademark{}\xspace}
-\newcommand{\jpIntellectualZeroPersonalityKana}{インテレクチュアル・ゼロパーソナリティ\texttrademark{}\xspace}
+\newcommand{\exIntellectualZeroPersonality}{\Term{intellectual-zero-personality}{Intellectual Zero~Personality}}
+\newcommand{\jpIntellectualZeroPersonality}{\Term{jp:intellectual-zero-personality}{知的ゼロパーソナリティ}}
+\newcommand{\jpIntellectualZeroPersonalityKana}{\Term{jp:intellectual-zero-personality}{インテレクチュアル・ゼロパーソナリティ}}
 
-% ------------------------------------------------------------------------------
-% T.O.T.E Model
-% ------------------------------------------------------------------------------
+% ==============================================================================
+% Cybernetics / Classical Reference
+% ==============================================================================
 \newcommand{\TOTE}{T.O.T.E\xspace}
+
+
+%% ------------------------------------------------------------------------------
+%% --- 初出時のみ商標記号（\texttrademark）を自動付加する Lua モジュール ---
+%% ------------------------------------------------------------------------------
+%\directlua{
+%  terms_seen = {}
+%
+%  function register_term(id, display_text)
+%    if not terms_seen[id] then
+%      terms_seen[id] = true
+%      tex.sprint(display_text .. [[\texttrademark]])
+%    else
+%      tex.sprint(display_text)
+%    end
+%  end
+%}
+%
+%% ------------------------------------------------------------------------------
+%% 汎用マクロ: \Term{識別キー}{表示名}
+%% ------------------------------------------------------------------------------
+%\newcommand{\Term}[2]{%
+%  \directlua{register_term("\luatexluaescapestring{#1}", "\luatexluaescapestring{#2}")}%
+%}
+%
+%% ------------------------------------------------------------------------------
+%% Scientific NLP(S-NLP)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exSNLP}{Scientific~NLP\texttrademark{}\xspace}
+%\newcommand{\aSNLP}{S-NLP\texttrademark{}\xspace}
+%\newcommand{\jpSNLP}{サイエンティフィック~NLP\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Cybernetic Neural Quasi-Bayesian Inference System(CNQBIS)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exCNQBIS}{Cybernetic Neural Quasi-Bayesian Inference System\texttrademark{}\xspace}
+%\newcommand{\aCNQBIS}{CNQBIS\xspace}
+%\newcommand{\jpCNQBIS}{サイバネティック神経準ベイズ推論システム\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Mathematical Bayesian Inference Engine(MBIE)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exMBIE}{Mathematical Bayesian Inference Engine\xspace}
+%\newcommand{\aMBIE}{MBIE\xspace}
+%\newcommand{\jpMBIE}{数学的ベイズ推論機\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Neural Quasi-Bayesian Inference Engine(NQBIE)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exNQBIE}{Neural Quasi-Bayesian Inference Engine\texttrademark{}\xspace}
+%\newcommand{\aNQBIE}{NQBIE\xspace}
+%\newcommand{\jpNQBIE}{神経準ベイズ推論機\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Neural Quasi-Bayesian Update(NQBU)
+%% -----------------------------------------------------------------
+%\newcommand{\exNQBU}{Neural Quasi-Bayesian Update\texttrademark{}\xspace}
+%\newcommand{\aNQBU}{NQBU\xspace} 
+%\newcommand{\jpNQBU}{神経準ベイズ更新\texttrademark{}\xspace} 
+%
+%% ------------------------------------------------------------------------------
+%% Neural Quasi-Prior Probability Space(NQ-Prior Space)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exNQPriorSpace}{Neural Quasi-Prior Probability Space\texttrademark{}\xspace}
+%\newcommand{\aNQPriorSpace}{NQ-Prior~Space\xspace} 
+%\newcommand{\jpNQPriorSpace}{神経準事前確率空間\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Neural Quasi-Posterior Probability Space(NQ-Posterior Space)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exNQPosteriorSpace}{Neural Quasi-Posterior Probability Space\texttrademark{}\xspace}
+%\newcommand{\aNQPosteriorSpace}{NQ-Posterior~Space\xspace}
+%\newcommand{\jpNQPosteriorSpace}{神経準事後確率空間\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Tri-Fold Virtual Ego Conviction(TFVEC)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exTFVEC}{Tri-Fold Virtual Ego Conviction\texttrademark{}\xspace}
+%\newcommand{\aTFVEC}{TFVEC\xspace}
+%\newcommand{\jpTFVEC}{三位一体仮想エゴ確信\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Virtual Narrarive Conviction(NC)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exVNC}{Virtual Narrarive Conviction\texttrademark{}\xspace}
+%\newcommand{\aVNC}{VNC}
+%\newcommand{\jpVNC}{仮想ナラティブ確信\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Virtual Cause Ego Conviction
+%% ------------------------------------------------------------------------------
+%\newcommand{\exVCauseEgoConviction}{Virtual Cause Ego Conviction\texttrademark{}\xspace}
+%\newcommand{\jpVCauseEgoConviction}{仮想原因確信\texttrademark\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Virtual Causality Ego Conviction
+%% ------------------------------------------------------------------------------
+%\newcommand{\exVCausalityEgoConviction}{Virtual Causality Ego Conviction\texttrademark{}\xspace}
+%\newcommand{\jpVCausalityEgoConviction}{仮想因果律確信\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Virtual Effect Ego Conviction
+%% ------------------------------------------------------------------------------
+%\newcommand{\exVEffectEgoConviction}{Virtual Effect Ego Conviction\texttrademark{}\xspace}
+%\newcommand{\jpVEffectEgoConviction}{仮想結果確信\texttrademark\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Othello Filter
+%% ------------------------------------------------------------------------------
+%\newcommand{\exOthelloFilter}{Othello Filter\texttrademark{}\xspace}
+%\newcommand{\jpOthelloFilter}{オセロフィルター\texttrademark\xspace} 
+%
+%% ------------------------------------------------------------------------------
+%% Bayesian Transformation Protocol(BTP)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exBTP}{Bayesian Transformation Protocol\texttrademark{}\xspace}
+%\newcommand{\aBTP}{BTP\xspace}
+%\newcommand{\jpBTP}{ベイズ・トランスフォーメーション・プロトコル\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Bayesian Vision(BV)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exBV}{Bayesian Vision\texttrademark{}\xspace}
+%\newcommand{\aBV}{BV\xspace}
+%\newcommand{\jpBV}{ベイジアン・ビジョン\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Othello Interrogation Protocol(OIP)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exOIP}{Othello Interrogation Protocol\texttrademark{}\xspace}
+%\newcommand{\aOIP}{OIP\xspace} 
+%\newcommand{\jpOIP}{オセロ・インテロゲーション・プロトコル\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Orthogonal Probe(OP)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exOP}{Orthogonal Probe\texttrademark{}\xspace}
+%\newcommand{\aOP}{OP\xspace}
+%\newcommand{\jpOP}{直交プローブ\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Kenning Isomorphic Metaphor Architecture(KIMA)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exKIMA}{Kenning Isomorphic Metaphor Architecture\texttrademark{}\xspace}
+%\newcommand{\aKIMA}{KIMA\xspace}
+%\newcommand{\jpKIMA}{ケニング同型メタファー・アーキテクチャ\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%%  Kenning Orthogonal Probe(KOP)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exKOP}{Kenning Orthogonal Probe\texttrademark{}\xspace}
+%\newcommand{\aKOP}{KOP\xspace}
+%\newcommand{\jpKOP}{ケニング直交プローブ\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Break-State Flushing (BSF)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exBSF}{Break-State Flushing\texttrademark{}\xspace}
+%\newcommand{\aBSF}{BSF\xspace}
+%\newcommand{\jpBSF}{ブレークステート・フラッシング\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Random Break-State Flushing Orthogonal Probe Injection (RBSF-OPI)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exRBSFOPI}{Random Break-State Flushing Orthogonal Probe Injection\texttrademark{}\xspace}
+%\newcommand{\aRBSFOPI}{RBSF-OPI\xspace}
+%\newcommand{\jpRBSFOPI}{ランダム・ブレークステート・フラッシング直交プローブ注入\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Self Biofeedback Training (SBFT)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exSBFT}{Self Biofeedback Training\texttrademark{}\xspace}
+%\newcommand{\aSBFT}{SBFT\xspace}
+%\newcommand{\jpSBFT}{自己バイオフィードバックトレーニング\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Therapeutic Root-Problem Solving Hypnosis (TRPSH)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exTRPSH}{Therapeutic Root-Problem Solving Hypnosis\texttrademark{}\xspace}
+%\newcommand{\aTRPSH}{TRPSH\xspace}
+%\newcommand{\jpTRPSH}{治療的根本問題解決催眠\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Bayesian Hypnotic Pre-Profiling Protocol (BH3P)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exBHPPP}{Bayesian Hypnotic Pre-Profiling Protocol\texttrademark{}\xspace}
+%\newcommand{\aBHPPP}{BH3P\xspace}
+%\newcommand{\jpBHPPP}{ベイジアン催眠事前プロファイリング・プロトコル\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Asymmetric Double-Bind Containment (ADBC)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exADBC}{Asymmetric Double-Bind Containment\texttrademark{}\xspace}
+%\newcommand{\aADBC}{ADBC\xspace}
+%\newcommand{\jpADBC}{非対称二重拘束封じ込め\texttrademark{}\xspace}
+%
+%% ==============================================================================
+%% Protocol & Technique Terms
+%% ==============================================================================
+%
+%% ------------------------------------------------------------------------------
+%% Reticular Interrupt Protocol (RIP)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exRIP}{Reticular Interrupt Protocol\texttrademark{}\xspace}
+%\newcommand{\aRIP}{RIP\xspace}
+%\newcommand{\jpRIP}{網様体割り込みプロトコル\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Unlimited Unknown State Transition (UUST)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exUUST}{Unlimited Unknown State Transition\texttrademark{}\xspace}
+%\newcommand{\aUUST}{UUST\xspace}
+%\newcommand{\jpUUST}{アンリミテッド・アンノウン状態遷移\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Unlimited Unknown State Transition Technique (UUSTT)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exUUSTT}{Unlimited Unknown State Transition Technique\texttrademark{}\xspace}
+%\newcommand{\aUUSTT}{UUSTT\xspace}
+%\newcommand{\jpUUSTT}{アンリミテッド・アンノウン状態遷移技法\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Root-Cause Solution Metaphor Injection Technique (RC-SMIT)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exRCSMIT}{Root-Cause Solution Metaphor Injection Technique\texttrademark{}\xspace}
+%\newcommand{\aRCSMIT}{RC-SMIT\xspace}
+%\newcommand{\jpRCSMIT}{根本解決メタファー注入技法\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Fault-Tolerant Humor Brute-Force Technique (FT-HBFT)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exFTHBFT}{Fault-Tolerant Humor Brute-Force Technique\texttrademark{}\xspace}
+%\newcommand{\aFTHBFT}{FT-HBFT\xspace}
+%\newcommand{\jpFTHBFT}{耐障害ユーモア・ブルートフォーステクニック\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Multi-Agent Bayesian Cybernetic Resonance (MBCR)
+%% ------------------------------------------------------------------------------
+%\newcommand{\exMBCR}{Multi-Agent Bayesian Cybernetic Resonance\texttrademark{}\xspace}
+%\newcommand{\aMBCR}{MBCR\xspace}
+%\newcommand{\jpMBCR}{マルチエージェント・ベイジアン・サイバネティック共振\texttrademark{}\xspace}
+%
+%% ==============================================================================
+%% State-Space Baselines (基底状態モデル)
+%% ==============================================================================
+%
+%% ------------------------------------------------------------------------------
+%% Zero State
+%% ------------------------------------------------------------------------------
+%\newcommand{\exZeroState}{Zero~State\texttrademark{}\xspace}
+%\newcommand{\jpZeroState}{ゼロステート\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Intellectual Zero State
+%% ------------------------------------------------------------------------------
+%\newcommand{\exIntellectualZeroState}{Intellectual Zero~State\texttrademark{}\xspace}
+%\newcommand{\jpIntellectualZeroState}{知的ゼロステート\texttrademark{}\xspace}
+%\newcommand{\jpIntellectualZeroStateKana}{インテレクチュアル・ゼロステート\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Zero Personality
+%% ------------------------------------------------------------------------------
+%\newcommand{\exZeroPersonality}{Zero~Personality\texttrademark{}\xspace}
+%\newcommand{\jpZeroPersonality}{ゼロパーソナリティ\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% Intellectual Zero Personality
+%% ------------------------------------------------------------------------------
+%\newcommand{\exIntellectualZeroPersonality}{Intellectual Zero~Personality\texttrademark{}\xspace}
+%\newcommand{\jpIntellectualZeroPersonality}{知的ゼロパーソナリティ\texttrademark{}\xspace}
+%\newcommand{\jpIntellectualZeroPersonalityKana}{インテレクチュアル・ゼロパーソナリティ\texttrademark{}\xspace}
+%
+%% ------------------------------------------------------------------------------
+%% T.O.T.E Model
+%% ------------------------------------------------------------------------------
+%\newcommand{\TOTE}{T.O.T.E\xspace}
