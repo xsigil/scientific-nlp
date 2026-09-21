@@ -8,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # Alpine Linux ベースの完全版 TeX Live コンテナ
     container:
       image: ghcr.io/xu-cheng/texlive-full:latest
 
@@ -26,13 +25,19 @@ jobs:
             librsvg \
             gcc \
             musl-dev \
-            curl
+            make \
+            curl \
+            tar
 
       - name: Build and Install Pikchr
         run: |
-          curl -fsSL https://pikchr.org/home/raw/pikchr.c?m=trunk -o pikchr.c
-          gcc -O2 -DPIKCHR_SHELL pikchr.c -o /usr/local/bin/pikchr -lm
-          rm pikchr.c
+          mkdir -p /tmp/pikchr-src
+          curl -fsSL https://pikchr.org/home/tarball/trunk/pikchr.tar.gz | tar -xz -C /tmp/pikchr-src --strip-components=1
+          cd /tmp/pikchr-src
+          make pikchr
+          mv pikchr /usr/local/bin/pikchr
+          cd /
+          rm -rf /tmp/pikchr-src
 
       - name: Build with Make
         run: |
