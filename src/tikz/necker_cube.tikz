@@ -1,0 +1,41 @@
+% src/figures/necker_cube.tex
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[scale=1.5, line join=round, line cap=round]
+    % --- パラメータ定義 ---
+    \def\w{2.0} % 正方形の一辺
+    \def\dx{0.8} % 奥行きオフセット X
+    \def\dy{0.8} % 奥行きオフセット Y
+
+    % --- 前面・背面の頂点座標 ---
+    % 手前（または奥）の四角形 A
+    \coordinate (A1) at (0, 0);
+    \coordinate (A2) at (\w, 0);
+    \coordinate (A3) at (\w, \w);
+    \coordinate (A4) at (0, \w);
+
+    % シフトしたもう一方の四角形 B
+    \coordinate (B1) at (\dx, \dy);
+    \coordinate (B2) at (\w+\dx, \dy);
+    \coordinate (B3) at (\w+\dx, \w+\dy);
+    \coordinate (B4) at (\dx, \w+\dy);
+
+    % --- 描画 ---
+    % 正方形 A
+    \draw[thick, draw=black] (A1) -- (A2) -- (A3) -- (A4) -- cycle;
+    % 正方形 B
+    \draw[thick, draw=black] (B1) -- (B2) -- (B3) -- (B4) -- cycle;
+
+    % 頂点を結ぶ稜線（すべて実線で等価に描くことで多安定性を最大化）
+    \draw[thick, draw=black] (A1) -- (B1);
+    \draw[thick, draw=black] (A2) -- (B2);
+    \draw[thick, draw=black] (A3) -- (B3);
+    \draw[thick, draw=black] (A4) -- (B4);
+
+    % 頂点ノード（認知仮説のアンカー注釈用）
+    \filldraw[black] (A1) circle (1.5pt) node[below left, font=\scriptsize] {$v_1$};
+    \filldraw[black] (B3) circle (1.5pt) node[above right, font=\scriptsize] {$v_7$};
+  \end{tikzpicture}
+  \caption{ネッカーの立方体：深度情報（オクルージョン）の欠落により、2つの極小解（アトラクタ）間で知覚状態が自発的に振動する。}
+  \label{fig:necker_cube}
+\end{figure}
