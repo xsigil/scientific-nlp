@@ -25,6 +25,9 @@
 \newcommand{\NeuralQuasiBayesianUpdateConviction}[2]{%
   :\xrightsquigarrow[#2]{#1}%
 }
+% ==============================================================================
+% Neural Quasi Probability Space(NQ Space)
+% ==============================================================================
 \newcommand{\NQSpace}{\hat{\Psi}}
 \newcommand{\VirtualConvictionGroup}{\Psi}
 \newcommand{\EnvNoise}{e_{\mathrm{noise}}}
@@ -189,7 +192,14 @@
 \newcommand{\scientificO}{\ensuremath{\mathcal{O}}}
 \newcommand{\scientificG}{\ensuremath{\mathcal{G}}}
 
-\newcommand{\LangTranslation}[1]{\mathcal{L}_{\mathrm{digital}}\left( #1 \right)}
+% ==============================================================================
+% Language Translation Operator
+% ==============================================================================
+% 作用素単体の記号（引数なし：見出しや本文での言及用）
+\newcommand{\LangTranslationOp}{\mathcal{L}_{\mathrm{digital}}}
+
+% 作用素の関数適用（引数を1つ取る形式）
+\newcommand{\LangTranslation}[1]{\LangTranslationOp\left( #1 \right)}
 
 % --- Unlimitted Unknown ---
 \newcommand{\UU}{\aleph}

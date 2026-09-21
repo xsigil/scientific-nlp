@@ -10,12 +10,36 @@
   \directlua{register_term("\luatexluaescapestring{#1}", "\luatexluaescapestring{#2}")}%
 }
 
+
 % ==============================================================================
-% Scientific NLP(S-NLP)
+% Scientific NLP (S-NLP)
 % ==============================================================================
 \newcommand{\exSNLP}{\Term{snlp}{Scientific~NLP}}
 \newcommand{\aSNLP}{\Term{snlp-abbr}{S-NLP}}
 \newcommand{\jpSNLP}{\Term{jp:snlp}{サイエンティフィック~NLP}}
+
+% ==============================================================================
+% Classical NLP (C-NLP)
+% ==============================================================================
+\newcommand{\exCNLP}{\textbf{Classical~Neuro~Linguistic~Programming}}
+\newcommand{\aCNLP}{\textbf{C-NLP}}
+\newcommand{\jpCNLP}{\textbf{古典神経言語プログラミング}}
+% 必要に応じて「Classical NLP」と表記したいとき用のバリエーション
+\newcommand{\rawCNLP}{\textbf{Classical~NLP}}
+
+%% ==============================================================================
+%% Scientific NLP(S-NLP)
+%% ==============================================================================
+%\newcommand{\exSNLP}{\Term{snlp}{Scientific~NLP}}
+%\newcommand{\aSNLP}{\Term{snlp-abbr}{S-NLP}}
+%\newcommand{\jpSNLP}{\Term{jp:snlp}{サイエンティフィック~NLP}}
+%
+%% ==============================================================================
+%% Classical NLP(C-NLP)
+%% ==============================================================================
+%\newcommand{\exCNLP}{\textbf{Classical Neuro Linguistic Programming}}
+%\newcommand{\aCNLP}{\textbf{Classical NLP}}
+%\newcommand{\jpCNLP}{\textbf{古典神経言語プログラミング}}
 
 % ==============================================================================
 % Cybernetic Neural Quasi-Bayesian Inference System(CNQBIS)
@@ -51,6 +75,14 @@
 \newcommand{\jpNQBU}{\Term{jp:nqbu}{神経準ベイズ更新}}
 
 % ==============================================================================
+% Neural Quasi Probability Space(NQ Space)
+% ==============================================================================
+\newcommand{\exNQSpace}{\Term{nq-space}{Neural Quasi Probability Space}}
+\newcommand{\aNQSpace}{NQ~Space\xspace}
+\newcommand{\jpNQSpace}{\Term{jp:nq-space}{神経準確率空間}}
+
+
+% ==============================================================================
 % Neural Quasi-Prior Probability Space(NQ-Prior Space)
 % ==============================================================================
 \newcommand{\exNQPriorSpace}{\Term{nq-prior-space}{Neural Quasi-Prior Probability Space}}
@@ -68,15 +100,19 @@
 % Tri-Fold Virtual Ego Conviction(TFVEC)
 % ==============================================================================
 \newcommand{\exTFVEC}{\Term{tfvec}{Tri-Fold Virtual Ego Conviction}}
+\newcommand{\nonTMexTFVEC}{Tri-Fold Virtual Ego Conviction}
 \newcommand{\aTFVEC}{TFVEC\xspace}
 \newcommand{\jpTFVEC}{\Term{jp:tfvec}{三位一体仮想エゴ確信}}
+\newcommand{\nonTMjpTFVEC}{三位一体仮想エゴ確信}
 
 % ==============================================================================
 % Virtual Narrative Conviction(VNC)
 % ==============================================================================
 \newcommand{\exVNC}{\Term{vnc}{Virtual Narrative Conviction}}
+\newcommand{\nonTMexVNC}{Virtual Narrative Conviction}
 \newcommand{\aVNC}{VNC\xspace}
 \newcommand{\jpVNC}{\Term{jp:vnc}{仮想ナラティブ確信}}
+\newcommand{\nonTMjpVNC}{仮想ナラティブ確信}
 
 % ==============================================================================
 % Virtual Cause Ego Conviction
@@ -157,6 +193,33 @@
 \newcommand{\exRBSFOPI}{\Term{rbsf-opi}{Random Break-State Flushing Orthogonal Probe Injection}}
 \newcommand{\aRBSFOPI}{RBSF-OPI\xspace}
 \newcommand{\jpRBSFOPI}{\Term{jp:rbsf-opi}{ランダム・ブレークステート・フラッシング直交プローブ注入}}
+
+% ==============================================================================
+% DMN/CEN/SN
+% ==============================================================================
+% Default Mode Network (DMN: デフォルト・モード・ネットワーク)
+\newcommand{\exDMN}{\textbf{Default Mode Network}}
+\newcommand{\aDMN}{\textbf{DMN}}
+\newcommand{\jpDMN}{\textbf{デフォルト・モード・ネットワーク}}
+
+% Central Executive Network (CEN: 中央実行系ネットワーク)
+\newcommand{\exCEN}{\textbf{Central Executive Network}}
+\newcommand{\aCEN}{\textbf{CEN}}
+\newcommand{\jpCEN}{\textbf{中央実行系ネットワーク}}
+
+% Salience Network (SN: サリエンス・ネットワーク / 顕著性ネットワーク)
+\newcommand{\exSN}{\textbf{Salience Network}}
+\newcommand{\aSN}{\textbf{SN}}
+\newcommand{\jpSN}{\textbf{サリエンス・ネットワーク}}
+
+% ==============================================================================
+% Attentive Observer
+% ==============================================================================
+\newcommand{\nonTMexAttentiveObserver}{\textbf{Attentive Observer}}
+\newcommand{\exAttentiveObserver}{\Term{aobserver}{\textbf{Attentive Observer}}}
+\newcommand{\aAttentiveObserver}{\textbf{AO}}
+\newcommand{\jpAttentiveObserver}{\Term{jp:aobserver}{\textbf{注意統合観測器}}}
+\newcommand{\nonTMjpAttentiveObserver}{\textbf{注意統合観測器}}
 
 % ==============================================================================
 % Self Biofeedback Training (SBFT)
