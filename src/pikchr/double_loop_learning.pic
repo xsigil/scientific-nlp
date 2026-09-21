@@ -1,0 +1,40 @@
+// ==========================================
+// 1. ノード（変数ブロック）の配置
+// ==========================================
+MM: box "Mental Models" bold "(Priors / Premises)" fit fill 0xF4F6F9
+ACT: box "Actions" bold "(Strategies)" fit fill 0xFAFAFA at 1.8 east of MM
+OUT: box "Results" bold "(Observations)" fit fill 0xFAFAFA at 1.8 east of ACT
+
+// ==========================================
+// 2. 順方向プロセス
+// ==========================================
+arrow from MM.e to ACT.w chop
+arrow from ACT.e to OUT.w chop
+
+// ==========================================
+// 3. シングルループ（通常フィードバック / バランスループ B）
+// ==========================================
+// 結果 -> 行動（下側のスプライン曲線）
+spline -> from OUT.s to 0.4 below 0.5 <ACT.s, OUT.s> to ACT.s color 0x336699 thickness 150%
+
+// バランスループ記号 [B]
+circle radius 0.15 at 0.18 below 0.5 <ACT.s, OUT.s> fill 0xEBF2FA color 0x336699
+"B" bold color 0x336699 at last circle.c
+
+// テキストラベル
+"Error Correction" italic color 0x336699 at 0.55 below 0.5 <ACT.s, OUT.s>
+"Single-Loop: Operational Learning" italic small at 0.85 below 0.5 <ACT.s, OUT.s>
+
+// ==========================================
+// 4. ダブルループ（メタ学習 / 強化・再構成ループ R）
+// ==========================================
+// 結果 -> メンタルモデル（上側を大きく跨ぐスプライン曲線）
+spline -> from OUT.n to 0.7 above 0.5 <MM.n, OUT.n> to MM.n color 0xC0392B thickness 150%
+
+// 強化ループ記号 [R]
+circle radius 0.15 at 0.3 above 0.5 <MM.n, ACT.n> fill 0xFDEDEC color 0xC0392B
+"R" bold color 0xC0392B at last circle.c
+
+// テキストラベル
+"Reframing / Paradigm Shift" bold color 0xC0392B at 0.85 above 0.5 <MM.n, OUT.n>
+"Double-Loop: Epistemic Learning" italic small at 1.15 above 0.5 <MM.n, OUT.n>
