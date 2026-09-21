@@ -22,7 +22,7 @@ jobs:
             m4 \
             graphviz \
             gnuplot \
-            librsvg \
+            librsvg-bin \
             libgcc \
             gcc \
             musl-dev \
