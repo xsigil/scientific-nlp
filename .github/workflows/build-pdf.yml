@@ -3,7 +3,7 @@ name: Build PDF
 on:
   push:
     branches: [ "main" ]
-  workflow_dispatch: # GitHub上のボタンから手動実行も可能
+  workflow_dispatch:
 
 jobs:
   build:
@@ -22,7 +22,8 @@ jobs:
             m4 \
             graphviz \
             gnuplot \
-            librsvg-utils \
+            librsvg \
+            libgcc \
             gcc \
             musl-dev \
             make \
@@ -38,6 +39,13 @@ jobs:
           mv pikchr /usr/local/bin/pikchr
           cd /
           rm -rf /tmp/pikchr-src
+
+      - name: Verify Tools
+        run: |
+          which rsvg-convert
+          rsvg-convert --version
+          which pikchr
+          which m4
 
       - name: Build with Make
         run: |
