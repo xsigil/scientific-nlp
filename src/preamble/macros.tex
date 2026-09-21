@@ -1,0 +1,41 @@
+% エピグラフ共通レイアウト設定
+\setlength{\epigraphwidth}{0.72\textwidth}
+\setlength{\epigraphrule}{0.3pt}
+\renewcommand{\epigraphsize}{\small}
+
+% ------------------------------------------------------------------------------
+% 1. 日本語訳付きエピグラフ（日本語版標準）
+% \ChapterEpigraphWithTranslation{原文}{訳文}{出典}
+% ------------------------------------------------------------------------------
+\newcommand{\ChapterEpigraphWithTranslation}[3]{%
+  \begingroup
+  \renewcommand{\textflush}{flushepinormal}%
+  \epigraph{%
+    % --- 原文 (欧文イタリック) ---
+    {\itshape\small #1}\par
+    \vspace{0.45em}%
+    % --- 訳文 (日本語ゴシック / 控えめなサイズ) ---
+    {\sffamily\footnotesize\gtfamily #2}%
+  }{%
+    % --- 出典 ---
+    \upshape\footnotesize --- #3%
+  }%
+  \endgroup
+  \vspace{1.5em}%
+}
+
+% ------------------------------------------------------------------------------
+% 2. 原文のみエピグラフ（英語版、または訳文不要時）
+% \ChapterEpigraph{原文}{出典}
+% ------------------------------------------------------------------------------
+\newcommand{\ChapterEpigraph}[2]{%
+  \begingroup
+  \renewcommand{\textflush}{flushepinormal}%
+  \epigraph{%
+    {\itshape\small #1}%
+  }{%
+    \upshape\footnotesize --- #2%
+  }%
+  \endgroup
+  \vspace{1.5em}%
+}
