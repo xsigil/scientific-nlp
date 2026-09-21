@@ -13,9 +13,9 @@
 現場でのプロファイリングや対面観察において、プロファイラーの内部状態を
 \exZeroState に維持し、CEN（中央実行系）の計算リソースを相手の微小動作（$\InvoluntaryMovement, \VoluntaryMovement$）のキャリブレーションに $100\%$ 集中させるためには、デシバンの逐次暗算プロセスそのものを外部ハードウェアへとオフロードすることが極めて有効である。
 
-この工学的要請に基づき、筆者が開発・公開しているオープンソース実装が、ポータブル生体観測インターフェース \FlipperZero 向けアプリケーションである。
+この工学的要請に基づき、筆者が開発・公開しているオープンソース実装が、ポータブル生体観測インターフェース アプリケーション \exFlipperOthello である。
 
-本ツールは、観測事象 $D$ に対する $\ConditionalProbability{D}{\MathHypothesis}$ および $\ConditionalProbability{D}{\neg \MathHypothesis}$ の 4 段階スケール入力、チューリングの対数尤度比（deciban）のリアルタイム累積加算、判定閾値超過時の自律的通知（振動・音声・LED）、そして単一ステップの取り消し（Undo）機能を搭載している。これにより、観察者は自らの内部対話 $\scientificAd$ を一切駆動させることなく、指先のブラインド操作のみで事後確率 $\ConditionalProbability{\MathHypothesis}{D}$ の境界条件を物理的に追跡可能となる。
+本ツールは、観測事象 $\MathEvidence$ に対する仮説 $\MathHypothesis$ の $\ConditionalProbability{\MathEvidence}{\MathHypothesis}$ および $\ConditionalProbability{\MathEvidence}{\neg \MathHypothesis}$ の 4 段階スケール入力、チューリングの対数尤度比$\Deciban$（deciban）のリアルタイム累積加算、判定閾値超過時の自律的通知（振動・音声・LED）、そして単一ステップの取り消し（Undo）機能を搭載している。これにより、観察者は自らの内部対話 $\scientificAd$ を一切駆動させることなく、指先のブラインド操作のみで事後確率 $\ConditionalProbability{\MathHypothesis}{\MathEvidence}$ の境界条件を物理的に追跡可能となる。
 
 実装コード、UI操作マッピング、およびビルド手順の完全な仕様は、以下のオープンソース・リポジトリを参照されたい。
 
