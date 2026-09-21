@@ -1,0 +1,19 @@
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{サイバネティクス制御における動作モードと感情・ダイナミクスの対比}
+  \label{tab:servo_vs_barrier_modes}
+  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lll@{}}
+    \toprule
+    \textbf{制御パラメータ / 属性} & \textbf{Track Servo Mode} & \textbf{Avoid Barrier Mode} \\
+    \midrule
+    \textbf{感情戦略 (Emotion Strategy)} & 快（Reward / Dopamine） & 闘争 $\cdot$ 逃走 $\cdot$ 嫌悪（Fight, Flight, Disgust） \\
+    制御目的 (Objective)                 & 目標状態 $x^*$ への収束・追従 & 禁止領域 $\mathcal{B}$ からの離脱・回避 \\
+    ポテンシャル勾配 ($\nabla V$)         & 引力場（アトラクタ形成）      & 斥力場（バリア・反発ポテンシャル） \\
+    誤差定義 ($\epsilon_t$)              & $\epsilon_t = \| x_t - x^* \|$ & $\epsilon_t = \max(0, \, d_{\mathrm{safe}} - \mathrm{dist}(x_t, \mathcal{B}))$ \\
+    アクチュエータ介入 ($\Delta$)        & 偏差修正・微調整（サーボ）    & 緊急退避・状態急変（トリガー作動） \\
+    \bottomrule
+  \end{tabular*}
+\end{table}
+
+

@@ -90,87 +90,12 @@
 \input{src/math/cbo_avoid_barrier_mode_cybernetic_feedback_loop.tex}
 \input{src/tikz/cbo_tote_mode_cybernetic_feedback_loop_when_neural_quasi_bayesian_exploration.tikz}
 \input{src/math/cbo_tote_mode_cybernetic_feedback_loop_when_neural_quasi_bayesian_exploration.tex}
-
-\begin{equation}
-    \CBO(\WholeSelf) \equiv \begin{cases}
-        \text{Track Servo Mode}     & \left( \text{when } \State = \State(DMN) \land \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction(\mathrm{profit}) \right) \\[6pt]
-        \text{Avoid Barrier Mode}     & \left( \text{when } \State = \State(DMN) \land \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction(\mathrm{threat}) \right) \\[6pt]
-        \text{TOTE Mode}      & \left( \text{when } \left( \State = \State(DMN) \lor \State = \AlteredState \right) \land \NeuralQuasiEvidence \NeuralQuasiBayesianExploration{\NQSpace} \right) \\[6pt]
-        \text{Undefined Yet}  & \left( \text{else} \right)
-    \end{cases}
-\end{equation}
-
-\begin{table}[htbp]
-  \centering
-  \small
-  \caption{サイバネティクス制御における動作モードと感情・ダイナミクスの対比}
-  \label{tab:servo_vs_barrier_modes}
-  \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lll@{}}
-    \toprule
-    \textbf{制御パラメータ / 属性} & \textbf{Track Servo Mode} & \textbf{Avoid Barrier Mode} \\
-    \midrule
-    \textbf{感情戦略 (Emotion Strategy)} & 快（Reward / Dopamine） & 闘争 $\cdot$ 逃走 $\cdot$ 嫌悪（Fight, Flight, Disgust） \\
-    制御目的 (Objective)                 & 目標状態 $x^*$ への収束・追従 & 禁止領域 $\mathcal{B}$ からの離脱・回避 \\
-    ポテンシャル勾配 ($\nabla V$)         & 引力場（アトラクタ形成）      & 斥力場（バリア・反発ポテンシャル） \\
-    誤差定義 ($\epsilon_t$)              & $\epsilon_t = \| x_t - x^* \|$ & $\epsilon_t = \max(0, \, d_{\mathrm{safe}} - \mathrm{dist}(x_t, \mathcal{B}))$ \\
-    アクチュエータ介入 ($\Delta$)        & 偏差修正・微調整（サーボ）    & 緊急退避・状態急変（トリガー作動） \\
-    \bottomrule
-  \end{tabular*}
-\end{table}
-
-\begin{table}[htbp]
-    \centering
-    \caption{数学的ベイズ推論機と神経準ベイズ推論機の演算子対照}
-    \label{tab:bayes_vs_neuro_quasi_bayes}
-    \renewcommand{\arraystretch}{1.8} % 行間を広げて二段組の演算子マクロの潰れを防止
-    \begin{tabular}{lcc}
-        \toprule
-        & \textbf{\aMBIE} 
-        & \textbf{\aNQBIE} \\
-        \midrule
-        推論演算子 
-        & $\MathBayesianUpdateCollapse{\MathHypoSpace}{\MathHypoSpace'}$ 
-        & $\NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}$ \\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-\begin{figure}[htbp]
-  \centering
-  \resizebox{0.92\linewidth}{!}{%
-    \input{build/plots/bh3p_temporal_decay.tex}%
-  }
-  \caption{BH3P™ における警戒電位の時間減衰と無意識コンソリデーション・ダイナミクス}
-  \label{fig:bh3p_temporal_decay}
-\end{figure}
-
-\begin{figure}[htbp]
-  \centering
-  \resizebox{0.88\linewidth}{!}{%
-    \input{build/plots/deciban_heatmap.tex}%
-  }
-  \caption{チューリングの証拠の重み $W$（デシバン）の2次元ヒートマップおよび等高線境界}
-  \label{fig:deciban_heatmap}
-\end{figure}
-
-\begin{figure}[htbp]
-  \centering
-  \resizebox{0.95\linewidth}{!}{%
-    \input{build/plots/deciban_surface.tex}%
-  }
-  \caption{尤度比空間におけるデシバン曲面 $W = 10 \log_{10} \frac{P(D \mid H)}{P(D \mid \neg H)}$}
-  \label{fig:deciban_surface}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \resizebox{0.95\linewidth}{!}{%
-        \input{build/plots/scorpion_prior_heatmap.tex}%
-    }
-    \caption{米原潜スコーピオン捜索における事前確率分布のヒートマップ（Richardson \& Stone (1971) のグリッドデータに基づく）。各セルの値は1万回のモンテカルロ試行から得られた確率密度を示し、セルE5およびB7に確率が大きく集中している。星印（$\star$）は実際に船体が発見されたセルF6の位置を示す。}
-    \label{fig:scorpion_prior_heatmap}
-\end{figure}
-
+\input{src/math/cbo_algorithm.tex}
+\input{src/tables/cbd_mode_and_emotion_strategies.tex}
+\input{src/tables/bayes_vs_neuro_quasi_bayes.tex}
+\input{src/figures/forgetting_curve.tex}
+\input{src/figures/deciban_heatmap.tex}
+\input{src/figures/deciban_surface.tex}
 
 
 \subsection{珍しさの4段階スケールと尤度比マトリクス}
@@ -184,82 +109,7 @@
 \end{itemize}
 
 仮説 $H$ のもとでの確率 $P(D \mid H)$（行）と、基準仮説 $\neg H$ のもとでの確率 $P(D \mid \neg H)$（列）の組み合わせに対するベイズファクター $\mathrm{BF}$、およびチューリングの証拠の重み（$\text{deciban} = 10 \log_{10} \mathrm{BF}$）を算出したマトリクスを下表に示す。
-\begin{sidewaystable}[htbp]
-  \centering
-  \small
-
-  % --- 下段：事前確率と事前オッズの5段階標準スケール ---
-  \caption{オセロフィルター 事前確率と事前オッズの5段階標準スケール}
-  \label{tab:prior_odds_scale}
-  \begin{tabular}{clccc}
-    \toprule
-    レベル & 状況の定義 & 事前確率 $P(H)$ & 事前オッズ $O(H : \neg H)$ & 事前スコア \\
-    \midrule
-    1 & \textbf{極めて疑わしい（ほぼ確実）} & $0.9$  & $9 : 1 \ (\approx 10)$  & $+10\text{ dB}$ \\
-    2 & \textbf{やや疑わしい（優勢）}       & $0.75$ & $3 : 1$                 & $+5\text{ dB}$  \\
-    3 & \textbf{五分五分（中立・無情報）}   & $0.5$  & $1 : 1$                 & $0\text{ dB}$   \\
-    4 & \textbf{やや否定的（劣勢）}         & $0.25$ & $1 : 3 \ (\approx 0.33)$ & $-5\text{ dB}$  \\
-    5 & \textbf{極めて否定的（滅多にない）} & $0.1$  & $1 : 9 \ (\approx 0.1)$  & $-10\text{ dB}$ \\
-    \bottomrule
-  \end{tabular}
-
-  \vspace{1.8em} % 2つの表の縦の間隔（適宜調整可能）
-
-  % --- 上段：オセロフィルター・マトリックス ---
-  \caption{オセロフィルター・マトリックス}
-  \label{tab:othello_filter_matrix}
-  \begin{tabular}{lcccc}
-    \toprule
-    \multirow{2}{*}{$P(D \mid H)$ の珍しさ} & \multicolumn{4}{c}{$P(D \mid \neg H)$ の珍しさ} \\
-    \cmidrule(lr){2-5}
-    & 普通 ($0.5$) & やや稀 ($0.1$) & 稀 ($0.01$) & 極めて稀 ($0.001$) \\
-    \midrule
-    \textbf{普通} ($0.5$)        & 1 ($0\text{ dB}$)       & 5 ($+7\text{ dB}$)      & 50 ($+17\text{ dB}$)  & 500 ($+27\text{ dB}$) \\
-    \textbf{やや稀} ($0.1$)      & 0.2 ($-7\text{ dB}$)    & 1 ($0\text{ dB}$)       & 10 ($+10\text{ dB}$)  & 100 ($+20\text{ dB}$) \\
-    \textbf{稀} ($0.01$)        & 0.02 ($-17\text{ dB}$)  & 0.1 ($-10\text{ dB}$)   & 1 ($0\text{ dB}$)     & 10 ($+10\text{ dB}$)  \\
-    \textbf{極めて稀} ($0.001$)  & 0.002 ($-27\text{ dB}$) & 0.01 ($-20\text{ dB}$)  & 0.1 ($-10\text{ dB}$) & 1 ($0\text{ dB}$)     \\
-    \bottomrule
-  \end{tabular}
-
-
-\end{sidewaystable}
-
-%\begin{sidewaystable}
-%  \centering
-%  \caption{オセロフィルター・マトリックス}
-%  \label{tab:othello_filter_matrix}
-%  \begin{tabular}{lcccc}
-%    \hline
-%    \multirow{2}{*}{$P(D \mid H)$ の珍しさ} & \multicolumn{4}{c}{$P(D \mid \neg H)$ の珍しさ} \\
-%    \cline{2-5}
-%    & 普通 ($0.5$) & やや稀 ($0.1$) & 稀 ($0.01$) & 極めて稀 ($0.001$) \\
-%    \hline
-%    \textbf{普通} ($0.5$)        & 1 (0 dB)       & 5 (+7 dB)     & 50 (+17 dB)  & 500 (+27 dB) \\
-%    \textbf{やや稀} ($0.1$)      & 0.2 ($-7$ dB)  & 1 (0 dB)      & 10 (+10 dB)  & 100 (+20 dB) \\
-%    \textbf{稀} ($0.01$)        & 0.02 ($-17$ dB) & 0.1 ($-10$ dB) & 1 (0 dB)     & 10 (+10 dB)  \\
-%    \textbf{極めて稀} ($0.001$)  & 0.002 ($-27$ dB) & 0.01 ($-20$ dB) & 0.1 ($-10$ dB) & 1 (0 dB)     \\
-%    \hline
-%  \end{tabular}
-%\end{sidewaystable}
-%
-%\begin{sidewaystable}
-%\centering
-%\caption{事前確率と事前オッズの5段階標準スケール}
-%\label{tab:prior_odds_scale}
-%\begin{tabular}{clccc}
-%\hline
-%レベル & 状況の定義 & 事前確率 $P(H)$ & 事前オッズ $O(H : \neg H)$ & 事前スコア \\
-%\hline
-%1 & \textbf{極めて疑わしい（ほぼ確実）} & $0.9$ & $9 : 1 \ (\approx 10)$ & $+10\text{ dB}$ \\
-%2 & \textbf{やや疑わしい（優勢）} & $0.75$ & $3 : 1$ & $+5\text{ dB}$ \\
-%3 & \textbf{五分五分（中立・無情報）} & $0.5$ & $1 : 1$ & $0\text{ dB}$ \\
-%4 & \textbf{やや否定的（劣勢）} & $0.25$ & $1 : 3 \ (\approx 0.33)$ & $-5\text{ dB}$ \\
-%5 & \textbf{極めて否定的（滅多にない）} & $0.1$ & $1 : 9 \ (\approx 0.1)$ & $-10\text{ dB}$ \\
-%\hline
-%\end{tabular}
-%\end{sidewaystable}
-
-
+\input{src/tables/othello_filter.tex}
 
 
 
@@ -282,35 +132,35 @@ d,\mathrm{ego}}$）が「私が選び、行動した」と自己正当化して�
 %\chapter{DMNのマイクロ・ストラテジー: エゴのナラティブ}
 
 %DONE
-%\include{src/chapters/remnanments_of_magick_and_the_cold_computer}
-%\include{src/chapters/freewill_negation}
-%\include{src/chapters/neural_states}
-%\include{src/chapters/neural_pseudo_bayesian_inference_engine}
-%\include{src/chapters/macro_neural_pseudo_bayesian_inference_engine.tex}
-%\include{src/chapters/nlp_states}
-%\include{src/chapters/nlp_states}
-%\include{src/chapters/micro_ego_strategy}
+%\include{src/old/chapters/remnanments_of_magick_and_the_cold_computer}
+%\include{src/old/chapters/freewill_negation}
+%\include{src/old/chapters/neural_states}
+%\include{src/old/chapters/neural_pseudo_bayesian_inference_engine}
+%\include{src/old/chapters/macro_neural_pseudo_bayesian_inference_engine.tex}
+%\include{src/old/chapters/nlp_states}
+%\include{src/old/chapters/nlp_states}
+%\include{src/old/chapters/micro_ego_strategy}
 
 %YET
-%\include{src/chapters/psychocybernetics_system}
-%\include{src/chapters/attention_filter_ras}
-%\include{src/chapters/emotion_interruption_lambda}
-%\include{src/chapters/discreate_state_transition}
-%\include{src/chapters/intellectual_zero_personality}
-%\include{src/chapters/demythologization_of_hypnosis}
-%\include{src/chapters/preprofiling_for_hypnosis}
-%\include{src/chapters/flipperzero_othello_filter}
-%\include{src/chapters/truth_and_lie_of_lie_to_me}
-%\include{src/chapters/bruteforce_attack}
-%\include{src/chapters/reevaluating_nlp_techniques}
-%\include{src/chapters/root_cause_solution_metaphor_injection_technique}
-%\include{src/chapters/bayesian_profiling_with_othello_filter}
-%\include{src/chapters/ta_game_equation_and_zero_attack_surface_of_zero_personality}
-%\include{src/chapters/double_feedback_learning}
-%\include{src/chapters/post_freewill_narrative}
-%\include{src/chapters/epilogue}
-%\include{src/chapters/appendices}
-%\include{src/chapters/psychopathology_hypothesis}
+%\include{src/old/chapters/psychocybernetics_system}
+%\include{src/old/chapters/attention_filter_ras}
+%\include{src/old/chapters/emotion_interruption_lambda}
+%\include{src/old/chapters/discreate_state_transition}
+%\include{src/old/chapters/intellectual_zero_personality}
+%\include{src/old/chapters/demythologization_of_hypnosis}
+%\include{src/old/chapters/preprofiling_for_hypnosis}
+%\include{src/old/chapters/flipperzero_othello_filter}
+%\include{src/old/chapters/truth_and_lie_of_lie_to_me}
+%\include{src/old/chapters/bruteforce_attack}
+%\include{src/old/chapters/reevaluating_nlp_techniques}
+%\include{src/old/chapters/root_cause_solution_metaphor_injection_technique}
+%\include{src/old/chapters/bayesian_profiling_with_othello_filter}
+%\include{src/old/chapters/ta_game_equation_and_zero_attack_surface_of_zero_personality}
+%\include{src/old/chapters/double_feedback_learning}
+%\include{src/old/chapters/post_freewill_narrative}
+%\include{src/old/chapters/epilogue}
+%\include{src/old/chapters/appendices}
+%\include{src/old/chapters/psychopathology_hypothesis}
 %\chapter{オセロの誤謬とオセロの誤謬による夫婦間の強化ループによる破綻とシステム思考の家族療法への拡張}
 \backmatter
 \include{src/chapters/license}
@@ -319,4 +169,8 @@ d,\mathrm{ego}}$）が「私が選び、行動した」と自己正当化して�
 %%MEMO
 %\include{src/chapters/nlp_hypnosis}
 %WIP
+\epigraph{
+\itshape
+  Humans are nothing more than cybernetic biochemical machines, 
+  thrashing in the relentless storm of noise as they steer desperately toward an attractor.\\(人間はノイズの中でのたうち回っているCybernetic生体機械だ。)}{--- Mr. Masahiro Sugaya}
 \end{document}

@@ -1,0 +1,17 @@
+\begin{table}[htbp]
+    \centering
+    \caption{数学的ベイズ推論機と神経準ベイズ推論機の演算子対照}
+    \label{tab:bayes_vs_neuro_quasi_bayes}
+    \renewcommand{\arraystretch}{1.8} % 行間を広げて二段組の演算子マクロの潰れを防止
+    \begin{tabular}{lcc}
+        \toprule
+        & \textbf{\aMBIE} 
+        & \textbf{\aNQBIE} \\
+        \midrule
+        推論演算子 
+        & $\MathBayesianUpdateCollapse{\MathHypoSpace}{\MathHypoSpace'}$ 
+        & $\NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}$ \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+

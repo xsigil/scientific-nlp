@@ -1,0 +1,41 @@
+\begin{sidewaystable}[htbp]
+  \centering
+  \small
+
+  % --- 下段：事前確率と事前オッズの5段階標準スケール ---
+  \caption{オセロフィルター 事前確率と事前オッズの5段階標準スケール}
+  \label{tab:prior_odds_scale}
+  \begin{tabular}{clccc}
+    \toprule
+    レベル & 状況の定義 & 事前確率 $P(H)$ & 事前オッズ $O(H : \neg H)$ & 事前スコア \\
+    \midrule
+    1 & \textbf{極めて疑わしい（ほぼ確実）} & $0.9$  & $9 : 1 \ (\approx 10)$  & $+10\text{ dB}$ \\
+    2 & \textbf{やや疑わしい（優勢）}       & $0.75$ & $3 : 1$                 & $+5\text{ dB}$  \\
+    3 & \textbf{五分五分（中立・無情報）}   & $0.5$  & $1 : 1$                 & $0\text{ dB}$   \\
+    4 & \textbf{やや否定的（劣勢）}         & $0.25$ & $1 : 3 \ (\approx 0.33)$ & $-5\text{ dB}$  \\
+    5 & \textbf{極めて否定的（滅多にない）} & $0.1$  & $1 : 9 \ (\approx 0.1)$  & $-10\text{ dB}$ \\
+    \bottomrule
+  \end{tabular}
+
+  \vspace{1.8em} % 2つの表の縦の間隔（適宜調整可能）
+
+  % --- 上段：オセロフィルター・マトリックス ---
+  \caption{オセロフィルター・マトリックス}
+  \label{tab:othello_filter_matrix}
+  \begin{tabular}{lcccc}
+    \toprule
+    \multirow{2}{*}{$P(D \mid H)$ の珍しさ} & \multicolumn{4}{c}{$P(D \mid \neg H)$ の珍しさ} \\
+    \cmidrule(lr){2-5}
+    & 普通 ($0.5$) & やや稀 ($0.1$) & 稀 ($0.01$) & 極めて稀 ($0.001$) \\
+    \midrule
+    \textbf{普通} ($0.5$)        & 1 ($0\text{ dB}$)       & 5 ($+7\text{ dB}$)      & 50 ($+17\text{ dB}$)  & 500 ($+27\text{ dB}$) \\
+    \textbf{やや稀} ($0.1$)      & 0.2 ($-7\text{ dB}$)    & 1 ($0\text{ dB}$)       & 10 ($+10\text{ dB}$)  & 100 ($+20\text{ dB}$) \\
+    \textbf{稀} ($0.01$)        & 0.02 ($-17\text{ dB}$)  & 0.1 ($-10\text{ dB}$)   & 1 ($0\text{ dB}$)     & 10 ($+10\text{ dB}$)  \\
+    \textbf{極めて稀} ($0.001$)  & 0.002 ($-27\text{ dB}$) & 0.01 ($-20\text{ dB}$)  & 0.1 ($-10\text{ dB}$) & 1 ($0\text{ dB}$)     \\
+    \bottomrule
+  \end{tabular}
+
+
+\end{sidewaystable}
+
+

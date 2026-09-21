@@ -1,0 +1,10 @@
+\begin{equation}
+    \CBO(\WholeSelf) \equiv \begin{cases}
+        \text{Track Servo Mode}     & \left( \text{when } \State = \State(DMN) \land \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction(\mathrm{profit}) \right) \\[6pt]
+        \text{Avoid Barrier Mode}     & \left( \text{when } \State = \State(DMN) \land \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction(\mathrm{threat}) \right) \\[6pt]
+        \text{TOTE Mode}      & \left( \text{when } \left( \State = \State(DMN) \lor \State = \AlteredState \right) \land \NeuralQuasiEvidence \NeuralQuasiBayesianExploration{\NQSpace} \right) \\[6pt]
+        \text{Undefined Yet}  & \left( \text{else} \right)
+    \end{cases}
+\end{equation}
+
+
