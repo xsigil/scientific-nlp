@@ -17,6 +17,7 @@ OUTPUT_PDF  := $(BUILD_DIR)/$(MAIN).pdf
 
 # 依存ソースおよび生成ファイル定義
 DOT_SRCS    := $(wildcard $(DOT_SRC_DIR)/*.dot)
+DOT_M4S     := $(wildcard $(DOT_SRC_DIR)/*.m4)
 DOT_PDFS    := $(patsubst $(DOT_SRC_DIR)/%.dot,$(DOT_OUT_DIR)/%.pdf,$(DOT_SRCS))
 
 GP_SRCS     := $(wildcard $(GP_SRC_DIR)/*.gp)
@@ -27,6 +28,7 @@ PIK_PDFS    := $(patsubst $(PIK_SRC_DIR)/%.pic,$(PIK_OUT_DIR)/%.pdf,$(PIK_SRCS))
 
 # コンパイルコマンド
 LATEXMK     := latexmk -lualatex -outdir=$(BUILD_DIR) -interaction=nonstopmode -synctex=1
+M4          := m4 -I$(DOT_SRC_DIR)
 DOT         := dot
 GNUPLOT     := gnuplot
 PIKCHR      := pikchr
@@ -47,10 +49,10 @@ dot_figs: $(DOT_PDFS)
 plot_figs: $(GP_TEXS)
 pikchr_figs: $(PIK_PDFS)
 
-# --- Graphviz 変換ルール (.dot -> .pdf) ---
-$(DOT_OUT_DIR)/%.pdf: $(DOT_SRC_DIR)/%.dot
+# --- Graphviz 変換ルール (.dot + .m4 -> .pdf) ---
+$(DOT_OUT_DIR)/%.pdf: $(DOT_SRC_DIR)/%.dot $(DOT_M4S)
 	@mkdir -p $(DOT_OUT_DIR)
-	$(DOT) -Tpdf $< -o $@
+	$(M4) $< | $(DOT) -Tpdf -o $@
 
 # --- Gnuplot 変換ルール (.gp -> .tex + .pdf) ---
 $(GP_OUT_DIR)/%.tex: $(GP_SRC_DIR)/%.gp

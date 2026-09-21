@@ -1,10 +1,12 @@
+include(`src/dot/toc_nodes.m4')dnl
+
 digraph CRT_Syntax {
     graph [
         rankdir = BT,
         splines = spline,
         nodesep = 0.5,
         ranksep = 0.7,
-        bgcolor = "transparent"
+        bgcolor = COLOR_BG_TRANSPARENT
     ];
 
     node [
@@ -26,31 +28,20 @@ digraph CRT_Syntax {
     // --- パターン1: 単一因果 (Direct Cause) ---
     subgraph cluster_direct {
         label = "パターン1: 単一因果 (A -> B)";
-        style = dotted;
-        color = "#BDC3C7";
-        P1_A [label="原因 A\n(十分原因)", fillcolor="#D5F5E3", color="#2ECC71"];
-        P1_B [label="結果 B", fillcolor="#FCF3CF", color="#F1C40F"];
+        CRT_CLUSTER_STYLE
+        CRT_NODE_ROOT(P1_A, "原因 A\n(十分原因)")
+        CRT_NODE_INTERMEDIATE(P1_B, "結果 B")
         P1_A -> P1_B [label="「もしAならば、Bが生じる」"];
     }
 
     // --- パターン2: AND結合 (積結合 / Sufficient Cause) ---
     subgraph cluster_and {
         label = "パターン2: AND結合 (A かつ B -> C)";
-        style = dotted;
-        color = "#BDC3C7";
-        P2_A [label="原因 A", fillcolor="#D5F5E3", color="#2ECC71"];
-        P2_B [label="原因 B", fillcolor="#D5F5E3", color="#2ECC71"];
-        and_node [
-            shape = ellipse,
-            label = "AND",
-            width = 0.4,
-            height = 0.2,
-            fontsize = 7,
-            style = "filled",
-            fillcolor = "#EAEDED",
-            color = "#7F8C8D"
-        ];
-        P2_C [label="結果 C", fillcolor="#FCF3CF", color="#F1C40F"];
+        CRT_CLUSTER_STYLE
+        CRT_NODE_ROOT(P2_A, "原因 A")
+        CRT_NODE_ROOT(P2_B, "原因 B")
+        CRT_NODE_AND(and_node)
+        CRT_NODE_INTERMEDIATE(P2_C, "結果 C")
 
         {P2_A, P2_B} -> and_node [dir=none, style=dashed];
         and_node -> P2_C [label="両者が揃って成立"];
@@ -59,11 +50,10 @@ digraph CRT_Syntax {
     // --- パターン3: OR結合 (独立和 / Independent Causes) ---
     subgraph cluster_or {
         label = "パターン3: OR結合 (A または B -> C)";
-        style = dotted;
-        color = "#BDC3C7";
-        P3_A [label="独立原因 A", fillcolor="#D5F5E3", color="#2ECC71"];
-        P3_B [label="独立原因 B", fillcolor="#D5F5E3", color="#2ECC71"];
-        P3_C [label="結果 C", fillcolor="#FCF3CF", color="#F1C40F"];
+        CRT_CLUSTER_STYLE
+        CRT_NODE_ROOT(P3_A, "独立原因 A")
+        CRT_NODE_ROOT(P3_B, "独立原因 B")
+        CRT_NODE_INTERMEDIATE(P3_C, "結果 C")
 
         P3_A -> P3_C [label="A単独で発生"];
         P3_B -> P3_C [label="B単独で発生"];
@@ -72,11 +62,10 @@ digraph CRT_Syntax {
     // --- パターン4: UDEと根本原因の階層 ---
     subgraph cluster_hierarchy {
         label = "パターン4: CRTの階層トポロジー";
-        style = dotted;
-        color = "#BDC3C7";
-        H_ROOT [label="【根本原因 / Root Cause】\n(基底前提・外部拘束)", fillcolor="#D5F5E3", color="#2ECC71"];
-        H_INT  [label="【中間エンティティ】\n(状態遷移・心理的滞留)", fillcolor="#FCF3CF", color="#F1C40F"];
-        H_UDE  [label="【UDE / Undesirable Effect】\n(観測される身体症状・エラー)", fillcolor="#FADBD8", color="#E74C3C"];
+        CRT_CLUSTER_STYLE
+        CRT_NODE_ROOT(H_ROOT, "【根本原因 / Root Cause】\n(基底前提・外部拘束)")
+        CRT_NODE_INTERMEDIATE(H_INT, "【中間エンティティ】\n(状態遷移・心理的滞留)")
+        CRT_NODE_UDE(H_UDE, "【UDE / Undesirable Effect】\n(観測される身体症状・エラー)")
 
         H_ROOT -> H_INT [label="因果伝播"];
         H_INT -> H_UDE [label="物理層への出力"];
