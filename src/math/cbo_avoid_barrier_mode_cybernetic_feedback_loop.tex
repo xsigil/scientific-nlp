@@ -1,0 +1,11 @@
+%\begin{align}
+%    \tag{Avoid Barrier}
+%    \text{Error}_{\mathrm{avoid}} &= \max\left( 0,\, D_{\mathrm{safe}} - \left\| \text{Current State} - \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}, \mathrm{predict}\}} \psi^{\mathrm{ego}}_s(\mathrm{threat}) \right\| \right) \\
+%                                  &\xrightarrow{\text{Feedback Control}} \Delta (\lambda, \Lambda, A_d) \longrightarrow 0
+%\end{align}
+\begin{align}
+    \text{Error}_{\mathrm{avoid}} &= \max\left( 0,\, D_{\mathrm{safe}} - \left\| \text{Current State} - \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}, \mathrm{predict}\}} \psi^{\mathrm{ego}}_s(\mathrm{threat}) \right\| \right) \nonumber \\
+                                  &\xrightarrow{\text{Feedback Control}} \Delta (\lambda, \Lambda, A_d) \longrightarrow 0 \label{eq:avoid_feedback}
+\end{align}
+
+

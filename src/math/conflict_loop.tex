@@ -1,0 +1,16 @@
+\begin{align}
+    % 1行目: 開かれた時間発展（逐次更新の連鎖）
+    \NeuralQuasiEvidence_1 \NeuralQuasiBayesianUpdateConviction{\NQSpace_1}{\NQSpace_2} \VirtualConviction_1 
+    &\DiscreteStep{}{} \NeuralQuasiEvidence_2 \NeuralQuasiBayesianUpdateConviction{\NQSpace_2}{\NQSpace_3} \VirtualConviction_2 
+    \DiscreteStep{}{} \dots \\
+    % 2行目: 閉じたリミットサイクル（二重拘束へのトラップ）
+    &\equiv \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}
+    \vcenter{\hbox{
+        \begin{ConflictLoop}
+            \VirtualConviction_1 \\
+            \VirtualConviction_2
+        \end{ConflictLoop}
+    }}
+\end{align}
+
+

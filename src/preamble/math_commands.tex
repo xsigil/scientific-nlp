@@ -210,4 +210,33 @@
 
 \newcommand{\SixthSense}{\mathscr{N}}
 
-\newcommand{\CBO}{\mathcal{F}_{\mathrm{CBO}}}
+\makeatletter
+\newcommand{\dharmawheel}{%
+  \mathop{%
+    \vcenter{\hbox{%
+      \begin{tikzpicture}[
+        baseline=-0.12em, % ← ここをマイナスにして全体を上に持ち上げる（-0.08em 〜 -0.20em で微調整可能）
+        line width=0.08em,
+        rotate=18, 
+        xscale=1.05, yscale=0.78
+      ]
+        % 外輪（二重楕円）
+        \draw[black] (0,0) circle (0.78em);
+        \draw[black] (0,0) circle (0.60em);
+        
+        % 中心軸（ハブ）
+        \fill[black] (0,0) circle (0.20em);
+        
+        % 8本スポーク + 外側ハンドル
+        \foreach \angle in {0, 45, 90, 135, 180, 225, 270, 315} {
+          \draw[black] (\angle:0.20em) -- (\angle:0.60em);
+          \draw[black, line width=0.09em] (\angle:0.78em) -- (\angle:0.92em);
+        }
+      \end{tikzpicture}%
+    }}%
+  }\displaylimits
+}
+\makeatother
+
+\newcommand{\CBO}{\dharmawheel_{\mathrm{CBO}}}
+

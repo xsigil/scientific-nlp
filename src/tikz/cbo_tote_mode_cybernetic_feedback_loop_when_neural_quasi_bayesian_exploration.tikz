@@ -1,0 +1,94 @@
+\begin{figure}[htbp]
+\centering
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[
+    >=Stealth,
+    node distance=1.4cm and 1.8cm,
+    font=\small\sffamily,
+    test_node/.style={
+        rectangle, 
+        draw=black!85, 
+        thick, 
+        fill=blue!10, 
+        text width=4.0cm, 
+        align=center, 
+        rounded corners=3pt, 
+        inner sep=4pt
+    },
+    operate_node/.style={
+        rectangle, 
+        draw=black!85, 
+        thick, 
+        fill=orange!15, 
+        text width=4.4cm, 
+        align=center, 
+        rounded corners=3pt, 
+        inner sep=4pt
+    },
+    exit_node/.style={
+        rectangle, 
+        draw=black!85, 
+        thick, 
+        fill=green!20, 
+        rounded corners=8pt, 
+        text width=3.4cm, 
+        align=center, 
+        inner sep=4pt
+    },
+    line/.style={
+        draw=black!85, 
+        thick, 
+        ->
+    },
+    label_text/.style={
+        font=\footnotesize\bfseries, 
+        color=black!80
+    }
+]
+
+    % --- ノード配置 ---
+    % 入力（ここも \WholeSelf に_tが付かない形に統一）
+    \node (input) [font=\bfseries, align=center] {Input\\[1pt]\scriptsize $\WholeSelf$};
+
+    % 1. TEST
+    \node (test) [test_node, right=0.8cm of input] {
+        \textbf{\large TEST}\\[1pt]
+        \scriptsize （現在の状態と目標の照合）\\[3pt]
+        $\epsilon_t \equiv \mathcal{E}(\WholeSelf)$
+    };
+
+    % 2. OPERATE（Double subscript を解消）
+    \node (operate) [operate_node, below=1.4cm of test] {
+        \textbf{\large OPERATE}\\[1pt]
+        \scriptsize （行動・介入・変化）\\[3pt]
+        \footnotesize $\Delta(\lambda, \Lambda, A_d) \longrightarrow 0$\\[1pt]
+        \scriptsize $\WholeSelf_{t+1} = \CBO(\WholeSelf, \EnvNoise, \Delta_t)$
+    };
+
+    % 3. EXIT
+    \node (exit) [exit_node, right=1.6cm of test] {
+        \textbf{\large EXIT}\\[1pt]
+        \scriptsize （完了・目標達成）\\[3pt]
+        \footnotesize $\WholeSelf^* \in \VirtualConvictionGroup^{\mathrm{ego}}(\mathrm{profit})$\\[1pt]
+        \scriptsize $(\epsilon_t \le \epsilon_{\mathrm{tol}})$
+    };
+
+    % --- 接続エッジ ---
+    \path [line] (input) -- (test);
+
+    \path [line] (test) -- node [above, label_text] {一致 (Match)} 
+                           node [below, font=\scriptsize, color=gray!80!black] {$\epsilon_t \le \epsilon_{\mathrm{tol}}$} (exit);
+
+    \draw [line] (test.south) -- node [right, label_text] {不一致 (Mismatch)} 
+                                  node [left, font=\scriptsize, color=gray!80!black] {$\epsilon_t > \epsilon_{\mathrm{tol}}$} (operate.north);
+
+    \draw [line] (operate.west) -- ++(-0.8, 0) |- (test.west);
+
+    \node [below=0.15cm of operate, font=\scriptsize, color=black!60] {※ 状態を遷移させて再度Test（評価）へフィードバック};
+
+\end{tikzpicture}%
+}
+\caption{サイバネティクス制御論に基づく T.O.T.E. モデルの再定式化}
+\label{fig:tote_cybernetic_model}
+\end{figure}
+

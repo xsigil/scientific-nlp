@@ -1,0 +1,22 @@
+% --- T.O.T.E. 制御アルゴリズムの力学系包摂 ---
+\begin{align}
+    % [Test 1] 評価フェーズ
+    \mathbf{Test}_t &: \quad \epsilon_t \equiv \mathcal{E}(\WholeSelf_t) \\[4pt]
+    % 条件分岐（Operate or Exit）
+    \mathbf{Branch}_t &: \quad
+    \begin{cases}
+        \mathbf{Operate}_t \longrightarrow \mathbf{Test}_{t+1} & (\text{if } \epsilon_t > \epsilon_{\mathrm{tol}}) \\[6pt]
+        \mathbf{Exit}_t & (\text{if } \epsilon_t \le \epsilon_{\mathrm{tol}})
+    \end{cases} \\[6pt]
+    % [Operate] 操作フェーズ: アクチュエータ介入と状態遷移
+    \mathbf{Operate}_t &: \quad
+    \begin{cases}
+%        \Delta_t(\lambda_t, \Lambda_t, {\scientificAd}_t) = -\mathbf{K} \, \nabla_{\WholeSelf} \mathcal{E}(\WholeSelf_t) \\[4pt]
+        \Delta(\lambda, \Lambda, A_d) \longrightarrow 0 \\[4pt]
+        \WholeSelf_{t+1} = \CBO\left( \WholeSelf_t,\, {\EnvNoise}_t,\, \Delta_t \right)
+    \end{cases} \\[6pt]
+    % [Exit] 終了フェーズ: 目標盆地へのトラップ完了（定常状態）
+    \mathbf{Exit}_t &: \quad \WholeSelf^* \in \VirtualConvictionGroup^{\mathrm{ego}}(\mathrm{profit}) \quad (\text{Stable Attractor Achieved})
+\end{align}
+
+

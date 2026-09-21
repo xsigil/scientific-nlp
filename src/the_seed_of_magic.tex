@@ -67,254 +67,29 @@
 \section{Egoの目標値としての確信 $\Omega^{\mathrm{ego}}_{mathrm{profit}}$と回避目標としての確信$\Omega^{\mathrm{ego}}_{mathrm{profit}}$}
 \section{破滅的ナラティブへの収束と自己破壊的ホメオスタシス}
 
-\begin{equation}
-    \Evidence \MathBayesianUpdateCollapse{\MathHypoSpace}{\MathHypoSpace'} \MathHypothesis
-\end{equation}
-
-\begin{equation}
-    \NeuralQuasiEvidence \equiv \CoupledState{\EnvNoise, \VirtualConviction, \State}
-\end{equation}
-
-\begin{equation}
-    \SixthSense \equiv \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction'
-\end{equation}
-
-% --- 基底エビデンスの結合定義（入力層） ---
-\begin{align}
-    \scientificV  &\equiv \CoupledState{\VNoise,  \VirtualConviction, \State} \\
-    \scientificA  &\equiv \CoupledState{\ANoise,  \VirtualConviction, \State} \\
-    \scientificK  &\equiv \CoupledState{\KNoise,  \VirtualConviction, \State} \\
-    \scientificO  &\equiv \CoupledState{\ONoise,  \VirtualConviction, \State} \\
-    \scientificG  &\equiv \CoupledState{\GNoise,  \VirtualConviction, \State} \\
-    \scientificVd &\equiv \mathcal{L}_{\mathrm{digital}}\left(\CoupledState{\VdNoise', \VirtualConviction', \State'} \right) \\
-    \scientificAd &\equiv \mathcal{L}_{\mathrm{digital}}\left( \CoupledState{\EnvNoise', \VirtualConviction', \State'} \right) 
-\end{align}
-
-% --- 古典NLPモダリティの神経準ベイズ包摂（現象層） ---
-\begin{align}
-    \classicV  &\equiv \scientificV  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction' \\
-    \classicVd &\equiv \scientificVd \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction' \\
-    \classicA  &\equiv \scientificA  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction' \\
-    \classicAd &\equiv \scientificAd \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction' \\
-    \classicK  &\equiv \scientificK  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction' \\
-    \classicO  &\equiv \scientificO  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction' \\
-    \classicG  &\equiv \scientificG  \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'} \VirtualConviction'
-\end{align}
-
-\begin{align}
-    % 1行目: 開かれた時間発展（逐次更新の連鎖）
-    \NeuralQuasiEvidence_1 \NeuralQuasiBayesianUpdateConviction{\NQSpace_1}{\NQSpace_2} \VirtualConviction_1 
-    &\DiscreteStep{}{} \NeuralQuasiEvidence_2 \NeuralQuasiBayesianUpdateConviction{\NQSpace_2}{\NQSpace_3} \VirtualConviction_2 
-    \DiscreteStep{}{} \dots \\
-    % 2行目: 閉じたリミットサイクル（二重拘束へのトラップ）
-    &\equiv \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}
-    \vcenter{\hbox{
-        \begin{ConflictLoop}
-            \VirtualConviction_1 \\
-            \VirtualConviction_2
-        \end{ConflictLoop}
-    }}
-\end{align}
-
-\begin{equation}
-    \NeuralQuasiEvidence_0 \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}
-    \begin{ConflictLoop}
-        \VirtualConviction_1 \\
-        \VirtualConviction_2 \\
-        \VirtualConviction_3
-    \end{ConflictLoop}
-    \DiscreteStep{t}{t+1}
-    \NeuralQuasiEvidence_1 \NeuralQuasiBayesianUpdateConviction{\NQSpace'}{\NQSpace''} \VirtualConviction_4
-    \DiscreteStep{t+1}{t+2}
-    \NeuralQuasiEvidence_2 \NeuralQuasiBayesianUpdateConviction{\NQSpace''}{\NQSpace'''} \VirtualConviction_5
-\end{equation}
-
-\begin{equation}
-    \VirtualConvictionGroup \equiv \{ \VirtualConviction_1, \VirtualConviction_2, \cdots, \VirtualConviction_n \}
-\end{equation}
-
-\begin{equation}
-    \AlteredState \equiv \text{\aUUST} \land \text{\aADBC}
-\end{equation}
-
-\begin{align}
-    \text{\aUUST} &\equiv \NeuralQuasiEvidence \NeuralQuasiBayesianExploration{\NQSpace}^{\mathrm{narrative:threat}} \\
-    \text{\aADBC} &\equiv \NeuralQuasiEvidence \NeuralQuasiBayesianUpdateConviction{\NQSpace}{\NQSpace'}
-        \vcenter{\hbox{
-            \begin{ConflictLoop}
-                \PredictProfitVirtualConviction \\ 
-                \PredictThreatVirtualConviction
-            \end{ConflictLoop}
-        }}
-\end{align}
-
-\begin{align}
-    \mathrm{Hypnosis} &\equiv \left( \frac{\mathcal{P}}{\mathcal{T}} \gg \theta_{\mathrm{defense}} \right) \;\lor\; \AlteredState \\
-    \mathcal{P} &\equiv \text{Ego Profit} \\
-    \mathcal{T} &\equiv \text{Ego Threat}
-\end{align}
-
-% --- アトラクション盆地空間（Basin of Attraction Space）の基底分割 ---
-\begin{align}
-    \VirtualConvictionGroup &\equiv \VirtualConvictionGroup^{\mathrm{ego}} \cup \VirtualConvictionGroup^{\mathrm{wisdom}} \cup \VirtualConvictionGroup^{\mathrm{neutral}} \\
-    \VirtualConvictionGroup^{\mathrm{ego}}     &\equiv \{\psi^{\mathrm{ego}}_1, \psi^{\mathrm{ego}}_2, \dots, \psi^{\mathrm{ego}}_n\} \\
-    \VirtualConvictionGroup^{\mathrm{wisdom}}  &\equiv \{\psi^{\mathrm{wisdom}}_1, \psi^{\mathrm{wisdom}}_2, \dots, \psi^{\mathrm{wisdom}}_n\} \\
-    \VirtualConvictionGroup^{\mathrm{neutral}} &\equiv \{\psi^{\mathrm{neutral}}_1, \psi^{\mathrm{neutral}}_2, \dots, \psi^{\mathrm{neutral}}_n\}
-\end{align}
-
-% --- 因果ステージ軸（Stage-wise Decomposition: 4ステージ完全系） ---
-% ステージ空間に対して、情動パラメータ (profit, threat, neutral) の直和として定義
-\begin{align}
-    \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}     &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{neutral}) \\
-    \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}} &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{neutral}) \\
-    \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}    &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{neutral}) \\
-    \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}   &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{neutral})
-\end{align}
-
-% --- 情動ドライブ軸（Drive-wise Decomposition） ---
-% 各パラメータ空間が、4つの因果ステージの直和として構成される
-\begin{align}
-    \VirtualConvictionGroup^{\mathrm{ego}}(\mathrm{profit})  &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{profit}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{profit}) \\
-    \VirtualConvictionGroup^{\mathrm{ego}}(\mathrm{threat})  &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{threat}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{threat}) \\
-    \VirtualConvictionGroup^{\mathrm{ego}}(\mathrm{neutral}) &\equiv \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{cause}}(\mathrm{neutral}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{causality}}(\mathrm{neutral}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{effect}}(\mathrm{neutral}) \cup \VirtualConvictionGroup^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{neutral})
-\end{align}
-
-% --- 全空間の統合（双対分解の完全一致） ---
-\begin{equation}
-    \VirtualConvictionGroup^{\mathrm{ego}} \equiv \bigcup_{d \in \{\mathrm{profit}, \mathrm{threat}, \mathrm{neutral}\}} \VirtualConvictionGroup^{\mathrm{ego}}(d) 
-    = \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}, \mathrm{predict}\}} \VirtualConvictionGroup^{\mathrm{ego}}_s
-\end{equation}
-
-\begin{align}
-    \WholeSelf_t &\equiv \CoupledState{\VirtualConviction_t, \NQSpace_t, \State, \lambda_t, \Lambda_t, {\scientificAd}_t} \\
-    \WholeSelf_{t+1} &= \CBO(\WholeSelf_{t}, {\EnvNoise}_{t}, \Delta_t)
-\end{align}
-
-\begin{equation}
-    \tag{Track Servo}
-    \text{Error}_{\mathrm{track}} = \left\| \text{Current State} - \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}, \mathrm{predict}\}} \psi^{\mathrm{ego}}_s(\mathrm{profit}) \right\| \xrightarrow{\text{Feedback Control}} \Delta (\lambda, \Lambda, A_d) \longrightarrow 0
-\end{equation}
-
-\begin{align}
-    \tag{Avoid Barrier}
-    \text{Error}_{\mathrm{avoid}} &= \max\left( 0,\, D_{\mathrm{safe}} - \left\| \text{Current State} - \bigcup_{s \in \{\mathrm{cause}, \mathrm{causality}, \mathrm{effect}, \mathrm{predict}\}} \psi^{\mathrm{ego}}_s(\mathrm{threat}) \right\| \right) \\
-                                  &\xrightarrow{\text{Feedback Control}} \Delta (\lambda, \Lambda, A_d) \longrightarrow 0
-\end{align}
-
-\begin{figure}[htbp]
-\centering
-\resizebox{\linewidth}{!}{%
-\begin{tikzpicture}[
-    >=Stealth,
-    node distance=1.4cm and 1.8cm,
-    font=\small\sffamily,
-    test_node/.style={
-        rectangle, 
-        draw=black!85, 
-        thick, 
-        fill=blue!10, 
-        text width=4.0cm, 
-        align=center, 
-        rounded corners=3pt, 
-        inner sep=4pt
-    },
-    operate_node/.style={
-        rectangle, 
-        draw=black!85, 
-        thick, 
-        fill=orange!15, 
-        text width=4.4cm, 
-        align=center, 
-        rounded corners=3pt, 
-        inner sep=4pt
-    },
-    exit_node/.style={
-        rectangle, 
-        draw=black!85, 
-        thick, 
-        fill=green!20, 
-        rounded corners=8pt, 
-        text width=3.4cm, 
-        align=center, 
-        inner sep=4pt
-    },
-    line/.style={
-        draw=black!85, 
-        thick, 
-        ->
-    },
-    label_text/.style={
-        font=\footnotesize\bfseries, 
-        color=black!80
-    }
-]
-
-    % --- ノード配置 ---
-    % 入力（ここも \WholeSelf に_tが付かない形に統一）
-    \node (input) [font=\bfseries, align=center] {Input\\[1pt]\scriptsize $\WholeSelf$};
-
-    % 1. TEST
-    \node (test) [test_node, right=0.8cm of input] {
-        \textbf{\large TEST}\\[1pt]
-        \scriptsize （現在の状態と目標の照合）\\[3pt]
-        $\epsilon_t \equiv \mathcal{E}(\WholeSelf)$
-    };
-
-    % 2. OPERATE（Double subscript を解消）
-    \node (operate) [operate_node, below=1.4cm of test] {
-        \textbf{\large OPERATE}\\[1pt]
-        \scriptsize （行動・介入・変化）\\[3pt]
-        \footnotesize $\Delta(\lambda, \Lambda, A_d) \longrightarrow 0$\\[1pt]
-        \scriptsize $\WholeSelf_{t+1} = \CBO(\WholeSelf, \EnvNoise, \Delta_t)$
-    };
-
-    % 3. EXIT
-    \node (exit) [exit_node, right=1.6cm of test] {
-        \textbf{\large EXIT}\\[1pt]
-        \scriptsize （完了・目標達成）\\[3pt]
-        \footnotesize $\WholeSelf^* \in \VirtualConvictionGroup^{\mathrm{ego}}(\mathrm{profit})$\\[1pt]
-        \scriptsize $(\epsilon_t \le \epsilon_{\mathrm{tol}})$
-    };
-
-    % --- 接続エッジ ---
-    \path [line] (input) -- (test);
-
-    \path [line] (test) -- node [above, label_text] {一致 (Match)} 
-                           node [below, font=\scriptsize, color=gray!80!black] {$\epsilon_t \le \epsilon_{\mathrm{tol}}$} (exit);
-
-    \draw [line] (test.south) -- node [right, label_text] {不一致 (Mismatch)} 
-                                  node [left, font=\scriptsize, color=gray!80!black] {$\epsilon_t > \epsilon_{\mathrm{tol}}$} (operate.north);
-
-    \draw [line] (operate.west) -- ++(-0.8, 0) |- (test.west);
-
-    \node [below=0.15cm of operate, font=\scriptsize, color=black!60] {※ 状態を遷移させて再度Test（評価）へフィードバック};
-
-\end{tikzpicture}%
-}
-\caption{サイバネティクス制御論に基づく T.O.T.E. モデルの再定式化}
-\label{fig:tote_cybernetic_model}
-\end{figure}
-
-% --- T.O.T.E. 制御アルゴリズムの力学系包摂 ---
-\begin{align}
-    % [Test 1] 評価フェーズ
-    \mathbf{Test}_t &: \quad \epsilon_t \equiv \mathcal{E}(\WholeSelf_t) \\[4pt]
-    % 条件分岐（Operate or Exit）
-    \mathbf{Branch}_t &: \quad
-    \begin{cases}
-        \mathbf{Operate}_t \longrightarrow \mathbf{Test}_{t+1} & (\text{if } \epsilon_t > \epsilon_{\mathrm{tol}}) \\[6pt]
-        \mathbf{Exit}_t & (\text{if } \epsilon_t \le \epsilon_{\mathrm{tol}})
-    \end{cases} \\[6pt]
-    % [Operate] 操作フェーズ: アクチュエータ介入と状態遷移
-    \mathbf{Operate}_t &: \quad
-    \begin{cases}
-%        \Delta_t(\lambda_t, \Lambda_t, {\scientificAd}_t) = -\mathbf{K} \, \nabla_{\WholeSelf} \mathcal{E}(\WholeSelf_t) \\[4pt]
-        \Delta(\lambda, \Lambda, A_d) \longrightarrow 0 \\[4pt]
-        \WholeSelf_{t+1} = \CBO\left( \WholeSelf_t,\, {\EnvNoise}_t,\, \Delta_t \right)
-    \end{cases} \\[6pt]
-    % [Exit] 終了フェーズ: 目標盆地へのトラップ完了（定常状態）
-    \mathbf{Exit}_t &: \quad \WholeSelf^* \in \VirtualConvictionGroup^{\mathrm{ego}}(\mathrm{profit}) \quad (\text{Stable Attractor Achieved})
-\end{align}
+\input{src/math/math_bayesian_update_collapse.tex}
+\input{src/math/neural_quasi_evidence.tex}
+\input{src/math/sixth_sense_and_neural_quasi_bayesian_update_conviction_operator.tex}
+\input{src/math/scientific_internal_representation.tex}
+\input{src/math/classical_internal_representation.tex}
+\input{src/math/conflict_loop.tex}
+\input{src/math/discrete_strategy_of_neural_quasi_bayesian_update_conviction_sequence.tex}
+\input{src/math/definition_of_virtual_conviction_group.tex}
+\input{src/math/definition_of_altered_state.tex}
+\input{src/math/definition_of_uust.tex}
+\input{src/math/definition_of_adbc.tex}
+\input{src/math/definition_of_hypnosis.tex}
+\input{src/math/decomposition_of_virtual_conviction_group_to_ego_wisdom_neutral_axis.tex}
+\input{src/math/stage_wise_decomposition_of_ego_virtual_conviction_group.tex}
+\input{src/math/drive_wise_decomposition_of_ego_virtual_conviction_group.tex}
+\input{src/math/integration_of_ego_virtual_conviction_group_from_dual_decomposition.tex}
+\input{src/math/voluntary_and_involuntary_movement.tex}
+\input{src/math/definition_of_whole_self.tex}
+\input{src/math/definition_of_cybernetic_biochemical_operator.tex}
+\input{src/math/cbo_track_servo_mode_cybernetic_feedback_loop.tex}
+\input{src/math/cbo_avoid_barrier_mode_cybernetic_feedback_loop.tex}
+\input{src/tikz/cbo_tote_mode_cybernetic_feedback_loop_when_neural_quasi_bayesian_exploration.tikz}
+\input{src/math/cbo_tote_mode_cybernetic_feedback_loop_when_neural_quasi_bayesian_exploration.tex}
 
 \begin{equation}
     \CBO(\WholeSelf) \equiv \begin{cases}
