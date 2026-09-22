@@ -61,11 +61,13 @@ en: $(PDF_EN)
 # --- 日本語版コンパイル ---
 $(PDF_JA): $(TARGET) $(ASSETS)
 	@mkdir -p $(BUILD_DIR)
+	@for d in src/chapters/*/; do mkdir -p "build/$$d"; done
 	$(LATEXMK) -jobname=$(MAIN)_ja -usepretex="\def\BOOKLANG{ja}" $(TARGET)
 
 # --- 英語版コンパイル ---
 $(PDF_EN): $(TARGET) $(ASSETS)
 	@mkdir -p $(BUILD_DIR)
+	@for d in src/chapters/*/; do mkdir -p "build/$$d"; done
 	$(LATEXMK) -jobname=$(MAIN)_en -usepretex="\def\BOOKLANG{en}" $(TARGET)
 
 # 図版個別生成ターゲット
