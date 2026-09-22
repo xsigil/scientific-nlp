@@ -7,11 +7,10 @@
 PRAGMA foreign_keys = ON;
 
 -- -----------------------------------------------------------------------------
--- 1. epigraphs: Cognitive anchors introducing each chapter
+-- 1. epigraphs: Cognitive anchors master pool (independent of chapter binding)
 -- -----------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS epigraphs (
     id                  INTEGER PRIMARY KEY AUTOINCREMENT,
-    chapter_id          TEXT NOT NULL,            -- e.g., 'prologue', 'ch08', 'epilogue'
     quote               TEXT NOT NULL,            -- The epigraph text (original language)
     translation         TEXT,                     -- Japanese translation for \ChapterEpigraphWithTranslation
     attribution         TEXT NOT NULL,            -- Author / Character / Theoretical Origin
@@ -20,7 +19,7 @@ CREATE TABLE IF NOT EXISTS epigraphs (
     created_at          DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_epigraphs_chapter_id ON epigraphs(chapter_id);
+CREATE INDEX IF NOT EXISTS idx_epigraphs_attribution ON epigraphs(attribution);
 
 -- -----------------------------------------------------------------------------
 -- 2. references_db: External observational models and bibliography metadata
