@@ -39,3 +39,15 @@
   \endgroup
   \vspace{1.5em}%
 }
+
+% \Term{キー}{表示テキスト}
+\newcommand{\Term}[2]{%
+  \ifcsdef{termseen@#1}{%
+    % 2回目以降
+    #2\xspace
+  }{%
+    % 初回出現
+    \global\csdef{termseen@#1}{true}%
+    #2\texttrademark{}\xspace
+  }%
+}
