@@ -1,16 +1,22 @@
-\chapter*{Acknowledgments}
-\label{chap:acknowledgments}
-\epigraph{%
-  $\begin{aligned}
-    \mathcal{W}_{\text{The World}} &\equiv \{\text{Known},\;\text{Unknown},\;\text{Unlimited Unknown}\} \\
-    \text{Known} &\equiv \text{Truth} \sqcup \text{Lie}
-  \end{aligned}$
-}{%
-  --- \textit{Mr.~Masahiro Sugaya}
-}
+\ifja
+    \chapter*{謝辞}
+    \addcontentsline{toc}{chapter}{謝辞}
+    \label{chap:acknowledgments}
+    \input{src/epigraph/cha_acknowledgement.tex}
+    \textbf{\exSNLP}の開発は、現段階において、独立した孤独な取り組みである。
 
-The development of \textbf{\exSNLP} is, at this stage, an independent and solitary endeavor. 
+    何よりもまず、家族に心より深甚なる感謝を捧げたい。彼らの絶え間ない忍耐と理解、そして静かな支えがあってこそ、本書を着想し、執筆するための不可欠な基盤がもたらされた。
 
-Foremost, I express my deepest gratitude to my family, whose constant patience, understanding, and quiet support provided the essential foundation for conceptualizing and writing this work. 
+    また、本フレームワークの理論的・技術的モデリングを可能にしてくれた基盤ツールを提供する、オープンソースプロジェクトおよび開発者コミュニティ各位にも、ここに深く感謝の意を表する。
+\else
+    \chapter*{Acknowledgments}
+    \addcontentsline{toc}{chapter}{Acknowledgments}
+    \label{chap:acknowledgments}
+    \input{src/epigraph/cha_acknowledgement.tex}
+    The development of \textbf{\exSNLP} is, at this stage, an independent and solitary endeavor. 
 
-I also acknowledge the open-source projects and developer communities whose foundational tools made the theoretical and technical modeling of this framework possible.
+    Foremost, I express my deepest gratitude to my family, whose constant patience, understanding, and quiet support provided the essential foundation for conceptualizing and writing this work. 
+
+    I also acknowledge the open-source projects and developer communities whose foundational tools made the theoretical and technical modeling of this framework possible.
+\fi
+
