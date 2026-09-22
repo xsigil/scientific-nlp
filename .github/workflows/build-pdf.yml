@@ -28,6 +28,7 @@ jobs:
             musl-dev \
             make \
             curl \
+            ctags \
             tar
 
       - name: Build and Install Pikchr
