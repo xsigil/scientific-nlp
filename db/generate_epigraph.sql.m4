@@ -5,18 +5,28 @@ changequote(`[[', `]]')dnl
 
 SELECT 
     CASE 
-        -- 訳文が存在する場合: \ChapterEpigraphWithTranslation{原文}{訳文}{出典}
+        -- 訳文が存在する場合: \ifja で分岐を出力
         WHEN translation IS NOT NULL AND trim(translation) != '' THEN
-            '\ChapterEpigraphWithTranslation{' || 
+            '\ifja' || char(10) ||
+            '  \ChapterEpigraphWithTranslation{' || 
             trim(quote) || '}{' || 
             trim(translation) || '}{' || 
             trim(attribution) || 
             CASE 
                 WHEN source IS NOT NULL AND trim(source) != '' THEN ', \textit{' || trim(source) || '}'
                 ELSE ''
-            END || '}'
+            END || '}' || char(10) ||
+            '\else' || char(10) ||
+            '  \ChapterEpigraph{' || 
+            trim(quote) || '}{' || 
+            trim(attribution) || 
+            CASE 
+                WHEN source IS NOT NULL AND trim(source) != '' THEN ', \textit{' || trim(source) || '}'
+                ELSE ''
+            END || '}' || char(10) ||
+            '\fi'
 
-        -- 原文のみの場合: \ChapterEpigraph{原文}{出典}
+        -- 訳文が存在しない（原文のみ）場合: 分岐不要で \ChapterEpigraph を出力
         ELSE
             '\ChapterEpigraph{' || 
             trim(quote) || '}{' || 

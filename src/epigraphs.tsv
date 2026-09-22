@@ -1,5 +1,7 @@
 # target	word	author	limit
-cha_prologue	cybernetic biochemical	Sugaya	1
+cha_acknowledgement	Unlimited Unknown	Sugaya	1
+#cha_prologue	cybernetic biochemical	Sugaya	1
+cha_prologue	street finds	William Gibson	1
 cha_authoring_pipeline	Arch BTW	Unix Hacker	1
 app_othello_filter	Body language	Sugaya	1
 app_computational_duality	undocumented feature	Proverb	1
