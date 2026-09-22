@@ -1,3 +1,11 @@
+\ifja
+  \usepackage{luatexja}
+  \usepackage{luatexja-fontspec}
+\else
+  \usepackage[english]{babel}
+  \usepackage{fontspec}
+\fi
+
 \usepackage{amsmath,amssymb}
 \usepackage{array}
 \usepackage{booktabs}
@@ -8,7 +16,6 @@
 \usepackage{graphviz}
 \usepackage{listings}
 \usepackage{longtable}
-\usepackage{luatexja}
 \usepackage{mathtools}
 \usepackage{multirow}
 \usepackage{rotating}

@@ -1,3 +1,7 @@
+# ==============================================================================
+# Project: Scientific NLP - Multi-Language Build Pipeline
+# ==============================================================================
+
 # 設定パラメータ
 MAIN         := the_seed_of_magic
 SRC_DIR      := src
@@ -18,7 +22,10 @@ EPIGRAPH_M4  := db/generate_epigraph.sql.m4
 DB_FILE      := db/ontology.sqlite3
 
 TARGET       := $(SRC_DIR)/$(MAIN).tex
-OUTPUT_PDF   := $(BUILD_DIR)/$(MAIN).pdf
+
+# 言語別出力アーティファクト定義
+PDF_JA       := $(BUILD_DIR)/$(MAIN)_ja.pdf
+PDF_EN       := $(BUILD_DIR)/$(MAIN)_en.pdf
 
 # 依存ソースおよび生成ファイル定義
 DOT_SRCS     := $(wildcard $(DOT_SRC_DIR)/*.dot)
@@ -31,6 +38,8 @@ GP_TEXS      := $(patsubst $(GP_SRC_DIR)/%.gp,$(GP_OUT_DIR)/%.tex,$(GP_SRCS))
 PIK_SRCS     := $(wildcard $(PIK_SRC_DIR)/*.pic)
 PIK_PDFS     := $(patsubst $(PIK_SRC_DIR)/%.pic,$(PIK_OUT_DIR)/%.pdf,$(PIK_SRCS))
 
+ASSETS       := $(DOT_PDFS) $(GP_TEXS) $(PIK_PDFS)
+
 # コンパイルコマンド
 LATEXMK      := latexmk -lualatex -outdir=$(BUILD_DIR) -interaction=nonstopmode -synctex=1
 M4           := m4 -I$(DOT_SRC_DIR)
@@ -41,15 +50,23 @@ RSVG_CONVERT := rsvg-convert
 GAWK         := gawk
 SQLITE3      := sqlite3
 
-.PHONY: all clean distclean watch dot_figs plot_figs pikchr_figs epigraph
+.PHONY: all ja en clean distclean watch watch-ja watch-en dot_figs plot_figs pikchr_figs epigraph
+# デフォルトターゲット: 日英両方のPDFを生成
+all: ja en
 
-# デフォルトターゲット: 全ての図版・プロットを生成した後にメインPDFをコンパイル
-all: $(OUTPUT_PDF)
+# 言語別ビルドターゲット
+ja: $(PDF_JA)
+en: $(PDF_EN)
 
-# メインPDFの依存関係（エピグラフ生成には依存させず高速・決定論的に保つ）
-$(OUTPUT_PDF): $(TARGET) $(DOT_PDFS) $(GP_TEXS) $(PIK_PDFS)
+# --- 日本語版コンパイル ---
+$(PDF_JA): $(TARGET) $(ASSETS)
 	@mkdir -p $(BUILD_DIR)
-	$(LATEXMK) $(TARGET)
+	$(LATEXMK) -jobname=$(MAIN)_ja -usepretex="\def\BOOKLANG{ja}" $(TARGET)
+
+# --- 英語版コンパイル ---
+$(PDF_EN): $(TARGET) $(ASSETS)
+	@mkdir -p $(BUILD_DIR)
+	$(LATEXMK) -jobname=$(MAIN)_en -usepretex="\def\BOOKLANG{en}" $(TARGET)
 
 # 図版個別生成ターゲット
 dot_figs: $(DOT_PDFS)
@@ -100,13 +117,21 @@ epigraph: $(EPIGRAPH_TSV) $(EPIGRAPH_M4) $(DB_FILE)
 
 # クリーンアップ
 clean:
-	$(LATEXMK) -c $(TARGET)
+	$(LATEXMK) -c -jobname=$(MAIN)_ja $(TARGET)
+	$(LATEXMK) -c -jobname=$(MAIN)_en $(TARGET)
 
 distclean:
-	$(LATEXMK) -C $(TARGET)
+	$(LATEXMK) -C -jobname=$(MAIN)_ja $(TARGET)
+	$(LATEXMK) -C -jobname=$(MAIN)_en $(TARGET)
 	rm -rf $(BUILD_DIR)
 
-# latexmk 監視モード
-watch: $(DOT_PDFS) $(GP_TEXS) $(PIK_PDFS)
+watch: watch-ja
+
+# latexmk 継続的監視モード
+watch-ja: $(ASSETS)
 	@mkdir -p $(BUILD_DIR)
-	$(LATEXMK) -pvc $(TARGET)
+	$(LATEXMK) -pvc -jobname=$(MAIN)_ja -usepretex="\def\BOOKLANG{ja}" $(TARGET)
+
+watch-en: $(ASSETS)
+	@mkdir -p $(BUILD_DIR)
+	$(LATEXMK) -pvc -jobname=$(MAIN)_en -usepretex="\def\BOOKLANG{en}" $(TARGET)

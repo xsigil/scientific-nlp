@@ -1,4 +1,4 @@
-name: Build PDF
+name: Build Bilingual PDFs
 
 on:
   push:
@@ -47,13 +47,20 @@ jobs:
           which pikchr
           which m4
 
-      - name: Build with Make
+      - name: Build All Language PDFs (Japanese & English)
         run: |
-          make
+          make all
 
-      - name: Upload PDF Artifact
+      - name: Upload Japanese PDF Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: the_seed_of_magic-pdf
-          path: build/the_seed_of_magic.pdf
+          name: the_seed_of_magic_ja-pdf
+          path: build/the_seed_of_magic_ja.pdf
+          retention-days: 30
+
+      - name: Upload English PDF Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: the_seed_of_magic_en-pdf
+          path: build/the_seed_of_magic_en.pdf
           retention-days: 30

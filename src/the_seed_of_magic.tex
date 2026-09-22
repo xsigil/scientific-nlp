@@ -1,3 +1,40 @@
+% ==============================================================================
+%                          SCIENTIFIC NLP PROJECT
+% ==============================================================================
+% Title       : Scientific NLP: The Seed of Magic
+% Subtitle    : The Answer from a Social Hacker to Dr. Richard Bandler
+% Author      : Masahiro Sugaya
+% License     : MIT License
+% Repository  : https://github.com/...(your-repo-path)...
+%
+% ------------------------------------------------------------------------------
+% ARCHITECTURE NOTE: SINGLE-SOURCE MULTI-TARGET COMPILATION (i18n)
+% ------------------------------------------------------------------------------
+% This document implements a deterministic single-source bilingual pipeline.
+% Runtime language context is injected at compile time via:
+%
+%     Japanese build : latexmk -jobname=the_seed_of_magic_ja -usepretex="\def\BOOKLANG{ja}"
+%     English build  : latexmk -jobname=the_seed_of_magic_en -usepretex="\def\BOOKLANG{en}"
+%
+% USAGE PATTERNS FOR CONDITIONAL CONTENT:
+%
+%   1. Block Dispatch:
+%      \ifja
+%        日本語版の文章・構成
+%      \else
+%        English narrative and structure
+%      \fi
+%
+%   2. Inline Helper:
+%      \bilingual{日本語テキスト}{English text}
+%
+% ------------------------------------------------------------------------------
+% CRITICAL BOOTSTRAP ORDER:
+% `src/preamble/init.tex` MUST be loaded BEFORE `\documentclass`.
+% It captures \BOOKLANG and establishes \ifja / \ifen predicates prior to
+% any document-class or fontspec engine evaluation.
+% ==============================================================================
+\input{src/preamble/init.tex} %WARNING: This must come before documentclass
 \documentclass{ltjsbook}
 \input{src/preamble/packages.tex}
 \input{src/preamble/terms.tex}

@@ -1,0 +1,21 @@
+% ==============================================================================
+% Language & Global Runtime Context Initialization
+% ==============================================================================
+\ifdefined\BOOKLANG\else
+  \def\BOOKLANG{ja}
+\fi
+
+\newif\ifja
+\newif\ifen
+\def\langja{ja}
+
+\ifx\BOOKLANG\langja
+  \jatrue
+  \enfalse
+\else
+  \jafalse
+  \entrue
+\fi
+
+% ついでに対訳用ヘルパーマクロもここに定義しておくと超便利
+\newcommand{\bilingual}[2]{\ifja#1\else#2\fi}
