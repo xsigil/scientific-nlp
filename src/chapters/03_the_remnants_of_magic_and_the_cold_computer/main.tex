@@ -10,8 +10,6 @@
     答えは残酷なほどシンプルだ。
     私たちは彼が「見せている手品（表層の言語）」を表面的に真似ていただけで、彼がハックしていた「生体情報処理ハードウェアの物理法則」を何ひとつ理解していなかったからである。
 
-    \NLPを神秘のベールから引き剥がし、真の工学として掌中に収めるためには、私たちが「心」や「無意識」に対して抱いてきた自明の思い込みを疑う、冷徹な批判的知性が必要となる。
-
     \NLPを神秘のベールから引き剥がし、真の工学として掌中に収めるためには、私たちが「心」や「無意識」に対して抱いてきた自明の思い込みはもちろんのこと、\NLPという体系そのものが掲げる前提すら疑う冷徹な批判的知性が必要となる。
 
     種明かしを始める前に、まずはこの生体コンピュータの動作原理を記述するための、最低限の数学的・情報論的プロトコルを定義しておこう。
@@ -44,7 +42,34 @@
     Unlike traditional frequentist statistics, which relies on the presupposition of infinitely repeatable trials, Bayesian statistics assigns and evaluates subjective probabilities even for single, non-repeatable events. This capability enables the initialization of tentative inferences derived from prior knowledge, even in baseline regimes where observational data is exceptionally sparse.
 \fi
 
-\subsection{事象の確率と条件付き確率}
+\ifja
+    \subsection{事象の確率と\jpTextConditionalProbability }
+    ベイズ推論を理解するための基礎となるのが「\jpTextConditionalProbability（\exTextConditionalProbability）」である。
+
+    確率が正である事象 $\eventB$（すなわち $\Probability{\eventB} > 0$）がすでに観測された条件下で、事象 $\eventA$ が生起する条件付き確率は次式で定義される。
+
+    \input{src/math/eq_cond_prob.tex}
+
+    ここで $\Probability{\eventA \cap \eventB}$ は事象 $\eventA$ と事象 $\eventB$ が同時に生起する同時確率を表す。この定義式を変形すると、確率の乗法定理が得られる。
+
+    \input{src/math/eq_mult_rule.tex}
+
+    \eqref{eq:mult_rule} 式は、事象 $\eventA$ と $\eventB$ が同時に生起するプロセスを「$\eventB$ を前提とした $\eventA$ の生起」と捉えても、「$\eventA$ を前提とした $\eventB$ の生起」と捉えても数学的に同値であることを示している。
+\else
+    \subsection{Probability of Events and \exTextConditionalProbability}
+    The foundation for understanding Bayesian inference is ``\exTextConditionalProbability.''
+
+    Given the condition that an event $\eventB$ with positive probability (i.e., $\Probability{\eventB} > 0$) has already been observed, the conditional probability that event $\eventA$ occurs is defined by the following equation:
+
+    \input{src/math/eq_cond_prob.tex}
+
+    where $\Probability{\eventA \cap \eventB}$ denotes the joint probability that events $\eventA$ and $\eventB$ occur simultaneously. Rearranging this definition yields the multiplication rule of probability:
+
+    \input{src/math/eq_mult_rule.tex}
+
+    Equation~\eqref{eq:mult_rule} indicates that the process in which events $\eventA$ and $\eventB$ co-occur is mathematically equivalent whether interpreted as ``the occurrence of $\eventA$ given $\eventB$'' or ``the occurrence of $\eventB$ given $\eventA$.''
+\fi
+
 \subsection{ベイズの定理の導出}
 \subsection{全確率の定理を用いた一般化}
 \subsection{ベイズ更新（逐次更新）のメカニズム}
