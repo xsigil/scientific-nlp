@@ -81,6 +81,41 @@
 \fi
 
 \subsection{全確率の定理を用いた一般化}
+起こりうるすべての状態が、互いに排他で網羅的な $K$ 個の事象の分割 $\{H_1, H_2, \dots, H_K\}$ によって構成されているとする。
+すなわち、
+\begin{equation}
+    \bigcup_{j=1}^K H_j = \Omega_{\mathrm{event}}, \quad H_i \cap H_j = \emptyset \quad (i \neq j)
+\end{equation}
+このとき、任意の事象 $D$（観測データ）の確率 $P(D)$ は「全確率の定理」により次のように展開できる。
+\begin{equation}
+P(D) = \sum_{j=1}^K P(D \cap H_j) = \sum_{j=1}^K P(D \mid H_j) P(H_j)
+\label{eq:law_of_total_prob}
+\end{equation}
+これを \eqref{eq:bayes_basic} 式の分母に代入することで、一般化されたベイズ方程式が得られる。
+\begin{equation}
+P(H_k \mid D) = \frac{P(D \mid H_k) P(H_k)}{\displaystyle\sum_{j=1}^K P(D \mid H_j) P(H_j)}
+\label{eq:gen_bayes}
+\end{equation}
+
+この方程式を構成する各項は、認知および統計的推論において次のように定義される。
+\begin{itemize}
+  \item \textbf{事前確率（Prior Probability）} $P(H_k)$：データ $D$ を得る前に、仮説 $H_k$ が正しいと見積もられている確信度。
+  \item \textbf{尤度（Likelihood）} $P(D \mid H_k)$：仮説 $H_k$ が真である場合に、データ $D$ が観測される確率。
+  \item \textbf{周辺尤度／正規化定数（Marginal Likelihood / Evidence）} $P(D) = \sum_{j=1}^K P(D \mid H_j) P(H_j)$：すべての仮説のもとでデータ $D$ が観測される総合確率。
+  \item \textbf{事後確率（Posterior Probability）} $P(H_k \mid D)$：データ $D$ を観測した後に更新された、仮説 $H_k$ に対する確信度。
+\end{itemize}
+
+分母 $P(D)$ は各仮説 $H_k$ に依存しない共通の正規化定数であるため、ベイズ方程式は本質的に次の比例関係へと帰着する。
+\begin{equation}
+P(H_k \mid D) \propto P(D \mid H_k) \times P(H_k)
+\label{eq:proportional}
+\end{equation}
+すなわち、「\textbf{事後確率 $\propto$ 尤度 $\times$ 事前確率}」である。
+
+
+
+
+
 \subsection{ベイズ更新（逐次更新）のメカニズム}
 \section{モンティ・ホール問題：人間の直感の破綻}
 \subsection{全米を巻き込んだ大論争}
