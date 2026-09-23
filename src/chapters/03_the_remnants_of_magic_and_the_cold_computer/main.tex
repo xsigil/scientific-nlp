@@ -70,7 +70,16 @@
     Equation~\eqref{eq:mult_rule} indicates that the process in which events $\eventA$ and $\eventB$ co-occur is mathematically equivalent whether interpreted as ``the occurrence of $\eventA$ given $\eventB$'' or ``the occurrence of $\eventB$ given $\eventA$.''
 \fi
 
-\subsection{ベイズの定理の導出}
+\ifja
+    \subsection{\jpTextBayesTheoremの導出}
+    乗法定理 \eqref{eq:mult_rule} の両辺を $\Probability{\eventB}$（ただし $\Probability{\eventB} > 0$）で除すことにより、基礎的な\jpTextBayesTheorem（\exTextBayesTheorem）が導かれる。
+    \input{src/math/eq_bayes_basic.tex}
+\else
+    \subsection{Derivation of \exTextBayesTheorem}
+    Dividing both sides of the multiplication rule \eqref{eq:mult_rule} by $\Probability{\eventB}$ (where $\Probability{\eventB} > 0$) yields the elementary form of \exTextBayesTheorem:
+    \input{src/math/eq_bayes_basic.tex}
+\fi
+
 \subsection{全確率の定理を用いた一般化}
 \subsection{ベイズ更新（逐次更新）のメカニズム}
 \section{モンティ・ホール問題：人間の直感の破綻}

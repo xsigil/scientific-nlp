@@ -234,33 +234,13 @@
 %  }%
 %}
 
-% 自己完結・完全決定論的なウロボロス記号（頭部大型化版）
+% ====================================================================
+% WholeSelf:ウロボロス記号 (Vector PDF版)
+% ====================================================================
 \newcommand{\Ouroboros}{%
   \mathord{%
     \vcenter{\hbox{%
-      \begin{tikzpicture}[baseline=-0.3ex, scale=0.85]
-        % 1. 胴体：尾(15度)から首元(310度)へ向かって太くなる円弧
-        \draw[line width=0.45pt, line cap=round] 
-          (15:0.75ex) arc (15:180:0.75ex);
-        \draw[line width=0.95pt, line cap=round] 
-          (170:0.75ex) arc (170:315:0.75ex);
-
-        % 2. 尾：頭の喉奥へ向かって細く吸い込まれる
-        \draw[line width=0.35pt, line cap=round] 
-          (15:0.75ex) to[out=105, in=-35] (40:0.58ex);
-
-        % 3. 頭部（大型化・マムシ/毒蛇特有の三角形の張り出し）
-        \fill[line width=0.1pt] 
-          (310:0.72ex) 
-          .. controls ++(65:0.65ex) and ++(180:0.35ex) .. (38:0.96ex) % 後頭部から上顎先端（外側へ大きく張る）
-          -- (45:0.62ex) % 口の開き（上顎先端から喉奥）
-          -- (25:0.48ex) % 下顎の内側
-          .. controls ++(210:0.35ex) and ++(35:0.40ex) .. (305:0.60ex) % 下顎外側から首
-          -- cycle;
-
-        % 4. 眼（大型化した頭部に合わせたシャープなアイ・スポット）
-        \fill[white] (18:0.86ex) circle (0.16ex);
-      \end{tikzpicture}%
+      \includegraphics[height=2.5ex]{src/images/Ouroboros.pdf}%
     }}%
   }%
 }
