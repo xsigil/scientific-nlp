@@ -1,0 +1,10 @@
+\begin{align}
+    \ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD_1, \eventD_2} 
+&\propto \ConditionalProbability{\eventD_2}{\MathHypothesis_{\postfixIndexThree}} \cdot \ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD_1} \notag \\
+&= \ConditionalProbability{\eventD_2}{\MathHypothesis_{\postfixIndexThree}} \cdot \left( \frac{\ConditionalProbability{\eventD_1}{\MathHypothesis_{\postfixIndexThree}} \Probability{\MathHypothesis_{\postfixIndexThree}}}{\Probability{\eventD_1}} \right) \notag \\
+&\propto \ConditionalProbability{\eventD_1}{\MathHypothesis_{\postfixIndexThree}} \ConditionalProbability{\eventD_2}{\MathHypothesis_{\postfixIndexThree}} \Probability{\MathHypothesis_{\postfixIndexThree}} \notag \\
+&= \ConditionalProbability{\eventD_1, \eventD_2}{\MathHypothesis_{\postfixIndexThree}} \Probability{\MathHypothesis_{\postfixIndexThree}}
+\label{eq:bayesian_update_1_and_2_step_both}
+\end{align}
+
+

@@ -1,0 +1,66 @@
+\section{Bayesian OODA (BOODA)：プラグマティック意思決定動態フレームワーク}
+\label{sec:booda_framework}
+
+\subsection{戦闘理論と知性演算の数理的統合}
+意思決定理論および統計学は、長らく2つの本質的欠陥に直面してきた。
+第一に、頻度論や学術的ベイズ統計（MCMC等）は「事後分布全体の積分」や「数万回の反復サンプリング」という緻密さに固執し、刻一刻と状況が変容する戦場や激変する市場において即応性を喪失する。
+第二に、ジョン・ボイド（John Boyd）大佐が提唱した「OODAループ（Observe $\to$ Orient $\to$ Decide $\to$ Act）」は現場の機動性を重視する極めて強力な動態モデルであるが、その中核である \textbf{Orient（情勢判断）} が個人の主観的直感や経験則に委ねられており、認知バイアスや確証の罠を排除できなかった。
+
+\textbf{Bayesian OODA（BOODA）} は、Orient の認知的ブラックボックスをアラン・チューリングの「対数オッズ（デシバン）整数加算」によって完全にアルゴリズム化し、「敵よりも一瞬早く最尤解（MAP: Maximum A Posteriori）の1点を射止め、物理世界へ介入する」ことを目的とした徹底的プラグマティズムの体系である。
+
+\subsection{BOODA 4大フェーズの計算論的定義}
+
+BOODA における意思決定サイクルは、以下の4つのフェーズによって決定論的かつ連続的に実行される。
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+  \item \textbf{Observe（観察：無色透明なエビデンスの抽出）}:
+    主観的解釈や感情ノイズを完全に排し、外界の物理シグナルや公的テキストから独立した観測トークン（Element）を抽出する。これらは決定論的 16-bit ハッシュ空間へ写像され、仮説非依存の客観的事実ストリーム（Subject）として入力される。
+  \item \textbf{Orient（情勢判断：整数デシバン並行加算）}:
+    基準仮説 $H_0$（普段の日常・環境ノイズ）を分母に固定し、各競合仮説 $H_k$ の事前オッズ（Prior）を出発点として、観測ハッシュに対応する証拠の重み（デシバン値）を並行加算する。
+    \begin{equation}
+      \text{TotalDb}(H_k) = \text{PriorDb}(H_k) + \sum_{i=1}^{N} W(H_k, e_i)
+      \label{eq:booda_orient_update}
+    \end{equation}
+    浮動小数点の積和演算や確率密度の正規化定数計算を行わず、CPU の L1 キャッシュ上で加算のみを完結させる。
+  \item \textbf{Decide（意思決定：点差トリガーによる状態判定）}:
+    上位2仮説のデシバン点差（$\Delta\text{dB}$）に基づき、あらかじめ規定された閾値ルールに従って機械的・自律的に行動をトリガーする。
+  \item \textbf{Act（行動：現実世界への物理的介入）}:
+    採択された仮説に従い、迷いなく現実環境へ介入（通信遮断、発信源追尾、資本配分など）を行う。介入によって引き起こされた環境の反作用は、直ちに次周サイクルの Observe へ再帰的にフィードバックされる。
+\end{enumerate}
+
+\subsection{点差判定トリガーとダブルループ学習（創造的跳躍）}
+
+Decide フェーズにおいては、上位仮説間の点差に応じて表~\ref{tab:booda_decision_rules} の基準を適用する。
+
+\begin{table}[htbp]
+  \centering
+  \small
+  \caption{BOODA 意思決定閾値およびアクション基準}
+  \label{tab:booda_decision_rules}
+  \vspace{2mm}
+  \begin{tabular}{ccl}
+    \toprule
+    デシバン点差 ($\Delta\text{dB}$) & 事後確信度 & 意思決定アクション \\
+    \midrule
+    $< 6\text{ dB}$                  & $< 80\%$   & \textbf{【HOLD】判定保留。} 直交する別角度の追加観測を即時要求。 \\
+    $\ge 10\text{ dB}$               & $\ge 91\%$ & \textbf{【COMMIT】実用判定承認。} 暫定勝者仮説として行動（Act）を開始。 \\
+    $\ge 20\text{ dB}$               & $\ge 99\%$ & \textbf{【OVERWHELM】完全確定。} 全資源を不可逆的に投入。 \\
+    \midrule
+    \textbf{全仮説 $\le -10\text{ dB}$} & \textbf{全滅} & \textbf{【DOUBLE LOOP】ダブルループ発動。} 前提空間を破壊し $H_{\text{new}}$ を注入。 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+観測を重ねた結果、事前に定義された全仮説のスコアが $-10\text{ dB}$ 以下（全滅状態: All Negative）に沈んだ場合、システムは「現在の思考フレームワークの外側に真実が存在する」と宣告する。
+これにより、手持ちの選択肢にしがみつく確証バイアスが強制遮断され、新たな仮説 $H_{\text{new}}$ を仮説空間へ電撃投入する「ダブルループ学習（創造的跳躍）」が自動的に誘発される。
+
+\subsection{MCMC を排したプラグマティズムの極致}
+
+学術ベイズと BOODA の根本的な相違は、「探究」と「決断」の目的差に帰着される。
+学術ベイズは「確率分布全体の体積や裾野の形状」を測定するために高次元空間をランダムウォーク（MCMC）させるが、BOODA は「敵が潜む最も高い山の頂上（MAP）」のみを整数加算により一撃で撃ち抜く。
+
+\begin{equation}
+  H_{\text{MAP}} = \arg\max_{H_k} \left[ \text{PriorDb}(H_k) + \sum_{i=1}^{N} W(H_k, e_i) \right]
+\end{equation}
+
+この純粋な整数加算構造により、大型 GPU やクラウドを一切介さず、数十KB の RAM しか持たない極小マイコン（ARM Cortex-M4 等）上で数ミリ秒〜数マイクロ秒オーダーでの自律的 OODA サイクル実行が可能となる。

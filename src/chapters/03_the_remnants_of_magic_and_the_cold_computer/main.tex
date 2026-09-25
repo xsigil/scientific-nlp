@@ -80,71 +80,187 @@
     \input{src/math/eq_bayes_basic.tex}
 \fi
 
-\ifja
-\subsection{全確率の定理を用いた一般化}
-起こりうるすべての状態が、互いに排他で網羅的な $\MathNumHypotheses$ 個の事象の分割 $\{\MathHypothesis_1, \MathHypothesis_2, \dots, \MathHypothesis_{\MathNumHypotheses}\}$ によって構成されているとする。
-すなわち、
+\ifja 
+    \subsection{全確率の定理を用いた一般化}
+    起こりうるすべての状態が、互いに排他で網羅的な $\MathNumHypotheses$ 個の事象の分割 $\{\MathHypothesis_1, \MathHypothesis_2, \dots, \MathHypothesis_{\MathNumHypotheses}\}$ によって構成されているとする。
+    すなわち、
 
-\input{src/math/eq_hypothesis_partition.tex}
+    \input{src/math/eq_hypothesis_partition.tex}
 
-このとき、任意の事象 $\eventD$（観測データ）の確率 $\Probability{\eventD}$ は「全確率の定理」により次のように展開できる。
+    このとき、任意の事象 $\eventD$（観測データ）の確率 $\Probability{\eventD}$ は「全確率の定理」により次のように展開できる。
 
-\input{src/math/eq_law_of_total_prob.tex}
+    \input{src/math/eq_law_of_total_prob.tex}
 
-これを \eqref{eq:bayes_basic} 式の分母に代入することで、一般化されたベイズ方程式が得られる。
+    これを \eqref{eq:bayes_basic} 式の分母に代入することで、一般化されたベイズ方程式が得られる。
 
-\input{src/math/eq_gen_bayes.tex}
+    \input{src/math/eq_gen_bayes.tex}
 
-この方程式を構成する各項は、認知および統計的推論において次のように定義される。
+    この方程式を構成する各項は、認知および統計的推論において次のように定義される。
 
-\begin{itemize}
-  \item \textbf{事前確率（Prior Probability）} $\Probability{\MathHypothesis_{\postfixIndexThree}}$：データ $\eventD$ を得る前に、仮説 $\MathHypothesis_{\postfixIndexThree}$ が正しいと見積もられている確信度。
-  \item \textbf{尤度（Likelihood）} $\ConditionalProbability{\eventD}{\MathHypothesis_{\postfixIndexThree}}$：仮説 $\MathHypothesis_{\postfixIndexThree}$ が真である場合に、データ $\eventD$ が観測される確率。
-  \item \textbf{周辺尤度／正規化定数（Marginal Likelihood / Evidence）} $\Probability{\eventD} = \sum_{\postfixIndexTwo=1}^{\MathNumHypotheses} \ConditionalProbability{\eventD}{\MathHypothesis_{\postfixIndexTwo}} \Probability{\MathHypothesis_{\postfixIndexTwo}}$：すべての仮説のもとでデータ $\eventD$ が観測される総合確率。
-  \item \textbf{事後確率（Posterior Probability）} $\ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD}$：データ $\eventD$ を観測した後に更新された、仮説 $\MathHypothesis_{\postfixIndexThree}$ に対する確信度。
-\end{itemize}
+    \begin{itemize}
+        \item \textbf{事前確率（Prior Probability）} $\Probability{\MathHypothesis_{\postfixIndexThree}}$：データ $\eventD$ を得る前に、仮説 $\MathHypothesis_{\postfixIndexThree}$ が正しいと見積もられている確信度。
+        \item \textbf{尤度（Likelihood）} $\ConditionalProbability{\eventD}{\MathHypothesis_{\postfixIndexThree}}$：仮説 $\MathHypothesis_{\postfixIndexThree}$ が真である場合に、データ $\eventD$ が観測される確率。
+        \item \textbf{周辺尤度／正規化定数（Marginal Likelihood / Evidence）} $\Probability{\eventD} = \sum_{\postfixIndexTwo=1}^{\MathNumHypotheses} \ConditionalProbability{\eventD}{\MathHypothesis_{\postfixIndexTwo}} \Probability{\MathHypothesis_{\postfixIndexTwo}}$：すべての仮説のもとでデータ $\eventD$ が観測される総合確率。
+        \item \textbf{事後確率（Posterior Probability）} $\ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD}$：データ $\eventD$ を観測した後に更新された、仮説 $\MathHypothesis_{\postfixIndexThree}$ に対する確信度。
+    \end{itemize}
 
-分母 $\Probability{\eventD}$ は各仮説 $\MathHypothesis_{\postfixIndexThree}$ に依存しない共通の正規化定数であるため、ベイズ方程式は本質的に次の比例関係へと帰着する。
+    分母 $\Probability{\eventD}$ は各仮説 $\MathHypothesis_{\postfixIndexThree}$ に依存しない共通の正規化定数であるため、ベイズ方程式は本質的に次の比例関係へと帰着する。
 
-\input{src/math/eq_proportional.tex}
+    \input{src/math/eq_proportional.tex}
 
-すなわち、「\textbf{事後確率 $\propto$ 尤度 $\times$ 事前確率}」である。
+    すなわち、「\textbf{事後確率 $\propto$ 尤度 $\times$ 事前確率}」である。
 
 \else
-\subsection{Generalization via the Law of Total Probability}
-Assume that all possible states constitute a mutually exclusive and collectively exhaustive partition of $\MathNumHypotheses$ events, denoted by $\{\MathHypothesis_1, \MathHypothesis_2, \dots, \MathHypothesis_{\MathNumHypotheses}\}$.
-That is,
+    \subsection{Generalization via the Law of Total Probability}
+    Assume that all possible states constitute a mutually exclusive and collectively exhaustive partition of $\MathNumHypotheses$ events, denoted by $\{\MathHypothesis_1, \MathHypothesis_2, \dots, \MathHypothesis_{\MathNumHypotheses}\}$.
+    That is,
 
-\input{src/math/eq_hypothesis_partition.tex}
+    \input{src/math/eq_hypothesis_partition.tex}
 
-In this context, the probability $\Probability{\eventD}$ of an arbitrary event $\eventD$ (observed data) can be expanded using the law of total probability as follows:
+    In this context, the probability $\Probability{\eventD}$ of an arbitrary event $\eventD$ (observed data) can be expanded using the law of total probability as follows:
 
-\input{src/math/eq_law_of_total_prob.tex}
+    \input{src/math/eq_law_of_total_prob.tex}
 
-Substituting this expression into the denominator of \eqref{eq:bayes_basic} yields the generalized Bayes' equation:
+    Substituting this expression into the denominator of \eqref{eq:bayes_basic} yields the generalized Bayes' equation:
 
-\input{src/math/eq_gen_bayes.tex}
+    \input{src/math/eq_gen_bayes.tex}
 
-Each term constituting this equation is defined in cognitive and statistical inference as follows:
+    Each term constituting this equation is defined in cognitive and statistical inference as follows:
 
-\begin{itemize}
-  \item \textbf{Prior Probability} $\Probability{\MathHypothesis_{\postfixIndexThree}}$: The degree of belief that hypothesis $\MathHypothesis_{\postfixIndexThree}$ is correct, estimated before obtaining data $\eventD$.
-  \item \textbf{Likelihood} $\ConditionalProbability{\eventD}{\MathHypothesis_{\postfixIndexThree}}$: The probability of observing data $\eventD$ given that hypothesis $\MathHypothesis_{\postfixIndexThree}$ is true.
-  \item \textbf{Marginal Likelihood / Normalizing Constant (Evidence)} $\Probability{\eventD} = \sum_{\postfixIndexTwo=1}^{\MathNumHypotheses} \ConditionalProbability{\eventD}{\MathHypothesis_{\postfixIndexTwo}} \Probability{\MathHypothesis_{\postfixIndexTwo}}$: The total probability of observing data $\eventD$ evaluated across all hypotheses.
-  \item \textbf{Posterior Probability} $\ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD}$: The updated degree of belief in hypothesis $\MathHypothesis_{\postfixIndexThree}$ after observing data $\eventD$.
-\end{itemize}
+    \begin{itemize}
+        \item \textbf{Prior Probability} $\Probability{\MathHypothesis_{\postfixIndexThree}}$: The degree of belief that hypothesis $\MathHypothesis_{\postfixIndexThree}$ is correct, estimated before obtaining data $\eventD$.
+        \item \textbf{Likelihood} $\ConditionalProbability{\eventD}{\MathHypothesis_{\postfixIndexThree}}$: The probability of observing data $\eventD$ given that hypothesis $\MathHypothesis_{\postfixIndexThree}$ is true.
+        \item \textbf{Marginal Likelihood / Normalizing Constant (Evidence)} $\Probability{\eventD} = \sum_{\postfixIndexTwo=1}^{\MathNumHypotheses} \ConditionalProbability{\eventD}{\MathHypothesis_{\postfixIndexTwo}} \Probability{\MathHypothesis_{\postfixIndexTwo}}$: The total probability of observing data $\eventD$ evaluated across all hypotheses.
+        \item \textbf{Posterior Probability} $\ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD}$: The updated degree of belief in hypothesis $\MathHypothesis_{\postfixIndexThree}$ after observing data $\eventD$.
+    \end{itemize}
 
-Since the denominator $\Probability{\eventD}$ is a common normalizing constant that is independent of each hypothesis $\MathHypothesis_{\postfixIndexThree}$, Bayes' equation essentially reduces to the following proportionality:
+    Since the denominator $\Probability{\eventD}$ is a common normalizing constant that is independent of each hypothesis $\MathHypothesis_{\postfixIndexThree}$, Bayes' equation essentially reduces to the following proportionality:
 
-\input{src/math/eq_proportional.tex}
+    \input{src/math/eq_proportional.tex}
 
-That is, ``\textbf{Posterior $\propto$ Likelihood $\times$ Prior}''.
+    That is, ``\textbf{Posterior $\propto$ Likelihood $\times$ Prior}''.
 \fi
 
+\ifja
 \subsection{ベイズ更新（逐次更新）のメカニズム}
-\section{モンティ・ホール問題：人間の直感の破綻}
+ベイズ推論の真価は、時系列で入力されるデータに対し、前回の事後確率を次の事前確率へと繰り越しながらリアルタイムに確信度を再計算できる「逐次性」にある。
+
+1回目のデータ $\eventD_1$ を観測したとき、第1段階の事後確率は次のように得られる。
+
+\input{src/math/eq_bayesian_update_step1.tex}
+
+続いて独立な2つ目のデータ $\eventD_2$ が追加されたとき、直前の事後確率 $\ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD_1}$ を\textbf{新たな事前確率}として採用する。
+仮説 $\MathHypothesis_{\postfixIndexThree}$ のもとでデータ群が条件付き独立（すなわち $\ConditionalProbability{\eventD_2}{\MathHypothesis_{\postfixIndexThree}, \eventD_1} = \ConditionalProbability{\eventD_2}{\MathHypothesis_{\postfixIndexThree}}$）である場合、2段階目の更新式は次のように書ける。
+
+\input{src/math/eq_bayesian_update_step2_final.tex}
+
+この逐次更新の結果は、すべての観測データ $\{\eventD_1, \eventD_2\}$ を一度にまとめて一括推論した結果と厳密に一致する。
+
+\input{src/math/eq_bayesian_update_1_and_2_step_both.tex}
+
+\else
+    \subsection{Mechanism of Bayesian Updating (Sequential Updating)}
+    The true value of Bayesian inference lies in its sequential nature: as data arrives chronologically, one can recompute degrees of belief in real time by carrying forward the preceding posterior probability as the new prior probability.
+
+    Upon observing the initial data $\eventD_1$, the first-stage posterior probability is obtained as follows:
+
+    \input{src/math/eq_bayesian_update_step1.tex}
+
+    Subsequently, when a second, independent observation $\eventD_2$ is acquired, the previous posterior probability $\ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD_1}$ is adopted as the \textbf{new prior probability}.
+    Assuming that the observations are conditionally independent given hypothesis $\MathHypothesis_{\postfixIndexThree}$ (that is, $\ConditionalProbability{\eventD_2}{\MathHypothesis_{\postfixIndexThree}, \eventD_1} = \ConditionalProbability{\eventD_2}{\MathHypothesis_{\postfixIndexThree}}$), the second-stage updating equation can be written as follows:
+
+    \input{src/math/eq_bayesian_update_step2_final.tex}
+
+    The result of this sequential updating is strictly identical to the outcome obtained by performing batch inference over all observed data $\{\eventD_1, \eventD_2\}$ simultaneously.
+
+    \input{src/math/eq_bayesian_update_1_and_2_step_both.tex}
+
+\fi
+
+\ifja
+    \section{モンティ・ホール問題：人間の直感の破綻}
+    人間の神経系がいかに厳密なベイズ計算から逸脱した「歪んだ推論機」であるかを浮き彫りにした歴史的事件が、モンティ・ホール問題である。
+
+    1963年にアメリカで放送が開始された大人気番組『Let's Make a Deal』において、司会者モンティ・ホールは次のようなゲームを提供していた。
+    \begin{quote}
+        3つのドア（1番、2番、3番）があり、1つの後ろには「新車（当たり）」、残り2つの後ろには「ヤギ（ハズレ）」がいる。
+        挑戦者が1つのドアを選んだ後、正解を知っている司会者モンティが、残りのドアから「必ずヤギがいるハズレのドア」を1つ開けて見せる。
+        その上で、モンティは挑戦者にこう提案する。
+        「ドアを変更しますか？ それとも最初の選択のままにしますか？」
+    \end{quote}
+\else
+    \section{The Monty Hall Problem: The Failure of Human Intuition}
+    The Monty Hall problem stands as a historic episode that starkly exposed how the human nervous system functions as a ``distorted reasoning engine,'' fundamentally deviating from rigorous Bayesian computation.
+
+    On the wildly popular American television game show \textit{Let's Make a Deal}, which began broadcasting in 1963, host Monty Hall presented contestants with the following game:
+    \begin{quote}
+        There are three doors (Door 1, Door 2, and Door 3). Behind one door is a ``brand-new car'' (the prize), and behind the other two are ``goats'' (the booby prizes).
+        After the contestant selects one door, Monty—who knows what lies behind every door—opens one of the remaining doors to reveal a goat.
+        Monty then poses a choice to the contestant:
+        ``Would you like to switch your door, or stick with your original choice?''
+    \end{quote}
+\fi
+
+\ifja
 \subsection{全米を巻き込んだ大論争}
+1990年、ギネス世界最高IQ保持者と称されていたマリリン・ボス・サヴァントが雑誌コラムで「\textbf{絶対にドアを変えるべき。勝率は2倍（$2/3$）になる}」と回答した。
+これに対し、全米から約1万通の猛抗議が殺到した。その中には約1,000人の数学者・博士号保持者が含まれており、「ドアが2枚になったのだから確率は半々（$1/2$）に決まっている」「プロの数学者として恥を知れ」と激しくバッシングした。
+
+しかし、コンピュータシミュレーションや厳密な数理検証の結果、勝率はドアを変えることで正確に $2/3$（約66.7\%）になることが実証された。批判した数学者たちは公式に謝罪へ追い込まれた。
+\else
+\subsection{A Nationwide Controversy}
+In 1990, Marilyn vos Savant, celebrated as the holder of the highest recorded IQ in the Guinness Book of World Records, asserted in her popular magazine column that contestants \textbf{``should definitely switch doors; doing so doubles the probability of winning to $2/3$.''}
+
+This proclamation ignited an intense nationwide backlash, drawing approximately 10,000 letters of protest. Among the critics were roughly 1,000 mathematicians and Ph.D. holders, who vehemently disparaged her with claims such as: ``Since two doors remain, the probability is obviously fifty-fifty ($1/2$),'' and ``You should feel ashamed as a professional mathematician.''
+
+However, subsequent computer simulations and rigorous mathematical demonstrations conclusively established that switching doors yields an exact winning probability of $2/3$ (approximately $66.7\%$). The mathematicians who had spearheaded the criticism were ultimately compelled to issue public apologies.
+\fi
+
 \subsection{ベイズの定理による厳密解}
+挑戦者が最初に「ドア1」を選び、モンティがハズレの「ドア3」を開けた状況をベイズの定理で計算する。
+
+車がある位置の仮説を $C_i$（$i \in \{1, 2, 3\}$）、モンティがドア3を開ける事象を $M_3$ とする。
+初期状態の事前確率は等配分である。
+\begin{equation}
+P(C_1) = P(C_2) = P(C_3) = \frac{1}{3}
+\end{equation}
+
+次に、各仮説下でモンティがドア3を開ける尤度 $P(M_3 \mid C_i)$ を評価する。モンティは「挑戦者の選んだドア」と「車のあるドア」を決して開けない。
+\begin{enumerate}[label=(\roman*)]
+  \item $C_1$（車がドア1にある）：残るドア2とドア3は共にハズレであるため、ランダムに開ける。
+  \begin{equation}
+  P(M_3 \mid C_1) = \frac{1}{2}
+  \end{equation}
+  \item $C_2$（車がドア2にある）：車があるドア2は開けられないため、必然的にドア3を開けるしかない。
+  \begin{equation}
+  P(M_3 \mid C_2) = 1
+  \end{equation}
+  \item $C_3$（車がドア3にある）：車があるドア3を開けることはルール上あり得ない。
+  \begin{equation}
+  P(M_3 \mid C_3) = 0
+  \end{equation}
+\end{enumerate}
+
+全確率の定理より、モンティがドア3を開ける周辺尤度は次のようになる。
+\begin{align}
+P(M_3) &= \sum_{i=1}^3 P(C_i) P(M_3 \mid C_i) \notag \\
+       &= \left(\frac{1}{3} \times \frac{1}{2}\right) + \left(\frac{1}{3} \times 1\right) + \left(\frac{1}{3} \times 0\right) = \frac{1}{2}
+\end{align}
+
+したがって、ベイズの定理による事後確率は以下の通りとなる。
+\begin{align}
+P(C_1 \mid M_3) &= \frac{P(C_1) P(M_3 \mid C_1)}{P(M_3)} = \frac{\frac{1}{3} \times \frac{1}{2}}{\frac{1}{2}} = \frac{1}{3} \\
+P(C_2 \mid M_3) &= \frac{P(C_2) P(M_3 \mid C_2)}{P(M_3)} = \frac{\frac{1}{3} \times 1}{\frac{1}{2}} = \frac{2}{3}
+\end{align}
+
+ドアを変えることで勝率は正確に2倍に跳ね上がる。
+多くの学者すら錯誤した原因は、「情報開示の非対称性（車がドア2にある場合、モンティの選択肢がドア3に狭まるという拘束条件）」を無視し、目の前の2枚のドアという対称な静的スナップショットに認知が囚われた点にある。
+
+人間の直感は、数学的に完全なベイズ推論機ではない。生存のために都合よくバイアスを組み込んだ\textbf{「不完全な疑似ベイズ推論機」}にすぎないのだ。そして、学習とは数学的ベイズ更新に似ているが異なる\textbf{「疑似ベイズ更新」}なのだ。
+
+
+
+
 \section{スコーピオン号の沈没とベイズ探索理論：不確実性下における確率空間の収束}
 \subsection{深海の確率格子とモンテカルロ・サンプリング}
 \subsection{直感を排除した「客観的確信度」の到達点}
