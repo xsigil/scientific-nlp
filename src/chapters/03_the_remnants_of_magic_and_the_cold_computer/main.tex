@@ -80,6 +80,7 @@
     \input{src/math/eq_bayes_basic.tex}
 \fi
 
+\ifja
 \subsection{全確率の定理を用いた一般化}
 起こりうるすべての状態が、互いに排他で網羅的な $\MathNumHypotheses$ 個の事象の分割 $\{\MathHypothesis_1, \MathHypothesis_2, \dots, \MathHypothesis_{\MathNumHypotheses}\}$ によって構成されているとする。
 すなわち、
@@ -109,9 +110,36 @@
 
 すなわち、「\textbf{事後確率 $\propto$ 尤度 $\times$ 事前確率}」である。
 
+\else
+\subsection{Generalization via the Law of Total Probability}
+Assume that all possible states constitute a mutually exclusive and collectively exhaustive partition of $\MathNumHypotheses$ events, denoted by $\{\MathHypothesis_1, \MathHypothesis_2, \dots, \MathHypothesis_{\MathNumHypotheses}\}$.
+That is,
 
+\input{src/math/eq_hypothesis_partition.tex}
 
+In this context, the probability $\Probability{\eventD}$ of an arbitrary event $\eventD$ (observed data) can be expanded using the law of total probability as follows:
 
+\input{src/math/eq_law_of_total_prob.tex}
+
+Substituting this expression into the denominator of \eqref{eq:bayes_basic} yields the generalized Bayes' equation:
+
+\input{src/math/eq_gen_bayes.tex}
+
+Each term constituting this equation is defined in cognitive and statistical inference as follows:
+
+\begin{itemize}
+  \item \textbf{Prior Probability} $\Probability{\MathHypothesis_{\postfixIndexThree}}$: The degree of belief that hypothesis $\MathHypothesis_{\postfixIndexThree}$ is correct, estimated before obtaining data $\eventD$.
+  \item \textbf{Likelihood} $\ConditionalProbability{\eventD}{\MathHypothesis_{\postfixIndexThree}}$: The probability of observing data $\eventD$ given that hypothesis $\MathHypothesis_{\postfixIndexThree}$ is true.
+  \item \textbf{Marginal Likelihood / Normalizing Constant (Evidence)} $\Probability{\eventD} = \sum_{\postfixIndexTwo=1}^{\MathNumHypotheses} \ConditionalProbability{\eventD}{\MathHypothesis_{\postfixIndexTwo}} \Probability{\MathHypothesis_{\postfixIndexTwo}}$: The total probability of observing data $\eventD$ evaluated across all hypotheses.
+  \item \textbf{Posterior Probability} $\ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD}$: The updated degree of belief in hypothesis $\MathHypothesis_{\postfixIndexThree}$ after observing data $\eventD$.
+\end{itemize}
+
+Since the denominator $\Probability{\eventD}$ is a common normalizing constant that is independent of each hypothesis $\MathHypothesis_{\postfixIndexThree}$, Bayes' equation essentially reduces to the following proportionality:
+
+\input{src/math/eq_proportional.tex}
+
+That is, ``\textbf{Posterior $\propto$ Likelihood $\times$ Prior}''.
+\fi
 
 \subsection{ベイズ更新（逐次更新）のメカニズム}
 \section{モンティ・ホール問題：人間の直感の破綻}
