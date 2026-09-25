@@ -216,50 +216,243 @@ This proclamation ignited an intense nationwide backlash, drawing approximately 
 However, subsequent computer simulations and rigorous mathematical demonstrations conclusively established that switching doors yields an exact winning probability of $2/3$ (approximately $66.7\%$). The mathematicians who had spearheaded the criticism were ultimately compelled to issue public apologies.
 \fi
 
-\subsection{ベイズの定理による厳密解}
-挑戦者が最初に「ドア1」を選び、モンティがハズレの「ドア3」を開けた状況をベイズの定理で計算する。
+\ifja
+    \subsection{ベイズの定理による厳密解}
+    挑戦者が最初に「ドア1」を選び、モンティがハズレの「ドア3」を開けた状況をベイズの定理で計算する。
 
-車がある位置の仮説を $C_i$（$i \in \{1, 2, 3\}$）、モンティがドア3を開ける事象を $M_3$ とする。
-初期状態の事前確率は等配分である。
-\begin{equation}
-P(C_1) = P(C_2) = P(C_3) = \frac{1}{3}
-\end{equation}
+    車がある位置の仮説を $\eventC_{\postfixIndexOne}$（$\postfixIndexOne \in \{1, 2, 3\}$）、モンティがドア3を開ける事象を $\eventM_3$ とする。
+    初期状態の事前確率は等配分である。
 
-次に、各仮説下でモンティがドア3を開ける尤度 $P(M_3 \mid C_i)$ を評価する。モンティは「挑戦者の選んだドア」と「車のあるドア」を決して開けない。
-\begin{enumerate}[label=(\roman*)]
-  \item $C_1$（車がドア1にある）：残るドア2とドア3は共にハズレであるため、ランダムに開ける。
-  \begin{equation}
-  P(M_3 \mid C_1) = \frac{1}{2}
-  \end{equation}
-  \item $C_2$（車がドア2にある）：車があるドア2は開けられないため、必然的にドア3を開けるしかない。
-  \begin{equation}
-  P(M_3 \mid C_2) = 1
-  \end{equation}
-  \item $C_3$（車がドア3にある）：車があるドア3を開けることはルール上あり得ない。
-  \begin{equation}
-  P(M_3 \mid C_3) = 0
-  \end{equation}
-\end{enumerate}
-
-全確率の定理より、モンティがドア3を開ける周辺尤度は次のようになる。
-\begin{align}
-P(M_3) &= \sum_{i=1}^3 P(C_i) P(M_3 \mid C_i) \notag \\
-       &= \left(\frac{1}{3} \times \frac{1}{2}\right) + \left(\frac{1}{3} \times 1\right) + \left(\frac{1}{3} \times 0\right) = \frac{1}{2}
-\end{align}
-
-したがって、ベイズの定理による事後確率は以下の通りとなる。
-\begin{align}
-P(C_1 \mid M_3) &= \frac{P(C_1) P(M_3 \mid C_1)}{P(M_3)} = \frac{\frac{1}{3} \times \frac{1}{2}}{\frac{1}{2}} = \frac{1}{3} \\
-P(C_2 \mid M_3) &= \frac{P(C_2) P(M_3 \mid C_2)}{P(M_3)} = \frac{\frac{1}{3} \times 1}{\frac{1}{2}} = \frac{2}{3}
-\end{align}
-
-ドアを変えることで勝率は正確に2倍に跳ね上がる。
-多くの学者すら錯誤した原因は、「情報開示の非対称性（車がドア2にある場合、モンティの選択肢がドア3に狭まるという拘束条件）」を無視し、目の前の2枚のドアという対称な静的スナップショットに認知が囚われた点にある。
-
-人間の直感は、数学的に完全なベイズ推論機ではない。生存のために都合よくバイアスを組み込んだ\textbf{「不完全な疑似ベイズ推論機」}にすぎないのだ。そして、学習とは数学的ベイズ更新に似ているが異なる\textbf{「疑似ベイズ更新」}なのだ。
+    \input{src/math/eq_monti_1.tex}
 
 
+    次に、各仮説下でモンティがドア3を開ける尤度 $P(M_3 \mid C_i)$ を評価する。モンティは「挑戦者の選んだドア」と「車のあるドア」を決して開けない。
 
+    \input{src/math/eq_monti_2.tex}
+
+    全確率の定理より、モンティがドア3を開ける周辺尤度は次のようになる。
+
+    \input{src/math/eq_monti_3.tex}
+
+    したがって、ベイズの定理による事後確率は以下の通りとなる。
+
+    \input{src/math/eq_monti_4.tex}
+
+    ドアを変えることで勝率は正確に2倍に跳ね上がる。
+    多くの学者すら錯誤した原因は、「情報開示の非対称性（車がドア2にある場合、モンティの選択肢がドア3に狭まるという拘束条件）」を無視し、目の前の2枚のドアという対称な静的スナップショットに認知が囚われた点にある。
+
+    人間の直感は、数学的に完全なベイズ推論機ではない。生存のために都合よくバイアスを組み込んだ\textbf{「不完全な準ベイズ推論機」}にすぎないのだ。そして、学習とは数学的ベイズ更新に似ているが異なる\textbf{「準ベイズ更新」}なのだ。
+
+\else
+    \subsection{Exact Solution via Bayes' Theorem}
+    Consider the scenario where the contestant initially selects ``Door 1,'' and Monty subsequently reveals a goat behind ``Door 3.'' We compute the posterior probabilities using Bayes' theorem.
+
+    Let the hypothesis that the car is behind Door $\postfixIndexOne$ be denoted by $\eventC_{\postfixIndexOne}$ ($\postfixIndexOne \in \{1, 2, 3\}$), and let the event that Monty opens Door 3 be denoted by $\eventM_3$.
+    The initial prior probabilities are uniformly distributed:
+
+    \input{src/math/eq_monti_1.tex}
+
+    Next, we evaluate the likelihood $P(\eventM_3 \mid \eventC_{\postfixIndexOne})$ that Monty opens Door 3 under each respective hypothesis. Monty is strictly constrained by the rules to open neither the contestant's chosen door nor the door concealing the car:
+
+    \input{src/math/eq_monti_2.tex}
+
+    By the law of total probability, the marginal likelihood (evidence) of Monty opening Door 3 is given by:
+
+    \input{src/math/eq_monti_3.tex}
+
+    Applying Bayes' theorem, the resulting posterior probabilities are computed as follows:
+
+    \input{src/math/eq_monti_4.tex}
+
+    Switching doors precisely doubles the winning probability from $1/3$ to $2/3$.
+    The fundamental reason why so many scholars fell into error lies in their disregard for the \textbf{``asymmetry of information disclosure''}—specifically, the structural constraint that Monty's choice is forced entirely onto Door 3 whenever the car is behind Door 2. Consequently, their cognition was ensnared by the superficially symmetric, static snapshot of the two remaining doors.
+
+    Human intuition is by no means a mathematically immaculate Bayesian inference engine; it is merely an \textbf{``imperfect, quasi-Bayesian reasoning engine''} that has incorporated pragmatic biases solely to facilitate biological survival. In this light, human learning constitutes not a pristine Bayesian update in the formal mathematical sense, but rather a heuristic \textbf{``quasi-Bayesian updating.''}
+\fi
+
+% ==============================================================================
+% 第3節：アラン・チューリングのエニグマ解読とデシバン加算（日英完全対応）
+% ==============================================================================
+
+\ifja
+    \section{アラン・チューリングのエニグマ解読とデシバン加算}
+
+    % --------------------------------------------------------------------------
+    % 3.1 エニグマの猛威とブレッチリー・パーク
+    % --------------------------------------------------------------------------
+    \subsection{エニグマの猛威とブレッチリー・パーク}
+    第二次世界大戦の勃発期、ナチス・ドイツ軍は軍事通信の暗号化に電動機械式暗号機「エニグマ（Enigma）」を全面的に採用していた。
+    エニグマは複数の回転子（ローター）、複雑なプラグボード配線（Steckerbrett）、そして反射体（Reflektor）を備え、1文字入力するごとに内部結線が不可逆かつ動的に変化する多表式置換暗号であった。
+    その鍵の組み合わせ総数は $10^{16}$（1京）をはるかに超過し、当時の軍事指導者や暗号学者たちから「人類が決して解読できない絶対暗号」として猛威を振るい、大西洋を航行する連合国の輸送船団はドイツ軍潜水艦（Uボート）の群狼作戦によって壊滅的な打撃を被っていた。
+
+    開戦前夜、ポーランドの数学者マリアン・レイェフスキらの先駆的業績によってエニグマの論理構造と複製機が英国へもたらされた。
+    イギリス政府はロンドン北西のブレッチリー・パーク（Bletchley Park）に暗号解読機関「政府暗号学校（GC\&CS）」を極秘裏に設立し、当時ケンブリッジ大学の若き天才数学者であったアラン・チューリング（Alan Turing）を招聘した。
+    天文学的な鍵空間を誇るエニグマに総当たり（ブルートフォース）攻撃は物理的に不可能であり、チューリングには「極めて断片的な傍受電波から、真の鍵設定を最小の計算量で特定する」という前人未到の数理的課題が託された。
+
+    % --------------------------------------------------------------------------
+    % 3.2 バンブリスムと対数オッズ尺度「デシバン」の創出
+    % --------------------------------------------------------------------------
+    \subsection{バンブリスム：掛け算の呪縛を破る「デシバン」の発明}
+    海軍用エニグマ（M3/M4）の解読に挑んだチューリングは、2本の暗号文の打鍵位置のずれを特定する手法「バンブリスム（Banburismus）」を考案した。
+    この作業において、チューリングは従来の確率論が抱えていた致命的な実践的欠陥――「確率の積算（掛け算）が引き起こす認知的麻痺」に直面する。
+
+    暗号文の文字が1つ一致するごとに、仮説の確信度を小数の掛け算（例: $0.038 \times 0.127 \times \dots$）で更新することは、電卓もコンピュータも存在しない戦時下の現場において、人間の手計算能力を瞬時に超え、致命的な計算遅延と桁落ち（アンダーフロー）を引き起こす。
+    そこでチューリングは、オッズ（Odds）に対して常用対数をとり、それを10倍した尺度を導入した。
+    彼はブレッチリー・パークから約30マイル離れた町バンベリー（Banbury）で印刷された穴あきカード用紙を用いていたことにちなみ、確信度を10倍に引き上げる証拠の基本単位を「バン（Ban）」、実用的な $1/10$ 単位を「デシバン（Deciban: $\text{dB}$）」と命名した。
+
+    % --------------------------------------------------------------------------
+    % 3.3 基準仮説 H_0 を用いたナイーブベイズからデシバン加算への数理導出
+    % --------------------------------------------------------------------------
+    \subsection{基準仮説 $\MathHypothesis_0$ を用いたナイーブベイズからデシバン加算への導出}
+    チューリングが成し遂げた数学的本質は、ナイーブベイズの事後オッズ方程式を「基準仮説との比」に固定し、完全な整数加算空間へと射影した点にある。その厳密な導出を以下に示す。
+
+    評価対象となる暗号鍵（または状態）の競合仮説を $\MathHypothesis_{\postfixIndexThree}$（$\postfixIndexThree = 1, 2, \dots, \MathNumHypotheses$）とし、これらとは独立に\textbf{「普段の日常・無相関な一様ランダムノイズ」を表現する基準仮説（Reference Hypothesis）を $\MathHypothesis_0$ とする}。
+    $N$ 個の独立な観測証拠系列 $\eventD = \{\MathEvidence_1, \MathEvidence_2, \dots, \MathEvidence_N\}$ が与えられたとき、仮説 $\MathHypothesis_{\postfixIndexThree}$ の事後確率 $\ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD}$ および基準仮説 $\MathHypothesis_0$ の事後確率 $\ConditionalProbability{\MathHypothesis_0}{\eventD}$ は、ベイズの定理よりそれぞれ次式で表される。
+    \begin{align}
+        \ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD} &= \frac{\ConditionalProbability{\eventD}{\MathHypothesis_{\postfixIndexThree}} \Probability{\MathHypothesis_{\postfixIndexThree}}}{\Probability{\eventD}} \label{eq:bayes_hk} \\
+        \ConditionalProbability{\MathHypothesis_0}{\eventD} &= \frac{\ConditionalProbability{\eventD}{\MathHypothesis_0} \Probability{\MathHypothesis_0}}{\Probability{\eventD}} \label{eq:bayes_h0}
+    \end{align}
+
+    両式の比をとると、全確率の定理に由来する共通の正規化定数（周辺尤度）$\Probability{\eventD}$ が完全に約分されて相殺される。
+    \begin{equation}
+        \frac{\ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD}}{\ConditionalProbability{\MathHypothesis_0}{\eventD}} = \frac{\Probability{\MathHypothesis_{\postfixIndexThree}}}{\Probability{\MathHypothesis_0}} \times \frac{\ConditionalProbability{\eventD}{\MathHypothesis_{\postfixIndexThree}}}{\ConditionalProbability{\eventD}{\MathHypothesis_0}}
+        \label{eq:odds_ratio_basic}
+    \end{equation}
+
+    ここで、各観測証拠 $\MathEvidence_{\postfixIndexOne}$ が仮説のもとで条件付き独立であるとするナイーブベイズの仮定（Conditional Independence）を適用すると、尤度比は各エビデンスの尤度比の総乗へ分解される。
+    \begin{equation}
+        \frac{\ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD}}{\ConditionalProbability{\MathHypothesis_0}{\eventD}} = \frac{\Probability{\MathHypothesis_{\postfixIndexThree}}}{\Probability{\MathHypothesis_0}} \times \prod_{\postfixIndexOne=1}^{N} \frac{\ConditionalProbability{\MathEvidence_{\postfixIndexOne}}{\MathHypothesis_{\postfixIndexThree}}}{\ConditionalProbability{\MathEvidence_{\postfixIndexOne}}{\MathHypothesis_0}}
+        \label{eq:naive_bayes_odds_prod}
+    \end{equation}
+
+    式~\eqref{eq:naive_bayes_odds_prod} の両辺に対し、常用対数（$\log_{10}$）をとり、通信工学におけるデシベルと同様に 10 倍する。
+    \begin{equation}
+        10 \log_{10} \left( \frac{\ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD}}{\ConditionalProbability{\MathHypothesis_0}{\eventD}} \right) = 10 \log_{10} \left( \frac{\Probability{\MathHypothesis_{\postfixIndexThree}}}{\Probability{\MathHypothesis_0}} \right) + 10 \log_{10} \left( \prod_{\postfixIndexOne=1}^{N} \frac{\ConditionalProbability{\MathEvidence_{\postfixIndexOne}}{\MathHypothesis_{\postfixIndexThree}}}{\ConditionalProbability{\MathEvidence_{\postfixIndexOne}}{\MathHypothesis_0}} \right)
+    \end{equation}
+
+    対数の性質 $\log \prod x_{\postfixIndexOne} = \sum \log x_{\postfixIndexOne}$ を用いて右辺を展開することにより、チューリングの対数オッズ加算方程式が導出される。
+    \begin{equation}
+        \text{TotalDb}(\MathHypothesis_{\postfixIndexThree}) = \text{PriorDb}(\MathHypothesis_{\postfixIndexThree}) + \sum_{\postfixIndexOne=1}^{N} \Deciban(\MathHypothesis_{\postfixIndexThree}, \MathEvidence_{\postfixIndexOne})
+        \label{eq:turing_deciban_addition}
+    \end{equation}
+
+    ここで、各項は次のように定義される。
+    \begin{align}
+        \text{TotalDb}(\MathHypothesis_{\postfixIndexThree}) &\triangleq 10 \log_{10} \left( \frac{\ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD}}{\ConditionalProbability{\MathHypothesis_0}{\eventD}} \right) \quad \text{【事後オッズ点数（$\text{dB}$）】} \\
+        \text{PriorDb}(\MathHypothesis_{\postfixIndexThree}) &\triangleq 10 \log_{10} \left( \frac{\Probability{\MathHypothesis_{\postfixIndexThree}}}{\Probability{\MathHypothesis_0}} \right) \quad \text{【事前オッズ（初期借金）】} \\
+        \Deciban(\MathHypothesis_{\postfixIndexThree}, \MathEvidence_{\postfixIndexOne}) &\triangleq 10 \log_{10} \left( \frac{\ConditionalProbability{\MathEvidence_{\postfixIndexOne}}{\MathHypothesis_{\postfixIndexThree}}}{\ConditionalProbability{\MathEvidence_{\postfixIndexOne}}{\MathHypothesis_0}} \right) \quad \text{【証拠の重み（Weight of Evidence）】}
+    \end{align}
+
+    この導出が持つ工学的衝撃は計り知れない。
+    証拠の重み $\Deciban(\MathHypothesis_{\postfixIndexThree}, \MathEvidence_{\postfixIndexOne})$ は、「仮説 $\MathHypothesis_{\postfixIndexThree}$ の世界線」と「基準ノイズ $\MathHypothesis_0$」の2者間のみで静的に決定されるため、他の競合仮説の確率がどう変動しようと、重みテーブルを動的に再計算する必要が一切ない。
+    掛け算の連鎖は完全に消滅し、残されたのは**整数の足し算のみ**となった。
+    暗号解読官たちは、暗号文字が現れるたびに、あらかじめ作成された整数スコア票から該当するデシバン値を読み取り、各鍵仮説のスコアシートに紙と鉛筆で足し込むだけで、最尤の鍵（MAP）を一撃で炙り出すことが可能となったのである。
+
+    % --------------------------------------------------------------------------
+    % 3.4 歴史の闇に葬られた大発明：半世紀の封印と解除
+    % --------------------------------------------------------------------------
+    \subsection{歴史の闇に葬られた大発明：半世紀の封印と解除}
+    チューリングが考案したこのデシバン加算と暗号解読機「ボンブ（bombe）」は、ドイツ海軍のUボート暗号を完全に打破し、大西洋の戦いにおける連合国の勝利を決定づけた。
+    歴史家たちによれば、ブレッチリー・パークの暗号解読活動は第二次世界大戦を少なくとも2年以上短縮し、1,400万人以上の人命を救ったと推定されている。
+
+    しかし、この空前絶後の数学的・工学的偉業は、直ちに冷戦期の国家最高機密（Top Secret / ULTRA）として指定され、歴史の闇へと完全に封印された。
+    軍事機密保護法の下、チューリング自身も戦後、自らの発明や数学的理論について公に語ることを生涯一切禁じられた。
+    チューリングは名誉を讃えられることもなく、1954年に41歳の若さで非業の死を遂げた。
+
+    バンブリスムおよびデシバンの詳細な数理資料が機密解除され、一般の学術界へ公開され始めたのは、彼の死後数十年を経た1970年代から2000年代にかけてのことであった。
+    学術界の主流派が「正規化積分の計算困難性」や「事後分布全体の複雑なサンプリング」という象牙の塔の数学に足を取られている間にも、現実の戦争と危機を救ったのは、チューリングが命を懸けて地下に秘匿し続けた「整数デシバン加算」という究極のプラグマティズムだったのである。
+
+\else
+    \section{Alan Turing's Cryptanalysis of Enigma and Deciban Addition}
+
+    % --------------------------------------------------------------------------
+    % 3.1 The Menace of Enigma and Bletchley Park
+    % --------------------------------------------------------------------------
+    \subsection{The Menace of Enigma and Bletchley Park}
+    At the outbreak of World War II, the military forces of Nazi Germany universally adopted the electro-mechanical cipher machine known as the ``Enigma'' for operational telecommunications.
+    Equipped with multiple rotors, an intricate plugboard (Steckerbrett), and a reflector (Reflektor), the Enigma constituted a polyalphabetic substitution cipher wherein the internal electrical permutations altered dynamically and irreversibly with every single keystroke.
+    Possessing a theoretical key space exceeding $10^{16}$ (10 quadrillion) combinations, the machine was widely venerated by contemporary military strategists and cryptanalysts as an ``unbreakable cipher.''
+    Consequently, Allied maritime supply convoys traversing the Atlantic suffered catastrophic losses under the ruthless wolfpack tactics of German U-boats.
+
+    On the eve of the conflict, the foundational logical architecture and an engineered replica of the Enigma were transferred to Britain through the pioneering breakthroughs of Polish mathematician Marian Rejewski and his colleagues.
+    The British government established a clandestine cryptographic facility—the Government Code and Cypher School (GC\&CS)—at Bletchley Park, northwest of London, and recruited Alan Turing, then a brilliant young mathematician from Cambridge University.
+    Given the astronomical cardinality of the key space, brute-force exhaustion was physical madness.
+    Turing was tasked with an unprecedented mathematical imperative: to isolate the authentic daily key settings from sparse, fragmented radio intercepts with minimal computational complexity.
+
+    % --------------------------------------------------------------------------
+    % 3.2 Banburismus and the Metric of Decibans
+    % --------------------------------------------------------------------------
+    \subsection{Banburismus: The Invention of the Deciban Metric Shattering Multiplicative Paralysis}
+    Confronting the formidable German Naval Enigma (M3/M4), Turing devised an ingenious statistical methodology termed ``Banburismus'' to resolve the relative rotational offsets between overlapping intercepts.
+    In executing this procedure, Turing immediately ran into the fundamental practical bottleneck of classical probability theory: the cognitive paralysis and computational failure induced by cumulative multiplicative operations.
+
+    Iteratively updating conviction through fractional likelihood products (e.g., $0.038 \times 0.127 \times \dots$) upon evaluating each concordant character rapidly saturated human mental arithmetic in a wartime environment devoid of electronic calculators or computers, causing severe arithmetic bottlenecks and catastrophic numerical underflow.
+    To dismantle this computational barrier, Turing transformed odds into their common logarithms and scaled the resulting values by a factor of 10.
+    Deriving the nomenclature from the specialized perforated cards manufactured in the town of Banbury, roughly thirty miles from Bletchley Park, he designated the foundational quantum of evidence that shifts odds by an order of magnitude ($10:1$) as a ``Ban,'' and its practical fractional metric ($1/10$ Ban) as a ``Deciban'' ($\text{dB}$).
+
+    % --------------------------------------------------------------------------
+    % 3.3 Derivation from Naive Bayes to Deciban Addition via Reference Hypothesis
+    % --------------------------------------------------------------------------
+    \subsection{Derivation from Naive Bayes to Deciban Addition via Reference Hypothesis}
+    The structural core of Turing's mathematical breakthrough lay in anchoring the posterior odds of Naive Bayes against an invariant reference state, thereby projecting non-linear inference into a purely additive integer vector space. The formal derivation proceeds as follows.
+
+    Let $\MathHypothesis_{\postfixIndexThree}$ ($\postfixIndexThree = 1, 2, \dots, \MathNumHypotheses$) represent the mutually competing key hypotheses under evaluation.
+    Independently of these states, \textbf{we define a reference hypothesis $\MathHypothesis_0$ denoting baseline background noise or an uncorrelated uniform random stream}.
+    Given a chronological sequence of $N$ conditionally independent observations $\eventD = \{\MathEvidence_1, \MathEvidence_2, \dots, \MathEvidence_N\}$, the posterior probabilities for hypothesis $\MathHypothesis_{\postfixIndexThree}$ and reference $\MathHypothesis_0$ are formulated via Bayes' theorem:
+    \begin{align}
+        \ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD} &= \frac{\ConditionalProbability{\eventD}{\MathHypothesis_{\postfixIndexThree}} \Probability{\MathHypothesis_{\postfixIndexThree}}}{\Probability{\eventD}} \label{eq:bayes_hk_en} \\
+        \ConditionalProbability{\MathHypothesis_0}{\eventD} &= \frac{\ConditionalProbability{\eventD}{\MathHypothesis_0} \Probability{\MathHypothesis_0}}{\Probability{\eventD}} \label{eq:bayes_h0_en}
+    \end{align}
+
+    Forming the ratio of \eqref{eq:bayes_hk_en} to \eqref{eq:bayes_h0_en}, the marginal likelihood (evidence) $\Probability{\eventD}$ residing in the denominators cancels identically:
+    \begin{equation}
+        \frac{\ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD}}{\ConditionalProbability{\MathHypothesis_0}{\eventD}} = \frac{\Probability{\MathHypothesis_{\postfixIndexThree}}}{\Probability{\MathHypothesis_0}} \times \frac{\ConditionalProbability{\eventD}{\MathHypothesis_{\postfixIndexThree}}}{\ConditionalProbability{\eventD}{\MathHypothesis_0}}
+        \label{eq:odds_ratio_basic_en}
+    \end{equation}
+
+    Invoking the Naive Bayes assumption of conditional independence among observational tokens $\MathEvidence_{\postfixIndexOne}$ given the underlying hypothesis, the compound likelihood ratio factorizes into a product of marginal ratios:
+    \begin{equation}
+        \frac{\ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD}}{\ConditionalProbability{\MathHypothesis_0}{\eventD}} = \frac{\Probability{\MathHypothesis_{\postfixIndexThree}}}{\Probability{\MathHypothesis_0}} \times \prod_{\postfixIndexOne=1}^{N} \frac{\ConditionalProbability{\MathEvidence_{\postfixIndexOne}}{\MathHypothesis_{\postfixIndexThree}}}{\ConditionalProbability{\MathEvidence_{\postfixIndexOne}}{\MathHypothesis_0}}
+        \label{eq:naive_bayes_odds_prod_en}
+    \end{equation}
+
+    Taking the common logarithm ($\log_{10}$) of both sides and multiplying by 10—analogous to decibel formulations in electrical signal processing—yields:
+    \begin{equation}
+        10 \log_{10} \left( \frac{\ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD}}{\ConditionalProbability{\MathHypothesis_0}{\eventD}} \right) = 10 \log_{10} \left( \frac{\Probability{\MathHypothesis_{\postfixIndexThree}}}{\Probability{\MathHypothesis_0}} \right) + 10 \log_{10} \left( \prod_{\postfixIndexOne=1}^{N} \frac{\ConditionalProbability{\MathEvidence_{\postfixIndexOne}}{\MathHypothesis_{\postfixIndexThree}}}{\ConditionalProbability{\MathEvidence_{\postfixIndexOne}}{\MathHypothesis_0}} \right)
+    \end{equation}
+
+    Applying the logarithmic identity $\log \prod x_{\postfixIndexOne} = \sum \log x_{\postfixIndexOne}$, we directly arrive at Turing's deciban addition equation:
+    \begin{equation}
+        \text{TotalDb}(\MathHypothesis_{\postfixIndexThree}) = \text{PriorDb}(\MathHypothesis_{\postfixIndexThree}) + \sum_{\postfixIndexOne=1}^{N} \Deciban(\MathHypothesis_{\postfixIndexThree}, \MathEvidence_{\postfixIndexOne})
+        \label{eq:turing_deciban_addition_en}
+    \end{equation}
+
+    where each operational constituent is defined as:
+    \begin{align}
+        \text{TotalDb}(\MathHypothesis_{\postfixIndexThree}) &\triangleq 10 \log_{10} \left( \frac{\ConditionalProbability{\MathHypothesis_{\postfixIndexThree}}{\eventD}}{\ConditionalProbability{\MathHypothesis_0}{\eventD}} \right) \quad \text{【Posterior Odds Score ($\text{dB}$)】} \\
+        \text{PriorDb}(\MathHypothesis_{\postfixIndexThree}) &\triangleq 10 \log_{10} \left( \frac{\Probability{\MathHypothesis_{\postfixIndexThree}}}{\Probability{\MathHypothesis_0}} \right) \quad \text{【Prior Odds / Initial Debt ($\text{dB}$)】} \\
+        \Deciban(\MathHypothesis_{\postfixIndexThree}, \MathEvidence_{\postfixIndexOne}) &\triangleq 10 \log_{10} \left( \frac{\ConditionalProbability{\MathEvidence_{\postfixIndexOne}}{\MathHypothesis_{\postfixIndexThree}}}{\ConditionalProbability{\MathEvidence_{\postfixIndexOne}}{\MathHypothesis_0}} \right) \quad \text{【Weight of Evidence ($\text{dB}$)】}
+    \end{align}
+
+    The engineering significance of this derivation is profound.
+    Because the weight of evidence $\Deciban(\MathHypothesis_{\postfixIndexThree}, \MathEvidence_{\postfixIndexOne})$ is evaluated strictly between hypothesis $\MathHypothesis_{\postfixIndexThree}$ and the baseline reference $\MathHypothesis_0$, it remains completely invariant to probability fluctuations among other competing candidates.
+    The multiplicative burden is entirely banished, reducing real-time inference to **pure integer addition**.
+    Cryptanalysts at Bletchley Park were empowered to read off pre-computed integer weights from static look-up sheets and tally them onto hypothesis scorecards with paper and pencil, harvesting the Maximum A Posteriori (MAP) key in a single decisive pass.
+
+    % --------------------------------------------------------------------------
+    % 3.4 Decades of Secrecy: Confinement and Declassification
+    % --------------------------------------------------------------------------
+    \subsection{Decades of Secrecy: Confinement and Declassification}
+    Turing's deciban metric and the electromechanical decryption engines known as the ``Bombes'' systematically unmasked German naval communications, fundamentally altering the trajectory of the Battle of the Atlantic.
+    Historians estimate that the intelligence breakthroughs originating from Bletchley Park shortened the war in Europe by more than two years, preserving upwards of fourteen million lives.
+
+    Yet, this epochal mathematical and engineering triumph was immediately classified under the highest wartime security seal (Top Secret / ULTRA) and buried deep within intelligence vaults.
+    Under the strictures of the Official Secrets Act, Turing was legally barred for the remainder of his life from disclosing his operational algorithms, cryptographic insights, or the very existence of the deciban metric to the academic community.
+    Deprived of public recognition, Turing died under tragic circumstances in 1954 at the age of forty-one.
+
+    The primary technical papers detailing Banburismus and deciban inference remained locked away for decades, only filtering into public circulation between the 1970s and early 2000s.
+    While mainstream academia spent those postwar decades entangled in the computational bottlenecks of normalizing integrals and complex Markov chain sampling, the method that decisively saved civilization was Turing's radical pragmatism: the immediate, integer addition of decibans.
+\fi
 
 \section{スコーピオン号の沈没とベイズ探索理論：不確実性下における確率空間の収束}
 \subsection{深海の確率格子とモンテカルロ・サンプリング}

@@ -1,0 +1,15 @@
+\begin{enumerate}[label=(\roman*)]
+    \item $\eventC_1$（車がドア1にある）：残るドア2とドア3は共にハズレであるため、ランダムに開ける。
+        \begin{equation}
+            \ConditionalProbability{\eventM_3}{\eventC_1} = \frac{1}{2}
+        \end{equation}
+    \item $\eventC_2$（車がドア2にある）：車があるドア2は開けられないため、必然的にドア3を開けるしかない。
+        \begin{equation}
+            \ConditionalProbability{\eventM_3}{\eventC_2} = 1
+        \end{equation}
+    \item $\eventC_3$（車がドア3にある）：車があるドア3を開けることはルール上あり得ない。
+        \begin{equation}
+            \ConditionalProbability{\eventM_3}{\eventC_3} = 0
+        \end{equation}
+\end{enumerate}
+
