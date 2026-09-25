@@ -1,0 +1,143 @@
+\section{直観的結論：なぜ複数仮説でも「足し算」だけで済むのか}
+
+仮説が $H_1, H_2, \dots, H_K$ と多数存在する場合、初学者は「他の仮説の確率変動に応じてエビデンスの重みを毎回按分しなければならないのではないか」という疑問に直面する。
+
+結論として、\textbf{仮説同士の按分計算は一切不要である。}
+実務で行うべき操作は、以下の3ステップに完全に集約される。
+
+\begin{enumerate}
+    \item \textbf{バケツの独立並列化}: 各仮説 $H_k$ に専用のスコアシート（事前オッズ点数）を用意する。
+    \item \textbf{単独加算}: 証拠 $D$ が観測されるたび、他の仮説の動向を無視し、その仮説の世界線における尤度をオセロフィルターから引いて独立に加算する。
+    \item \textbf{最大値選定（勝者判定）}: 最終的な累計スコア（デシバン値）を比較し、最も点数が高い仮説を最有力候補（★WINNER）とする。
+\end{enumerate}
+
+\section{基準仮説（Reference Hypothesis $H_0$）の導入と数理的根拠}
+
+\subsection{従来の二値オッズ比較が抱えていた認知負荷}
+二値分類におけるチューリングのオッズ更新式は以下で与えられる。
+\begin{equation}
+\frac{P(H \mid D)}{P(\neg H \mid D)} = \frac{P(H)}{P(\neg H)} \times \frac{P(D \mid H)}{P(D \mid \neg H)}
+\end{equation}
+仮説が3つ以上になると、分母の $\neg H_k$ は「$H_k$ 以外の全仮説の合成状態」となり、その尤度 $P(D \mid \neg H_k) = \sum_{j \neq k} P(D \mid H_j) P(H_j \mid \neg H_k)$ を暗算することは人間の脳の認知限界を超える。
+
+\subsection{基準仮説 $H_0$ による分母の固定化}
+ブレッチリー・パークでチューリングが多重仮説を処理した手法は、\textbf{「基準となる客観的状態 $H_0$（普段の日常・自然ノイズ）」}を1つ定め、すべての仮説を $H_0$ との相対比率で記述することであった。
+
+任意の仮説 $H_k$ に対し、$H_0$ との事後オッズ比は独立したエビデンス群 $D = \{e_1, e_2, \dots, e_n\}$ の下で次のように分解される。
+\begin{equation}
+\frac{P(H_k \mid D)}{P(H_0 \mid D)} = \frac{P(H_k)}{P(H_0)} \times \prod_{i=1}^{n} \frac{P(e_i \mid H_k)}{P(e_i \mid H_0)}
+\end{equation}
+両辺の常用対数を 10 倍してデシバン（$\text{dB}$）空間へ写像すると、完全な加算形式が得られる。
+\begin{equation}
+\text{TotalDb}(H_k) = \underbrace{10 \log_{10} \frac{P(H_k)}{P(H_0)}}_{\text{PriorDb}(H_k)} + \sum_{i=1}^{n} \underbrace{10 \log_{10} \frac{P(e_i \mid H_k)}{P(e_i \mid H_0)}}_{W(H_k, e_i)}
+\end{equation}
+ここで重み $W(H_k, e_i)$ は、\textbf{「仮説 $H_k$」と「基準 $H_0$」の 2 者間のみで静的に確定する}ため、他の競合仮説の事後確率がどう動こうと、加算すべきスコアは一切変動しない。全仮説が共通の分母 $P(H_0 \mid D)$ を持っているため、スコアの大小関係は真の事後確率 $P(H_k \mid D)$ の順序と厳密に一致する。
+
+\section{改訂版オセロフィルター・テーブル体系}
+
+実務現場での計算を $10\text{ dB}$ 刻み・$3\text{ dB}$ 刻みで心地よく進めるため、改訂された標準スケールおよびマトリックスを以下に示す。
+
+\begin{table}[htbp]
+  \centering
+  \small
+
+  \caption{オセロフィルター 事前確率と事前オッズの7段階標準スケール}
+  \label{tab:prior_odds_scale_v2}
+  \vspace{2mm}
+  \begin{tabular}{clccc}
+    \toprule
+    レベル & 現実世界での発生頻度（ベースレート） & 事前確率 $P(H)$ & 事前オッズ $O(H : H_0)$ & 事前スコア \\
+    \midrule
+    1 & \textbf{ほぼ既成事実（日常的・高頻度）}   & $0.99$   & $100 : 1$                & $\mathbf{+20\text{ dB}}$ \\
+    2 & \textbf{かなり濃厚（よく見かける）}       & $0.91$   & $10 : 1$                 & $\mathbf{+10\text{ dB}}$ \\
+    3 & \textbf{やや優勢（五分よりはありそう）}   & $0.67$   & $2 : 1$                  & $\mathbf{+3\text{ dB}}$  \\
+    4 & \textbf{五分五分（中立・情報なし）}       & $0.50$   & $1 : 1$                  & $\mathbf{0\text{ dB}}$   \\
+    5 & \textbf{やや劣勢（どちらかと言えば珍しい）}& $0.33$   & $1 : 2$                  & $\mathbf{-3\text{ dB}}$  \\
+    6 & \textbf{滅多にない（10回に1回の例外）}    & $0.09$   & $1 : 10$                 & $\mathbf{-10\text{ dB}}$ \\
+    7 & \textbf{異常事態・レア事象（百に一つ）}   & $0.01$   & $1 : 100$                & $\mathbf{-20\text{ dB}}$ \\
+    \bottomrule
+  \end{tabular}
+
+  \vspace{2.5em}
+
+  \caption{オセロフィルター・マトリックス（加算デシバン早見表）}
+  \label{tab:othello_filter_matrix_v2}
+  \vspace{2mm}
+  \begin{tabular}{lcccc}
+    \toprule
+    \multirow{2}{*}{仮説の世界線での必然性 $P(D \mid H_k)$} & \multicolumn{4}{c}{基準仮説（日常・ノイズ $H_0$）での珍しさ $P(D \mid H_0)$} \\
+    \cmidrule(lr){2-5}
+    & 普通 ($0.5 \sim 1$) & たまにある ($0.1$) & 滅多にない ($0.01$) & 奇跡的ノイズ ($0.001$) \\
+    \midrule
+    \textbf{確実・決定打} ($1.0$)   & $+0\text{ dB}$ (1倍)   & $\mathbf{+10\text{ dB}}$ (10倍) & $\mathbf{+20\text{ dB}}$ (100倍) & $\mathbf{+30\text{ dB}}$ (1000倍) \\
+    \textbf{頻出・濃厚} ($0.5 \sim 0.8$) & $+0\text{ dB}$ (1倍)   & $\mathbf{+7\text{ dB}}$ (5倍)   & $\mathbf{+17\text{ dB}}$ (50倍)  & $\mathbf{+27\text{ dB}}$ (500倍)  \\
+    \textbf{たまにある} ($0.1$)     & $\mathbf{-10\text{ dB}}$ (0.1倍) & $+0\text{ dB}$ (1倍)   & $\mathbf{+10\text{ dB}}$ (10倍)  & $\mathbf{+20\text{ dB}}$ (100倍)  \\
+    \textbf{滅多にない} ($0.01$)    & $\mathbf{-20\text{ dB}}$ (0.01倍)& $\mathbf{-10\text{ dB}}$ (0.1倍)& $+0\text{ dB}$ (1倍)    & $\mathbf{+10\text{ dB}}$ (10倍)  \\
+    \textbf{ほぼあり得ない} ($0.001$)& $\mathbf{-30\text{ dB}}$ (完全否定)& $\mathbf{-20\text{ dB}}$      & $\mathbf{-10\text{ dB}}$        & $+0\text{ dB}$ (1倍)    \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{点差から事後確率（\%）を導出する即時暗算ルール}
+
+意思決定者から「結局、何パーセントの確率なのか」を問われた場合、上位 2 つの仮説の\textbf{「点差（デシバン差）」}を見るだけで瞬時に暗算が可能である。
+
+\begin{table}[htbp]
+\centering
+\caption{トップ2仮説の点差と実効オッズ比・事後確率の対応}
+\vspace{2mm}
+\begin{tabular}{ccl}
+\toprule
+スコア点差 ($\Delta\text{dB}$) & 競合オッズ比 & 1位仮説の確信度（事後確率 \%） \\
+\midrule
+$0\text{ dB}$   & $1 : 1$   & 約 $\mathbf{50\%}$（拮抗・判定保留） \\
+$+3\text{ dB}$  & $2 : 1$   & 約 $\mathbf{67\%}$（やや優勢） \\
+$+6\text{ dB}$  & $4 : 1$   & 約 $\mathbf{80\%}$（明確な優勢） \\
+$+10\text{ dB}$ & $10 : 1$  & 約 $\mathbf{91\%}$（ほぼ確実・実用判定水準） \\
+$+20\text{ dB}$ & $100 : 1$ & 約 $\mathbf{99\%}$（確実視・勝者確定） \\
+$+30\text{ dB}$ & $1000 : 1$& 約 $\mathbf{99.9\%}$（不可逆的結論） \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{実務運用ケーススタディ（電波傍受・侵入検知）}
+
+街中で不審な高周波電波（$315\text{ MHz}$）を観測し、以下の 3 仮説を評価する場合を考える。
+\begin{itemize}
+    \item \textbf{仮説 A ($H_A$)}: 車両のスマートキー電波
+    \item \textbf{仮説 B ($H_B$)}: 商業施設の温湿度センサー
+    \item \textbf{基準仮説 ($H_0$)}: 環境ノイズ・無相関電波（日常状態）
+\end{itemize}
+
+\subsection{ステップ 1: 事前スコア（ベースレート）の初期化}
+街中で拾う電波のうち、スマートキーである割合はごく一部（100回に1回以下）、センサーはたまにある程度と見立てる。
+\begin{itemize}
+    \item $H_A$ の Prior: $\mathbf{-20\text{ dB}}$（レベル 7: 異常事態・レア事象）
+    \item $H_B$ の Prior: $\mathbf{-10\text{ dB}}$（レベル 6: 滅多にない）
+    \item $H_0$ の Prior: $\mathbf{0\text{ dB}}$（基準・日常）
+\end{itemize}
+
+\subsection{ステップ 2: 観測証拠の逐次加算}
+\textbf{証拠 $e_1$: 「315MHz帯でパルス幅が一定」}
+\begin{itemize}
+    \item $H_A$ の世界線: スマートキーなら極めて標準的（$1.0$）だが、ノイズ環境（$H_0$）でこれが揃うのは極めて稀（$0.01$）。表より $\mathbf{+20\text{ dB}}$ を加算。
+    \item $H_B$ の世界線: 気象センサーは別帯域が多い（$0.1$）。$H_0$（$0.01$）比で $\mathbf{+10\text{ dB}}$ を加算。
+\end{itemize}
+
+\textbf{証拠 $e_2$: 「ローリングコード（送出毎に暗号ブロックが可変）」}
+\begin{itemize}
+    \item $H_A$ の世界線: スマートキーなら必須の仕様（$1.0$）。$H_0$ 比で $\mathbf{+20\text{ dB}}$ を加算。
+    \item $H_B$ の世界線: 安価な気象センサーでローリングコードはまず使われない（$0.001$）。$H_0$ 比で $\mathbf{-20\text{ dB}}$ を減算。
+\end{itemize}
+
+\subsection{ステップ 3: 最終スコア集計と判定}
+\begin{align}
+\text{TotalDb}(H_A) &= -20 + 20 + 20 = \mathbf{+20\text{ dB}} \\
+\text{TotalDb}(H_B) &= -10 + 10 - 20 = \mathbf{-20\text{ dB}} \\
+\text{TotalDb}(H_0) &= 0 + 0 + 0 = \mathbf{0\text{ dB}}
+\end{align}
+1位のスマートキー（$+20\text{ dB}$）と2位の日常ノイズ（$0\text{ dB}$）の\textbf{点差は $20\text{ dB}$}。
+暗算ルールより、オッズ比 $100:1$、すなわち\textbf{「$99\%$ の確率でスマートキー」}と結論付けられる。
+
+\section{総括}
+基準仮説 $H_0$ を設定することで、多重仮説のベイズ更新は「各仮説が日常ノイズに対して何倍ありそうか」を足し込むだけの直感演算へと還元される。オセロフィルターの改訂マトリックスを活用することで、複雑な機械学習アルゴリズムに頼ることなく、現場作業員やアナリストが紙と鉛筆（あるいは暗算）だけで高精度の多重仮説推論を完遂できる。
