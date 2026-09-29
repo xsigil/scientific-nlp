@@ -454,9 +454,102 @@ However, subsequent computer simulations and rigorous mathematical demonstration
     While mainstream academia spent those postwar decades entangled in the computational bottlenecks of normalizing integrals and complex Markov chain sampling, the method that decisively saved civilization was Turing's radical pragmatism: the immediate, integer addition of decibans.
 \fi
 
+% ==============================================================================
+% 1.4 スコーピオン号の沈没とベイズ探索理論: 不確実性下における確率空間の収束
+% ==============================================================================
 \section{スコーピオン号の沈没とベイズ探索理論：不確実性下における確率空間の収束}
+\label{sec:scorpion_search}
+
 \subsection{深海の確率格子とモンテカルロ・サンプリング}
-\subsection{直感を排除した「客観的確信度」の到達点}
+
+1968年5月、大西洋のアゾレス諸島南西沖において、米海軍の最新鋭原子力潜水艦スコーピオン号（USS Scorpion, SSN-589）が乗員99名を乗せたまま消息を絶った。広大な外洋の深海（水深3,000メートル超）に沈んだ船体の位置を特定するため、海軍の主席科学者ジョン・クレイブン（John Piña Craven）が率いる捜索チームは、歴史上初となる本格的なベイズ探索理論（Bayesian Search Theory）の実戦投入を決断した。
+
+当時、スコーピオン号が沈没に至った物理的原因は完全に不明であった。魚雷の誤作動、バッテリーの爆発、機械室の浸水など、専門家の間でも見解は真っ向から対立した。そこでクレイブンらは、海域を数千の微小グリッド（格子）に分割し、各グリッドに船体が存在する事前確率を算出するという膨大な推論タスクに直面した。
+
+当時行われたのは、極めて高度で複雑なモンテカルロ・サンプリングであった。潜水艦の専門家、音響学者、操舵員など各分野のエキスパートたちに対し、複数のシナリオごとに「スコーピオン号がどの針路をとり、どのような速度で沈没に至ったか」の主観的確信度をベッティング方式（賭け率）で聞き取り、数万回に及ぶモンテカルロ軌道シミュレーションを回すことで、広大な深海グリッド上に事前確率分布を構築したのである。
+
+\input{src/figures/scorpion_prior_heatmap.tex}
+
+図\ref{fig:scorpion_prior_heatmap}に示す通り、初期の事前確率は東側および北西の特定のグリッド（セル E5 や B7 など）に高く集中していた。現場の捜索部隊や海軍上層部もまた、「潜水艦は沈没直前、基地へ帰還するために回頭して東進していたはずだ」という直感的ナラティブに強く囚われていた。
+
+\subsection{探索の開始：オッズ加算による確率の逆転と「灯台下暗し」}
+
+しかし、この探索理論の真価は、ひとたび海上の海洋調査船による現場探索が始まってから発揮された。
+
+現場での探索が開始された後は、もはや複雑なモンテカルロ積分を回し続ける必要はなかった。グリッド $k$ を探査装置（深海曳航ソナーやカメラ）で走査し、「船影が発見されなかった」という観測データ $\mthEventD$（陰性証拠：Negative Evidence）が得られるたびに、探索チームが行ったのは**対数オッズ（デシバン）の単純な引き算**であった。
+
+グリッド $k$ に捜索対象が存在する仮説を $\mthHypothesis_k$、その探査機の探知能力（探知確率）を $q$ とすると、探査して発見できなかった場合の尤度は以下のように静的に定まる。
+\begin{align}
+  P(\mthEventD \mid \mthHypothesis_k) &= 1 - q \\
+  P(\mthEventD \mid \neg \mthHypothesis_k) &= 1
+\end{align}
+したがって、1回の捜索失敗によってそのセルに加算される証拠の重み（デシバン）は、
+\begin{equation}
+  \mthDeciban = 10 \log_{10}\left( \frac{P(\mthEventD \mid \mthHypothesis_k)}{P(\mthEventD \mid \neg \mthHypothesis_k)} \right) = 10 \log_{10}(1 - q) < 0
+\end{equation}
+という負の整数スコアとして即座に算出される。捜索チームは、探査を行って成果がなかったセルのオッズからこのデシバン値を差し引き、発見されなかった確率質量を他の未探索グリッドへと機械的に繰り越していった。
+
+有力視されていた東側や北西のグリッドが次々と空振りに終わるにつれ、負のオッズ加算によってそれらのエリアの確信度は暴落していった。そして、全確率の保存則によって浮上してきたのは、最初期の音響測位データ（水中聴音機 SOSUS が捉えた爆発音の推定発生点）の至近距離でありながら、「そんな手前にあるはずがない」と直感的に後回しにされていたセル F6 であった。
+
+1968年10月末、深海探査船ミザール（USNS Mizar）がセル F6 にカメラを降ろしたところ、水深3,000メートルの海底に眠るスコーピオン号の船影が完全に捉えられた。それは、複雑な事前計算の後に待っていた「オッズの加減算」という冷徹な算術が、人間の先入観を完全に粉砕し、まさに「灯台下暗し」の特異点を暴き出した瞬間であった。
+
+
+% ==============================================================================
+% 1.5 直感を排除した「客観的確信度」の到達点
+% ==============================================================================
+\section{直感を排除した「客観的確信度」の到達点}
+\label{sec:objective_conviction}
+
+\subsection{尤度比空間のトポロジー：ヒートマップと3次元曲面}
+
+チューリングがエニグマ解読で導き、スコーピオン号捜索で実証された対数オッズ加算（デシバン）は、人間の日常的認知がいかに確率という物理量を正しく扱えないかを数学的に暴き出す。
+
+観測データ $\mthEventD$ に対し、検証仮説 $\mthHypothesis$ が真である場合の尤度を $P(\mthEventD \mid \mthHypothesis)$、偽（対立仮説 $\neg \mthHypothesis$）である場合の尤度を $P(\mthEventD \mid \neg \mthHypothesis)$ とする。この2つの尤度を直交する軸 $x, y$ にとったとき、証拠の重み $\mthDeciban$（デシバン）の幾何学的トポロジーは図\ref{fig:deciban_heatmap}および図\ref{fig:deciban_surface}のようになる。
+
+\input{src/figures/deciban_heatmap.tex}
+\input{src/figures/deciban_surface.tex}
+
+この曲面が示す構造は、人間の直感的な「もっともらしさ」の感覚と致命的に乖離している。
+
+第一に、対角線 $P(\mthEventD \mid \mthHypothesis) = P(\mthEventD \mid \neg \mthHypothesis)$ 上においては、観測の頻度がいかに高かろうと低かろうと、常に $\mthDeciban = 0\,\text{dB}$（情報量ゼロ）となる。人間は「滅多に起きない劇的な出来事」を目撃すると、それだけで何らかの仮説が強く証明されたと錯覚（確証バイアス）しがちであるが、対立仮説でも同じ頻度でしか生じ得ない現象であれば、証拠能力は完全に無である。
+
+第二に、確信度の傾きは確率空間 $P \in (0, 1)$ のような平坦な有界区間ではなく、原点付近（$P \to 0$）で急峻な特異点（$-\infty \sim +\infty$）を形成する。日常言語における「99\% の確信」と「99.9\% の確信」の差異を人間は直感的に判別できないが、デシバン空間においては $+20\,\text{dB}$ から $+30\,\text{dB}$ への「桁違いの跳躍（10倍の証拠量）」として明確に峻別される。
+
+\subsection{基準仮説 $h_0$ を基軸とする多仮説の高速オッズ概算}
+
+この対数オッズの性質は、競合する仮説が複数存在する日常の動的環境において、決定論的な計算アルゴリズムを提供する。
+
+いま、網羅的な $K$ 個の競合仮説群 $\{\mthHypothesis_1, \mthHypothesis_2, \dots, \mthHypothesis_K\}$ が存在するとする。標準的なベイズの定理に従えば、ある仮説 $\mthHypothesis_k$ の事後確率を求めるには、全仮説にわたる周辺尤度の総和を分母として計算しなければならない。
+\begin{equation}
+  P(\mthHypothesis_k \mid \mthEventD) = \frac{P(\mthEventD \mid \mthHypothesis_k) P(\mthHypothesis_k)}{\displaystyle\sum_{j=1}^K P(\mthEventD \mid \mthHypothesis_j) P(\mthHypothesis_j)}
+\end{equation}
+この分母の積分（総和）計算は、状態空間が爆発する現実世界において、生体計算機である人間の脳の認知資源を即座に枯渇させる。
+
+しかし、人間が日常において「直感」と呼んでいる高速な確信判定の正体は、この分母の計算ではない。システム内に「いつもの日常・背景ノイズ」を表現する単一の基準仮説（Reference Hypothesis）$\mthHypothesis_0$ を設定し、各仮説 $\mthHypothesis_k$ との**相対オッズ比**を評価することにある。
+
+基準仮説 $\mthHypothesis_0$ に対する事後オッズ比をとると、共通の分母 $P(\mthEventD)$ は完全に消去される。
+\begin{equation}
+  \frac{P(\mthHypothesis_k \mid \mthEventD)}{P(\mthHypothesis_0 \mid \mthEventD)} = \frac{P(\mthHypothesis_k)}{P(\mthHypothesis_0)} \times \frac{P(\mthEventD \mid \mthHypothesis_k)}{P(\mthEventD \mid \mthHypothesis_0)}
+\end{equation}
+両辺の常用対数をとり、10倍してデシバン表現へと射影する。
+\begin{equation}
+  \Delta \mthDeciban(\mthHypothesis_k \text{ vs } \mthHypothesis_0) = 10 \log_{10}\left(\frac{P(\mthHypothesis_k)}{P(\mthHypothesis_0)}\right) + 10 \log_{10} P(\mthEventD \mid \mthHypothesis_k) - 10 \log_{10} P(\mthEventD \mid \mthHypothesis_0)
+\end{equation}
+初期状態において事前仮説がニュートラル（事前オッズ $\approx 0\,\text{dB}$）であると置けば、事後的な確信の変動量は極めてシンプルな引き算へと帰着する。
+\begin{equation}
+  \Delta \text{Score}_k = 10 \log_{10} P(\mthEventD \mid \mthHypothesis_k) - 10 \log_{10} P(\mthEventD \mid \mthHypothesis_0)
+\end{equation}
+
+この定式化が意味する結論は明快である。
+未知のデータ $\mthEventD$ に遭遇した際、脳が処理すべきタスクは「すべての仮説の事後確率を厳密に規格化すること」ではない。
+\begin{enumerate}
+  \item 「いつもの日常（$\mthHypothesis_0$）の文脈で、このデータ $\mthEventD$ はどれくらい自然か？」を基準点（ゼロ点）として見積もる。
+  \item 「疑っている仮説 $\mthHypothesis_k$ の文脈で、このデータ $\mthEventD$ はどれくらい自然か？」を見積もる。
+  \item 両者の対数尤度を差し引き、スコアが正の方向へ $+10\,\text{dB}$（1桁）あるいは $+20\,\text{dB}$（2桁）傾いたかどうかを判定する。
+\end{enumerate}
+
+この引き算のみによる高速なオッズ評価こそが、オセロフィルター（\fullOthelloFilter）をはじめとする \fullSNLP の現場プロトコルが、厳密な確率計算を要求することなく、瞬時の臨床・対人プロファイリングにおいて決定論的な精度を発揮できる数理的根拠である。
+
 \section{人間の神経系と数学的ベイズの違い}
 
 
