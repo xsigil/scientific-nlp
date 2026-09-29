@@ -1,14 +1,14 @@
 % --- Mathematical Bayesian Update and Collapse ---
-\newcommand{\MathBayesianUpdateCollapse}[2]{:\xrightarrow[#2]{#1}}
+\newcommand{\mthBayesianUpdateCollapse}[2]{:\xrightarrow[#2]{#1}}
 % --- Mathematical Hypothesis Space ---
-\newcommand{\MathHypoSpace}{\mathcal{H}}
-\newcommand{\MathHypothesis}{\mathrm{h}}
-\newcommand{\MathHypothesisGroup}{\mathrm{H}}
-\newcommand{\MathEvidence}{\mathrm{E}}
-\newcommand{\MathNumHypotheses}{K}
+\newcommand{\mthHypoSpace}{\mathcal{H}}
+\newcommand{\mthHypothesis}{\mathrm{h}}
+\newcommand{\mthHypothesisGroup}{\mathrm{H}}
+\newcommand{\mthEvidence}{\mathrm{E}}
+\newcommand{\mthNumHypotheses}{K}
 
-\newcommand{\ConditionalProbability}[2]{P( #1 \mid #2 )}
-\newcommand{\Probability}[1]{P( #1 )}
+\newcommand{\mthConditionalProbability}[2]{P( #1 \mid #2 )}
+\newcommand{\mthProbability}[1]{P( #1 )}
 
 \newcommand{\postfixIndexOne}{i}
 \newcommand{\postfixIndexTwo}{j}
@@ -18,15 +18,15 @@
 
 % --- 事象（Event）の基底スタイル定義 ---
 % 表記を変えたいときはここを書き換えるだけで一括反映（\mathcal, \mathsf, \mathbf など）
-\newcommand{\EventStyle}[1]{\mathcal{#1}}
+\newcommand{\mthEventStyle}[1]{\mathcal{#1}}
 
-\newcommand{\eventA}{\EventStyle{A}}
-\newcommand{\eventB}{\EventStyle{B}}
-\newcommand{\eventC}{\EventStyle{C}}
-\newcommand{\eventD}{\EventStyle{D}}
-\newcommand{\eventM}{\EventStyle{M}}
+\newcommand{\mthEventA}{\mthEventStyle{A}}
+\newcommand{\mthEventB}{\mthEventStyle{B}}
+\newcommand{\mthEventC}{\mthEventStyle{C}}
+\newcommand{\mthEventD}{\mthEventStyle{D}}
+\newcommand{\mthEventM}{\mthEventStyle{M}}
 
-\newcommand{\Deciban}{W}
+\newcommand{\mthDeciban}{W}
 
 
 
@@ -41,27 +41,27 @@
 }
 \makeatother
 
-\newcommand{\NeuralQuasiBayesianUpdateConviction}[2]{%
+\newcommand{\mthNeuralQuasiBayesianUpdateConviction}[2]{%
   :\xrightsquigarrow[#2]{#1}%
 }
 % ==============================================================================
 % Neural Quasi Probability Space(NQ Space)
 % ==============================================================================
-\newcommand{\NQSpace}{\hat{\Psi}}
-\newcommand{\VirtualConvictionGroup}{\Psi}
-\newcommand{\EnvNoise}{e_{\mathrm{noise}}}
-\newcommand{\VNoise}{v_{\mathrm{noise}}}
-\newcommand{\VdNoise}{v_{\mathrm{noise}}}
-\newcommand{\ANoise}{a_{\mathrm{noise}}}
-\newcommand{\KNoise}{k_{\mathrm{noise}}}
-\newcommand{\ONoise}{o_{\mathrm{noise}}}
-\newcommand{\GNoise}{g_{\mathrm{noise}}}
-\newcommand{\NeuralQuasiEvidence}{\mathcal{E}}
+\newcommand{\mthNQSpace}{\hat{\Psi}}
+\newcommand{\mthVirtualConvictionGroup}{\Psi}
+\newcommand{\mthEnvNoise}{e_{\mathrm{noise}}}
+\newcommand{\mthVNoise}{v_{\mathrm{noise}}}
+\newcommand{\mthVdNoise}{v_{\mathrm{noise}}}
+\newcommand{\mthANoise}{a_{\mathrm{noise}}}
+\newcommand{\mthKNoise}{k_{\mathrm{noise}}}
+\newcommand{\mthONoise}{o_{\mathrm{noise}}}
+\newcommand{\mthGNoise}{g_{\mathrm{noise}}}
+\newcommand{\mthNeuralQuasiEvidence}{\mathcal{E}}
 
-\newcommand{\PredictProfitVirtualConviction}{\psi^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{profit})}
-\newcommand{\PredictThreatVirtualConviction}{\psi^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{threat})}
+\newcommand{\mthPredictProfitVirtualConviction}{\psi^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{profit})}
+\newcommand{\mthPredictThreatVirtualConviction}{\psi^{\mathrm{ego}}_{\mathrm{predict}}(\mathrm{threat})}
 
-\newcommand{\NeuralQuasiBayesianExploration}[1]{%
+\newcommand{\mthNeuralQuasiBayesianExploration}[1]{%
   :\xrightsquigarrow[]{#1}\mathrel{\Vert}%
 }
 
@@ -121,13 +121,13 @@
 % --- Coupled State / Cognitive Interaction Tuple ---
 % 任意個の引数をコンマ区切りで許容する可変タプル
 % 使い方:
-%   \CoupledState{\EnvNoise, \VirtualConviction_0}
-%   \CoupledState{\EnvNoise, \VNoise, \ANoise, \VirtualConviction_0}
-\newcommand{\CoupledState}[1]{\left\langle #1 \right\rangle}
+%   \mthCoupledState{\mthEnvNoise, \mthVirtualConviction_0}
+%   \mthCoupledState{\mthEnvNoise, \mthVNoise, \mthANoise, \mthVirtualConviction_0}
+\newcommand{\mthCoupledState}[1]{\left\langle #1 \right\rangle}
 
-% --- State (見出し・目次・添字 \State_0・引数 \State{DMN} 完全保護版) ---
+% --- State (見出し・目次・添字 \mthState_0・引数 \mthState{DMN} 完全保護版) ---
 \makeatletter
-\DeclareRobustCommand{\State}{%
+\DeclareRobustCommand{\mthState}{%
   \mathcal{S}%
   \@ifnextchar\bgroup{\@StateWithArg}{}%
 }
@@ -138,9 +138,9 @@
 }
 \makeatother
 
-\newcommand{\AlteredState}{\State{\mathrm{ALTER}}}
-\newcommand{\DMNState}{\State{\mathrm{DMN}}}
-\newcommand{\CENState}{\State{\mathrm{CEN}}}
+\newcommand{\mthAlteredState}{\mthState{\mathrm{ALTER}}}
+\newcommand{\mthDMNState}{\mthState{\mathrm{DMN}}}
+\newcommand{\mthCENState}{\mthState{\mathrm{CEN}}}
 
 % --- 離散時間ステップ遷移（太いブロック矢印: 2引数・TeXボックス安全計測版） ---
 \newdimen\discStepTopDim
@@ -148,8 +148,8 @@
 \newdimen\discStepMaxDim
 
 % 既存の定義があれば破棄して再定義
-\providecommand{\DiscreteStep}{}
-\renewcommand{\DiscreteStep}[2]{%
+\providecommand{\mthDiscreteStep}{}
+\renewcommand{\mthDiscreteStep}[2]{%
   \mathrel{%
     % TeX ネイティブのボックス展開で幅を安全に測定
     \settowidth{\discStepTopDim}{$\scriptstyle #1$}%
@@ -189,50 +189,50 @@
 }
 
 % --- Virtual Conviction ---
-\newcommand{\VirtualConviction}{\psi}
+\newcommand{\mthVirtualConviction}{\psi}
 
 % --- Classical NLP (Primitive points) ---
-\newcommand{\classicV}{\ensuremath{V}}
-\newcommand{\classicVd}{\ensuremath{V}_d}
-\newcommand{\classicA}{\ensuremath{A}}
-\newcommand{\classicAd}{\ensuremath{A}_d}
-\newcommand{\classicK}{\ensuremath{K}}
-\newcommand{\classicO}{\ensuremath{O}}
-\newcommand{\classicG}{\ensuremath{G}}
+\newcommand{\mthClassicV}{\ensuremath{V}}
+\newcommand{\mthClassicVd}{\ensuremath{V}_d}
+\newcommand{\mthClassicA}{\ensuremath{A}}
+\newcommand{\mthClassicAd}{\ensuremath{A}_d}
+\newcommand{\mthClassicK}{\ensuremath{K}}
+\newcommand{\mthClassicO}{\ensuremath{O}}
+\newcommand{\mthClassicG}{\ensuremath{G}}
 
 % --- Scientific NLP (Continuous manifolds / State spaces) ---
-% \classicalV \equiv \scientificV 
+% \classicalV \equiv \mthScientificV 
 % ------------------------------------------------------------
-\newcommand{\scientificV}{\ensuremath{\mathcal{V}}}
-\newcommand{\scientificVd}{\ensuremath{\mathcal{V}_d}}
-\newcommand{\scientificA}{\ensuremath{\mathcal{A}}}
-\newcommand{\scientificAd}{\ensuremath{\mathcal{A}_d}}
-\newcommand{\scientificK}{\ensuremath{\mathcal{K}}}
-\newcommand{\scientificO}{\ensuremath{\mathcal{O}}}
-\newcommand{\scientificG}{\ensuremath{\mathcal{G}}}
+\newcommand{\mthScientificV}{\ensuremath{\mathcal{V}}}
+\newcommand{\mthScientificVd}{\ensuremath{\mathcal{V}_d}}
+\newcommand{\mthScientificA}{\ensuremath{\mathcal{A}}}
+\newcommand{\mthScientificAd}{\ensuremath{\mathcal{A}_d}}
+\newcommand{\mthScientificK}{\ensuremath{\mathcal{K}}}
+\newcommand{\mthScientificO}{\ensuremath{\mathcal{O}}}
+\newcommand{\mthScientificG}{\ensuremath{\mathcal{G}}}
 
 % ==============================================================================
 % Language Translation Operator
 % ==============================================================================
 % 作用素単体の記号（引数なし：見出しや本文での言及用）
-\newcommand{\LangTranslationOp}{\mathcal{L}_{\mathrm{digital}}}
+\newcommand{\mthLangTranslationOp}{\mathcal{L}_{\mathrm{digital}}}
 
 % 作用素の関数適用（引数を1つ取る形式）
-\newcommand{\LangTranslation}[1]{\LangTranslationOp\left( #1 \right)}
+\newcommand{\mthLangTranslation}[1]{\mthLangTranslationOp\left( #1 \right)}
 
 % --- Unlimitted Unknown ---
-\newcommand{\UU}{\aleph}
+\newcommand{\mthUU}{\aleph}
 
 
 % --- Voluntary Movement and Involuntary Movement
-\newcommand{\InvoluntaryMovement}{\lambda}
-\newcommand{\VoluntaryMovement}{\Lambda}
+\newcommand{\mthInvoluntaryMovement}{\lambda}
+\newcommand{\mthVoluntaryMovement}{\Lambda}
 
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
 
 %% 自己完結・完全決定論的なウロボロス記号
-%\newcommand{\Ouroboros}{%
+%\newcommand{\mthOuroboros}{%
 %  \mathord{%
 %    \vcenter{\hbox{%
 %      \begin{tikzpicture}[baseline=-0.1ex, scale=0.85]
@@ -247,16 +247,16 @@
 % ====================================================================
 % WholeSelf:ウロボロス記号 (Vector PDF版)
 % ====================================================================
-\newcommand{\Ouroboros}{%
+\newcommand{\mthOuroboros}{%
   \mathord{%
     \vcenter{\hbox{%
       \includegraphics[height=2.5ex]{src/images/Ouroboros.pdf}%
     }}%
   }%
 }
-\newcommand{\WholeSelf}{\Ouroboros}
+\newcommand{\mthWholeSelf}{\mthOuroboros}
 
-\newcommand{\SixthSense}{\mathscr{N}}
+\newcommand{\mthSixthSense}{\mathscr{N}}
 
 \makeatletter
 \newcommand{\dharmawheel}{%
@@ -286,5 +286,5 @@
 }
 \makeatother
 
-\newcommand{\CBO}{\dharmawheel_{\mathrm{CBO}}}
+\newcommand{\mthCBO}{\dharmawheel_{\mathrm{CBO}}}
 

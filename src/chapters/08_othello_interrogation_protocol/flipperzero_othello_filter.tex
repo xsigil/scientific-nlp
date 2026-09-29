@@ -1,21 +1,21 @@
 % ====================================================================
 % [挿入箇所例: 14.10 節末尾 または 14.10.1 節の直前/直後]
-\section{実装：\FlipperZero による生体暗号解読のオフロード}
+\section{実装：\txtFlipperZero による生体暗号解読のオフロード}
 
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=0.7\linewidth,height=8cm,keepaspectratio]{./src/images/Flipper_Zero.jpg}
-  \caption{\FlipperZero（Sub-GHzスキャンモード動作時）\newline
+  \caption{\txtFlipperZero（Sub-GHzスキャンモード動作時）\newline
   {\tiny Photo by Jedi95 / Wikimedia Commons / CC BY-SA 4.0}}
   \label{fig:flipper_zero}
 \end{figure}
 
 現場でのプロファイリングや対面観察において、プロファイラーの内部状態を
-\exZeroState に維持し、CEN（中央実行系）の計算リソースを相手の微小動作（$\InvoluntaryMovement, \VoluntaryMovement$）のキャリブレーションに $100\%$ 集中させるためには、デシバンの逐次暗算プロセスそのものを外部ハードウェアへとオフロードすることが極めて有効である。
+\fullZeroState に維持し、CEN（中央実行系）の計算リソースを相手の微小動作（$\mthInvoluntaryMovement, \mthVoluntaryMovement$）のキャリブレーションに $100\%$ 集中させるためには、デシバンの逐次暗算プロセスそのものを外部ハードウェアへとオフロードすることが極めて有効である。
 
-この工学的要請に基づき、筆者が開発・公開しているオープンソース実装が、ポータブル生体観測インターフェース アプリケーション \exFlipperOthello である。
+この工学的要請に基づき、筆者が開発・公開しているオープンソース実装が、ポータブル生体観測インターフェース アプリケーション \fullFlipperOthello である。
 
-本ツールは、観測事象 $\MathEvidence$ に対する仮説 $\MathHypothesis$ の $\ConditionalProbability{\MathEvidence}{\MathHypothesis}$ および $\ConditionalProbability{\MathEvidence}{\neg \MathHypothesis}$ の 4 段階スケール入力、チューリングの対数尤度比$\Deciban$（deciban）のリアルタイム累積加算、判定閾値超過時の自律的通知（振動・音声・LED）、そして単一ステップの取り消し（Undo）機能を搭載している。これにより、観察者は自らの内部対話 $\scientificAd$ を一切駆動させることなく、指先のブラインド操作のみで事後確率 $\ConditionalProbability{\MathHypothesis}{\MathEvidence}$ の境界条件を物理的に追跡可能となる。
+本ツールは、観測事象 $\mthEvidence$ に対する仮説 $\mthHypothesis$ の $\mthConditionalProbability{\mthEvidence}{\mthHypothesis}$ および $\mthConditionalProbability{\mthEvidence}{\neg \mthHypothesis}$ の 4 段階スケール入力、チューリングの対数尤度比$\mthDeciban$（deciban）のリアルタイム累積加算、判定閾値超過時の自律的通知（振動・音声・LED）、そして単一ステップの取り消し（Undo）機能を搭載している。これにより、観察者は自らの内部対話 $\mthScientificAd$ を一切駆動させることなく、指先のブラインド操作のみで事後確率 $\mthConditionalProbability{\mthHypothesis}{\mthEvidence}$ の境界条件を物理的に追跡可能となる。
 
 実装コード、UI操作マッピング、およびビルド手順の完全な仕様は、以下のオープンソース・リポジトリを参照されたい。
 

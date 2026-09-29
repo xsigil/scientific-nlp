@@ -5,15 +5,15 @@
 
 ここではNLPで必要な日常的なDMN優位状態、通常のCEN優位状態、そしてCEN優位でありながら言語野のインタープリター（解釈器）が停止している基準状態（ZEROステート）を、それぞれ次のように定義する。
 \begin{align}
-    \State(\mathrm{DMN})  &\equiv \text{DMN優位（自己参照ナラティブ駆動）} \\
-    \State(\mathrm{CEN})  &\equiv \text{CEN優位（通常の外部タスク駆動）} \\
-    \State(\mathrm{ZERO}) &\equiv \text{CEN優位かつ言語野インタープリター停止}
+    \mthState(\mathrm{DMN})  &\equiv \text{DMN優位（自己参照ナラティブ駆動）} \\
+    \mthState(\mathrm{CEN})  &\equiv \text{CEN優位（通常の外部タスク駆動）} \\
+    \mthState(\mathrm{ZERO}) &\equiv \text{CEN優位かつ言語野インタープリター停止}
 \end{align}
 
-また、これらのステートにおける現象を$::$で定義することとする。つまり、$\State(\mathrm{DMN})$のステートで、内的表象$Ve$が生じた時に確信$\Omega$に収束した時、
+また、これらのステートにおける現象を$::$で定義することとする。つまり、$\mthState(\mathrm{DMN})$のステートで、内的表象$Ve$が生じた時に確信$\Omega$に収束した時、
 
 \begin{align}
-    \State(\mathrm{DMN}) :: Ve \nbuc{\hat{\Omega}}{\hat{\Omega'}} \Omega
+    \mthState(\mathrm{DMN}) :: Ve \nbuc{\hat{\Omega}}{\hat{\Omega'}} \Omega
 \end{align}
 
 と表す。
@@ -28,7 +28,7 @@
 
 \begin{align}
     &\boldsymbol{e}_{\mathrm{seq}} \nbscanning{\hat{\Omega}} \\
-    &\equiv \State(ALTER)
+    &\equiv \mthState(ALTER)
     \label{eq:asc_definition}
 \end{align}
 

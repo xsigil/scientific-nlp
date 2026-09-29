@@ -47,14 +47,14 @@
 ]
 
     % --- ノード配置 ---
-    % 入力（ここも \WholeSelf に_tが付かない形に統一）
-    \node (input) [font=\bfseries, align=center] {Input\\[1pt]\scriptsize $\WholeSelf$};
+    % 入力（ここも \mthWholeSelf に_tが付かない形に統一）
+    \node (input) [font=\bfseries, align=center] {Input\\[1pt]\scriptsize $\mthWholeSelf$};
 
     % 1. TEST
     \node (test) [test_node, right=0.8cm of input] {
         \textbf{\large TEST}\\[1pt]
         \scriptsize （現在の状態と目標の照合）\\[3pt]
-        $\epsilon_t \equiv \mathcal{E}(\WholeSelf)$
+        $\epsilon_t \equiv \mathcal{E}(\mthWholeSelf)$
     };
 
     % 2. OPERATE（Double subscript を解消）
@@ -62,14 +62,14 @@
         \textbf{\large OPERATE}\\[1pt]
         \scriptsize （行動・介入・変化）\\[3pt]
         \footnotesize $\Delta(\lambda, \Lambda, A_d) \longrightarrow 0$\\[1pt]
-        \scriptsize $\WholeSelf_{t+1} = \CBO(\WholeSelf, \EnvNoise, \Delta_t)$
+        \scriptsize $\mthWholeSelf_{t+1} = \mthCBO(\mthWholeSelf, \mthEnvNoise, \Delta_t)$
     };
 
     % 3. EXIT
     \node (exit) [exit_node, right=1.6cm of test] {
         \textbf{\large EXIT}\\[1pt]
         \scriptsize （完了・目標達成）\\[3pt]
-        \footnotesize $\WholeSelf^* \in \VirtualConvictionGroup^{\mathrm{ego}}(\mathrm{profit})$\\[1pt]
+        \footnotesize $\mthWholeSelf^* \in \mthVirtualConvictionGroup^{\mathrm{ego}}(\mathrm{profit})$\\[1pt]
         \scriptsize $(\epsilon_t \le \epsilon_{\mathrm{tol}})$
     };
 
