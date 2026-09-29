@@ -454,45 +454,86 @@ However, subsequent computer simulations and rigorous mathematical demonstration
     While mainstream academia spent those postwar decades entangled in the computational bottlenecks of normalizing integrals and complex Markov chain sampling, the method that decisively saved civilization was Turing's radical pragmatism: the immediate, integer addition of decibans.
 \fi
 
-% ==============================================================================
-% 1.4 スコーピオン号の沈没とベイズ探索理論: 不確実性下における確率空間の収束
-% ==============================================================================
-\section{スコーピオン号の沈没とベイズ探索理論：不確実性下における確率空間の収束}
-\label{sec:scorpion_search}
+\ifja
+    % ==============================================================================
+    % 1.4 スコーピオン号の沈没とベイズ探索理論: 不確実性下における確率空間の収束
+    % ==============================================================================
+    \section{スコーピオン号の沈没とベイズ探索理論：不確実性下における確率空間の収束}
+    \label{sec:scorpion_search}
 
-\subsection{深海の確率格子とモンテカルロ・サンプリング}
+    \subsection{深海の確率格子とモンテカルロ・サンプリング}
 
-1968年5月、大西洋のアゾレス諸島南西沖において、米海軍の最新鋭原子力潜水艦スコーピオン号（USS Scorpion, SSN-589）が乗員99名を乗せたまま消息を絶った。広大な外洋の深海（水深3,000メートル超）に沈んだ船体の位置を特定するため、海軍の主席科学者ジョン・クレイブン（John Piña Craven）が率いる捜索チームは、歴史上初となる本格的なベイズ探索理論（Bayesian Search Theory）の実戦投入を決断した。
+    1968年5月、大西洋のアゾレス諸島南西沖において、米海軍の最新鋭原子力潜水艦スコーピオン号（USS Scorpion, SSN-589）が乗員99名を乗せたまま消息を絶った。広大な外洋の深海（水深3,000メートル超）に沈んだ船体の位置を特定するため、海軍の主席科学者ジョン・クレイブン（John Piña Craven）が率いる捜索チームは、歴史上初となる本格的なベイズ探索理論（Bayesian Search Theory）の実戦投入を決断した。
 
-当時、スコーピオン号が沈没に至った物理的原因は完全に不明であった。魚雷の誤作動、バッテリーの爆発、機械室の浸水など、専門家の間でも見解は真っ向から対立した。そこでクレイブンらは、海域を数千の微小グリッド（格子）に分割し、各グリッドに船体が存在する事前確率を算出するという膨大な推論タスクに直面した。
+    当時、スコーピオン号が沈没に至った物理的原因は完全に不明であった。魚雷の誤作動、バッテリーの爆発、機械室の浸水など、専門家の間でも見解は真っ向から対立した。そこでクレイブンらは、海域を数千の微小グリッド（格子）に分割し、各グリッドに船体が存在する事前確率を算出するという膨大な推論タスクに直面した。
 
-当時行われたのは、極めて高度で複雑なモンテカルロ・サンプリングであった。潜水艦の専門家、音響学者、操舵員など各分野のエキスパートたちに対し、複数のシナリオごとに「スコーピオン号がどの針路をとり、どのような速度で沈没に至ったか」の主観的確信度をベッティング方式（賭け率）で聞き取り、数万回に及ぶモンテカルロ軌道シミュレーションを回すことで、広大な深海グリッド上に事前確率分布を構築したのである。
+    当時行われたのは、極めて高度で複雑なモンテカルロ・サンプリングであった。潜水艦の専門家、音響学者、操舵員など各分野のエキスパートたちに対し、複数のシナリオごとに「スコーピオン号がどの針路をとり、どのような速度で沈没に至ったか」の主観的確信度をベッティング方式（賭け率）で聞き取り、数万回に及ぶモンテカルロ軌道シミュレーションを回すことで、広大な深海グリッド上に事前確率分布を構築したのである。
 
-\input{src/figures/scorpion_prior_heatmap.tex}
+    \input{src/figures/scorpion_prior_heatmap.tex}
 
-図\ref{fig:scorpion_prior_heatmap}に示す通り、初期の事前確率は東側および北西の特定のグリッド（セル E5 や B7 など）に高く集中していた。現場の捜索部隊や海軍上層部もまた、「潜水艦は沈没直前、基地へ帰還するために回頭して東進していたはずだ」という直感的ナラティブに強く囚われていた。
+    図\ref{fig:scorpion_prior_heatmap}に示す通り、初期の事前確率は東側および北西の特定のグリッド（セル E5 や B7 など）に高く集中していた。現場の捜索部隊や海軍上層部もまた、「潜水艦は沈没直前、基地へ帰還するために回頭して東進していたはずだ」という直感的ナラティブに強く囚われていた。
 
-\subsection{探索の開始：オッズ加算による確率の逆転と「灯台下暗し」}
+    \subsection{探索の開始：オッズ加算による確率の逆転と「灯台下暗し」}
 
-しかし、この探索理論の真価は、ひとたび海上の海洋調査船による現場探索が始まってから発揮された。
+    しかし、この探索理論の真価は、ひとたび海上の海洋調査船による現場探索が始まってから発揮された。
 
-現場での探索が開始された後は、もはや複雑なモンテカルロ積分を回し続ける必要はなかった。グリッド $k$ を探査装置（深海曳航ソナーやカメラ）で走査し、「船影が発見されなかった」という観測データ $\mthEventD$（陰性証拠：Negative Evidence）が得られるたびに、探索チームが行ったのは**対数オッズ（デシバン）の単純な引き算**であった。
+    現場での探索が開始された後は、もはや複雑なモンテカルロ積分を回し続ける必要はなかった。グリッド $k$ を探査装置（深海曳航ソナーやカメラ）で走査し、「船影が発見されなかった」という観測データ $\mthEventD$（陰性証拠：Negative Evidence）が得られるたびに、探索チームが行ったのは**対数オッズ（デシバン）の単純な引き算**であった。
 
-グリッド $k$ に捜索対象が存在する仮説を $\mthHypothesis_k$、その探査機の探知能力（探知確率）を $q$ とすると、探査して発見できなかった場合の尤度は以下のように静的に定まる。
-\begin{align}
-  P(\mthEventD \mid \mthHypothesis_k) &= 1 - q \\
-  P(\mthEventD \mid \neg \mthHypothesis_k) &= 1
-\end{align}
-したがって、1回の捜索失敗によってそのセルに加算される証拠の重み（デシバン）は、
-\begin{equation}
-  \mthDeciban = 10 \log_{10}\left( \frac{P(\mthEventD \mid \mthHypothesis_k)}{P(\mthEventD \mid \neg \mthHypothesis_k)} \right) = 10 \log_{10}(1 - q) < 0
-\end{equation}
-という負の整数スコアとして即座に算出される。捜索チームは、探査を行って成果がなかったセルのオッズからこのデシバン値を差し引き、発見されなかった確率質量を他の未探索グリッドへと機械的に繰り越していった。
+    グリッド $k$ に捜索対象が存在する仮説を $\mthHypothesis_k$、その探査機の探知能力（探知確率）を $q$ とすると、探査して発見できなかった場合の尤度は以下のように静的に定まる。
+    \begin{align}
+        P(\mthEventD \mid \mthHypothesis_k) &= 1 - q \\
+        P(\mthEventD \mid \neg \mthHypothesis_k) &= 1
+    \end{align}
+    したがって、1回の捜索失敗によってそのセルに加算される証拠の重み（デシバン）は、
+    \begin{equation}
+        \mthDeciban = 10 \log_{10}\left( \frac{P(\mthEventD \mid \mthHypothesis_k)}{P(\mthEventD \mid \neg \mthHypothesis_k)} \right) = 10 \log_{10}(1 - q) < 0
+    \end{equation}
+    という負の整数スコアとして即座に算出される。捜索チームは、探査を行って成果がなかったセルのオッズからこのデシバン値を差し引き、発見されなかった確率質量を他の未探索グリッドへと機械的に繰り越していった。
 
-有力視されていた東側や北西のグリッドが次々と空振りに終わるにつれ、負のオッズ加算によってそれらのエリアの確信度は暴落していった。そして、全確率の保存則によって浮上してきたのは、最初期の音響測位データ（水中聴音機 SOSUS が捉えた爆発音の推定発生点）の至近距離でありながら、「そんな手前にあるはずがない」と直感的に後回しにされていたセル F6 であった。
+    有力視されていた東側や北西のグリッドが次々と空振りに終わるにつれ、負のオッズ加算によってそれらのエリアの確信度は暴落していった。そして、全確率の保存則によって浮上してきたのは、最初期の音響測位データ（水中聴音機 SOSUS が捉えた爆発音の推定発生点）の至近距離でありながら、「そんな手前にあるはずがない」と直感的に後回しにされていたセル F6 であった。
 
-1968年10月末、深海探査船ミザール（USNS Mizar）がセル F6 にカメラを降ろしたところ、水深3,000メートルの海底に眠るスコーピオン号の船影が完全に捉えられた。それは、複雑な事前計算の後に待っていた「オッズの加減算」という冷徹な算術が、人間の先入観を完全に粉砕し、まさに「灯台下暗し」の特異点を暴き出した瞬間であった。
+    1968年10月末、深海探査船ミザール（USNS Mizar）がセル F6 にカメラを降ろしたところ、水深3,000メートルの海底に眠るスコーピオン号の船影が完全に捉えられた。それは、複雑な事前計算の後に待っていた「オッズの加減算」という冷徹な算術が、人間の先入観を完全に粉砕し、まさに「灯台下暗し」の特異点を暴き出した瞬間であった。
+\else
+    % ==============================================================================
+    % 1.4 The Sinking of USS Scorpion and Bayesian Search Theory: Convergence of Probability Space under Uncertainty
+    % ==============================================================================
+    \section{The Sinking of USS Scorpion and Bayesian Search Theory: Convergence of Probability Space under Uncertainty}
+    \label{sec:scorpion_search}
 
+    \subsection{Deep-Sea Probability Grid and Monte Carlo Sampling}
+
+    In May 1968, southwest of the Azores in the Atlantic Ocean, the US Navy's state-of-the-art nuclear submarine USS \textit{Scorpion} (SSN-589) vanished with 99 crew members aboard. To locate the wreckage resting in the abyss of the open sea at depths exceeding 3,000 meters, the search team led by John Piña Craven, Chief Scientist of the Navy's Special Projects Office, resolved to operationalize Bayesian Search Theory in a real-world mission for the first time in history.
+
+    At the time, the physical cause of the \textit{Scorpion}'s sinking was completely unknown. Experts held fiercely conflicting views over competing hypotheses: an accidental torpedo activation, a catastrophic battery explosion, or uncontrolled flooding in the engine room. Facing this impasse, Craven and his team partitioned the vast search zone into thousands of discrete spatial grid cells, confronting the massive inferential challenge of assigning prior probabilities across the entire grid.
+
+    What they executed was an exceptionally advanced and intricate Monte Carlo sampling process. Interviewing domain experts—submarine commanders, acousticians, and navigators—Craven elicited subjective probabilities across diverse operational scenarios using a betting scheme. By running tens of thousands of Monte Carlo trajectory simulations, they synthesized these expert beliefs into an empirical prior probability distribution across the abyssal grid cells.
+
+    \input{src/figures/scorpion_prior_heatmap.tex}
+
+    As illustrated in Figure~\ref{fig:scorpion_prior_heatmap}, the initial prior probabilities concentrated heavily in specific eastern and northwestern grid cells (such as cells E5 and B7). The operational search forces and senior naval leadership were similarly gripped by the intuitive narrative that the submarine had reversed course and was steering eastward to return to base immediately prior to the casualty.
+
+    \subsection{Execution of the Search: Probability Inversion via Odds Accumulation and the Blind Spot}
+
+    However, the true power of this search paradigm materialized once oceanographic survey vessels began operational passes in the field.
+
+    Once active exploration commenced, there was no longer any need to repeatedly execute computationally expensive Monte Carlo integrations. Each time an instrument package (deep-towed sonar array or submerged camera platform) swept grid cell $k$ and returned the observational datum $\mthEventD$ that no wreckage was found (Negative Evidence), the search team executed a simple arithmetic operation: **the subtraction of log-odds (decibans)**.
+
+    Let $\mthHypothesis_k$ denote the hypothesis that the wreckage resides in grid cell $k$, and let $q$ represent the detection probability (sweep effectiveness) of the search apparatus given that the submarine is within that cell. The likelihoods conditioned on unsuccessful search yield a static formulation:
+    \begin{align}
+        P(\mthEventD \mid \mthHypothesis_k) &= 1 - q \\
+        P(\mthEventD \mid \neg \mthHypothesis_k) &= 1
+    \end{align}
+    Consequently, the weight of evidence (in decibans) added to that specific cell by a single unsuccessful search iteration is directly computed as a negative integer score:
+    \begin{equation}
+        \mthDeciban = 10 \log_{10}\left( \frac{P(\mthEventD \mid \mthHypothesis_k)}{P(\mthEventD \mid \neg \mthHypothesis_k)} \right) = 10 \log_{10}(1 - q) < 0
+    \end{equation}
+    The team simply subtracted this deciban penalty from the log-odds of the exhausted cell, deterministically redistributing the unobserved probability mass across the remaining unexplored grids via the conservation of total probability.
+
+    As the heavily favored eastern and northwestern cells yielded null results one after another, negative odds accumulation drove their perceived certainty into freefall. Inevitably, the mathematical mechanics of Bayesian updating elevated a location previously dismissed: cell F6. Located in immediate acoustic proximity to the initial acoustic explosion coordinates captured by the SOSUS hydrophone network, cell F6 had been intuitively neglected on the assumption that the submarine could not possibly have come to rest so close to the initial acoustic event.
+
+    In late October 1968, the deep-submergence search vessel USNS \textit{Mizar} lowered its camera system into cell F6, capturing clear photographic confirmation of the \textit{Scorpion}'s shattered hull resting on the ocean floor at a depth of 3,000 meters. The cold arithmetic of simple log-odds accumulation—succeeding the elaborate prior computation—had completely dismantled human preconception, isolating the true singularity hidden in plain sight.
+
+\fi
 
 % ==============================================================================
 % 1.5 直感を排除した「客観的確信度」の到達点
@@ -550,15 +591,26 @@ However, subsequent computer simulations and rigorous mathematical demonstration
 
 この引き算のみによる高速なオッズ評価こそが、オセロフィルター（\fullOthelloFilter）をはじめとする \fullSNLP の現場プロトコルが、厳密な確率計算を要求することなく、瞬時の臨床・対人プロファイリングにおいて決定論的な精度を発揮できる数理的根拠である。
 
-\section{人間の神経系と数学的ベイズの違い}
+\ifja
+    \section{人間の神経系と数学的ベイズの違い}
 
-これまで詳細に検証してきた通り、人間の神経系は極めて高度な推論アルゴリズムを働かせることができる生体コンピュータである。しかしながら、その「直感的な確信」と「数学的・客観的な計算結果」との間には、決して看過できない巨大な隔たり（認知的ギャップ）が存在する。
+    これまで詳細に検証してきた通り、人間の神経系は極めて高度な推論アルゴリズムを働かせることができる生体コンピュータである。しかしながら、その「直感的な確信」と「数学的・客観的な計算結果」との間には、決して看過できない巨大な隔たり（認知的ギャップ）が存在する。
 
-純粋な数学的ベイズ推論機（\fullMBIE）であれば、いかに広大で複雑な仮説空間であっても、入力された観測データ $\mthEventD$ と尤度に基づいて確率空間全体を偏りなく等質に走査し、冷徹に事後確率分布を更新する。これに対し、人間の神経系というハードウェアは、過去に形成された強固な思い込みや情動的セットポイント（\mthVirtualConviction）によって、探索すべき仮説空間の境界をあらかじめ極端に狭窄させてしまう。そして、全空間を積分することなく、短絡的な「認知的ショートカット（ヒューリスティクス）」へと逃げ込む固有の認知の歪み（Cognitive Distortion）を抱えている。このショートカット機構こそが、客観的な物理現実と主観的確信を乖離させ、人間の「現実見当識」を決定的に狂わせる元凶である。
+    純粋な数学的ベイズ推論機（\fullMBIE）であれば、いかに広大で複雑な仮説空間であっても、入力された観測データ $\mthEventD$ と尤度に基づいて確率空間全体を偏りなく等質に走査し、冷徹に事後確率分布を更新する。これに対し、人間の神経系というハードウェアは、過去に形成された強固な思い込みや情動的セットポイント（\mthVirtualConviction）によって、探索すべき仮説空間の境界をあらかじめ極端に狭窄させてしまう。そして、全空間を積分することなく、短絡的な「認知的ショートカット（ヒューリスティクス）」へと逃げ込む固有の認知の歪み（Cognitive Distortion）を抱えている。このショートカット機構こそが、客観的な物理現実と主観的確信を乖離させ、人間の「現実見当識」を決定的に狂わせる元凶である。
 
-だが、この認知的歪曲は、工学的な欠陥や単なる「頭の悪さ」として断罪されるべきものではない。生物学的ハードウェアとしての人間にとって、真理の探究よりも遥かに優先される絶対至上の第一公理とは、他でもなく「物理的生存（Survival）」そのものだからである。
+    だが、この認知的歪曲は、工学的な欠陥や単なる「頭の悪さ」として断罪されるべきものではない。生物学的ハードウェアとしての人間にとって、真理の探究よりも遥かに優先される絶対至上の第一公理とは、他でもなく「物理的生存（Survival）」そのものだからである。
 
-進化の淘汰圧の中で生き残るために、人間の神経系には極めて非対称な生存バイアスが焼き付けられている。例えば、ある危険事象が数学的に発生する確率が $0.001\%$（千分の一）と極小であったとしても、もしそれが一度でも生起してしまえば即座に個体の死（全プロセスの不可逆な強制停止）に直結するような極限状況において、「確率が低いから無視する」という数学的合理性は一切受け入れられない。生体にとっては、数学的に厳密な正解を計算して死亡するよりも、過剰な警戒アラートを鳴らし、安全マージンを極大化して「生き延びる」ことこそが最適な解となる。
+    進化の淘汰圧の中で生き残るために、人間の神経系には極めて非対称な生存バイアスが焼き付けられている。例えば、ある危険事象が数学的に発生する確率が $0.001\%$（千分の一）と極小であったとしても、もしそれが一度でも生起してしまえば即座に個体の死（全プロセスの不可逆な強制停止）に直結するような極限状況において、「確率が低いから無視する」という数学的合理性は一切受け入れられない。生体にとっては、数学的に厳密な正解を計算して死亡するよりも、過剰な警戒アラートを鳴らし、安全マージンを極大化して「生き延びる」ことこそが最適な解となる。
 
-すなわち、人間の神経系は「客観的真理を無偏に同定する計算機」として設計されたのではなく、「非対称な脅威から個体を防衛し、生存確率を極大化するためにバイアスを意図的に組み込んだ不完全な準ベイズ推論機（\fullNQBIE）」にすぎないのである。
+    すなわち、人間の神経系は「客観的真理を無偏に同定する計算機」として設計されたのではなく、「非対称な脅威から個体を防衛し、生存確率を極大化するためにバイアスを意図的に組み込んだ不完全な準ベイズ推論機（\fullNQBIE）」にすぎないのである。
+\else
+    As demonstrated in detail thus far, the human nervous system is a biological computer capable of executing extraordinarily sophisticated inference algorithms. Nevertheless, an undeniable and immense cognitive chasm exists between its "intuitive conviction" and "mathematical, objective computation."
 
+    A pure mathematical Bayesian inference engine (\fullMBIE) scans the entire probability space homogeneously and without bias, rigorously updating the posterior distribution based on incoming observational data $\mthEventD$ and likelihoods, regardless of how vast or intricate the hypothesis space may be. In contrast, the hardware of the human nervous system drastically narrows the boundaries of the searchable hypothesis space in advance, constrained by past entrenched preconceptions and emotional setpoints (\mthVirtualConviction). Rather than integrating over the entire space, it harbors an inherent cognitive distortion that retreats into short-circuited "cognitive shortcuts" (heuristics). It is precisely this shortcut mechanism that decouples subjective conviction from objective physical reality, fundamentally corrupting human reality testing.
+
+    However, this cognitive distortion should not be dismissed as an engineering flaw or mere intellectual deficiency. For human beings as biological hardware, the absolute and supreme first axiom—transcending the pursuit of objective truth—is none other than physical survival itself.
+
+    To survive under the relentless pressure of evolutionary selection, an acutely asymmetric survival bias has been hardwired into the human nervous system. For instance, even if the mathematical probability of a fatal event is as negligible as $0.001\%$, in an extreme context where a single occurrence results in the immediate death of the organism (the irreversible termination of all processes), the mathematical rationality of "ignoring it due to low probability" is entirely unacceptable. For a living organism, raising excessive alarm states and maximizing safety margins to ensure survival constitutes a far more optimal solution than calculating a mathematically rigorous truth only to perish.
+
+    In essence, the human nervous system was never engineered as an unbiased computer to identify objective truth. It is nothing more than an imperfect quasi-Bayesian inference engine (\fullNQBIE) that deliberately incorporates biases to defend the individual against asymmetric threats and maximize the probability of survival.
+\fi
