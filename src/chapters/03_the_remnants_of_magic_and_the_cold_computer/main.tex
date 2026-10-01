@@ -345,7 +345,7 @@ However, subsequent computer simulations and rigorous mathematical demonstration
 
     この導出が持つ工学的衝撃は計り知れない。
     証拠の重み $\mthDeciban(\mthHypothesis_{\postfixIndexThree}, \mthEvidence_{\postfixIndexOne})$ は、「仮説 $\mthHypothesis_{\postfixIndexThree}$ の世界線」と「基準ノイズ $\mthHypothesis_0$」の2者間のみで静的に決定されるため、他の競合仮説の確率がどう変動しようと、重みテーブルを動的に再計算する必要が一切ない。
-    掛け算の連鎖は完全に消滅し、残されたのは**整数の足し算のみ**となった。
+    掛け算の連鎖は完全に消滅し、残されたのは\textbf{整数の足し算のみ}となった。
     暗号解読官たちは、暗号文字が現れるたびに、あらかじめ作成された整数スコア票から該当するデシバン値を読み取り、各鍵仮説のスコアシートに紙と鉛筆で足し込むだけで、最尤の鍵（MAP）を一撃で炙り出すことが可能となったのである。
 
     % --------------------------------------------------------------------------
@@ -436,7 +436,7 @@ However, subsequent computer simulations and rigorous mathematical demonstration
 
     The engineering significance of this derivation is profound.
     Because the weight of evidence $\mthDeciban(\mthHypothesis_{\postfixIndexThree}, \mthEvidence_{\postfixIndexOne})$ is evaluated strictly between hypothesis $\mthHypothesis_{\postfixIndexThree}$ and the baseline reference $\mthHypothesis_0$, it remains completely invariant to probability fluctuations among other competing candidates.
-    The multiplicative burden is entirely banished, reducing real-time inference to **pure integer addition**.
+    The multiplicative burden is entirely banished, reducing real-time inference to \textbf{pure integer addition}.
     Cryptanalysts at Bletchley Park were empowered to read off pre-computed integer weights from static look-up sheets and tally them onto hypothesis scorecards with paper and pencil, harvesting the Maximum A Posteriori (MAP) key in a single decisive pass.
 
     % --------------------------------------------------------------------------
@@ -477,7 +477,7 @@ However, subsequent computer simulations and rigorous mathematical demonstration
 
     しかし、この探索理論の真価は、ひとたび海上の海洋調査船による現場探索が始まってから発揮された。
 
-    現場での探索が開始された後は、もはや複雑なモンテカルロ積分を回し続ける必要はなかった。グリッド $k$ を探査装置（深海曳航ソナーやカメラ）で走査し、「船影が発見されなかった」という観測データ $\mthEventD$（陰性証拠：Negative Evidence）が得られるたびに、探索チームが行ったのは**対数オッズ（デシバン）の単純な引き算**であった。
+    現場での探索が開始された後は、もはや複雑なモンテカルロ積分を回し続ける必要はなかった。グリッド $k$ を探査装置（深海曳航ソナーやカメラ）で走査し、「船影が発見されなかった」という観測データ $\mthEventD$（陰性証拠：Negative Evidence）が得られるたびに、探索チームが行ったのは\textbf{対数オッズ（デシバン）の単純な引き算}であった。
 
     グリッド $k$ に捜索対象が存在する仮説を $\mthHypothesis_k$、その探査機の探知能力（探知確率）を $q$ とすると、探査して発見できなかった場合の尤度は以下のように静的に定まる。
     \begin{align}
@@ -516,7 +516,7 @@ However, subsequent computer simulations and rigorous mathematical demonstration
 
     However, the true power of this search paradigm materialized once oceanographic survey vessels began operational passes in the field.
 
-    Once active exploration commenced, there was no longer any need to repeatedly execute computationally expensive Monte Carlo integrations. Each time an instrument package (deep-towed sonar array or submerged camera platform) swept grid cell $k$ and returned the observational datum $\mthEventD$ that no wreckage was found (Negative Evidence), the search team executed a simple arithmetic operation: **the subtraction of log-odds (decibans)**.
+    Once active exploration commenced, there was no longer any need to repeatedly execute computationally expensive Monte Carlo integrations. Each time an instrument package (deep-towed sonar array or submerged camera platform) swept grid cell $k$ and returned the observational datum $\mthEventD$ that no wreckage was found (Negative Evidence), the search team executed a simple arithmetic operation: \textbf{the subtraction of log-odds (decibans)}.
 
     Let $\mthHypothesis_k$ denote the hypothesis that the wreckage resides in grid cell $k$, and let $q$ represent the detection probability (sweep effectiveness) of the search apparatus given that the submarine is within that cell. The likelihoods conditioned on unsuccessful search yield a static formulation:
     \begin{align}
@@ -566,7 +566,7 @@ However, subsequent computer simulations and rigorous mathematical demonstration
 \end{equation}
 この分母の積分（総和）計算は、状態空間が爆発する現実世界において、生体計算機である人間の脳の認知資源を即座に枯渇させる。
 
-しかし、人間が日常において「直感」と呼んでいる高速な確信判定の正体は、この分母の計算ではない。システム内に「いつもの日常・背景ノイズ」を表現する単一の基準仮説（Reference Hypothesis）$\mthHypothesis_0$ を設定し、各仮説 $\mthHypothesis_k$ との**相対オッズ比**を評価することにある。
+しかし、人間が日常において「直感」と呼んでいる高速な確信判定の正体は、この分母の計算ではない。システム内に「いつもの日常・背景ノイズ」を表現する単一の基準仮説（Reference Hypothesis）$\mthHypothesis_0$ を設定し、各仮説 $\mthHypothesis_k$ との\textbf{相対オッズ比}を評価することにある。
 
 基準仮説 $\mthHypothesis_0$ に対する事後オッズ比をとると、共通の分母 $P(\mthEventD)$ は完全に消去される。
 \begin{equation}
@@ -602,7 +602,8 @@ However, subsequent computer simulations and rigorous mathematical demonstration
 
     進化の淘汰圧の中で生き残るために、人間の神経系には極めて非対称な生存バイアスが焼き付けられている。例えば、ある危険事象が数学的に発生する確率が $0.001\%$（千分の一）と極小であったとしても、もしそれが一度でも生起してしまえば即座に個体の死（全プロセスの不可逆な強制停止）に直結するような極限状況において、「確率が低いから無視する」という数学的合理性は一切受け入れられない。生体にとっては、数学的に厳密な正解を計算して死亡するよりも、過剰な警戒アラートを鳴らし、安全マージンを極大化して「生き延びる」ことこそが最適な解となる。
 
-    すなわち、人間の神経系は「客観的真理を無偏に同定する計算機」として設計されたのではなく、「非対称な脅威から個体を防衛し、生存確率を極大化するためにバイアスを意図的に組み込んだ不完全な準ベイズ推論機（\fullNQBIE）」にすぎないのである。
+    すなわち、人間の神経系は「客観的真理を無偏に同定する計算機」として設計されたのではなく、「非対称な脅威から個体を防衛し、生存確率を極大化するためにバイアスを意図的に組み込んだ
+    不完全な\jaNQBIE （\fullNQBIE）」にすぎないのである。
 \else
     As demonstrated in detail thus far, the human nervous system is a biological computer capable of executing extraordinarily sophisticated inference algorithms. Nevertheless, an undeniable and immense cognitive chasm exists between its "intuitive conviction" and "mathematical, objective computation."
 
