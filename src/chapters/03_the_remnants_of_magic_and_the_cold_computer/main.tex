@@ -535,61 +535,120 @@ However, subsequent computer simulations and rigorous mathematical demonstration
 
 \fi
 
-% ==============================================================================
-% 1.5 直感を排除した「客観的確信度」の到達点
-% ==============================================================================
-\section{直感を排除した「客観的確信度」の到達点}
-\label{sec:objective_conviction}
+\ifja
+    % ==============================================================================
+    % 1.5 直感を排除した「客観的確信度」の到達点
+    % ==============================================================================
+    \section{直感を排除した「客観的確信度」の到達点}
+    \label{sec:objective_conviction}
 
-\subsection{尤度比空間のトポロジー：ヒートマップと3次元曲面}
+    \subsection{尤度比空間のトポロジー：ヒートマップと3次元曲面}
 
-チューリングがエニグマ解読で導き、スコーピオン号捜索で実証された対数オッズ加算（デシバン）は、人間の日常的認知がいかに確率という物理量を正しく扱えないかを数学的に暴き出す。
+    チューリングがエニグマ解読で導き、スコーピオン号捜索で実証された対数オッズ加算（デシバン）は、人間の日常的認知がいかに確率という物理量を正しく扱えないかを数学的に暴き出す。
 
-観測データ $\mthEventD$ に対し、検証仮説 $\mthHypothesis$ が真である場合の尤度を $P(\mthEventD \mid \mthHypothesis)$、偽（対立仮説 $\neg \mthHypothesis$）である場合の尤度を $P(\mthEventD \mid \neg \mthHypothesis)$ とする。この2つの尤度を直交する軸 $x, y$ にとったとき、証拠の重み $\mthDeciban$（デシバン）の幾何学的トポロジーは図\ref{fig:deciban_heatmap}および図\ref{fig:deciban_surface}のようになる。
+    観測データ $\mthEventD$ に対し、検証仮説 $\mthHypothesis$ が真である場合の尤度を $P(\mthEventD \mid \mthHypothesis)$、偽（対立仮説 $\neg \mthHypothesis$）である場合の尤度を $P(\mthEventD \mid \neg \mthHypothesis)$ とする。この2つの尤度を直交する軸 $x, y$ にとったとき、証拠の重み $\mthDeciban$（デシバン）の幾何学的トポロジーは図\ref{fig:deciban_heatmap}および図\ref{fig:deciban_surface}のようになる。
 
-\input{src/figures/deciban_heatmap.tex}
-\input{src/figures/deciban_surface.tex}
+    \input{src/figures/deciban_heatmap.tex}
+    \input{src/figures/deciban_surface.tex}
 
-この曲面が示す構造は、人間の直感的な「もっともらしさ」の感覚と致命的に乖離している。
+    この曲面が示す構造は、人間の直感的な「もっともらしさ」の感覚と致命的に乖離している。
 
-第一に、対角線 $P(\mthEventD \mid \mthHypothesis) = P(\mthEventD \mid \neg \mthHypothesis)$ 上においては、観測の頻度がいかに高かろうと低かろうと、常に $\mthDeciban = 0\,\text{dB}$（情報量ゼロ）となる。人間は「滅多に起きない劇的な出来事」を目撃すると、それだけで何らかの仮説が強く証明されたと錯覚（確証バイアス）しがちであるが、対立仮説でも同じ頻度でしか生じ得ない現象であれば、証拠能力は完全に無である。
+    第一に、対角線 $P(\mthEventD \mid \mthHypothesis) = P(\mthEventD \mid \neg \mthHypothesis)$ 上においては、観測の頻度がいかに高かろうと低かろうと、常に $\mthDeciban = 0\,\text{dB}$（情報量ゼロ）となる。人間は「滅多に起きない劇的な出来事」を目撃すると、それだけで何らかの仮説が強く証明されたと錯覚（確証バイアス）しがちであるが、対立仮説でも同じ頻度でしか生じ得ない現象であれば、証拠能力は完全に無である。
 
-第二に、確信度の傾きは確率空間 $P \in (0, 1)$ のような平坦な有界区間ではなく、原点付近（$P \to 0$）で急峻な特異点（$-\infty \sim +\infty$）を形成する。日常言語における「99\% の確信」と「99.9\% の確信」の差異を人間は直感的に判別できないが、デシバン空間においては $+20\,\text{dB}$ から $+30\,\text{dB}$ への「桁違いの跳躍（10倍の証拠量）」として明確に峻別される。
+    第二に、確信度の傾きは確率空間 $P \in (0, 1)$ のような平坦な有界区間ではなく、原点付近（$P \to 0$）で急峻な特異点（$-\infty \sim +\infty$）を形成する。日常言語における「99\% の確信」と「99.9\% の確信」の差異を人間は直感的に判別できないが、デシバン空間においては $+20\,\text{dB}$ から $+30\,\text{dB}$ への「桁違いの跳躍（10倍の証拠量）」として明確に峻別される。
 
-\subsection{基準仮説 $h_0$ を基軸とする多仮説の高速オッズ概算}
+    \subsection{基準仮説 $h_0$ を基軸とする多仮説の高速オッズ概算}
 
-この対数オッズの性質は、競合する仮説が複数存在する日常の動的環境において、決定論的な計算アルゴリズムを提供する。
+    この対数オッズの性質は、競合する仮説が複数存在する日常の動的環境において、決定論的な計算アルゴリズムを提供する。
 
-いま、網羅的な $K$ 個の競合仮説群 $\{\mthHypothesis_1, \mthHypothesis_2, \dots, \mthHypothesis_K\}$ が存在するとする。標準的なベイズの定理に従えば、ある仮説 $\mthHypothesis_k$ の事後確率を求めるには、全仮説にわたる周辺尤度の総和を分母として計算しなければならない。
-\begin{equation}
-  P(\mthHypothesis_k \mid \mthEventD) = \frac{P(\mthEventD \mid \mthHypothesis_k) P(\mthHypothesis_k)}{\displaystyle\sum_{j=1}^K P(\mthEventD \mid \mthHypothesis_j) P(\mthHypothesis_j)}
-\end{equation}
-この分母の積分（総和）計算は、状態空間が爆発する現実世界において、生体計算機である人間の脳の認知資源を即座に枯渇させる。
+    いま、網羅的な $K$ 個の競合仮説群 $\{\mthHypothesis_1, \mthHypothesis_2, \dots, \mthHypothesis_K\}$ が存在するとする。標準的なベイズの定理に従えば、ある仮説 $\mthHypothesis_k$ の事後確率を求めるには、全仮説にわたる周辺尤度の総和を分母として計算しなければならない。
+    \begin{equation}
+        P(\mthHypothesis_k \mid \mthEventD) = \frac{P(\mthEventD \mid \mthHypothesis_k) P(\mthHypothesis_k)}{\displaystyle\sum_{j=1}^K P(\mthEventD \mid \mthHypothesis_j) P(\mthHypothesis_j)}
+    \end{equation}
+    この分母の積分（総和）計算は、状態空間が爆発する現実世界において、生体計算機である人間の脳の認知資源を即座に枯渇させる。
 
-しかし、人間が日常において「直感」と呼んでいる高速な確信判定の正体は、この分母の計算ではない。システム内に「いつもの日常・背景ノイズ」を表現する単一の基準仮説（Reference Hypothesis）$\mthHypothesis_0$ を設定し、各仮説 $\mthHypothesis_k$ との\textbf{相対オッズ比}を評価することにある。
+    しかし、人間が日常において「直感」と呼んでいる高速な確信判定の正体は、この分母の計算ではない。システム内に「いつもの日常・背景ノイズ」を表現する単一の基準仮説（Reference Hypothesis）$\mthHypothesis_0$ を設定し、各仮説 $\mthHypothesis_k$ との\textbf{相対オッズ比}を評価することにある。
 
-基準仮説 $\mthHypothesis_0$ に対する事後オッズ比をとると、共通の分母 $P(\mthEventD)$ は完全に消去される。
-\begin{equation}
-  \frac{P(\mthHypothesis_k \mid \mthEventD)}{P(\mthHypothesis_0 \mid \mthEventD)} = \frac{P(\mthHypothesis_k)}{P(\mthHypothesis_0)} \times \frac{P(\mthEventD \mid \mthHypothesis_k)}{P(\mthEventD \mid \mthHypothesis_0)}
-\end{equation}
-両辺の常用対数をとり、10倍してデシバン表現へと射影する。
-\begin{equation}
-  \Delta \mthDeciban(\mthHypothesis_k \text{ vs } \mthHypothesis_0) = 10 \log_{10}\left(\frac{P(\mthHypothesis_k)}{P(\mthHypothesis_0)}\right) + 10 \log_{10} P(\mthEventD \mid \mthHypothesis_k) - 10 \log_{10} P(\mthEventD \mid \mthHypothesis_0)
-\end{equation}
-初期状態において事前仮説がニュートラル（事前オッズ $\approx 0\,\text{dB}$）であると置けば、事後的な確信の変動量は極めてシンプルな引き算へと帰着する。
-\begin{equation}
-  \Delta \text{Score}_k = 10 \log_{10} P(\mthEventD \mid \mthHypothesis_k) - 10 \log_{10} P(\mthEventD \mid \mthHypothesis_0)
-\end{equation}
+    基準仮説 $\mthHypothesis_0$ に対する事後オッズ比をとると、共通の分母 $P(\mthEventD)$ は完全に消去される。
+    \begin{equation}
+        \frac{P(\mthHypothesis_k \mid \mthEventD)}{P(\mthHypothesis_0 \mid \mthEventD)} = \frac{P(\mthHypothesis_k)}{P(\mthHypothesis_0)} \times \frac{P(\mthEventD \mid \mthHypothesis_k)}{P(\mthEventD \mid \mthHypothesis_0)}
+    \end{equation}
+    両辺の常用対数をとり、10倍してデシバン表現へと射影する。
+    \begin{equation}
+        \Delta \mthDeciban(\mthHypothesis_k \text{ vs } \mthHypothesis_0) = 10 \log_{10}\left(\frac{P(\mthHypothesis_k)}{P(\mthHypothesis_0)}\right) + 10 \log_{10} P(\mthEventD \mid \mthHypothesis_k) - 10 \log_{10} P(\mthEventD \mid \mthHypothesis_0)
+    \end{equation}
+    初期状態において事前仮説がニュートラル（事前オッズ $\approx 0\,\text{dB}$）であると置けば、事後的な確信の変動量は極めてシンプルな引き算へと帰着する。
+    \begin{equation}
+        \Delta \text{Score}_k = 10 \log_{10} P(\mthEventD \mid \mthHypothesis_k) - 10 \log_{10} P(\mthEventD \mid \mthHypothesis_0)
+    \end{equation}
 
-この定式化が意味する結論は明快である。
-未知のデータ $\mthEventD$ に遭遇した際、脳が処理すべきタスクは「すべての仮説の事後確率を厳密に規格化すること」ではない。
-\begin{enumerate}
-  \item 「いつもの日常（$\mthHypothesis_0$）の文脈で、このデータ $\mthEventD$ はどれくらい自然か？」を基準点（ゼロ点）として見積もる。
-  \item 「疑っている仮説 $\mthHypothesis_k$ の文脈で、このデータ $\mthEventD$ はどれくらい自然か？」を見積もる。
-  \item 両者の対数尤度を差し引き、スコアが正の方向へ $+10\,\text{dB}$（1桁）あるいは $+20\,\text{dB}$（2桁）傾いたかどうかを判定する。
-\end{enumerate}
+    この定式化が意味する結論は明快である。
+    未知のデータ $\mthEventD$ に遭遇した際、脳が処理すべきタスクは「すべての仮説の事後確率を厳密に規格化すること」ではない。
+    \begin{enumerate}
+        \item 「いつもの日常（$\mthHypothesis_0$）の文脈で、このデータ $\mthEventD$ はどれくらい自然か？」を基準点（ゼロ点）として見積もる。
+        \item 「疑っている仮説 $\mthHypothesis_k$ の文脈で、このデータ $\mthEventD$ はどれくらい自然か？」を見積もる。
+        \item 両者の対数尤度を差し引き、スコアが正の方向へ $+10\,\text{dB}$（1桁）あるいは $+20\,\text{dB}$（2桁）傾いたかどうかを判定する。
+    \end{enumerate}
 
-この引き算のみによる高速なオッズ評価こそが、オセロフィルター（\fullOthelloFilter）をはじめとする \fullSNLP の現場プロトコルが、厳密な確率計算を要求することなく、瞬時の臨床・対人プロファイリングにおいて決定論的な精度を発揮できる数理的根拠である。
+    この引き算のみによる高速なオッズ評価こそが、オセロフィルター（\fullOthelloFilter）をはじめとする \fullSNLP の現場プロトコルが、厳密な確率計算を要求することなく、瞬時の臨床・対人プロファイリングにおいて決定論的な精度を発揮できる数理的根拠である。
+\else
+    % ==============================================================================
+    % 1.5 The Pinnacle of "Objective Conviction" Stripped of Intuition
+    % ==============================================================================
+    \section{The Pinnacle of "Objective Conviction" Stripped of Intuition}
+    \label{sec:objective_conviction}
+
+    \subsection{Topology of the Likelihood Ratio Space: Heatmaps and 3D Surfaces}
+
+    The addition of log-odds in decibans—pioneered by Alan Turing during the cryptanalysis of Enigma and empirically validated in the search for the USS \textit{Scorpion}—mathematically exposes how fundamentally incapable human everyday cognition is of properly handling probability as a physical quantity.
+
+    Let $P(\mthEventD \mid \mthHypothesis)$ be the likelihood of observed data $\mthEventD$ given that the hypothesis under test $\mthHypothesis$ is true, and let $P(\mthEventD \mid \neg \mthHypothesis)$ be the likelihood given that it is false (the alternative hypothesis $\neg \mthHypothesis$). When these two likelihoods are mapped onto orthogonal axes $x$ and $y$, the geometric topology of the weight of evidence $\mthDeciban$ (in decibans) manifests as shown in Figure~\ref{fig:deciban_heatmap} and Figure~\ref{fig:deciban_surface}.
+
+    \input{src/figures/deciban_heatmap.tex}
+    \input{src/figures/deciban_surface.tex}
+
+    The structure traced by this surface fundamentally diverges from the intuitive human sense of "plausibility."
+
+    First, along the diagonal line $P(\mthEventD \mid \mthHypothesis) = P(\mthEventD \mid \neg \mthHypothesis)$, regardless of how high or low the observation frequency may be, the weight of evidence is perpetually $\mthDeciban = 0\,\text{dB}$ (zero information content). When humans witness an extraordinary, dramatic event, they are prone to the cognitive illusion (confirmation bias) that this event alone strongly substantiates a particular hypothesis. However, if that phenomenon occurs with equal frequency under the alternative hypothesis, its evidential power is strictly null.
+
+    Second, the gradient of conviction does not reside within a flat, bounded interval such as the standard probability space $P \in (0, 1)$; instead, it forms steep singularities ($-\infty \text{ to } +\infty$) near the origin ($P \to 0$). Everyday language fails to intuitively differentiate between "99\% certainty" and "99.9\% certainty." In deciban space, however, this difference is cleanly demarcated as a jump of an entire order of magnitude—a tenfold surge in evidential weight—from $+20\,\text{dB}$ to $+30\,\text{dB}$.
+
+    \subsection{Rapid Odds Estimation across Multiple Hypotheses via Reference Hypothesis $h_0$}
+
+    These properties of log-odds provide a deterministic computational algorithm for dynamic, real-world environments populated by multiple competing hypotheses.
+
+    Consider a comprehensive set of $K$ mutually exclusive hypotheses $\{\mthHypothesis_1, \mthHypothesis_2, \dots, \mthHypothesis_K\}$. According to Bayes' theorem in its standard form, calculating the posterior probability of a given hypothesis $\mthHypothesis_k$ requires computing the marginal likelihood integrated across the entire hypothesis space in the denominator:
+    \begin{equation}
+        P(\mthHypothesis_k \mid \mthEventD) = \frac{P(\mthEventD \mid \mthHypothesis_k) P(\mthHypothesis_k)}{\displaystyle\sum_{j=1}^K P(\mthEventD \mid \mthHypothesis_j) P(\mthHypothesis_j)}
+    \end{equation}
+    In the real world where state spaces explode combinatorially, evaluating this denominator immediately exhausts the cognitive bandwidth of the brain as a biological computer.
+
+    However, the real computational mechanism underlying the rapid judgments of conviction that humans colloquially term "intuition" is not the evaluation of this denominator. Rather, it operates by anchoring a single reference hypothesis $\mthHypothesis_0$ within the system—representing baseline noise or standard everyday conditions—and evaluating the \textbf{relative odds ratio} of each candidate hypothesis $\mthHypothesis_k$ against it.
+
+    By taking the posterior odds ratio relative to the reference hypothesis $\mthHypothesis_0$, the common normalizing denominator $P(\mthEventD)$ is eliminated entirely:
+    \begin{equation}
+        \frac{P(\mthHypothesis_k \mid \mthEventD)}{P(\mthHypothesis_0 \mid \mthEventD)} = \frac{P(\mthHypothesis_k)}{P(\mthHypothesis_0)} \times \frac{P(\mthEventD \mid \mthHypothesis_k)}{P(\mthEventD \mid \mthHypothesis_0)}
+    \end{equation}
+    Taking the common logarithm of both sides and scaling by a factor of 10 projects this relation directly into deciban representation:
+    \begin{equation}
+        \Delta \mthDeciban(\mthHypothesis_k \text{ vs } \mthHypothesis_0) = 10 \log_{10}\left(\frac{P(\mthHypothesis_k)}{P(\mthHypothesis_0)}\right) + 10 \log_{10} P(\mthEventD \mid \mthHypothesis_k) - 10 \log_{10} P(\mthEventD \mid \mthHypothesis_0)
+    \end{equation}
+    Assuming neutral prior hypotheses in the baseline state (prior odds $\approx 0\,\text{dB}$), the shift in posterior conviction collapses into elementary subtraction:
+    \begin{equation}
+        \Delta \text{Score}_k = 10 \log_{10} P(\mthEventD \mid \mthHypothesis_k) - 10 \log_{10} P(\mthEventD \mid \mthHypothesis_0)
+    \end{equation}
+
+    The conclusion implied by this formulation is straightforward.
+    When confronted with novel data $\mthEventD$, the computational task required of the brain is not to rigorously normalize the posterior probabilities across all conceivable hypotheses.
+    \begin{enumerate}
+        \item Estimate how natural this datum $\mthEventD$ is under standard baseline conditions ($\mthHypothesis_0$) to establish a zero-point benchmark.
+        \item Estimate how natural this datum $\mthEventD$ is under the suspect hypothesis $\mthHypothesis_k$.
+        \item Subtract the two log-likelihoods to verify whether the score shifts in the positive direction by $+10\,\text{dB}$ (one order of magnitude) or $+20\,\text{dB}$ (two orders of magnitude).
+    \end{enumerate}
+
+    This rapid odds evaluation achieved strictly through subtraction constitutes the mathematical foundation enabling operational protocols in \fullSNLP—including the Othello Filter (\fullOthelloFilter)—to deliver deterministic precision in instantaneous clinical and interpersonal profiling without requiring explicit probability calculations.
+\fi
+
 
 \ifja
     \section{人間の神経系と数学的ベイズの違い}
@@ -614,4 +673,157 @@ However, subsequent computer simulations and rigorous mathematical demonstration
     To survive under the relentless pressure of evolutionary selection, an acutely asymmetric survival bias has been hardwired into the human nervous system. For instance, even if the mathematical probability of a fatal event is as negligible as $0.001\%$, in an extreme context where a single occurrence results in the immediate death of the organism (the irreversible termination of all processes), the mathematical rationality of "ignoring it due to low probability" is entirely unacceptable. For a living organism, raising excessive alarm states and maximizing safety margins to ensure survival constitutes a far more optimal solution than calculating a mathematically rigorous truth only to perish.
 
     In essence, the human nervous system was never engineered as an unbiased computer to identify objective truth. It is nothing more than an imperfect quasi-Bayesian inference engine (\fullNQBIE) that deliberately incorporates biases to defend the individual against asymmetric threats and maximize the probability of survival.
+\fi
+
+\ifja
+    % ==============================================================================
+    % 1.6 実践ケーススタディ：通勤車内における即時プロファイリングの数理
+    % ==============================================================================
+    \section{実践ケーススタディ：通勤車内における即時プロファイリングの数理}
+    \label{sec:case_commuter_profiling}
+
+    \subsection{観測事実と基準仮説 $\mthHypothesis_0$ の定義}
+
+    前節で導出した相対オッズ評価プロトコルを、日常の観察場面に適用する。
+    通勤電車の車内において、以下の特徴を持つ一人の乗客（被観察者）を視認したとする。
+    \begin{itemize}
+        \item \textbf{主観測事象 $\mthEventD$（複合データ）}：
+            \begin{itemize}
+                \item $\mthEventD_1$：年齢はおよそ45歳の男性。
+                \item $\mthEventD_2$：開いているのは紙の韓国語単語集であり、小口やページ端が手垢で著しく黒ずんでいる。
+                \item $\mthEventD_3$：薄水色のワイシャツと黒のスラックスを着用し、皺や汚れがなく清潔に整えられている。
+                \item $\mthEventD_4$：実用的な腕時計のベゼルおよびガラス風防に、長年の酷使を示す小傷が刻まれている。
+            \end{itemize}
+    \end{itemize}
+
+    この人物像を解釈するにあたり、まず「車内に存在する無作為な一般ビジネスパーソン（日常の背景ノイズ）」を\textbf{基準仮説 $\mthHypothesis_0$} として置く。
+    これに対し、競合する3つの検証仮説を設定する。
+    \begin{itemize}
+        \item $\mthHypothesis_1$（業務・キャリア転換）：海外拠点赴任の内定、または韓国提携企業との折衝を担う実務現場叩き上げのリーダー。
+        \item $\mthHypothesis_2$（家族・ルーツ）：パートナーや家族との対話、あるいは自身の血縁史に根ざした個人的動機。
+        \item $\mthHypothesis_3$（趣味・知的教養）：韓国映画・文学の原文鑑賞や、余暇としての語学学習。
+    \end{itemize}
+
+    \subsection{相対デシバンスコアによる高速弁別}
+
+    観測データ $\mthEventD = \{\mthEventD_1, \mthEventD_2, \mthEventD_3, \mthEventD_4\}$ が与えられたとき、各仮説 $\mthHypothesis_k$（$k \in \{1, 2, 3\}$）の妥当性を、基準仮説 $\mthHypothesis_0$ に対する対数尤度差として評価する。
+    \begin{equation}
+        \Delta \text{Score}_k = 10 \log_{10} P(\mthEventD \mid \mthHypothesis_k) - 10 \log_{10} P(\mthEventD \mid \mthHypothesis_0)
+    \end{equation}
+
+    個々の特徴ベクトルが与える相対対数尤度の内訳は表\ref{tab:deciban_feature_breakdown}の通りである。
+
+    \begin{table}[htbp]
+        \centering
+        \caption{基準仮説 $\mthHypothesis_0$ に対する各観測データの相対デシバンスコア（dB）}
+        \label{tab:deciban_feature_breakdown}
+        \begin{tabular}{lrrr}
+            \hline
+            観測特徴量（$\mthEventD_i$） & $\Delta \text{Score}_1$（業務・出向） & $\Delta \text{Score}_2$（家族・ルーツ） & $\Delta \text{Score}_3$（趣味・教養） \\
+            \hline
+            $\mthEventD_1$（45歳・男性） & $+1.0\,\text{dB}$ & $0.0\,\text{dB}$ & $-1.0\,\text{dB}$ \\
+            $\mthEventD_2$（手垢で汚れた単語集） & $+8.0\,\text{dB}$ & $+6.0\,\text{dB}$ & $-5.0\,\text{dB}$ \\
+            $\mthEventD_3$（清潔な身だしなみ） & $+3.0\,\text{dB}$ & $+0.5\,\text{dB}$ & $0.0\,\text{dB}$ \\
+            $\mthEventD_4$（時計の道具的打痕） & $+4.0\,\text{dB}$ & $+2.0\,\text{dB}$ & $-1.0\,\text{dB}$ \\
+            \hline
+            \textbf{合計 $\Delta \text{Score}_k$} & $\mathbf{+16.0\,\text{dB}}$ & $\mathbf{+8.5\,\text{dB}}$ & $\mathbf{-7.0\,\text{dB}}$ \\
+            \hline
+        \end{tabular}
+    \end{table}
+
+    \subsection{スコア変動の幾何学的解釈}
+
+    計算結果は、人間の直感的な「語学学習＝趣味の可能性が高い」というバイアスを完全に破壊する。
+
+    \begin{enumerate}
+        \item \textbf{$\mthHypothesis_3$（趣味・教養）の棄却（$-7.0\,\text{dB}$）}：\\
+            一般的な通勤客 $\mthHypothesis_0$ と比較して、単語集を「手垢で黒ずむほど何百時間も反復する」という行動は、趣味嗜好の領域における平均的な離脱率の高さから大きく逸脱する。この事実単体で尤度が急減し、オッズ比は $10^{-0.7} \approx 0.2$ 倍（約 5 分の 1）へと沈降する。
+
+        \item \textbf{$\mthHypothesis_1$（業務・キャリア転換）の優位確立（$+16.0\,\text{dB}$）}：\\
+            「身だしなみの厳格な統制（$\mthEventD_3$）」と「時計を現場道具として摩耗させてきた身体的履歴（$\mthEventD_4$）」の共起は、デスクワーク専門職ではなく現場叩き上げの実務系リーダー像を強く支持する。さらに「退路のない切迫した言語反復（$\mthEventD_2$）」が複合することにより、基準仮説に対してオッズ比は $10^{1.6} \approx 40$ 倍へと跳躍する。
+    \end{enumerate}
+
+    このとき、仮説 $\mthHypothesis_1$ と $\mthHypothesis_2$ の相対オッズ差は次式で直ちに求まる。
+    \begin{equation}
+        \Delta \text{Score}_{1 - 2} = \Delta \text{Score}_1 - \Delta \text{Score}_2 = 16.0\,\text{dB} - 8.5\,\text{dB} = +7.5\,\text{dB}
+    \end{equation}
+    すなわち、事後確率の厳密な積分分母を計算することなく、脳内における単純な引き算のみで「家族・ルーツ仮説（$\mthHypothesis_2$）に対し、業務出向仮説（$\mthHypothesis_1$）が約 5.6 倍（$+7.5\,\text{dB}$）優勢である」という決定論的確信が成立する。
+
+    日常における観察眼の鋭さとは、神がかり的な直感ではなく、無意識下で基準状態 $\mthHypothesis_0$ からの尤度差（$\Delta \text{Score}_k$）をデシバン単位で累積する演算精度の差にほかならない。
+
+\else
+    % ==============================================================================
+    % 1.6 Practical Case Study: Mathematics of Instant Profiling on a Commuter Train
+    % ==============================================================================
+    \section{Practical Case Study: Mathematics of Instant Profiling on a Commuter Train}
+    \label{sec:case_commuter_profiling}
+
+    \subsection{Observed Facts and Definition of the Reference Hypothesis $\mthHypothesis_0$}
+
+    We now apply the relative odds evaluation protocol derived in the previous section to a routine observational setting.
+    Suppose that inside a commuter train, one visually observes a single passenger (the observed subject) presenting the following features:
+    \begin{itemize}
+        \item \textbf{Primary Observed Event $\mthEventD$ (Composite Data)}:
+            \begin{itemize}
+                \item $\mthEventD_1$: Male, approximately 45 years of age.
+                \item $\mthEventD_2$: Actively holding an open paper Korean vocabulary book; the fore-edge and page corners are heavily soiled with finger grime from prolonged handling.
+                \item $\mthEventD_3$: Attired in a light-blue dress shirt and black trousers, neatly pressed and clean with no conspicuous wrinkles or stains.
+                \item $\mthEventD_4$: A utilitarian wristwatch displaying micro-scratches on both the bezel and crystal, bearing witness to years of heavy operational use.
+            \end{itemize}
+    \end{itemize}
+
+    To interpret this profile, we first set the ``random baseline business passenger inside the carriage (background everyday noise)'' as the \textbf{reference hypothesis $\mthHypothesis_0$}.
+    Against this benchmark, we formulate three competing test hypotheses:
+    \begin{itemize}
+        \item $\mthHypothesis_1$ (Professional / Career Transition): A veteran operations leader preparing for an overseas posting or spearheading field negotiations with Korean partner corporations.
+        \item $\mthHypothesis_2$ (Family / Roots): Personal motivation grounded in dialogue with a partner or family, or an exploration of personal ancestral lineage.
+        \item $\mthHypothesis_3$ (Hobby / Intellectual Enrichment): Appreciation of Korean cinema and literature in the original text, or casual language study during leisure time.
+    \end{itemize}
+
+    \subsection{Rapid Discrimination via Relative Deciban Scores}
+
+    Given the observation vector $\mthEventD = \{\mthEventD_1, \mthEventD_2, \mthEventD_3, \mthEventD_4\}$, the plausibility of each candidate hypothesis $\mthHypothesis_k$ ($k \in \{1, 2, 3\}$) is evaluated as the log-likelihood difference relative to the reference hypothesis $\mthHypothesis_0$:
+    \begin{equation}
+        \Delta \text{Score}_k = 10 \log_{10} P(\mthEventD \mid \mthHypothesis_k) - 10 \log_{10} P(\mthEventD \mid \mthHypothesis_0)
+    \end{equation}
+
+    The granular breakdown of the relative log-likelihood contributions supplied by each observed feature is presented in Table~\ref{tab:deciban_feature_breakdown}.
+
+    \begin{table}[htbp]
+        \centering
+        \caption{Relative Deciban Scores (dB) of Observed Features Against Reference Hypothesis $\mthHypothesis_0$}
+        \label{tab:deciban_feature_breakdown}
+        \begin{tabular}{lrrr}
+            \hline
+            Observed Feature ($\mthEventD_i$) & $\Delta \text{Score}_1$ (Professional) & $\Delta \text{Score}_2$ (Family/Roots) & $\Delta \text{Score}_3$ (Hobby/Enrichment) \\
+            \hline
+            $\mthEventD_1$ (45yo Male) & $+1.0\,\text{dB}$ & $0.0\,\text{dB}$ & $-1.0\,\text{dB}$ \\
+            $\mthEventD_2$ (Grime-stained Vocab Book) & $+8.0\,\text{dB}$ & $+6.0\,\text{dB}$ & $-5.0\,\text{dB}$ \\
+            $\mthEventD_3$ (Impeccable Grooming) & $+3.0\,\text{dB}$ & $+0.5\,\text{dB}$ & $0.0\,\text{dB}$ \\
+            $\mthEventD_4$ (Tool-like Wear on Watch) & $+4.0\,\text{dB}$ & $+2.0\,\text{dB}$ & $-1.0\,\text{dB}$ \\
+            \hline
+            \textbf{Total $\Delta \text{Score}_k$} & $\mathbf{+16.0\,\text{dB}}$ & $\mathbf{+8.5\,\text{dB}}$ & $\mathbf{-7.0\,\text{dB}}$ \\
+            \hline
+        \end{tabular}
+    \end{table}
+
+    \subsection{Geometric Interpretation of Score Dynamics}
+
+    The computational result completely dismantles the intuitive human bias that "language acquisition on a commute is most likely a hobby."
+
+    \begin{enumerate}
+        \item \textbf{Rejection of $\mthHypothesis_3$ (Hobby / Enrichment) ($-7.0\,\text{dB}$)}: \\
+            Compared to a typical commuter under $\mthHypothesis_0$, drilling a vocabulary book for hundreds of cumulative hours until the page edges turn dark with grime deviates sharply from the high baseline dropout rates characteristic of casual recreational study. This empirical fact alone causes the likelihood to plummet, suppressing the odds ratio down to $10^{-0.7} \approx 0.2$ (roughly one-fifth).
+
+        \item \textbf{Establishment of Dominance for $\mthHypothesis_1$ (Professional / Career Transition) ($+16.0\,\text{dB}$)}: \\
+            The co-occurrence of "rigorously disciplined personal grooming ($\mthEventD_3$)" and a "somatic history of subjecting a utilitarian watch to physical field wear ($\mthEventD_4$)" strongly supports the profile of a battle-tested operational leader rather than a pure desk-bound administrative worker. Compounded by the "urgent, no-retreat iterative drilling of vocabulary ($\mthEventD_2$)," the odds ratio leaps to $10^{1.6} \approx 40$ times that of the baseline reference hypothesis.
+    \end{enumerate}
+
+    The relative odds difference between hypotheses $\mthHypothesis_1$ and $\mthHypothesis_2$ is obtained immediately through simple subtraction:
+    \begin{equation}
+        \Delta \text{Score}_{1 - 2} = \Delta \text{Score}_1 - \Delta \text{Score}_2 = 16.0\,\text{dB} - 8.5\,\text{dB} = +7.5\,\text{dB}
+    \end{equation}
+    Without evaluating the normalizing integral in the denominator of the full posterior distribution, elementary mental subtraction establishes a deterministic conviction: the professional transfer hypothesis ($\mthHypothesis_1$) dominates the family roots hypothesis ($\mthHypothesis_2$) by approximately a factor of $5.6$ ($+7.5\,\text{dB}$).
+
+    Perceptual acuity in everyday human observation is not a mystical gift of intuition; it is nothing other than the subconscious operational fidelity with which one accumulates differential log-likelihood deviations ($\Delta \text{Score}_k$) from baseline $\mthHypothesis_0$ in units of decibans.
 \fi
